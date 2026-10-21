@@ -10,11 +10,11 @@ cd "$SRC/.."
 cp "$SRC/Dockerfile.robincloud" Dockerfile
 docker build -q -t robincloud:34.0.5 . >/dev/null
 cd /opt/stack
-docker compose up -d nextcloud cron >/dev/null
-docker compose exec -T nextcloud rsync -rlDog --chown www-data:www-data --delete \
+docker compose up -d robincloud cron >/dev/null
+docker compose exec -T robincloud rsync -rlDog --chown www-data:www-data --delete \
   --exclude-from=/upgrade.exclude /usr/src/nextcloud/ /var/www/html/
-docker compose exec -T nextcloud apachectl -k graceful
-if docker compose exec -T -u www-data nextcloud php occ status --output=json 2>/dev/null | grep -q '"installed":true'; then
-  docker compose exec -T -u www-data nextcloud php occ upgrade --no-interaction >/dev/null || true
+docker compose exec -T robincloud apachectl -k graceful
+if docker compose exec -T -u www-data robincloud php occ status --output=json 2>/dev/null | grep -q '"installed":true'; then
+  docker compose exec -T -u www-data robincloud php occ upgrade --no-interaction >/dev/null || true
 fi
 echo "RobinCloud deployed: $(git -C "$SRC" log -1 --format='%h %s')"
