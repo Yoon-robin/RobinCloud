@@ -50,6 +50,19 @@ occ config:system:set defaultapp --value=files
 occ config:system:set profile.enabled --value=false --type=boolean
 ```
 
+미리보기: 이미지에 ffmpeg가 들어 있어 영상 썸네일이 나옵니다. 영상·아이폰 사진(HEIC)·WebP·PDF 미리보기를 켜고,
+새로 올라온 파일의 썸네일은 10분마다 미리 만들어 둡니다(Preview Generator).
+
+```bash
+docker compose cp robincloud-previews.json robincloud:/tmp/previews.json
+occ config:import /tmp/previews.json
+occ app:install previewgenerator
+occ config:app:set previewgenerator squareSizes --value="32 256"
+occ config:app:set previewgenerator widthSizes --value="256 384"
+occ config:app:set previewgenerator heightSizes --value="256"
+occ preview:generate-all          # 한 번, 그다음은 cron이 occ preview:pre-generate
+```
+
 남는 것: 파일, 공유(링크·메일·다른 서버), 휴지통, 버전, 사진, 미리보기·PDF, 텍스트 편집기, 태그·댓글·알림·활동, 2단계 인증.
 
 ## 바꾼 파일
