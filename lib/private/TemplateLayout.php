@@ -45,6 +45,16 @@ use OCP\Util;
 
 class TemplateLayout {
 	private static string $versionHash = '';
+
+	/**
+	 * RobinCloud: core/css/robincloud.css changes without a version bump, so its
+	 * mtime and size go into the asset hash. Otherwise browsers keep the old
+	 * skin for months behind the long-lived cache headers.
+	 */
+	private static function robinCloudStamp(): string {
+		$file = \OC::$SERVERROOT . '/core/css/robincloud.css';
+		return is_file($file) ? filemtime($file) . '-' . filesize($file) : '';
+	}
 	/** @var string[] */
 	private static array $cacheBusterCache = [];
 
@@ -219,10 +229,10 @@ class TemplateLayout {
 			if (empty(self::$versionHash)) {
 				$v = $this->appManager->getAppInstalledVersions(true);
 				$v['core'] = implode('.', $this->serverVersion->getVersion());
-				self::$versionHash = substr(md5(implode(',', $v)), 0, 8);
+				self::$versionHash = substr(md5(implode(',', $v) . self::robinCloudStamp()), 0, 8);
 			}
 		} else {
-			self::$versionHash = md5('not installed');
+			self::$versionHash = md5('not installed' . self::robinCloudStamp());
 		}
 
 		// Add the js files
@@ -266,6 +276,9 @@ class TemplateLayout {
 		} catch (\Exception $e) {
 			$pathInfo = '';
 		}
+
+		// RobinCloud: the shadcn-style skin goes on every page, installer and login included.
+		Util::addStyle('core', 'robincloud');
 
 		// Do not initialise scss appdata until we have a fully installed instance
 		// Do not load scss for update, errors, installation or login page

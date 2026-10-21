@@ -276,10 +276,7 @@ class DefaultTheme implements ITheme {
 
 	#[\Override]
 	public function getCustomCss(): string {
-		// RobinCloud: Pretendard (SIL OFL 1.1), served from core/fonts/pretendard.
-		$file = \OC::$SERVERROOT . '/core/fonts/pretendard/pretendardvariable-dynamic-subset.css';
-		$css = is_readable($file) ? (string)file_get_contents($file) : '';
-		$css = str_replace('./woff2-dynamic-subset/', \OC::$WEBROOT . '/core/fonts/pretendard/woff2-dynamic-subset/', $css);
-		return $css . "\nbody { letter-spacing: -0.01em; -webkit-font-smoothing: antialiased; }\n";
+		// RobinCloud: fonts and the shadcn skin live in core/css/robincloud.css.
+		return '';
 	}
 }

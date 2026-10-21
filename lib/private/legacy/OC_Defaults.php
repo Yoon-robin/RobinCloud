@@ -215,7 +215,7 @@ class OC_Defaults {
 		} else {
 			if ($this->defaultSlogan === null) {
 				$l10n = \OC::$server->getL10N('lib', $lang);
-				$this->defaultSlogan = $l10n->t('a safe home for all your data');
+				$this->defaultSlogan = ""; // RobinCloud: no slogan
 			}
 			return $this->defaultSlogan;
 		}
@@ -231,7 +231,7 @@ class OC_Defaults {
 		} else {
 			$footer = '<a href="' . $this->getBaseUrl() . '" target="_blank"'
 				. ' rel="noreferrer noopener">' . $this->getEntity() . '</a>'
-				. ' – ' . $this->getSlogan();
+				. ($this->getSlogan() !== '' ? ' – ' . $this->getSlogan() : '');
 		}
 
 		return $footer;

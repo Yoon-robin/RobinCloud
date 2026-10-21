@@ -1,0 +1,305 @@
+/*!
+ * RobinCloud — shadcn/ui-style skin for Nextcloud.
+ * Loaded on every page by lib/private/TemplateLayout.php, after the app styles.
+ * Pretendard: SIL OFL 1.1 (core/fonts/pretendard).
+ */
+@import url('../fonts/pretendard/pretendardvariable-dynamic-subset.css');
+
+/* ------------------------------------------------------------------ tokens */
+
+:root {
+	--rc-background: #ffffff;
+	--rc-foreground: #09090b;
+	--rc-muted: #f4f4f5;
+	--rc-muted-foreground: #71717a;
+	--rc-border: #e4e4e7;
+	--rc-input: #e4e4e7;
+	--rc-ring: #a1a1aa;
+	--rc-primary: #18181b;
+	--rc-primary-foreground: #fafafa;
+	--rc-primary-hover: #27272a;
+	--rc-destructive: #dc2626;
+	--rc-radius: 8px;
+	--rc-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+	--rc-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.08), 0 1px 2px -1px rgb(0 0 0 / 0.08);
+	--rc-font: 'Pretendard Variable', Pretendard, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--rc-background: #09090b;
+		--rc-foreground: #fafafa;
+		--rc-muted: #18181b;
+		--rc-muted-foreground: #a1a1aa;
+		--rc-border: #27272a;
+		--rc-input: #27272a;
+		--rc-ring: #52525b;
+		--rc-primary: #fafafa;
+		--rc-primary-foreground: #18181b;
+		--rc-primary-hover: #e4e4e7;
+		--rc-shadow-sm: none;
+		--rc-shadow: none;
+	}
+}
+
+/* ------------------------------------------------------- guest pages (login,
+   installer, errors). Nextcloud's own variables are re-pointed at the tokens
+   so every Vue component on these pages follows them. */
+
+#body-login {
+	--color-main-background: var(--rc-background);
+	--color-main-background-rgb: 255, 255, 255;
+	--color-main-text: var(--rc-foreground);
+	--color-text-maxcontrast: var(--rc-muted-foreground);
+	--color-border: var(--rc-border);
+	--color-border-dark: var(--rc-input);
+	--color-border-maxcontrast: var(--rc-input);
+	--color-background-hover: var(--rc-muted);
+	--color-background-dark: var(--rc-muted);
+	--color-primary: var(--rc-primary);
+	--color-primary-text: var(--rc-primary-foreground);
+	--color-primary-element: var(--rc-primary);
+	--color-primary-element-hover: var(--rc-primary-hover);
+	--color-primary-element-text: var(--rc-primary-foreground);
+	--color-primary-element-light: var(--rc-muted);
+	--color-primary-element-light-hover: var(--rc-border);
+	--color-primary-element-light-text: var(--rc-foreground);
+	--color-background-plain: var(--rc-muted);
+	--color-background-plain-text: var(--rc-foreground);
+	--border-radius-element: 6px;
+	--border-radius-container: var(--rc-radius);
+	--border-radius-container-large: 12px;
+	--default-clickable-area: 36px;
+	--font-face: var(--rc-font);
+
+	font-family: var(--rc-font);
+	color: var(--rc-foreground);
+	background: var(--rc-muted) none !important;
+	background-image:
+		radial-gradient(circle at 1px 1px, color-mix(in srgb, var(--rc-foreground) 7%, transparent) 1px, transparent 0) !important;
+	background-size: 22px 22px !important;
+	-webkit-font-smoothing: antialiased;
+	letter-spacing: -0.01em;
+}
+
+@media (prefers-color-scheme: dark) {
+	#body-login { --color-main-background-rgb: 9, 9, 11; }
+}
+
+/* the wordmark: dark on light, light on dark */
+#body-login #header .logo {
+	background-image: url('../img/logo/logo-dark.svg') !important;
+	width: 196px !important;
+	height: 48px !important;
+	background-size: contain !important;
+	margin-bottom: 8px;
+	filter: none !important;
+}
+
+@media (prefers-color-scheme: dark) {
+	#body-login #header .logo { background-image: url('../img/logo/logo.svg') !important; }
+}
+
+/* the card */
+#body-login .guest-box,
+#body-login .setup-form,
+#body-login .login-box,
+#body-login .login-form {
+	background: var(--rc-background) !important;
+	color: var(--rc-foreground) !important;
+	border: 1px solid var(--rc-border) !important;
+	border-radius: 12px !important;
+	box-shadow: var(--rc-shadow) !important;
+	backdrop-filter: none !important;
+	-webkit-backdrop-filter: none !important;
+}
+
+#body-login .setup-form {
+	width: min(400px, calc(100vw - 32px));
+	padding: 28px 24px 24px !important;
+	text-align: start;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+#body-login .setup-form legend,
+#body-login .login-form h2,
+#body-login .login-box h2 {
+	font-size: 18px;
+	font-weight: 600;
+	letter-spacing: -0.02em;
+	color: var(--rc-foreground);
+	text-align: start;
+	margin-bottom: 12px;
+	padding: 0;
+}
+
+#body-login .setup-form fieldset {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	margin: 0;
+}
+
+/* footer: plain muted line instead of the pill */
+#body-login footer.guest-box {
+	background: transparent !important;
+	border: 0 !important;
+	box-shadow: none !important;
+	color: var(--rc-muted-foreground) !important;
+	font-size: 12px;
+}
+
+#body-login footer.guest-box .info,
+#body-login footer.guest-box .info a,
+#body-login footer.guest-box .entity-name {
+	color: var(--rc-muted-foreground) !important;
+	font-weight: 500;
+}
+
+/* installer: drop the autoconfig notice, turn the docs box into a quiet link */
+#body-login [data-cy-setup-form-note='autoconfig'] { display: none !important; }
+
+#body-login .setup-form > .notecard--info:last-child {
+	border: 0 !important;
+	padding: 0 !important;
+	justify-content: center;
+	color: var(--rc-muted-foreground) !important;
+	font-size: 12.5px;
+}
+
+#body-login .setup-form > .notecard--info:last-child .notecard__icon { display: none !important; }
+#body-login .setup-form > .notecard--info:last-child a { color: var(--rc-foreground); text-decoration: underline; text-underline-offset: 3px; }
+
+#body-login .setup-form .input-field { margin: 0 !important; }
+
+/* "Storage & database" disclosure */
+#body-login .setup-form details {
+	border: 1px solid var(--rc-border);
+	border-radius: var(--rc-radius);
+	padding: 0 12px;
+}
+
+#body-login .setup-form details[open] { padding-bottom: 12px; }
+
+#body-login .setup-form summary {
+	padding: 10px 0;
+	font-weight: 500;
+	color: var(--rc-muted-foreground);
+	text-align: start;
+	cursor: pointer;
+}
+
+#body-login .setup-form summary:hover { color: var(--rc-foreground); }
+
+/* ------------------------------------------------------- shared components */
+
+/* Inputs: h-9, 1px input border, rounded-md, shadow-sm, ring on focus */
+.input-field__input,
+input[type='text'], input[type='password'], input[type='email'], input[type='search'],
+input[type='url'], input[type='number'], input[type='tel'], textarea, select {
+	font-family: inherit;
+}
+
+.input-field .input-field__input {
+	border: 1px solid var(--rc-input) !important;
+	border-radius: 6px !important;
+	box-shadow: var(--rc-shadow-sm);
+	background: var(--color-main-background) !important;
+	transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.input-field .input-field__input:hover:not([disabled]) {
+	border-color: var(--rc-ring) !important;
+}
+
+.input-field .input-field__input:focus-visible,
+.input-field .input-field__input:focus {
+	border-color: var(--rc-ring) !important;
+	box-shadow: 0 0 0 3px color-mix(in srgb, var(--rc-ring) 35%, transparent) !important;
+	outline: none !important;
+}
+
+.input-field__label { font-weight: 400; }
+
+/* Buttons */
+.button-vue {
+	border-radius: 6px !important;
+	font-weight: 500 !important;
+	letter-spacing: -0.01em;
+	transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.button-vue--vue-primary {
+	background-color: var(--color-primary-element) !important;
+	color: var(--color-primary-element-text) !important;
+	box-shadow: var(--rc-shadow-sm);
+}
+
+.button-vue--vue-primary:hover:not(:disabled) {
+	background-color: var(--color-primary-element-hover) !important;
+}
+
+.button-vue--vue-secondary {
+	background-color: var(--color-main-background) !important;
+	color: var(--color-main-text) !important;
+	border: 1px solid var(--rc-input) !important;
+	box-shadow: var(--rc-shadow-sm);
+}
+
+.button-vue--vue-secondary:hover:not(:disabled) {
+	background-color: var(--rc-muted) !important;
+}
+
+.button-vue:focus-visible {
+	outline: none !important;
+	box-shadow: 0 0 0 2px var(--color-main-background), 0 0 0 4px var(--rc-ring) !important;
+}
+
+/* Alerts (Nextcloud "notecard"): shadcn Alert, no thick side bar, no tint.
+   The component paints itself from --note-background / --note-theme. */
+.notecard.notecard,
+.notecard.notecard--success, .notecard.notecard--info,
+.notecard.notecard--warning, .notecard.notecard--error {
+	--note-background: var(--color-main-background) !important;
+	background-color: var(--color-main-background) !important;
+}
+
+.notecard {
+	background: var(--color-main-background) !important;
+	color: var(--color-main-text) !important;
+	border: 1px solid var(--rc-border) !important;
+	border-radius: var(--rc-radius) !important;
+	padding: 12px 14px !important;
+	margin: 0 !important;
+	text-align: start;
+	font-size: 13px;
+	line-height: 1.5;
+}
+
+.notecard__heading { font-weight: 600 !important; margin-bottom: 2px; }
+.notecard--success .notecard__icon { color: #16a34a !important; }
+.notecard--info .notecard__icon { color: var(--rc-muted-foreground) !important; }
+.notecard--warning .notecard__icon { color: #d97706 !important; }
+.notecard--error { border-color: color-mix(in srgb, var(--rc-destructive) 45%, var(--rc-border)) !important; }
+.notecard--error, .notecard--error .notecard__icon { color: var(--rc-destructive) !important; }
+
+/* Checkbox / radio "button variant" groups (database type picker) */
+.checkbox-content--button-variant {
+	border-color: var(--rc-input) !important;
+}
+
+/* Modals and popovers: card surface, hairline border, soft shadow */
+.modal-container,
+.v-popper__inner,
+.action-item__popper .v-popper__inner {
+	border: 1px solid var(--color-border) !important;
+	box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.08) !important;
+}
+
+/* Selection colour */
+::selection { background: color-mix(in srgb, var(--rc-foreground) 18%, transparent); }
+
+/* installer: the Nextcloud docs link is not ours to show */
+#body-login .setup-form > .notecard--info:last-child { display: none !important; }
