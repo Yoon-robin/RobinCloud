@@ -17,7 +17,8 @@
 		} ?>">
 		<meta name="theme-color" content="<?php p($theme->getColorPrimary()); ?>">
 		<meta name="csp-nonce" nonce="<?php p($_['cspNonce']); /* Do not pass into "content" to prevent exfiltration */ ?>">
-		<link rel="icon" href="<?php print_unescaped(image_path('core', 'favicon.ico')); /* IE11+ supports png */ ?>">
+		<link rel="icon" sizes="32x32" href="<?php print_unescaped(image_path('core', 'favicon.ico')); /* IE11+ supports png */ ?>">
+		<link rel="icon" type="image/svg+xml" href="<?php print_unescaped(image_path('core', 'favicon.svg')); ?>?v=<?php p(substr(md5_file(\OC::$SERVERROOT . '/core/img/favicon.svg'), 0, 8)); ?>">
 		<link rel="apple-touch-icon" href="<?php print_unescaped(image_path('core', 'favicon-touch.png')); ?>">
 		<link rel="mask-icon" sizes="any" href="<?php print_unescaped(image_path('core', 'favicon-mask.svg')); ?>" color="<?php p($theme->getColorPrimary()); ?>">
 		<?php emit_css_loading_tags($_); ?>

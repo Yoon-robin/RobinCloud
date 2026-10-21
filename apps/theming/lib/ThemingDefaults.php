@@ -406,6 +406,12 @@ class ThemingDefaults extends \OC_Defaults {
 		}
 
 		$route = false;
+		// RobinCloud: the generated favicon is the logo shrunk onto the primary
+		// colour, which at 16px is a dark blob. The static icons in core/img are
+		// drawn for that size; the generated ones are only used for an uploaded favicon.
+		if (in_array($image, ['favicon.ico', 'favicon-touch.png', 'favicon-fb.png'], true) && $this->getCustomFavicon() === null) {
+			return false;
+		}
 		if ($image === 'favicon.ico' && ($this->imageManager->canConvert('ICO') || $this->getCustomFavicon() !== null)) {
 			$route = $this->urlGenerator->linkToRoute('theming.Icon.getFavicon', ['app' => $app]);
 		}
