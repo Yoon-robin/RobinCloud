@@ -4,12 +4,17 @@ COPY --chown=www-data:www-data src/ /usr/src/nextcloud/
 # - no code signature: the source differs from the signed release on purpose
 # - new accounts start empty instead of with Nextcloud sample files
 # - Nextcloud promo apps (first-run tour, announcements, survey, support) are left out
-# - "Nextcloud" becomes "RobinCloud" in everything users read (robincloud-rebrand.php)
+# - "Nextcloud" becomes "RobinCloud" in everything users read, plus the Korean
+#   overlay (robincloud-rebrand.php, robincloud-l10n/)
 RUN rm -f /usr/src/nextcloud/core/signature.json \
  && rm -rf /usr/src/nextcloud/core/skeleton && mkdir /usr/src/nextcloud/core/skeleton \
  && chown www-data:www-data /usr/src/nextcloud/core/skeleton \
  && rm -rf /usr/src/nextcloud/apps/firstrunwizard /usr/src/nextcloud/apps/nextcloud_announcements \
            /usr/src/nextcloud/apps/survey_client /usr/src/nextcloud/apps/support \
  && php /usr/src/nextcloud/robincloud-rebrand.php /usr/src/nextcloud
+# HSTS on requests that came in over HTTPS (through the Cloudflare tunnel);
+# the SSH-forwarded http://localhost:8080 stays plain
+COPY src/robincloud-hsts.conf /etc/apache2/conf-available/robincloud-hsts.conf
+RUN a2enconf robincloud-hsts >/dev/null
 LABEL org.opencontainers.image.source="https://github.com/Yoon-robin/RobinCloud" \
       org.opencontainers.image.licenses="AGPL-3.0-or-later"
