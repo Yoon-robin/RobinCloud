@@ -25,15 +25,21 @@ trap '[ "$installed" = yes ] && occ maintenance:mode --off >/dev/null' EXIT
 if [ "${1:-}" = --recreate ]; then
   docker compose up -d robincloud cron >/dev/null
 fi
-docker run --rm -v stack_robincloud:/var/www/html --entrypoint rsync robincloud:34.0.5 \
-  -rlDog --chown www-data:www-data --delete --exclude-from=/upgrade.exclude \
-  /usr/src/nextcloud/ /var/www/html/
-
+# -t keeps timestamps so later runs only copy what changed. .htaccess is held
+# back: the source copy lacks the pretty-URL rules, and without them /login and
+# /apps/... answer 404 until they are regenerated. It goes in last, swapped and
+# regenerated in one step.
+docker run --rm -v stack_robincloud:/var/www/html --entrypoint sh robincloud:34.0.5 -c '
+  rsync -rlDogt --chown www-data:www-data --delete --exclude-from=/upgrade.exclude \
+    --exclude=/.htaccess --exclude=/.htaccess.robincloud-new /usr/src/nextcloud/ /var/www/html/ &&
+  cp /usr/src/nextcloud/.htaccess /var/www/html/.htaccess.robincloud-new &&
+  chown www-data:www-data /var/www/html/.htaccess.robincloud-new'
 if [ "$installed" = yes ]; then
-  # the copy puts back the bare .htaccess from the source tree, which drops
-  # the pretty-URL rewrite rules; without them /login and /apps/... break
-  occ maintenance:update:htaccess >/dev/null
+  docker compose exec -T -u www-data robincloud sh -c \
+    'mv /var/www/html/.htaccess.robincloud-new /var/www/html/.htaccess && php occ maintenance:update:htaccess >/dev/null'
   occ upgrade --no-interaction >/dev/null || true
+else
+  docker compose exec -T -u www-data robincloud mv /var/www/html/.htaccess.robincloud-new /var/www/html/.htaccess
 fi
 
 # app-store apps live outside the image: give them the rebrand and the Korean overlay too
