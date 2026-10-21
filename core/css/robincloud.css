@@ -102,9 +102,7 @@
 
 /* the card */
 #body-login .guest-box,
-#body-login .setup-form,
-#body-login .login-box,
-#body-login .login-form {
+#body-login .setup-form {
 	background: var(--rc-background) !important;
 	color: var(--rc-foreground) !important;
 	border: 1px solid var(--rc-border) !important;
@@ -303,3 +301,169 @@ input[type='url'], input[type='number'], input[type='tel'], textarea, select {
 
 /* installer: the Nextcloud docs link is not ours to show */
 #body-login .setup-form > .notecard--info:last-child { display: none !important; }
+
+
+/* login: the inner form is not a second card */
+#body-login .guest-box .login-form,
+#body-login .guest-box .login-box {
+	background: transparent !important;
+	border: 0 !important;
+	box-shadow: none !important;
+	padding: 0 !important;
+}
+
+#body-login .guest-box:not(footer) { padding: 24px !important; width: min(400px, calc(100vw - 32px)); text-align: start; }
+
+/* ------------------------------------------------------- logged-in pages:
+   no background picture, zinc canvas, white header with the dark wordmark,
+   the app itself on a white card (Nextcloud's body container). */
+
+body:not(#body-login) {
+	--image-background: none !important;
+	--color-background-plain: var(--rc-muted) !important;
+	--color-background-plain-text: var(--rc-foreground) !important;
+	--color-main-background-blur: var(--rc-muted) !important;
+	--filter-background-blur: none !important;
+	background: var(--rc-muted) none !important;
+}
+
+body:not(#body-login) #header {
+	background: transparent !important;
+	color: var(--rc-foreground) !important;
+}
+
+body:not(#body-login) #header .logo,
+body:not(#body-login) #nextcloud .logo {
+	background-image: url('../img/logo/logo-dark.svg') !important;
+	filter: none !important;
+}
+
+@media (prefers-color-scheme: dark) {
+	body:not(#body-login) #header .logo,
+	body:not(#body-login) #nextcloud .logo { background-image: url('../img/logo/logo.svg') !important; }
+}
+
+body[data-theme-dark] #header .logo,
+body[data-theme-dark] #nextcloud .logo { background-image: url('../img/logo/logo.svg') !important; }
+body[data-theme-light] #header .logo,
+body[data-theme-light] #nextcloud .logo { background-image: url('../img/logo/logo-dark.svg') !important; }
+
+/* app sidebar sits on the canvas, content on a bordered card */
+body:not(#body-login) #content,
+body:not(#body-login) #content-vue {
+	border: 1px solid var(--color-border) !important;
+	box-shadow: var(--rc-shadow-sm) !important;
+}
+
+body:not(#body-login) .app-navigation {
+	background: transparent !important;
+	backdrop-filter: none !important;
+	-webkit-backdrop-filter: none !important;
+	border-inline-end: 1px solid var(--color-border) !important;
+}
+
+body:not(#body-login) .app-navigation-entry.active,
+body:not(#body-login) .app-navigation-entry--active {
+	background-color: var(--color-background-hover) !important;
+}
+
+body:not(#body-login) .app-navigation-entry.active .app-navigation-entry__name,
+body:not(#body-login) .app-navigation-entry--active .app-navigation-entry__name { font-weight: 600; }
+
+/* dashboard widgets: solid cards */
+body:not(#body-login) .panel,
+body:not(#body-login) .dashboard .panel--content {
+	background: var(--color-main-background) !important;
+	backdrop-filter: none !important;
+	-webkit-backdrop-filter: none !important;
+	border: 1px solid var(--color-border) !important;
+	box-shadow: var(--rc-shadow-sm) !important;
+}
+
+#app-dashboard > h2 { color: var(--rc-foreground) !important; font-weight: 600; letter-spacing: -0.02em; }
+
+/* unified search box in the header */
+body:not(#body-login) #header .unified-search-menu .input-field__input,
+body:not(#body-login) #header input[type='search'] {
+	background: var(--color-main-background) !important;
+	color: var(--color-main-text) !important;
+	border: 1px solid var(--color-border) !important;
+}
+
+/* header search: a bordered field like shadcn's command trigger */
+body:not(#body-login) #header .unified-search-input__button {
+	background: var(--color-main-background) !important;
+	color: var(--rc-muted-foreground) !important;
+	border: 1px solid var(--color-border) !important;
+	border-radius: var(--rc-radius) !important;
+	box-shadow: var(--rc-shadow-sm) !important;
+	backdrop-filter: none !important;
+}
+
+body:not(#body-login) #header .unified-search-input__button:hover {
+	border-color: var(--rc-ring) !important;
+	color: var(--rc-foreground) !important;
+}
+
+body:not(#body-login) #header .unified-search-input__icon,
+body:not(#body-login) #header .unified-search-input__label { color: inherit !important; }
+
+/* header wordmark at a readable size */
+body:not(#body-login) #header .logo,
+body:not(#body-login) #nextcloud .logo {
+	width: 112px !important;
+	background-size: contain !important;
+	background-position: center !important;
+}
+
+/* the header link around the wordmark must not crop it */
+body:not(#body-login) #header #nextcloud {
+	width: auto !important;
+	min-width: 124px;
+	padding-inline: 6px;
+}
+
+/* header app icons are white SVGs drawn for a dark backdrop: invert them on
+   the light canvas, leave them alone on the dark one */
+body:not(#body-login) {
+	--background-image-invert-if-bright: invert(100%) !important;
+	--background-invert-if-bright: invert(100%) !important;
+	--background-invert-if-dark: no !important;
+}
+
+/* primary buttons follow shadcn: near-black on light, near-white on dark */
+body:not(#body-login) {
+	--color-primary-element: #18181b !important;
+	--color-primary-element-hover: #27272a !important;
+	--color-primary-element-text: #fafafa !important;
+	--color-primary-element-text-dark: #fafafa !important;
+	--color-primary-element-light: #f4f4f5 !important;
+	--color-primary-element-light-hover: #e4e4e7 !important;
+	--color-primary-element-light-text: #18181b !important;
+}
+
+@media (prefers-color-scheme: dark) {
+	body:not(#body-login):not([data-theme-light]) {
+		--background-image-invert-if-bright: no !important;
+		--background-invert-if-bright: no !important;
+		--color-primary-element: #fafafa !important;
+		--color-primary-element-hover: #e4e4e7 !important;
+		--color-primary-element-text: #18181b !important;
+		--color-primary-element-text-dark: #18181b !important;
+		--color-primary-element-light: #27272a !important;
+		--color-primary-element-light-hover: #3f3f46 !important;
+		--color-primary-element-light-text: #fafafa !important;
+	}
+}
+
+body[data-theme-dark]:not(#body-login) {
+	--background-image-invert-if-bright: no !important;
+	--background-invert-if-bright: no !important;
+	--color-primary-element: #fafafa !important;
+	--color-primary-element-hover: #e4e4e7 !important;
+	--color-primary-element-text: #18181b !important;
+	--color-primary-element-text-dark: #18181b !important;
+	--color-primary-element-light: #27272a !important;
+	--color-primary-element-light-hover: #3f3f46 !important;
+	--color-primary-element-light-text: #fafafa !important;
+}

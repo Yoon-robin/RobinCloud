@@ -1,6 +1,13 @@
 # RobinCloud: Nextcloud 34.0.5 with the RobinCloud source (github.com/Yoon-robin/RobinCloud) laid over it.
 FROM nextcloud:34.0.5-apache
 COPY --chown=www-data:www-data src/ /usr/src/nextcloud/
-RUN rm -f /usr/src/nextcloud/core/signature.json
+# - no code signature: the source differs from the signed release on purpose
+# - new accounts start empty instead of with Nextcloud sample files
+# - Nextcloud promo apps (first-run tour, announcements, survey, support) are left out
+RUN rm -f /usr/src/nextcloud/core/signature.json \
+ && rm -rf /usr/src/nextcloud/core/skeleton && mkdir /usr/src/nextcloud/core/skeleton \
+ && chown www-data:www-data /usr/src/nextcloud/core/skeleton \
+ && rm -rf /usr/src/nextcloud/apps/firstrunwizard /usr/src/nextcloud/apps/nextcloud_announcements \
+           /usr/src/nextcloud/apps/survey_client /usr/src/nextcloud/apps/support
 LABEL org.opencontainers.image.source="https://github.com/Yoon-robin/RobinCloud" \
       org.opencontainers.image.licenses="AGPL-3.0-or-later"
