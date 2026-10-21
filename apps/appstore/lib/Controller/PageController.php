@@ -19,6 +19,7 @@ use OCP\AppFramework\Http\Attribute\FrontpageRoute;
 use OCP\AppFramework\Http\Attribute\NoCSRFRequired;
 use OCP\AppFramework\Http\Attribute\OpenAPI;
 use OCP\AppFramework\Http\ContentSecurityPolicy;
+use OCP\AppFramework\Http\RedirectResponse;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\AppFramework\Services\IInitialState;
 use OCP\IConfig;
@@ -50,7 +51,11 @@ final class PageController extends Controller {
 	#[FrontpageRoute(verb: 'GET', url: '/settings/apps', root: '')]
 	#[FrontpageRoute(verb: 'GET', url: '/settings/apps/{category}', defaults: ['category' => ''], root: '')]
 	#[FrontpageRoute(verb: 'GET', url: '/settings/apps/{category}/{id}', defaults: ['category' => '', 'id' => ''], root: '')]
-	public function viewApps(): TemplateResponse {
+	public function viewApps(string $category = ''): TemplateResponse|RedirectResponse {
+		// RobinCloud: open on the installed apps, not Nextcloud's news feed
+		if ($category === '' || $category === 'discover') {
+			return new RedirectResponse($this->urlGenerator->getWebroot() . '/settings/apps/installed');
+		}
 		$this->navigationManager->setActiveEntry('core_apps');
 
 		$this->initialState->provideInitialState('appstoreEnabled', $this->config->getSystemValueBool('appstoreenabled', true));

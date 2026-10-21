@@ -14,6 +14,8 @@ docker compose up -d robincloud cron >/dev/null
 docker compose exec -T robincloud rsync -rlDog --chown www-data:www-data --delete \
   --exclude-from=/upgrade.exclude /usr/src/nextcloud/ /var/www/html/
 docker compose exec -T robincloud apachectl -k graceful
+# app-store apps live outside the image: give them the rebrand and the Korean overlay too
+docker compose exec -T -u www-data robincloud php /var/www/html/robincloud-rebrand.php /var/www/html/custom_apps >/dev/null
 if docker compose exec -T -u www-data robincloud php occ status --output=json 2>/dev/null | grep -q '"installed":true'; then
   docker compose exec -T -u www-data robincloud php occ upgrade --no-interaction >/dev/null || true
 fi

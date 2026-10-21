@@ -428,7 +428,6 @@ body:not(#body-login) #header #nextcloud {
 body:not(#body-login) {
 	--background-image-invert-if-bright: invert(100%) !important;
 	--background-invert-if-bright: invert(100%) !important;
-	--background-invert-if-dark: no !important;
 }
 
 /* primary buttons follow shadcn: near-black on light, near-white on dark */
@@ -563,3 +562,29 @@ body[data-theme-dark]:not(#body-login) {
 }
 
 #body-login .setup-form__database-type-select .checkbox-content__text { line-height: 1.2; padding: 0 !important; }
+
+/* ------------------------------------------------- Nextcloud leftovers */
+
+/* user menu: "Help & privacy" only links to Nextcloud's forum and manuals */
+#header-menu-user-menu li:has(a#help) { display: none !important; }
+
+/* appearance settings: the intro points at Nextcloud's issue tracker and
+   design team; colour and background are fixed by this skin, so their
+   pickers would change nothing */
+#settings-personal-theming > .settings-section.theming:first-child > p,
+#settings-personal-theming .settings-section.background,
+#settings-personal-theming .settings-section:has(+ .settings-section.background) { display: none !important; }
+
+/* overview: Nextcloud's release channels and security scan don't apply */
+#updatenotification,
+#security-warning p:has(a[href*="scan.nextcloud.com"]) { display: none !important; }
+
+/* app store: the "Discover" feed is Nextcloud's blog and podcast */
+.app-navigation li:has(> a[href$="/settings/apps/discover"]),
+.app-navigation li:has(a[href$="/settings/apps/discover"]) { display: none !important; }
+
+/* help page: no Nextcloud community forum */
+a[href^="https://help.nextcloud.com"] { display: none !important; }
+
+/* Talk dashboard: Nextcloud's 3D illustrations */
+.dashboard-section__bar.image-container { display: none !important; }

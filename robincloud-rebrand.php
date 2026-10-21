@@ -91,3 +91,41 @@ foreach ($it as $file) {
 foreach ($stats as $kind => $n) {
 	echo str_pad($kind, 6), " files rebranded: $n\n";
 }
+
+/*
+ * Korean overlay: robincloud-l10n/ko.json next to this script holds
+ * translations Nextcloud ships without ({"app": {"msgid": "번역"}}). They go
+ * into <app>/l10n/ko.json, and ko.js is rebuilt from it, since the browser
+ * reads the .js and PHP reads the .json. Works for a whole tree (apps/,
+ * custom_apps/, core/) and for a custom_apps directory passed as the root.
+ */
+$overlayFile = __DIR__ . '/robincloud-l10n/ko.json';
+if (is_file($overlayFile)) {
+	$overlay = json_decode(file_get_contents($overlayFile), true) ?: [];
+	$merged = 0;
+	foreach ($overlay as $app => $strings) {
+		if ($app[0] === '_' || !is_array($strings)) {
+			continue;
+		}
+		$candidates = $app === 'core' ? ["$root/core/l10n"] : ["$root/apps/$app/l10n", "$root/custom_apps/$app/l10n", "$root/$app/l10n"];
+		foreach ($candidates as $dir) {
+			if (!is_dir(dirname($dir)) || !is_file(dirname($dir) . ($app === 'core' ? '/shipped.json' : '/appinfo/info.xml'))) {
+				continue;
+			}
+			@mkdir($dir);
+			$json = is_file("$dir/ko.json") ? json_decode(file_get_contents("$dir/ko.json"), true) : null;
+			$json = is_array($json) ? $json : ['translations' => [], 'pluralForm' => 'nplurals=1; plural=0;'];
+			$before = $json['translations'];
+			$json['translations'] = array_merge($json['translations'], $strings);
+			if ($json['translations'] === $before && is_file("$dir/ko.js")) {
+				continue;
+			}
+			$flags = JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT;
+			file_put_contents("$dir/ko.json", json_encode($json, $flags) . "\n");
+			file_put_contents("$dir/ko.js", "OC.L10N.register(\n    " . json_encode($app) . ",\n    "
+				. json_encode((object)$json['translations'], $flags) . ",\n" . json_encode($json['pluralForm']) . ");\n");
+			$merged++;
+		}
+	}
+	echo "ko overlay merged into $merged app(s)\n";
+}

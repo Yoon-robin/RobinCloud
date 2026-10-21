@@ -150,6 +150,15 @@ class Util {
 
 		if ($prepend) {
 			array_unshift(self::$scripts[$application], $path);
+			// RobinCloud: keep the app's translations ahead of a prepended script,
+			// or the strings it translates while loading stay in English.
+			foreach (self::$scripts[$application] as $i => $queued) {
+				if (str_contains($queued, '/l10n/')) {
+					unset(self::$scripts[$application][$i]);
+					array_unshift(self::$scripts[$application], $queued);
+					break;
+				}
+			}
 		} else {
 			self::$scripts[$application][] = $path;
 		}

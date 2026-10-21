@@ -36,7 +36,7 @@ class ExampleContactService {
 	}
 
 	public function isDefaultContactEnabled(): bool {
-		return $this->appConfig->getAppValueBool('enableDefaultContact', true);
+		return $this->appConfig->getAppValueBool('enableDefaultContact', false); // RobinCloud: no example contact unless asked for
 	}
 
 	public function setDefaultContactEnabled(bool $value): void {

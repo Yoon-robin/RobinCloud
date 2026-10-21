@@ -1,0 +1,106 @@
+{
+  "_comment": "RobinCloud Korean overlay: strings Nextcloud ships untranslated. Keys are the exact msgids after robincloud-rebrand.php has run. Merged into <app>/l10n/ko.json and ko.js by that script.",
+  "settings": {
+    "Checking your server …": "서버 확인 중…",
+    "Checking your server …": "서버 확인 중…",
+    "Enable the profile picker": "프로필 선택기 사용",
+    "Enable or disable the profile picker in the Smart Picker and the profile link previews.": "스마트 선택기의 프로필 선택기와 프로필 링크 미리보기를 켜거나 끕니다.",
+    "List of groups. This list is not fully populated for performance reasons. The groups will be loaded as you navigate or search through the list.": "그룹 목록입니다. 성능 때문에 처음부터 전부 불러오지 않고, 목록을 넘기거나 검색할 때 불러옵니다.",
+    "Allow AI usage for guest users": "게스트 사용자의 AI 사용 허용",
+    "Provider for Task types": "작업 유형별 제공자",
+    "Allow users to preview files even if download is disabled": "다운로드가 꺼져 있어도 파일 미리보기 허용",
+    "Users will still be able to screenshot or record the screen. This does not provide any definitive protection.": "화면 캡처나 녹화까지 막지는 못합니다. 확실한 보호 수단은 아닙니다.",
+    "Allow users to set custom share link tokens": "사용자가 공유 링크 토큰을 직접 정할 수 있게 허용",
+    "Shares with custom tokens will continue to be accessible after this setting has been disabled": "이 설정을 꺼도 직접 정한 토큰으로 만든 공유에는 계속 접근할 수 있습니다.",
+    "Shares with guessable tokens may be accessed easily": "추측하기 쉬운 토큰으로 만든 공유는 쉽게 접근될 수 있습니다.",
+    "Allow some groups only (allow list)": "일부 그룹만 허용(허용 목록)",
+    "Restrict account name autocompletion to users based on their phonebook": "계정 이름 자동 완성을 전화번호부에 있는 사용자로 제한",
+    "Allow autocompletion to full match when entering the full name (ignoring restrictions like group membership or missing phonebook match)": "전체 이름을 정확히 입력하면 자동 완성 허용(그룹 소속이나 전화번호부 제한 무시)",
+    "Full match autocompletion restrictions": "정확히 일치할 때의 자동 완성 제한",
+    "Also allow autocompletion on full match of the user ID": "사용자 ID가 정확히 일치할 때도 자동 완성 허용",
+    "Also allow autocompletion on full match of the display name": "표시 이름이 정확히 일치할 때도 자동 완성 허용",
+    "Also allow autocompletion on full match of the user email": "이메일이 정확히 일치할 때도 자동 완성 허용",
+    "Do not use second user displayname for full match": "정확히 일치를 판단할 때 보조 표시 이름은 쓰지 않음",
+    "Pronouns": "호칭",
+    "Your pronouns. E.g. she/her": "호칭을 입력하세요",
+    "Your pronouns. E.g. he/him": "호칭을 입력하세요",
+    "Your pronouns. E.g. they/them": "호칭을 입력하세요"
+  },
+  "theming": {
+    "Misc accessibility options": "기타 접근성 옵션",
+    "Primary color": "기본 색상",
+    "Background and color": "배경과 색상",
+    "Enable blur background filter (may increase GPU load)": "배경 흐림 효과 사용(GPU 부하가 늘 수 있음)",
+    "The background can be set to an image from the default set, a custom uploaded image, or a plain color.": "배경은 기본 이미지, 직접 올린 이미지, 단색 중에서 고를 수 있습니다.",
+    "Default shipped background images": "기본 배경 이미지",
+    "Use a plain background color instead of a background image.": "배경 이미지 대신 단색 배경을 씁니다.",
+    "If an app is not enabled for a user, the next app with lower priority is used.": "사용자에게 켜지지 않은 앱이면 그다음 우선순위 앱을 씁니다."
+  },
+  "federatedfilesharing": {
+    "Your Federated Cloud ID": "내 연합 클라우드 ID",
+    "Adjust how people can share between servers. This includes shares between people on this server as well if they are using federated sharing.": "서버 간 공유 방식을 정합니다. 이 서버 사용자끼리 연합 공유를 쓰는 경우도 포함됩니다.",
+    "Allow people on this server to send shares to other servers (this option also allows WebDAV access to public shares)": "이 서버 사용자가 다른 서버로 공유를 보낼 수 있게 허용(공개 공유의 WebDAV 접근도 같이 허용됩니다)",
+    "Allow people on this server to receive shares from other servers": "이 서버 사용자가 다른 서버의 공유를 받을 수 있게 허용",
+    "Allow people on this server to send shares to groups on other servers": "이 서버 사용자가 다른 서버의 그룹으로 공유를 보낼 수 있게 허용",
+    "Allow people on this server to receive group shares from other servers": "이 서버 사용자가 다른 서버의 그룹 공유를 받을 수 있게 허용",
+    "The lookup server is only available for global scale.": "조회 서버는 글로벌 스케일 환경에서만 쓸 수 있습니다.",
+    "Search global and public address book for people": "전역 공개 주소록에서 사람 검색",
+    "Allow people to publish their data to a global and public address book": "사용자가 자기 정보를 전역 공개 주소록에 올릴 수 있게 허용",
+    "Automatically accept shares from trusted federated accounts and groups by default": "신뢰하는 연합 계정과 그룹의 공유를 기본으로 자동 수락"
+  },
+  "dav": {
+    "Out of office replacement (optional)": "부재 중 대리인(선택)",
+    "Example content serves to showcase the features of RobinCloud. Default content is shipped with RobinCloud, and can be replaced by custom content.": "예시 콘텐츠는 RobinCloud 기능을 보여 주는 용도입니다. 기본 콘텐츠가 들어 있고, 직접 만든 콘텐츠로 바꿀 수 있습니다.",
+    "Add example contact to user's address book when they first log in": "처음 로그인할 때 사용자 주소록에 예시 연락처 추가",
+    "Add example event to user's calendar when they first log in": "처음 로그인할 때 사용자 캘린더에 예시 일정 추가"
+  },
+  "files_pdfviewer": {
+    "Configure PDF viewer settings": "PDF 뷰어 설정"
+  },
+  "systemtags": {
+    "If enabled, only administrators can create and edit tags. Accounts can still assign and remove them from files.": "켜면 관리자만 태그를 만들고 고칠 수 있습니다. 사용자는 기존 태그를 파일에 붙이고 떼는 것만 할 수 있습니다.",
+    "Restrict tag creation and editing to administrators": "태그 생성과 편집을 관리자만 하도록 제한"
+  },
+  "bruteforcesettings": {
+    "Bypass rate limiting for allowed IPs": "허용한 IP는 요청 횟수 제한 건너뛰기"
+  },
+  "password_policy": {
+    "Number of passwords to keep (securely hashed) to prevent users from reusing previously used passwords.": "예전 비밀번호를 다시 못 쓰도록 기억해 둘 개수(해시로 안전하게 저장)",
+    "Number of login attempts before the user account will be disabled until manual action is taken. (0 for no limit)": "계정이 잠기기 전까지 허용할 로그인 실패 횟수. 잠긴 계정은 관리자가 풀어야 합니다. (0은 제한 없음)"
+  },
+  "files_downloadlimit": {
+    "Default download limit for external shares": "외부 공유의 기본 다운로드 횟수 제한"
+  },
+  "notes": {
+    "Organize your notes in categories.": "메모를 분류별로 정리하세요."
+  },
+  "mail": {
+    "Enable mark as important classification": "중요 표시 분류 사용",
+    "These settings can be used in conjunction with each other.": "이 설정들은 함께 쓸 수 있습니다.",
+    "Enable classification by importance by default": "중요도 분류를 기본으로 켜기",
+    "Enable classification of important mails by default": "중요 메일 분류를 기본으로 켜기",
+    "For more details, please click here to open our documentation.": "자세한 내용은 여기를 눌러 문서를 보세요.",
+    "User Interface Preference Defaults": "화면 설정 기본값",
+    "These settings are used to pre-configure the user interface preferences they can be overridden by the user in the mail settings": "사용자 화면 설정의 기본값입니다. 사용자가 메일 설정에서 바꿀 수 있습니다.",
+    "Show all messages in thread": "스레드의 모든 메시지 보기",
+    "Show only the selected message": "선택한 메시지만 보기"
+  },
+  "spreed": {
+    "Start meeting now": "지금 회의 시작",
+    "Check devices": "장치 확인",
+    "Threads": "스레드",
+    "Schedule meetings": "회의 일정",
+    "Message reminders": "메시지 리마인더",
+    "Teams": "팀",
+    "You don't have any upcoming meetings": "예정된 회의가 없습니다",
+    "Calendar events with a conversation link as the location are shown here": "장소에 대화 링크를 넣은 캘린더 일정이 여기에 나타납니다",
+    "Messages where you were mentioned will show up here. You can mention people by typing @ followed by their name": "나를 언급한 메시지가 여기에 나타납니다. @ 다음에 이름을 입력하면 상대를 언급할 수 있습니다",
+    "Set a reminder on a message to be notified": "메시지에 리마인더를 걸어 두면 알림을 받습니다"
+  },
+  "contacts": {
+    "Create your own teams for sharing. Add RobinCloud users, contacts, or anyone via email.": "공유용 팀을 만드세요. RobinCloud 사용자, 연락처, 이메일 주소로 누구든 넣을 수 있습니다.",
+    "Allow creating invites without an email address (link-only)": "이메일 주소 없이 초대 만들기 허용(링크 전용)",
+    "Search contacts …": "연락처 검색…",
+    "Search contacts …": "연락처 검색…"
+  }
+}
