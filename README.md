@@ -1,97 +1,83 @@
-<!--
- - SPDX-FileCopyrightText: 2016-2024 Nextcloud GmbH and Nextcloud contributors
- - SPDX-FileCopyrightText: 2013-2016 ownCloud, Inc.
- - SPDX-License-Identifier: AGPL-3.0-or-later
--->
-# Nextcloud Server ☁
-[![REUSE status](https://api.reuse.software/badge/github.com/nextcloud/server)](https://api.reuse.software/info/github.com/nextcloud/server)
-[![codecov](https://codecov.io/gh/nextcloud/server/branch/stable34/graph/badge.svg)](https://codecov.io/gh/nextcloud/server)
-[![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/209/badge)](https://bestpractices.coreinfrastructure.org/projects/209)
-[![Design](https://contribute.design/api/shield/nextcloud/server)](https://contribute.design/nextcloud/server)
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="core/img/logo/logo.svg">
+    <img src="core/img/logo/logo-dark.svg" height="48" alt="RobinCloud">
+  </picture>
+</p>
 
-**A safe home for all your data.**
+<p align="center">
+  Nextcloud 34 기반 개인 클라우드. 화면은 shadcn/ui 스타일로 다시 입혔습니다.
+</p>
 
-![](https://raw.githubusercontent.com/nextcloud/screenshots/stable34/nextcloud-hub-25-files.png)
+<p align="center">
+  <img src="docs/robincloud/files-light.png" width="49%" alt="파일 화면 (라이트)">
+  <img src="docs/robincloud/files-dark.png" width="49%" alt="파일 화면 (다크)">
+</p>
+<p align="center">
+  <img src="docs/robincloud/login.png" width="49%" alt="로그인">
+  <img src="docs/robincloud/install.png" width="49%" alt="설치">
+</p>
 
-## Why is this so awesome? 🤩
+## Nextcloud와 다른 점
 
-* 📁 **Access your Data** You can store your files, contacts, calendars, and more on a server of your choosing.
-* 🔄 **Sync your Data** You keep your files, contacts, calendars, and more synchronized amongst your devices.
-* 🙌 **Share your Data** …by giving others access to the stuff you want them to see or to collaborate with.
-* 🚀 **Expandable with hundreds of Apps** ...like [Calendar](https://github.com/nextcloud/calendar), [Contacts](https://github.com/nextcloud/contacts), [Mail](https://github.com/nextcloud/mail), [Video Chat](https://github.com/nextcloud/spreed) and all those you can discover in our [App Store](https://apps.nextcloud.com)
-* 🔒 **Security** with our encryption mechanisms, [HackerOne bounty program](https://hackerone.com/nextcloud) and two-factor authentication.
+**이름과 로고**
+- 제품 이름, 브라우저 탭, 메일, 상태 API(`status.php`)가 모두 RobinCloud
+- 로고와 파비콘은 lucide 구름 아이콘에 Pretendard로 그린 워드마크
+- 슬로건 없음
 
-Do you want to learn more about how you can use Nextcloud to access, share, and protect your files, calendars, contacts, communication & more at home and in your organization? [**Learn about all our Features**](https://nextcloud.com/athome/).
+**화면**
+- 모든 화면에 [`core/css/robincloud.css`](core/css/robincloud.css)를 입힙니다. 설치·로그인 화면도 포함이에요.
+  - zinc 팔레트, 얇은 테두리, 6~12px 모서리, 초점 링
+  - 라이트·다크 모드 둘 다
+- 배경 그림 대신 zinc 바탕을 깔고, 앱은 테두리 있는 흰 카드 위에 올립니다.
+- 폰트는 Pretendard Variable
 
-## Get your Nextcloud 🚚
+**기본값**
+- 새 계정은 샘플 파일 없이 빈 상태로 시작
+- Nextcloud 첫 실행 안내, 공지, 설문, 지원 앱은 이미지에서 뺐습니다.
+- 디자인 파일이 바뀌면 CSS 주소도 바뀝니다. 브라우저가 옛 화면을 붙잡고 있지 않아요.
 
-- ☑️ [**Simply sign up**](https://nextcloud.com/signup/) at one of our providers either through our website or through the apps directly.
-- 🖥 [**Install** a server by yourself](https://nextcloud.com/install/#instructions-server) on your hardware or by using one of our ready-to-use **appliances**
-- 📦 Buy one of the [awesome **devices** coming with a preinstalled Nextcloud](https://nextcloud.com/devices/)
-- 🏢 Find a [service **provider**](https://nextcloud.com/providers/) who hosts Nextcloud for you or your company
+## 바꾼 파일
 
-Enterprise? Public Sector or Education user? You may want to have a look into [**Nextcloud Enterprise**](https://nextcloud.com/enterprise/) provided by Nextcloud GmbH.
+| 파일 | 내용 |
+| --- | --- |
+| `core/css/robincloud.css` | shadcn 스타일 스킨 |
+| `lib/private/TemplateLayout.php` | 스킨을 모든 페이지에 로드, 스킨 버전을 자산 해시에 반영 |
+| `lib/private/legacy/OC_Defaults.php` | 이름·기본 색·슬로건 |
+| `apps/theming/lib/Themes/DefaultTheme.php`, `DarkTheme.php` | 테마 변수를 zinc 값으로 |
+| `core/img/`, `core/fonts/pretendard/` | 로고·파비콘, 폰트 |
+| `Dockerfile.robincloud` | 공식 `nextcloud:34.0.5-apache` 위에 이 소스를 얹는 이미지 |
+| `robincloud-deploy.sh` | 이미지를 빌드해서 돌아가는 서버에 반영 |
 
-## Get in touch 💬
+## 빌드와 배포
 
-* [📋 Forum](https://help.nextcloud.com)
-* [🦋 Bluesky](https://bsky.app/profile/nextcloud.bsky.social)
-* [👥 Facebook](https://www.facebook.com/nextclouders)
-* [🐘 Mastodon](https://mastodon.xyz/@nextcloud)
+이 저장소는 `/opt/robincloud/src`에 있고, 서비스는 `/opt/stack`의 Docker Compose로 돌아갑니다.
 
-You can also [get support for Nextcloud](https://nextcloud.com/support)!
-
-
-## Join the team 👪
-
-There are many ways to contribute, of which development is only one! Find out [how to get involved](https://nextcloud.com/contribute/), including as a translator, designer, tester, helping others, and much more! 😍
-
-
-### Development setup 👩‍💻
-
-1. 🚀 [Set up your local development environment](https://docs.nextcloud.com/server/latest/developer_manual/getting_started/devenv.html)
-2. 🐛 [Pick a good first issue](https://github.com/nextcloud/server/labels/good%20first%20issue)
-3. 👩‍🔧 Create a branch and make your changes. Remember to sign off your commits using `git commit -sm "Your commit message"`
-4. ⬆ Create a [pull request](https://opensource.guide/how-to-contribute/#opening-a-pull-request) and `@mention` the people from the issue to review
-5. 👍 Fix things that come up during a review
-6. 🎉 Wait for it to get merged!
-
-Third-party components are handled as git submodules which have to be initialized first. So aside from the regular git checkout invoking `git submodule update --init` or a similar command is needed, for details see Git documentation.
-
-Several apps that are included by default in regular releases such as [First run wizard](https://github.com/nextcloud/firstrunwizard) or [Activity](https://github.com/nextcloud/activity) are missing in `stable34` and have to be installed manually by cloning them into the `apps` subfolder.
-
-Otherwise, git checkouts can be handled the same as release archives, by using the `stable*` branches. Note they should never be used on production systems.
-
-
-### Tools we use 🛠
-
-- [👀 BrowserStack](https://browserstack.com) for cross-browser testing
-- [🌊 WAVE](https://wave.webaim.org/extension/) for accessibility testing
-- [🚨 Lighthouse](https://developers.google.com/web/tools/lighthouse/) for testing performance, accessibility, and more
-
-#### Helpful bots at GitHub :robot:
-
-- Comment on a pull request with `/update-3rdparty` to update the 3rd party submodule. It will update to the last commit of the 3rd party branch named like the PR target.
-
-#### Ignore code style updates in git blame
-
-`git config blame.ignoreRevsFile .git-blame-ignore-revs`
-
-## Contribution guidelines 📜
-
-All contributions to this repository from June 16, 2016, and onward are considered to be
-licensed under the AGPLv3 or any later version.
-
-Nextcloud doesn't require a CLA (Contributor License Agreement).
-The copyright belongs to all the individual contributors. 
-Therefore we recommend that every contributor adds the following line to the [AUTHORS](AUTHORS) file if they made substantial changes to the code:
-
-```
-- <your name> <your email address>
+```bash
+bash /opt/robincloud/src/robincloud-deploy.sh
 ```
 
-Please read the [Code of Conduct](https://nextcloud.com/community/code-of-conduct/). This document offers some guidance to ensure Nextcloud participants can cooperate effectively in a positive and inspiring atmosphere and to explain how together we can strengthen and support each other.
+스크립트가 하는 일:
+1. `robincloud:34.0.5` 이미지를 빌드합니다.
+2. 컨테이너를 새로 띄우고, 코드를 데이터 볼륨에 동기화합니다.
+   - 버전 번호가 그대로라 공식 이미지는 스스로 동기화하지 않습니다.
+   - `config`, `data`, `custom_apps`, `themes`는 건드리지 않습니다.
+3. 필요하면 `occ upgrade`를 돌립니다.
 
-Please review the [guidelines for contributing](.github/CONTRIBUTING.md) to this repository.
+## Nextcloud 업데이트 따라가기
 
-More information on how to contribute: [https://nextcloud.com/contribute/](https://nextcloud.com/contribute/)
+`robincloud` 브랜치는 `v34.0.5` 태그에서 갈라졌습니다. 새 버전이 나오면 그 태그를 합치고, Dockerfile의 기반 이미지 버전을 같이 올리면 됩니다.
+
+```bash
+git fetch https://github.com/nextcloud/server.git tag v34.0.6 --no-tags
+git merge v34.0.6
+```
+
+## 라이선스
+
+- RobinCloud는 [Nextcloud](https://github.com/nextcloud/server)를 고친 것이라 **AGPL-3.0**을 따릅니다. 원본 저작권은 Nextcloud GmbH와 기여자들에게 있습니다.
+- Nextcloud라는 이름과 로고는 Nextcloud GmbH의 상표이고, 이 프로젝트는 Nextcloud와 관계가 없습니다.
+- [Pretendard](https://github.com/orioncactus/pretendard): SIL Open Font License 1.1
+- [lucide](https://lucide.dev) 아이콘: ISC
+
+원래 Nextcloud README는 [nextcloud/server](https://github.com/nextcloud/server#readme)에서 볼 수 있습니다.
