@@ -588,3 +588,8 @@ a[href^="https://help.nextcloud.com"] { display: none !important; }
 
 /* Talk dashboard: Nextcloud's 3D illustrations */
 .dashboard-section__bar.image-container { display: none !important; }
+
+/* ------------------------------------------- storage-only RobinCloud
+   Talk, mail, contacts and friends are gone, so the header's contacts menu
+   has nothing to offer. */
+#contactsmenu { display: none !important; }
