@@ -467,3 +467,99 @@ body[data-theme-dark]:not(#body-login) {
 	--color-primary-element-light-hover: #3f3f46 !important;
 	--color-primary-element-light-text: #fafafa !important;
 }
+
+/* installer, "Storage & database": quiet sub-headings, database type as tabs */
+#body-login .setup-form details legend {
+	font-size: 13px !important;
+	font-weight: 500 !important;
+	color: var(--rc-muted-foreground) !important;
+	margin: 6px 0 4px !important;
+	letter-spacing: 0;
+}
+
+#body-login .setup-form details > fieldset { gap: 10px; }
+
+#body-login .setup-form__database-type-select {
+	display: grid !important;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 4px;
+	padding: 4px !important;
+	margin: 0 !important;
+	background: var(--rc-muted);
+	border: 0 !important;
+	border-radius: var(--rc-radius);
+}
+
+#body-login .setup-form__database-type-select .checkbox-radio-switch {
+	margin: 0 !important;
+	border: 0 !important;
+	border-radius: 6px !important;
+	width: auto !important;
+}
+
+#body-login .setup-form__database-type-select .checkbox-content--button-variant {
+	border: 0 !important;
+	border-radius: 6px !important;
+	background: transparent !important;
+	color: var(--rc-muted-foreground) !important;
+	justify-content: center !important;
+	min-height: 32px !important;
+	padding: 0 6px !important;
+	font-weight: 500;
+	font-size: 13px;
+	white-space: nowrap;
+}
+
+#body-login .setup-form__database-type-select .checkbox-content--button-variant .checkbox-content__icon { display: none !important; }
+
+#body-login .setup-form__database-type-select .checkbox-radio-switch--checked .checkbox-content--button-variant {
+	background: var(--rc-background) !important;
+	color: var(--rc-foreground) !important;
+	box-shadow: var(--rc-shadow-sm), 0 0 0 1px var(--rc-border) !important;
+}
+
+#body-login .setup-form details p:not(.setup-form__database-type-select) {
+	font-size: 12px;
+	color: var(--rc-muted-foreground);
+	text-align: start;
+}
+
+#body-login .setup-form__database-type-select {
+	display: flex !important;
+}
+
+#body-login .setup-form__database-type-select .checkbox-radio-switch {
+	flex: 1 1 auto;
+	background: transparent !important;
+	min-width: 0;
+}
+
+#body-login .setup-form__database-type-select .checkbox-content--button-variant {
+	width: 100% !important;
+	height: 100% !important;
+	display: flex !important;
+	align-items: center !important;
+	padding: 0 8px !important;
+	font-size: 12.5px;
+}
+
+#body-login .setup-form__database-type-select .checkbox-content__wrapper {
+	width: 100%;
+	justify-content: center;
+	text-align: center;
+	margin: 0 !important;
+}
+
+#body-login .setup-form__database-type-select .checkbox-content__text {
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+#body-login .setup-form__database-type-select .checkbox-content__wrapper {
+	display: flex !important;
+	align-items: center !important;
+	height: 100%;
+	min-height: 30px;
+}
+
+#body-login .setup-form__database-type-select .checkbox-content__text { line-height: 1.2; padding: 0 !important; }
