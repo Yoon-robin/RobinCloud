@@ -24,8 +24,6 @@
 	</dependencies>
 
 	<settings>
-		<admin>OCA\FederatedFileSharing\Settings\Admin</admin>
-		<personal>OCA\FederatedFileSharing\Settings\Personal</personal>
 		<personal-section>OCA\FederatedFileSharing\Settings\PersonalSection</personal-section>
 	</settings>
 </info>

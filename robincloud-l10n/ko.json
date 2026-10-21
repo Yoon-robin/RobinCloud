@@ -24,7 +24,10 @@
     "Pronouns": "호칭",
     "Your pronouns. E.g. she/her": "호칭을 입력하세요",
     "Your pronouns. E.g. he/him": "호칭을 입력하세요",
-    "Your pronouns. E.g. they/them": "호칭을 입력하세요"
+    "Your pronouns. E.g. they/them": "호칭을 입력하세요",
+    "Your pronouns. E.g. {pronounsExample}": "호칭 (예: {pronounsExample})",
+    "You are using {s}{usage}{/s}": "{s}{usage}{/s} 사용 중",
+    "You are using {s}{usage}{/s} of {s}{totalSpace}{/s} ({s}{usageRelative}%{/s})": "{s}{totalSpace}{/s} 중 {s}{usage}{/s} 사용 중 ({s}{usageRelative}%{/s})"
   },
   "theming": {
     "Misc accessibility options": "기타 접근성 옵션",
@@ -114,5 +117,13 @@
   },
   "logreader": {
     "Errors in the log": "로그의 오류"
+  },
+  "core": {
+    "Log in with a device": "패스키로 로그인",
+    "Forgot password?": "비밀번호를 잊으셨나요?",
+    "Back to login": "로그인으로 돌아가기"
+  },
+  "registration": {
+    "Register": "가입 신청"
   }
 }

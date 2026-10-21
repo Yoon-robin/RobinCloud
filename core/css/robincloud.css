@@ -42,6 +42,40 @@
 	}
 }
 
+/* A theme picked in Settings > Appearance beats the OS setting: Nextcloud
+   marks the choice on <body>, so the tokens are declared again there. */
+body[data-theme-light],
+body[data-theme-light-highcontrast] {
+	--rc-background: #ffffff;
+	--rc-foreground: #09090b;
+	--rc-muted: #f4f4f5;
+	--rc-muted-foreground: #71717a;
+	--rc-border: #e4e4e7;
+	--rc-input: #e4e4e7;
+	--rc-ring: #a1a1aa;
+	--rc-primary: #18181b;
+	--rc-primary-foreground: #fafafa;
+	--rc-primary-hover: #27272a;
+	--rc-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+	--rc-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.08), 0 1px 2px -1px rgb(0 0 0 / 0.08);
+}
+
+body[data-theme-dark],
+body[data-theme-dark-highcontrast] {
+	--rc-background: #09090b;
+	--rc-foreground: #fafafa;
+	--rc-muted: #18181b;
+	--rc-muted-foreground: #a1a1aa;
+	--rc-border: #27272a;
+	--rc-input: #27272a;
+	--rc-ring: #52525b;
+	--rc-primary: #fafafa;
+	--rc-primary-foreground: #18181b;
+	--rc-primary-hover: #e4e4e7;
+	--rc-shadow-sm: none;
+	--rc-shadow: none;
+}
+
 /* ------------------------------------------------------- guest pages (login,
    installer, errors). Nextcloud's own variables are re-pointed at the tokens
    so every Vue component on these pages follows them. */
@@ -343,10 +377,10 @@ body:not(#body-login) #nextcloud .logo {
 	body:not(#body-login) #nextcloud .logo { background-image: url('../img/logo/logo.svg') !important; }
 }
 
-body[data-theme-dark] #header .logo,
-body[data-theme-dark] #nextcloud .logo { background-image: url('../img/logo/logo.svg') !important; }
-body[data-theme-light] #header .logo,
-body[data-theme-light] #nextcloud .logo { background-image: url('../img/logo/logo-dark.svg') !important; }
+body[data-theme-dark]:not(#body-login) #header .logo,
+body[data-theme-dark]:not(#body-login) #nextcloud .logo { background-image: url('../img/logo/logo.svg') !important; }
+body[data-theme-light]:not(#body-login) #header .logo,
+body[data-theme-light]:not(#body-login) #nextcloud .logo { background-image: url('../img/logo/logo-dark.svg') !important; }
 
 /* app sidebar sits on the canvas, content on a bordered card */
 body:not(#body-login) #content,

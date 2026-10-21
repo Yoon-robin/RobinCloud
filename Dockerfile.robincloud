@@ -22,5 +22,7 @@ RUN rm -f /usr/src/nextcloud/core/signature.json \
 # the SSH-forwarded http://localhost:8080 stays plain
 COPY src/robincloud-proxy.conf /etc/apache2/conf-available/robincloud-proxy.conf
 RUN a2enconf robincloud-proxy >/dev/null
+# PHP caches sized for this server (after the image's opcache-recommended.ini)
+COPY src/robincloud-php.ini /usr/local/etc/php/conf.d/zz-robincloud.ini
 LABEL org.opencontainers.image.source="https://github.com/Yoon-robin/RobinCloud" \
       org.opencontainers.image.licenses="AGPL-3.0-or-later"

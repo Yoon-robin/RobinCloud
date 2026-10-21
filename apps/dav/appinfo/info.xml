@@ -84,11 +84,6 @@
 		<command>OCA\DAV\Command\SyncSystemAddressBook</command>
 	</commands>
 
-	<settings>
-		<admin>OCA\DAV\Settings\CalDAVSettings</admin>
-		<admin>OCA\DAV\Settings\ExampleContentSettings</admin>
-		<personal>OCA\DAV\Settings\AvailabilitySettings</personal>
-	</settings>
 
 	<activity>
 		<settings>

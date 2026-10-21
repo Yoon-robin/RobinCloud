@@ -44,10 +44,4 @@
 		<command>OCA\WorkflowEngine\Command\Runtime</command>
 	</commands>
 
-	<settings>
-		<admin>OCA\WorkflowEngine\Settings\Admin</admin>
-		<admin-section>OCA\WorkflowEngine\Settings\Section</admin-section>
-		<personal>OCA\WorkflowEngine\Settings\Personal</personal>
-		<personal-section>OCA\WorkflowEngine\Settings\Section</personal-section>
-	</settings>
 </info>
