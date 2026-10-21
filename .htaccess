@@ -117,12 +117,18 @@
 ## Rule: Map the RFC 8615 / RFC 6764 compliant well-known URI for CardDAV to our Remote DAV endpoint
 ##
 
+    # RobinCloud: behind the tunnel Apache only sees http, so keep https in the redirect
+    RewriteCond %{HTTP:X-Forwarded-Proto} =https
+    RewriteRule ^\.well-known/carddav https://%{HTTP_HOST}/remote.php/dav/ [R=301,L]
     RewriteRule ^\.well-known/carddav /remote.php/dav/ [R=301,L]
 
 ##
 ## Rule: Map the RFC 8615 / RFC 6764 compliant well-known URI for CalDAV to our Remote DAV endpoint
 ##
 
+    # RobinCloud: behind the tunnel Apache only sees http, so keep https in the redirect
+    RewriteCond %{HTTP:X-Forwarded-Proto} =https
+    RewriteRule ^\.well-known/caldav https://%{HTTP_HOST}/remote.php/dav/ [R=301,L]
     RewriteRule ^\.well-known/caldav /remote.php/dav/ [R=301,L]
 
 ##
