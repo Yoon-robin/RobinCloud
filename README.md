@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">
-  Nextcloud 34 기반 개인 클라우드. 화면은 shadcn/ui 스타일로 다시 입혔습니다.
+  Nextcloud 34 기반 개인 파일 저장소. 화면은 shadcn/ui 스타일로 다시 입혔습니다.
 </p>
 
 <p align="center">
@@ -36,6 +36,21 @@
 - 새 계정은 샘플 파일 없이 빈 상태로 시작
 - Nextcloud 첫 실행 안내, 공지, 설문, 지원 앱은 이미지에서 뺐습니다.
 - 디자인 파일이 바뀌면 CSS 주소도 바뀝니다. 브라우저가 옛 화면을 붙잡고 있지 않아요.
+
+## 파일 중심 구성
+
+RobinCloud는 파일 저장소로만 씁니다. 토크·메일·연락처·메모·오피스·대시보드는 빼고, 첫 화면은 파일입니다.
+Office 앱은 이미지에서 빠져 있고, 나머지는 설치한 뒤 한 번 아래를 실행합니다.
+
+```bash
+occ() { docker compose exec -T -u www-data robincloud php occ "$@"; }
+for a in spreed mail contacts notes richdocuments richdocumentscode; do occ app:remove $a; done
+for a in dashboard weather_status related_resources contactsinteraction user_status circles webhook_listeners; do occ app:disable $a; done
+occ config:system:set defaultapp --value=files
+occ config:system:set profile.enabled --value=false --type=boolean
+```
+
+남는 것: 파일, 공유(링크·메일·다른 서버), 휴지통, 버전, 사진, 미리보기·PDF, 텍스트 편집기, 태그·댓글·알림·활동, 2단계 인증.
 
 ## 바꾼 파일
 
