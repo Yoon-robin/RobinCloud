@@ -1,0 +1,6 @@
+# RobinCloud: Nextcloud 34.0.5 with the RobinCloud source (github.com/Yoon-robin/RobinCloud) laid over it.
+FROM nextcloud:34.0.5-apache
+COPY --chown=www-data:www-data src/ /usr/src/nextcloud/
+RUN rm -f /usr/src/nextcloud/core/signature.json
+LABEL org.opencontainers.image.source="https://github.com/Yoon-robin/RobinCloud" \
+      org.opencontainers.image.licenses="AGPL-3.0-or-later"

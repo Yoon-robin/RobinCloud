@@ -51,10 +51,10 @@ class DarkTheme extends DefaultTheme implements ITheme {
 	public function getCSSVariables(): array {
 		$defaultVariables = parent::getCSSVariables();
 
-		$colorMainText = '#EBEBEB';
-		$colorMainBackground = '#171717';
+		$colorMainText = '#fafafa'; // zinc-50
+		$colorMainBackground = '#09090b'; // zinc-950
 		$colorMainBackgroundRGB = join(',', $this->util->hexToRGB($colorMainBackground));
-		$colorTextMaxcontrast = $this->util->darken($colorMainText, 32);
+		$colorTextMaxcontrast = '#a1a1aa'; // zinc-400
 
 		$colorBoxShadow = $this->util->darken($colorMainBackground, 70);
 		$colorBoxShadowRGB = join(',', $this->util->hexToRGB($colorBoxShadow));
@@ -81,9 +81,9 @@ class DarkTheme extends DefaultTheme implements ITheme {
 				'--color-main-background-rgb' => $colorMainBackgroundRGB,
 				'--color-main-background-blur' => 'rgba(var(--color-main-background-rgb), .85)',
 
-				'--color-background-hover' => $this->util->lighten($colorMainBackground, 4),
-				'--color-background-dark' => $this->util->lighten($colorMainBackground, 7),
-				'--color-background-darker' => $this->util->lighten($colorMainBackground, 14),
+				'--color-background-hover' => '#18181b', // zinc-900
+				'--color-background-dark' => '#18181b',
+				'--color-background-darker' => '#27272a', // zinc-800
 
 				'--color-placeholder-light' => $this->util->lighten($colorMainBackground, 10),
 				'--color-placeholder-dark' => $this->util->lighten($colorMainBackground, 20),
@@ -94,8 +94,8 @@ class DarkTheme extends DefaultTheme implements ITheme {
 				'--color-text-error' => $this->util->lighten($colorErrorElement, 6),
 				'--color-text-success' => $this->util->lighten($colorSuccessElement, 6),
 
-				'--color-border' => $this->util->lighten($colorMainBackground, 7),
-				'--color-border-dark' => $this->util->lighten($colorMainBackground, 14),
+				'--color-border' => '#27272a', // zinc-800
+				'--color-border-dark' => '#3f3f46', // zinc-700
 				'--color-border-maxcontrast' => $this->util->lighten($colorMainBackground, 40),
 
 				// Assistant colors (see default theme)

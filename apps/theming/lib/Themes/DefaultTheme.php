@@ -77,9 +77,9 @@ class DefaultTheme implements ITheme {
 
 	#[\Override]
 	public function getCSSVariables(): array {
-		$colorMainText = '#222222';
+		$colorMainText = '#09090b'; // zinc-950
 		// Color that still provides enough contrast for text, so we need a ratio of 4.5:1 on main background AND hover
-		$colorTextMaxcontrast = '#6b6b6b'; // 4.5 : 1 for hover background and background dark
+		$colorTextMaxcontrast = '#71717a'; // zinc-500 // 4.5 : 1 for hover background and background dark
 		$colorMainBackground = '#ffffff';
 		$colorMainBackgroundRGB = join(',', $this->util->hexToRGB($colorMainBackground));
 		$colorBoxShadow = $this->util->darken($colorMainBackground, 70);
@@ -131,9 +131,9 @@ class DefaultTheme implements ITheme {
 			'--gradient-main-background' => 'var(--color-main-background) 0%, var(--color-main-background-translucent) 85%, transparent 100%',
 
 			// used for different active/hover/focus/disabled states
-			'--color-background-hover' => $this->util->darken($colorMainBackground, 4),
-			'--color-background-dark' => $this->util->darken($colorMainBackground, 7),
-			'--color-background-darker' => $this->util->darken($colorMainBackground, 14),
+			'--color-background-hover' => '#f4f4f5', // zinc-100
+			'--color-background-dark' => '#f4f4f5',
+			'--color-background-darker' => '#e4e4e7', // zinc-200
 
 			'--color-placeholder-light' => $this->util->darken($colorMainBackground, 10),
 			'--color-placeholder-dark' => $this->util->darken($colorMainBackground, 20),
@@ -147,8 +147,8 @@ class DefaultTheme implements ITheme {
 			'--color-text-success' => $this->util->darken($colorSuccessElement, 10),
 
 			// border colors
-			'--color-border' => $this->util->darken($colorMainBackground, 7),
-			'--color-border-dark' => $this->util->darken($colorMainBackground, 14),
+			'--color-border' => '#e4e4e7', // zinc-200
+			'--color-border-dark' => '#d4d4d8', // zinc-300
 			'--color-border-maxcontrast' => $this->util->darken($colorMainBackground, 51),
 			'--color-border-error' => 'var(--color-element-error)',
 			'--color-border-success' => 'var(--color-element-success)',
@@ -191,7 +191,7 @@ class DefaultTheme implements ITheme {
 
 			// Box shadow of elements
 			'--color-box-shadow-rgb' => $colorBoxShadowRGB,
-			'--color-box-shadow' => 'rgba(var(--color-box-shadow-rgb), 0.5)',
+			'--color-box-shadow' => 'rgba(var(--color-box-shadow-rgb), 0.12)',
 
 			// Assistant colors (marking AI generated content)
 			'--color-background-assistant' => '#F6F5FF', // Background for AI generated content
@@ -199,8 +199,8 @@ class DefaultTheme implements ITheme {
 			'--color-element-assistant' => 'linear-gradient(214deg, #A569D3 12%, #00679E 39%, #422083 86%)', // Background of primary buttons to interact with the Assistant (e.g. generate content)
 			'--color-element-assistant-icon' => 'linear-gradient(214deg, #9669D3 15%, #00679E 40%, #492083 80%)', // The color used for the Assistant icon
 
-			'--font-face' => "system-ui, -apple-system, 'Segoe UI', Roboto, Oxygen-Sans, Cantarell, Ubuntu, 'Helvetica Neue', 'Noto Sans', 'Liberation Sans', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'",
-			'--default-font-size' => '15px',
+			'--font-face' => "'Pretendard Variable', Pretendard, system-ui, -apple-system, 'Segoe UI', Roboto, Oxygen-Sans, Cantarell, Ubuntu, 'Helvetica Neue', 'Noto Sans', 'Liberation Sans', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'",
+			'--default-font-size' => '14px',
 			'--font-size-small' => '13px',
 			// Default text font weight
 			'--font-weight-default' => '400',
@@ -223,8 +223,8 @@ class DefaultTheme implements ITheme {
 			// Border radii (new values)
 			'--border-radius-small' => '4px', // For smaller elements
 			'--border-radius-element' => '8px', // For interactive elements such as buttons, input, navigation and list items
-			'--border-radius-container' => '12px', // For smaller containers like action menus
-			'--border-radius-container-large' => '16px', // For bigger containers like body or modals
+			'--border-radius-container' => '10px', // For smaller containers like action menus
+			'--border-radius-container-large' => '12px', // For bigger containers like body or modals
 
 			// Border radii (deprecated)
 			'--border-radius' => 'var(--border-radius-small)',
@@ -276,6 +276,10 @@ class DefaultTheme implements ITheme {
 
 	#[\Override]
 	public function getCustomCss(): string {
-		return '';
+		// RobinCloud: Pretendard (SIL OFL 1.1), served from core/fonts/pretendard.
+		$file = \OC::$SERVERROOT . '/core/fonts/pretendard/pretendardvariable-dynamic-subset.css';
+		$css = is_readable($file) ? (string)file_get_contents($file) : '';
+		$css = str_replace('./woff2-dynamic-subset/', \OC::$WEBROOT . '/core/fonts/pretendard/woff2-dynamic-subset/', $css);
+		return $css . "\nbody { letter-spacing: -0.01em; -webkit-font-smoothing: antialiased; }\n";
 	}
 }
