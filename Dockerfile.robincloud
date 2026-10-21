@@ -1,5 +1,9 @@
 # RobinCloud: Nextcloud 34.0.5 with the RobinCloud source (github.com/Yoon-robin/RobinCloud) laid over it.
 FROM nextcloud:34.0.5-apache
+# ffmpeg: thumbnails for videos (the Movie preview provider)
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends ffmpeg \
+ && rm -rf /var/lib/apt/lists/*
 COPY --chown=www-data:www-data src/ /usr/src/nextcloud/
 # - no code signature: the source differs from the signed release on purpose
 # - new accounts start empty instead of with Nextcloud sample files
