@@ -45,6 +45,9 @@ fi
 # app-store apps live outside the image: give them the rebrand and the Korean overlay too
 docker compose exec -T -u www-data robincloud php /var/www/html/robincloud-rebrand.php /var/www/html/custom_apps >/dev/null
 docker compose exec -T robincloud apachectl -k graceful 2>/dev/null
+# URLGenerator keeps image paths in Redis under a key that only changes with
+# the version, so a changed icon would otherwise keep being linked by its old URL
+docker compose exec -T redis sh -c 'redis-cli --scan --pattern "*imagePath-*" | xargs -r redis-cli del' >/dev/null
 
 [ "$installed" = yes ] && occ maintenance:mode --off >/dev/null
 trap - EXIT
