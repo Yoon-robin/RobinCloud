@@ -134,7 +134,13 @@
     "Second factor configuration": "2단계 인증 설정",
     "This instance has no second factor provider available.": "이 서버에는 쓸 수 있는 2단계 인증 수단이 없습니다.",
     "Second factor providers are available but two-factor authentication is not enforced.": "2단계 인증 수단은 있지만 2단계 인증을 강제하지는 않습니다.",
-    "Second factor providers are available and enforced: %s.": "2단계 인증 수단이 있고 강제하고 있습니다: %s."
+    "Second factor providers are available and enforced: %s.": "2단계 인증 수단이 있고 강제하고 있습니다: %s.",
+    "_{userCount} account_::_{userCount} accounts_": [
+      "계정 {userCount}개"
+    ],
+    "_{userCount} account …_::_{userCount} accounts …_": [
+      "계정 {userCount}개 …"
+    ]
   },
   "theming": {
     "Misc accessibility options": "기타 접근성 옵션",
@@ -347,7 +353,10 @@
   },
   "logreader": {
     "Errors in the log": "로그의 오류",
-    "Failed to get an iterator for log entries: %s": "로그 항목을 읽지 못했습니다: %s"
+    "Failed to get an iterator for log entries: %s": "로그 항목을 읽지 못했습니다: %s",
+    "_%n warning in the logs since %s_::_%n warnings in the logs since %s_": [
+      "%s 이후 로그에 경고 %n개"
+    ]
   },
   "core": {
     "Log in with a device": "패스키로 로그인",
@@ -384,7 +393,13 @@
     "Invalid folder name.": "잘못된 폴더 이름입니다.",
     "Invalid name for \"{path}\"": "\"{path}\"의 이름이 잘못되었습니다",
     "Upload cancelled, drop the files again to retry": "업로드를 취소했습니다. 다시 하려면 파일을 다시 끌어다 놓으세요",
-    "No read permission on file.": "파일을 읽을 권한이 없습니다."
+    "No read permission on file.": "파일을 읽을 권한이 없습니다.",
+    "_Moving %n file to \"{destination}\" …_::_Moving %n files to \"{destination}\" …_": [
+      "파일 %n개를 \"{destination}\"(으)로 옮기는 중…"
+    ],
+    "_Copying %n file to \"{destination}\" …_::_Copying %n files to \"{destination}\" …_": [
+      "파일 %n개를 \"{destination}\"(으)로 복사하는 중…"
+    ]
   },
   "files_sharing": {
     "You are not allowed to share \"%s\".": "\"%s\"을(를) 공유할 수 없습니다.",
@@ -479,7 +494,8 @@
     "Also repeat sound on a secondary speaker": "보조 스피커에서도 소리 반복",
     "Selection of the speaker device is currently not supported by Safari": "Safari에서는 아직 스피커를 고를 수 없습니다",
     "An unexpected error occurred, ask your administration to check the logs.": "예상하지 못한 오류가 났습니다. 관리자에게 로그 확인을 요청하세요.",
-    "Push notifications might be unreliable": "푸시 알림이 제대로 오지 않을 수 있습니다"
+    "Push notifications might be unreliable": "푸시 알림이 제대로 오지 않을 수 있습니다",
+    "Play sound when a call started (requires RobinCloud Talk)": "새 통화가 시작될 때 소리 재생하기 (RobinCloud 토크 필요)"
   },
   "text": {
     "Offline since {time}.": "{time}부터 오프라인입니다.",
@@ -584,7 +600,19 @@
     "Squared photos view": "정사각형으로 보기",
     "Upload folder": "업로드 폴더",
     "Photos settings": "사진 설정",
-    "On This Day": "이날의 사진"
+    "On This Day": "이날의 사진",
+    "_%n item_::_%n photos and videos_": [
+      "사진·동영상 %n개"
+    ],
+    "_%n photos_::_%n photos_": [
+      "사진 %n장"
+    ],
+    "_%n unassigned photo_::_%n unassigned photos_": [
+      "분류하지 않은 사진 %n장"
+    ],
+    "_%n photo_::_%n photos_": [
+      "사진 %n장"
+    ]
   },
   "workflowengine": {
     "Select a comparator": "비교 방식 고르기",

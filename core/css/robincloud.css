@@ -464,6 +464,19 @@ body:not(#body-login) {
 	--background-invert-if-bright: invert(100%) !important;
 }
 
+/* settings tables on a phone: the notification table (activity) and the
+   devices & sessions table keep their first column ~355px wide and on one
+   line, which pushes the checkboxes and the session menu off screen */
+@media (max-width: 600px) {
+	.settings-section table.activitysettings tr > :first-child,
+	#security #app-tokens-table tr > :first-child {
+		width: auto;
+		min-width: 0;
+		max-width: none;
+		white-space: normal;
+	}
+}
+
 /* primary buttons follow shadcn: near-black on light, near-white on dark */
 body:not(#body-login) {
 	--color-primary-element: #18181b !important;
