@@ -346,7 +346,9 @@ input[type='url'], input[type='number'], input[type='tel'], textarea, select {
 	padding: 0 !important;
 }
 
-#body-login .guest-box:not(footer) { padding: 24px !important; width: min(400px, calc(100vw - 32px)); text-align: start; }
+/* border-box: with the padding on top, the sign-up card (which lacks the
+   login box's own border-box) came out 408px wide on a 390px phone */
+#body-login .guest-box:not(footer) { padding: 24px !important; width: min(400px, calc(100vw - 32px)); box-sizing: border-box; text-align: start; }
 
 /* ------------------------------------------------------- logged-in pages:
    no background picture, zinc canvas, white header with the dark wordmark,

@@ -379,7 +379,19 @@
     "Email is optional": "이메일은 선택 사항입니다",
     "Regular expression to validate login names": "로그인 아이디를 검사할 정규식",
     "If configured, login names will be validated through the regular expression. If the validation fails the user is prompted with a generic error. Make sure your regex is working correctly.": "정하면 로그인 아이디를 이 정규식으로 검사합니다. 맞지 않으면 일반 오류가 나오니 정규식이 제대로 동작하는지 확인하세요.",
-    "Please create your username following the scheme 'firstname.lastname'.": "아이디는 '이름.성' 형식으로 만들어 주세요."
+    "Please create your username following the scheme 'firstname.lastname'.": "아이디는 '이름.성' 형식으로 만들어 주세요.",
+    "Verify your %s registration request": "%s 가입 인증 코드",
+    "Registration": "가입",
+    "Email address verified, you can now complete your registration.": "아래 인증 코드를 가입 화면에 넣거나 \"가입 계속하기\"를 눌러 계정을 만드세요.",
+    "Verification code: %s": "인증 코드: %s",
+    "Continue registration": "가입 계속하기",
+    "Request verification link": "인증 코드 받기",
+    "Request verification code": "인증 코드 받기",
+    "Verify": "확인",
+    "Create account": "계정 만들기",
+    "The verification failed.": "인증에 실패했습니다.",
+    "New user registered": "새 사용자가 가입했습니다.",
+    "A user has already taken this email, maybe you already have an account?": "이미 가입된 이메일이에요. 계정이 있는지 확인해 보세요."
   },
   "profile": {
     "Profile picker": "프로필 선택기",
