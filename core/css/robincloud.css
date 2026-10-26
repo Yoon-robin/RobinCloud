@@ -350,6 +350,66 @@ input[type='url'], input[type='number'], input[type='tel'], textarea, select {
    login box's own border-box) came out 408px wide on a 390px phone */
 #body-login .guest-box:not(footer) { padding: 24px !important; width: min(400px, calc(100vw - 32px)); box-sizing: border-box; text-align: start; }
 
+/* 403 and 404 (core/templates/403.php, 404.php): the login card, laid out like
+   RobinMail's error pages — a quiet round icon in place of Nextcloud's 64px
+   one, the text in the muted colour, a full-width button. */
+#body-login .body-login-container.update {
+	width: min(384px, calc(100vw - 32px)) !important;
+	box-sizing: border-box;
+	margin: 0 auto !important;
+	padding: 32px 24px 24px !important;
+	background: var(--rc-background) !important;
+	color: var(--rc-foreground) !important;
+	border: 1px solid var(--rc-border) !important;
+	border-radius: 12px !important;
+	box-shadow: var(--rc-shadow) !important;
+	text-align: center;
+}
+
+#body-login .body-login-container.update .icon-big {
+	width: 48px !important;
+	height: 48px !important;
+	margin: 0 auto 16px !important;
+	border-radius: 50%;
+	background-color: var(--rc-muted) !important;
+	background-size: 22px !important;
+	opacity: .7;
+}
+
+#body-login .body-login-container.update h2 {
+	margin: 0 0 6px !important;
+	font-size: 20px !important;
+	font-weight: 600 !important;
+	letter-spacing: -0.025em;
+	word-break: keep-all;
+}
+
+#body-login .body-login-container.update p.infogroup,
+#body-login .body-login-container.update p.hint {
+	margin: 0 0 24px !important;
+	font-size: 14px !important;
+	line-height: 1.6;
+	color: var(--rc-muted-foreground) !important;
+	word-break: keep-all;
+}
+
+#body-login .body-login-container.update p:last-child { margin: 0 !important; }
+
+#body-login .body-login-container.update .button.primary {
+	display: flex !important;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 36px !important;
+	min-height: 36px !important;
+	margin: 0 !important;
+	padding: 0 16px !important;
+	box-sizing: border-box;
+	border-radius: var(--rc-radius) !important;
+	font-size: 14px !important;
+	font-weight: 500 !important;
+}
+
 /* ------------------------------------------------------- logged-in pages:
    no background picture, zinc canvas, white header with the dark wordmark,
    the app itself on a white card (Nextcloud's body container). */
