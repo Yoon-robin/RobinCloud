@@ -128,7 +128,13 @@
     "By name": "이름순",
     "Focus search": "검색으로 이동",
     "Search accounts and groups…": "계정과 그룹 검색…",
-    "All accounts": "모든 계정"
+    "All accounts": "모든 계정",
+    "- %.1f GiB available in %s (PHP temporary directory)": "- %2$s에서 %1$.1fGiB 사용할 수 있음 (PHP 임시 경로)",
+    "- %.1f GiB available in %s (RobinCloud temporary directory)": "- %2$s에서 %1$.1fGiB 사용할 수 있음 (RobinCloud 임시 경로)",
+    "Second factor configuration": "2단계 인증 설정",
+    "This instance has no second factor provider available.": "이 서버에는 쓸 수 있는 2단계 인증 수단이 없습니다.",
+    "Second factor providers are available but two-factor authentication is not enforced.": "2단계 인증 수단은 있지만 2단계 인증을 강제하지는 않습니다.",
+    "Second factor providers are available and enforced: %s.": "2단계 인증 수단이 있고 강제하고 있습니다: %s."
   },
   "theming": {
     "Misc accessibility options": "기타 접근성 옵션",
@@ -168,7 +174,9 @@
     "Set a primary color to highlight important elements. The color used for elements such as primary buttons might differ a bit as it gets adjusted to fulfill accessibility requirements.": "중요한 요소를 강조할 기본 색상을 정합니다. 주요 버튼 같은 요소의 색은 접근성 기준에 맞게 조정되어 조금 다를 수 있습니다.",
     "Reset primary color": "기본 색상 되돌리기",
     "Unable to apply the setting.": "설정을 적용하지 못했습니다.",
-    "Customization has been disabled by your administrator": "관리자가 꾸미기 기능을 꺼 두었습니다"
+    "Customization has been disabled by your administrator": "관리자가 꾸미기 기능을 꺼 두었습니다",
+    "Universal access is very important to us. We follow web standards and check to make everything usable also without mouse, and assistive software such as screenreaders. We aim to be compliant with the {linkstart}Web Content Accessibility Guidelines{linkend} 2.1 on AA level, with the high contrast theme even on AAA level.": "누구나 쓸 수 있는 화면을 중요하게 생각합니다. 웹 표준을 따르고, 마우스 없이도, 스크린 리더 같은 보조 기술로도 모든 기능을 쓸 수 있는지 확인합니다. {linkstart}웹 콘텐츠 접근성 지침(WCAG){linkend} 2.1 AA 수준, 고대비 테마는 AAA 수준까지 맞추는 것을 목표로 합니다.",
+    "If you find any issues, do not hesitate to report them on {issuetracker}our issue tracker{linkend}. And if you want to get involved, come join {designteam}our design team{linkend}!": "쓰다가 불편한 점이 있으면 관리자에게 알려 주세요."
   },
   "federatedfilesharing": {
     "Your Federated Cloud ID": "내 연합 클라우드 ID",
