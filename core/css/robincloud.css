@@ -1,164 +1,647 @@
 /*!
- * RobinCloud — shadcn/ui-style skin for Nextcloud.
+ * RobinCloud — RobinX brand skin for Nextcloud (brand rules: docs/brand.md in
+ * the yoonrobin.xyz repository). Black and greys only, a white glow on the
+ * login logo alone, corners all but square, no pill shapes, one terminal
+ * prompt per guest page.
  * Loaded on every page by lib/private/TemplateLayout.php, after the app styles.
  * Pretendard: SIL OFL 1.1 (core/fonts/pretendard).
+ * Robin Term: a Latin subset of Cascadia Code, SIL OFL 1.1, renamed because
+ * "Cascadia Code" is a Reserved Font Name (core/fonts/robin-term-LICENSE).
  */
 @import url('../fonts/pretendard/pretendardvariable-dynamic-subset.css');
 
-/* ------------------------------------------------------------------ tokens */
+@font-face {
+	font-family: 'Robin Term';
+	font-style: normal;
+	font-weight: 400 700;
+	font-display: swap;
+	src: url('../fonts/robin-term.woff2') format('woff2');
+}
+
+/* The prompt sign alone: a '>' at the start of a Pretendard string (the
+   sign-up titles are one CSS content string each) comes out in the terminal
+   face, everything after it in Pretendard. */
+@font-face {
+	font-family: 'Robin Prompt';
+	font-style: normal;
+	font-weight: 400 700;
+	font-display: swap;
+	src: url('../fonts/robin-term.woff2') format('woff2');
+	unicode-range: U+003E;
+}
+
+/* ------------------------------------------------------------------ tokens
+   Dark is the brand kit as it is: page #070707, windows #0b0b0b, cards
+   #0e0e0e, pressed #1b1b1b, text #e8e8e8 / #f2f2f2 / #9e9e9e, lines white
+   14% (window frames 16%), amber and red only to tell a state. Light turns
+   the same greys over: white windows, #0b0b0b text; amber and red go a few
+   steps darker there so they stay readable on white. Borders are the
+   opaque mix of white (black) over the window, so overlapping lines don't
+   add up. */
 
 :root {
+	--rc-page: #f7f7f7;
 	--rc-background: #ffffff;
-	--rc-foreground: #09090b;
-	--rc-muted: #f4f4f5;
-	--rc-muted-foreground: #71717a;
-	--rc-border: #e4e4e7;
-	--rc-input: #e4e4e7;
-	--rc-ring: #a1a1aa;
-	--rc-primary: #18181b;
-	--rc-primary-foreground: #fafafa;
-	--rc-primary-hover: #27272a;
-	--rc-destructive: #dc2626;
-	--rc-radius: 8px;
-	--rc-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-	--rc-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.08), 0 1px 2px -1px rgb(0 0 0 / 0.08);
-	--rc-font: 'Pretendard Variable', Pretendard, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+	--rc-background-rgb: 255, 255, 255;
+	--rc-card: #ffffff;
+	--rc-muted: #ededed;
+	--rc-muted-strong: #e2e2e2;
+	--rc-foreground: #0b0b0b;
+	--rc-foreground-rgb: 11, 11, 11;
+	--rc-strong: #0b0b0b;
+	--rc-muted-foreground: #5e5e5e;
+	--rc-muted-foreground-rgb: 94, 94, 94;
+	--rc-faint: #8f8f8f;
+	--rc-border: #dbdbdb;
+	--rc-border-window: #d6d6d6;
+	--rc-input: #d6d6d6;
+	--rc-input-hover: #a3a3a3;
+	--rc-ring: #0b0b0b;
+	--rc-primary: #0b0b0b;
+	--rc-primary-foreground: #f2f2f2;
+	--rc-primary-hover: #262626;
+	--rc-amber: #b45309;
+	--rc-amber-rgb: 180, 83, 9;
+	--rc-amber-text: #92400e;
+	--rc-amber-surface: #fbf1e6;
+	--rc-amber-surface-hover: #f8e6d2;
+	--rc-red: #dc2626;
+	--rc-red-rgb: 220, 38, 38;
+	--rc-red-text: #b91c1c;
+	--rc-red-surface: #fbe9e9;
+	--rc-red-surface-hover: #f8dcdc;
+	--rc-toast: #0b0b0b;
+	--rc-toast-foreground: #f2f2f2;
+	--rc-pop-shadow: 0 12px 32px -16px rgb(0 0 0 / 0.22);
+	--rc-scanline: rgb(0 0 0 / 2.2%);
+	--rc-vignette: rgb(0 0 0 / 8%);
+	--rc-logo-glow: none;
+	--rc-radius: 0.2rem;
+	--rc-ease: cubic-bezier(0.22, 1, 0.36, 1);
+	--rc-font: 'Pretendard Variable', Pretendard, -apple-system, 'Segoe UI', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+	--rc-font-term: 'Robin Term', 'Cascadia Code', 'Cascadia Mono', Consolas, 'D2Coding', 'Pretendard Variable', Pretendard, monospace;
 }
 
 @media (prefers-color-scheme: dark) {
 	:root {
-		--rc-background: #09090b;
-		--rc-foreground: #fafafa;
-		--rc-muted: #18181b;
-		--rc-muted-foreground: #a1a1aa;
-		--rc-border: #27272a;
-		--rc-input: #27272a;
-		--rc-ring: #52525b;
-		--rc-primary: #fafafa;
-		--rc-primary-foreground: #18181b;
-		--rc-primary-hover: #e4e4e7;
-		--rc-shadow-sm: none;
-		--rc-shadow: none;
+		--rc-page: #070707;
+		--rc-background: #0b0b0b;
+		--rc-background-rgb: 11, 11, 11;
+		--rc-card: #0e0e0e;
+		--rc-muted: #1b1b1b;
+		--rc-muted-strong: #242424;
+		--rc-foreground: #e8e8e8;
+		--rc-foreground-rgb: 232, 232, 232;
+		--rc-strong: #f2f2f2;
+		--rc-muted-foreground: #9e9e9e;
+		--rc-muted-foreground-rgb: 158, 158, 158;
+		--rc-faint: #6f6f6f;
+		--rc-border: #2d2d2d;
+		--rc-border-window: #323232;
+		--rc-input: #323232;
+		--rc-input-hover: #5c5c5c;
+		--rc-ring: #f2f2f2;
+		--rc-primary: #f2f2f2;
+		--rc-primary-foreground: #0b0b0b;
+		--rc-primary-hover: #ffffff;
+		--rc-amber: #fbbf24;
+		--rc-amber-rgb: 251, 191, 36;
+		--rc-amber-text: #fbbf24;
+		--rc-amber-surface: #2d240e;
+		--rc-amber-surface-hover: #3b2f10;
+		--rc-red: #f87171;
+		--rc-red-rgb: 248, 113, 113;
+		--rc-red-text: #f87171;
+		--rc-red-surface: #2c1919;
+		--rc-red-surface-hover: #3a1f1f;
+		--rc-toast: #f2f2f2;
+		--rc-toast-foreground: #0b0b0b;
+		--rc-pop-shadow: 0 12px 32px -12px rgb(0 0 0 / 0.7);
+		--rc-scanline: rgb(255 255 255 / 2.2%);
+		--rc-vignette: rgb(0 0 0 / 55%);
+		--rc-logo-glow: drop-shadow(0 0 10px rgb(255 255 255 / 22%)) drop-shadow(0 0 28px rgb(255 255 255 / 10%));
 	}
 }
 
 /* A theme picked in Settings > Appearance beats the OS setting: Nextcloud
-   marks the choice on <body>, so the tokens are declared again there. */
+   marks the choice on <body>, so the tokens are declared again there. The
+   high-contrast themes share the palette, with stronger lines and grey text
+   (below). */
 body[data-theme-light],
 body[data-theme-light-highcontrast] {
+	--rc-page: #f7f7f7;
 	--rc-background: #ffffff;
-	--rc-foreground: #09090b;
-	--rc-muted: #f4f4f5;
-	--rc-muted-foreground: #71717a;
-	--rc-border: #e4e4e7;
-	--rc-input: #e4e4e7;
-	--rc-ring: #a1a1aa;
-	--rc-primary: #18181b;
-	--rc-primary-foreground: #fafafa;
-	--rc-primary-hover: #27272a;
-	--rc-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-	--rc-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.08), 0 1px 2px -1px rgb(0 0 0 / 0.08);
+	--rc-background-rgb: 255, 255, 255;
+	--rc-card: #ffffff;
+	--rc-muted: #ededed;
+	--rc-muted-strong: #e2e2e2;
+	--rc-foreground: #0b0b0b;
+	--rc-foreground-rgb: 11, 11, 11;
+	--rc-strong: #0b0b0b;
+	--rc-muted-foreground: #5e5e5e;
+	--rc-muted-foreground-rgb: 94, 94, 94;
+	--rc-faint: #8f8f8f;
+	--rc-border: #dbdbdb;
+	--rc-border-window: #d6d6d6;
+	--rc-input: #d6d6d6;
+	--rc-input-hover: #a3a3a3;
+	--rc-ring: #0b0b0b;
+	--rc-primary: #0b0b0b;
+	--rc-primary-foreground: #f2f2f2;
+	--rc-primary-hover: #262626;
+	--rc-amber: #b45309;
+	--rc-amber-rgb: 180, 83, 9;
+	--rc-amber-text: #92400e;
+	--rc-amber-surface: #fbf1e6;
+	--rc-amber-surface-hover: #f8e6d2;
+	--rc-red: #dc2626;
+	--rc-red-rgb: 220, 38, 38;
+	--rc-red-text: #b91c1c;
+	--rc-red-surface: #fbe9e9;
+	--rc-red-surface-hover: #f8dcdc;
+	--rc-toast: #0b0b0b;
+	--rc-toast-foreground: #f2f2f2;
+	--rc-pop-shadow: 0 12px 32px -16px rgb(0 0 0 / 0.22);
+	--rc-scanline: rgb(0 0 0 / 2.2%);
+	--rc-vignette: rgb(0 0 0 / 8%);
+	--rc-logo-glow: none;
 }
 
 body[data-theme-dark],
 body[data-theme-dark-highcontrast] {
-	--rc-background: #09090b;
-	--rc-foreground: #fafafa;
-	--rc-muted: #18181b;
-	--rc-muted-foreground: #a1a1aa;
-	--rc-border: #27272a;
-	--rc-input: #27272a;
-	--rc-ring: #52525b;
-	--rc-primary: #fafafa;
-	--rc-primary-foreground: #18181b;
-	--rc-primary-hover: #e4e4e7;
-	--rc-shadow-sm: none;
-	--rc-shadow: none;
+	--rc-page: #070707;
+	--rc-background: #0b0b0b;
+	--rc-background-rgb: 11, 11, 11;
+	--rc-card: #0e0e0e;
+	--rc-muted: #1b1b1b;
+	--rc-muted-strong: #242424;
+	--rc-foreground: #e8e8e8;
+	--rc-foreground-rgb: 232, 232, 232;
+	--rc-strong: #f2f2f2;
+	--rc-muted-foreground: #9e9e9e;
+	--rc-muted-foreground-rgb: 158, 158, 158;
+	--rc-faint: #6f6f6f;
+	--rc-border: #2d2d2d;
+	--rc-border-window: #323232;
+	--rc-input: #323232;
+	--rc-input-hover: #5c5c5c;
+	--rc-ring: #f2f2f2;
+	--rc-primary: #f2f2f2;
+	--rc-primary-foreground: #0b0b0b;
+	--rc-primary-hover: #ffffff;
+	--rc-amber: #fbbf24;
+	--rc-amber-rgb: 251, 191, 36;
+	--rc-amber-text: #fbbf24;
+	--rc-amber-surface: #2d240e;
+	--rc-amber-surface-hover: #3b2f10;
+	--rc-red: #f87171;
+	--rc-red-rgb: 248, 113, 113;
+	--rc-red-text: #f87171;
+	--rc-red-surface: #2c1919;
+	--rc-red-surface-hover: #3a1f1f;
+	--rc-toast: #f2f2f2;
+	--rc-toast-foreground: #0b0b0b;
+	--rc-pop-shadow: 0 12px 32px -12px rgb(0 0 0 / 0.7);
+	--rc-scanline: rgb(255 255 255 / 2.2%);
+	--rc-vignette: rgb(0 0 0 / 55%);
+	--rc-logo-glow: drop-shadow(0 0 10px rgb(255 255 255 / 22%)) drop-shadow(0 0 28px rgb(255 255 255 / 10%));
+}
+
+body[data-theme-light-highcontrast] {
+	--rc-foreground: #000000;
+	--rc-strong: #000000;
+	--rc-muted-foreground: #3d3d3d;
+	--rc-border: #8f8f8f;
+	--rc-border-window: #6f6f6f;
+	--rc-input: #6f6f6f;
+	--rc-input-hover: #3d3d3d;
+}
+
+body[data-theme-dark-highcontrast] {
+	--rc-foreground: #ffffff;
+	--rc-strong: #ffffff;
+	--rc-muted-foreground: #c8c8c8;
+	--rc-border: #6f6f6f;
+	--rc-border-window: #8f8f8f;
+	--rc-input: #8f8f8f;
+	--rc-input-hover: #c8c8c8;
+}
+
+/* ------------------------------------------- Nextcloud's own variables
+   Every Vue component and the legacy CSS paint themselves from these, so
+   they are pointed at the tokens once, for every page. Declared on <body>
+   as well as :root: a variable that refers to a token resolves where it is
+   declared, and a theme picked in Settings changes the tokens on <body>. */
+
+:root,
+body {
+	--color-main-background: var(--rc-background) !important;
+	--color-main-background-rgb: var(--rc-background-rgb) !important;
+	--color-main-background-translucent: rgba(var(--rc-background-rgb), .97) !important;
+	--color-main-background-blur: var(--rc-background) !important;
+	--filter-background-blur: none !important;
+	--gradient-main-background: var(--rc-background) 0%, var(--rc-background) 85%, transparent 100% !important;
+	--color-background-hover: var(--rc-muted) !important;
+	--color-background-dark: var(--rc-muted) !important;
+	--color-background-darker: var(--rc-muted-strong) !important;
+	--color-placeholder-light: var(--rc-muted) !important;
+	--color-placeholder-dark: var(--rc-muted-strong) !important;
+	--color-main-text: var(--rc-foreground) !important;
+	--color-text-maxcontrast: var(--rc-muted-foreground) !important;
+	--color-text-maxcontrast-default: var(--rc-muted-foreground) !important;
+	--color-text-maxcontrast-background-blur: var(--rc-muted-foreground) !important;
+	--color-border: var(--rc-border) !important;
+	--color-border-dark: var(--rc-border-window) !important;
+	--color-border-maxcontrast: var(--rc-input) !important;
+	--color-border-error: var(--rc-red) !important;
+	--color-border-success: var(--rc-foreground) !important;
+	/* states: red and amber only when something went wrong or needs a look;
+	   success and info are plain text colours, no green or blue */
+	--color-element-error: var(--rc-red) !important;
+	--color-element-warning: var(--rc-amber) !important;
+	--color-element-success: var(--rc-foreground) !important;
+	--color-element-info: var(--rc-muted-foreground) !important;
+	--color-error: var(--rc-red-surface) !important;
+	--color-error-hover: var(--rc-red-surface-hover) !important;
+	--color-error-text: var(--rc-red-text) !important;
+	--color-error-rgb: var(--rc-red-rgb) !important;
+	--color-text-error: var(--rc-red-text) !important;
+	--color-warning: var(--rc-amber-surface) !important;
+	--color-warning-hover: var(--rc-amber-surface-hover) !important;
+	--color-warning-text: var(--rc-amber-text) !important;
+	--color-warning-rgb: var(--rc-amber-rgb) !important;
+	--color-success: var(--rc-muted) !important;
+	--color-success-hover: var(--rc-muted-strong) !important;
+	--color-success-text: var(--rc-strong) !important;
+	--color-success-rgb: var(--rc-foreground-rgb) !important;
+	--color-text-success: var(--rc-foreground) !important;
+	--color-info: var(--rc-muted) !important;
+	--color-info-hover: var(--rc-muted-strong) !important;
+	--color-info-text: var(--rc-foreground) !important;
+	--color-info-rgb: var(--rc-muted-foreground-rgb) !important;
+	--color-favorite: var(--rc-amber) !important;
+	--color-mark: var(--rc-amber-surface-hover) !important;
+	--color-background-selection: color-mix(in srgb, var(--rc-strong) 22%, transparent) !important;
+	--color-loading-light: var(--rc-border-window) !important;
+	--color-loading-dark: var(--rc-strong) !important;
+	--color-scrollbar: color-mix(in srgb, var(--rc-foreground) 22%, transparent) transparent !important;
+	/* the primary colour is the text colour: near-white on dark, near-black on light */
+	--color-primary: var(--rc-primary) !important;
+	--color-primary-text: var(--rc-primary-foreground) !important;
+	--color-primary-hover: var(--rc-primary-hover) !important;
+	--color-primary-light: var(--rc-muted) !important;
+	--color-primary-light-hover: var(--rc-muted-strong) !important;
+	--color-primary-light-text: var(--rc-strong) !important;
+	--color-primary-element: var(--rc-primary) !important;
+	--color-primary-element-hover: var(--rc-primary-hover) !important;
+	--color-primary-element-text: var(--rc-primary-foreground) !important;
+	--color-primary-element-text-dark: var(--rc-primary-foreground) !important;
+	--color-primary-element-light: var(--rc-muted) !important;
+	--color-primary-element-light-hover: var(--rc-muted-strong) !important;
+	--color-primary-element-light-text: var(--rc-strong) !important;
+	--gradient-primary-background: linear-gradient(40deg, var(--rc-primary) 0%, var(--rc-primary-hover) 100%) !important;
+	/* the canvas: Nextcloud's own is Nextcloud blue (B-196) */
+	--color-background-plain: var(--rc-page) !important;
+	--color-background-plain-text: var(--rc-strong) !important;
+	--image-background: none !important;
+	/* assistant gradients (indigo, violet): grey like the rest */
+	--color-background-assistant: var(--rc-card) !important;
+	--color-border-assistant: linear-gradient(var(--rc-border-window), var(--rc-border-window)) !important;
+	--color-element-assistant: linear-gradient(var(--rc-primary), var(--rc-primary)) !important;
+	--color-element-assistant-icon: linear-gradient(var(--rc-foreground), var(--rc-foreground)) !important;
+	/* shape: 0.2rem everywhere, the pill and "rounded" sizes included */
+	--border-radius-small: var(--rc-radius) !important;
+	--border-radius-element: var(--rc-radius) !important;
+	--border-radius-container: var(--rc-radius) !important;
+	--border-radius-container-large: var(--rc-radius) !important;
+	--border-radius: var(--rc-radius) !important;
+	--border-radius-large: var(--rc-radius) !important;
+	--border-radius-rounded: var(--rc-radius) !important;
+	--border-radius-pill: var(--rc-radius) !important;
+	--body-container-radius: var(--rc-radius) !important;
+	--border-width-input: 1px !important;
+	--border-width-input-focused: 1px !important;
+	--font-face: var(--rc-font) !important;
+	--font-weight-heading: 700 !important;
 }
 
 /* ------------------------------------------------------------------ canvas
-   Nextcloud paints <html> with --color-background-plain, which the theming
-   CSS sets on :root to Nextcloud blue (#00679e); only <body> got our colour.
-   Whatever <body> does not cover showed blue: the first frames of a load, the
-   iPhone's bottom safe area, the rubber band past the edges (B-196). The
-   canvas is zinc now, following a theme picked in Settings too. */
-:root {
-	--color-background-plain: var(--rc-muted) !important;
-	--image-background: none !important;
+   Nextcloud paints <html> with --color-background-plain. Whatever <body>
+   does not cover (the first frames of a load, the iPhone's bottom safe area,
+   the rubber band past the edges) shows the canvas, so it is the page colour,
+   following a theme picked in Settings too (B-196). */
+
+html { background-color: var(--rc-page) !important; }
+html:has(> body[data-theme-light]),
+html:has(> body[data-theme-light-highcontrast]) { background-color: #f7f7f7 !important; }
+html:has(> body[data-theme-dark]),
+html:has(> body[data-theme-dark-highcontrast]) { background-color: #070707 !important; }
+
+/* ------------------------------------------------------------- typography
+   Pretendard for text, 700 for titles; Robin Term only for terminal bits
+   (codes, sizes, counters, the prompt). */
+
+body { font-family: var(--rc-font); }
+
+code, kbd, pre, samp, tt { font-family: var(--rc-font-term); }
+
+.settings-section__name,
+.settings-section > h2,
+#app-dashboard > h2,
+.modal-container h2,
+.dialog__name,
+.app-sidebar-header__mainname {
+	font-weight: 700 !important;
+	letter-spacing: -0.02em;
 }
 
-html { background-color: var(--rc-muted) !important; }
-html:has(> body[data-theme-light]),
-html:has(> body[data-theme-light-highcontrast]) { background-color: #f4f4f5 !important; }
-html:has(> body[data-theme-dark]),
-html:has(> body[data-theme-dark-highcontrast]) { background-color: #18181b !important; }
+::selection { background: color-mix(in srgb, var(--rc-strong) 22%, transparent); }
+
+/* Focus: a 2px solid line around the thing, no glow, no ring of shadow. */
+:focus-visible { outline: 2px solid var(--rc-ring); outline-offset: 2px; }
+
+/* ------------------------------------------------------- shared components */
+
+/* Inputs: 1px window-frame line, square-ish, no shadow; hover darkens the
+   line, focus adds the 2px outline. */
+.input-field__input,
+input[type='text'], input[type='password'], input[type='email'], input[type='search'],
+input[type='url'], input[type='number'], input[type='tel'], textarea, select {
+	font-family: inherit;
+}
+
+.input-field .input-field__input,
+.textarea .textarea__input,
+.native-datetime-picker--input,
+.vs__dropdown-toggle {
+	border: 1px solid var(--rc-input) !important;
+	border-radius: var(--rc-radius) !important;
+	box-shadow: none !important;
+	background-color: var(--color-main-background) !important;
+	transition: border-color 0.15s ease;
+}
+
+.input-field .input-field__input:hover:not([disabled]),
+.textarea .textarea__input:hover:not([disabled]),
+.native-datetime-picker--input:hover,
+.vs__dropdown-toggle:hover,
+.v-select:focus-within .vs__dropdown-toggle {
+	border-color: var(--rc-input-hover) !important;
+}
+
+.input-field .input-field__input:focus-visible,
+.textarea .textarea__input:focus-visible,
+.native-datetime-picker--input:focus-visible {
+	border-color: var(--rc-input-hover) !important;
+	outline: 2px solid var(--rc-ring) !important;
+	outline-offset: 2px !important;
+	box-shadow: none !important;
+}
+
+/* Nextcloud's own focus ring (2px line + 4px background, !important) comes
+   from a <style> injected after this file, at (0,4,0): one element more here
+   to outrank it. The outline above is the focus mark. */
+body .input-field .input-field__input:is(:focus, :focus-within, :active, :hover):not([disabled]) {
+	box-shadow: none !important;
+}
+
+.input-field__label { font-weight: 400; }
+
+/* Nextcloud derives paddings from the corner radius (a field's text inset,
+   its label, a button's sides): at 0.2rem the text sat 3px from the line.
+   The 8px they had before the square corners, set directly. */
+.input-field:not(.input-field--leading-icon),
+.textarea {
+	--input-padding-start: 8px !important;
+}
+
+.input-field:not(.input-field--trailing-icon),
+.textarea {
+	--input-padding-end: 8px !important;
+}
+
+.input-field__helper-text-message { padding-inline: 8px !important; }
+.textarea .textarea__input { padding-block: 8px !important; }
+.native-datetime-picker--input { padding-inline-start: 10px !important; }
+.nc-select.v-select.select.vs--single .vs__selected { padding-inline: 10px !important; }
+.nc-select.v-select.select .select__label { margin-inline: 4px !important; }
+.nc-select.v-select.select .select__helper-text,
+.select-group-error { padding-inline: 8px !important; }
+.user-form-fields__static { padding-inline: 10px !important; }
+.hint-body,
+.color-picker { padding: 8px !important; }
+
+.button-vue { --button-radius: 8px !important; }
+
+/* Buttons. Default (secondary): clear with a 16% line, #1b1b1b under the
+   pointer. Primary: the text colour as a fill. No shadows. */
+.button-vue {
+	border-radius: var(--rc-radius) !important;
+	font-weight: 500 !important;
+	letter-spacing: -0.01em;
+	box-shadow: none !important;
+	transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.button-vue:is(.button-vue--primary, .button-vue--vue-primary) {
+	background-color: var(--rc-primary) !important;
+	color: var(--rc-primary-foreground) !important;
+	border: 1px solid var(--rc-primary) !important;
+}
+
+.button-vue:is(.button-vue--primary, .button-vue--vue-primary):hover:not(:disabled) {
+	background-color: var(--rc-primary-hover) !important;
+	border-color: var(--rc-primary-hover) !important;
+}
+
+.button-vue:is(.button-vue--secondary, .button-vue--vue-secondary) {
+	background-color: transparent !important;
+	color: var(--rc-strong) !important;
+	border: 1px solid var(--rc-border-window) !important;
+}
+
+.button-vue:is(.button-vue--secondary, .button-vue--vue-secondary):hover:not(:disabled) {
+	background-color: var(--rc-muted) !important;
+}
+
+/* delete and the like: red line and text, a red tint under the pointer */
+.button-vue:is(.button-vue--error, .button-vue--vue-error) {
+	background-color: transparent !important;
+	color: var(--rc-red-text) !important;
+	border: 1px solid color-mix(in srgb, var(--rc-red) 55%, transparent) !important;
+}
+
+.button-vue:is(.button-vue--error, .button-vue--vue-error):hover:not(:disabled) {
+	background-color: var(--rc-red-surface) !important;
+}
+
+.button-vue:is(.button-vue--warning, .button-vue--vue-warning) {
+	background-color: transparent !important;
+	color: var(--rc-amber-text) !important;
+	border: 1px solid color-mix(in srgb, var(--rc-amber) 55%, transparent) !important;
+}
+
+.button-vue:is(.button-vue--success, .button-vue--vue-success) {
+	background-color: transparent !important;
+	color: var(--rc-strong) !important;
+	border: 1px solid var(--rc-border-window) !important;
+}
+
+.button-vue:is(.button-vue--success, .button-vue--vue-success, .button-vue--warning, .button-vue--vue-warning):hover:not(:disabled) {
+	background-color: var(--rc-muted) !important;
+}
+
+.button-vue:focus-visible,
+a.button-vue:focus-visible {
+	outline: 2px solid var(--rc-ring) !important;
+	outline-offset: 2px !important;
+	box-shadow: none !important;
+}
+
+/* Alerts (Nextcloud "notecard"): a plain window, no side bar, no tint; the
+   icon carries the state, in amber or red only when it is one. The component
+   paints itself from --note-background / --note-theme. */
+.notecard.notecard,
+.notecard.notecard--success, .notecard.notecard--info,
+.notecard.notecard--warning, .notecard.notecard--error {
+	--note-background: var(--color-main-background) !important;
+	background-color: var(--color-main-background) !important;
+}
+
+.notecard {
+	background: var(--color-main-background) !important;
+	color: var(--color-main-text) !important;
+	border: 1px solid var(--rc-border) !important;
+	border-radius: var(--rc-radius) !important;
+	padding: 12px 14px !important;
+	margin: 0 !important;
+	text-align: start;
+	font-size: 13px;
+	line-height: 1.5;
+}
+
+.notecard__heading { font-weight: 600 !important; margin-bottom: 2px; }
+.notecard--success .notecard__icon { color: var(--rc-foreground) !important; }
+.notecard--info .notecard__icon { color: var(--rc-muted-foreground) !important; }
+.notecard--warning { border-color: color-mix(in srgb, var(--rc-amber) 45%, var(--rc-border)) !important; }
+.notecard--warning .notecard__icon { color: var(--rc-amber) !important; }
+.notecard--error { border-color: color-mix(in srgb, var(--rc-red) 45%, var(--rc-border)) !important; }
+.notecard--error, .notecard--error .notecard__icon { color: var(--rc-red-text) !important; }
+
+/* Checkbox / radio "button variant" groups (database type picker) */
+.checkbox-content--button-variant {
+	border-color: var(--rc-input) !important;
+}
+
+/* Modals, menus, popovers: a window frame and only a faint black depth
+   shadow under it. */
+.modal-container,
+.v-popper__inner {
+	border: 1px solid var(--rc-border-window) !important;
+	border-radius: var(--rc-radius) !important;
+	box-shadow: var(--rc-pop-shadow) !important;
+}
+
+/* Toasts: an inverted strip, Pretendard 600; an error or warning keeps a
+   3px bar in its colour on the leading edge. @nextcloud/dialogs names its
+   classes with a build hash (_toast_v43ag_11, _toast_error_…), hence the
+   prefix selectors; .toastify is the older library's. */
+div[class^='_toast_'],
+.toastify.dialogs {
+	background-color: var(--rc-toast) !important;
+	color: var(--rc-toast-foreground) !important;
+	border: 0 !important;
+	border-radius: var(--rc-radius) !important;
+	box-shadow: var(--rc-pop-shadow) !important;
+	font-family: var(--rc-font);
+	font-weight: 600;
+}
+
+div[class^='_toast_'] [class^='_toastMessage_'] { color: inherit !important; }
+div[class^='_toast_'][class*='_toast_error_'],
+.toastify.dialogs.toast-error { border-inline-start: 3px solid var(--rc-red) !important; }
+div[class^='_toast_'][class*='_toast_warning_'],
+.toastify.dialogs.toast-warning { border-inline-start: 3px solid var(--rc-amber) !important; }
+:is(div[class^='_toast_'], .toastify.dialogs) :is(a, button, .button-vue, .toast-undo-button, .toast-close) { color: inherit !important; filter: none !important; }
+:is(div[class^='_toast_'], .toastify.dialogs) .button-vue:hover:not(:disabled) { background-color: color-mix(in srgb, currentColor 12%, transparent) !important; }
+
+/* App menu (the grid in the header): the popover sets its own 8px corner;
+   the app icons keep their round tiles (the one round shape the brand
+   allows) but lose the glossy bevel; an unread dot is "new", amber. */
+.app-menu__popover { --border-radius-element: var(--rc-radius) !important; }
+.app-item__circle { background-image: none !important; box-shadow: none !important; border-radius: var(--rc-radius) !important; }
+.app-item--outlined .app-item__circle { box-shadow: inset 0 0 0 1px var(--rc-border-window) !important; }
+.app-item__unread { background-color: var(--rc-amber) !important; }
+
+/* the owner chip in the sharing tab and other user bubbles, chips (search
+   filters, tags): square too */
+.user-bubble__content { border-radius: var(--rc-radius) !important; }
+.nc-chip { --chip-radius: var(--rc-radius) !important; border-radius: var(--rc-radius) !important; }
+
+/* menus: one depth shadow (on the wrapper, where Nextcloud puts its own),
+   the frame on the inside */
+.v-popper__wrapper { box-shadow: var(--rc-pop-shadow) !important; border-radius: var(--rc-radius) !important; }
+.v-popper__inner { box-shadow: none !important; }
+
+/* the header's own menus (account, notifications) are not poppers */
+.header-menu__wrapper {
+	border: 1px solid var(--rc-border-window) !important;
+	border-radius: var(--rc-radius) !important;
+	box-shadow: var(--rc-pop-shadow) !important;
+	filter: none !important;
+}
+
+/* counters (unread, trash): numbers in the terminal face, a square tag */
+.counter-bubble__counter {
+	font-family: var(--rc-font-term) !important;
+	border-radius: var(--rc-radius) !important;
+}
 
 /* ------------------------------------------------------- guest pages (login,
-   installer, errors). Nextcloud's own variables are re-pointed at the tokens
-   so every Vue component on these pages follows them. */
+   installer, errors) */
 
 #body-login {
-	--color-main-background: var(--rc-background);
-	--color-main-background-rgb: 255, 255, 255;
-	--color-main-text: var(--rc-foreground);
-	--color-text-maxcontrast: var(--rc-muted-foreground);
-	--color-border: var(--rc-border);
-	--color-border-dark: var(--rc-input);
-	--color-border-maxcontrast: var(--rc-input);
-	--color-background-hover: var(--rc-muted);
-	--color-background-dark: var(--rc-muted);
-	--color-primary: var(--rc-primary);
-	--color-primary-text: var(--rc-primary-foreground);
-	--color-primary-element: var(--rc-primary);
-	--color-primary-element-hover: var(--rc-primary-hover);
-	--color-primary-element-text: var(--rc-primary-foreground);
-	--color-primary-element-light: var(--rc-muted);
-	--color-primary-element-light-hover: var(--rc-border);
-	--color-primary-element-light-text: var(--rc-foreground);
-	--color-background-plain: var(--rc-muted);
-	--color-background-plain-text: var(--rc-foreground);
-	--border-radius-element: 6px;
-	--border-radius-container: var(--rc-radius);
-	--border-radius-container-large: 12px;
 	--default-clickable-area: 36px;
-	--font-face: var(--rc-font);
 
 	font-family: var(--rc-font);
 	color: var(--rc-foreground);
-	background: var(--rc-muted) none !important;
-	background-image:
-		radial-gradient(circle at 1px 1px, color-mix(in srgb, var(--rc-foreground) 7%, transparent) 1px, transparent 0) !important;
-	background-size: 22px 22px !important;
+	background: var(--rc-page) none !important;
 	-webkit-font-smoothing: antialiased;
 	letter-spacing: -0.01em;
+	isolation: isolate;
 }
 
-@media (prefers-color-scheme: dark) {
-	#body-login { --color-main-background-rgb: 9, 9, 11; }
-}
-
-/* the wordmark: dark on light, light on dark */
+/* the wordmark: dark on light, light on dark, and the page's one glow (dark
+   theme only, --rc-logo-glow) */
 #body-login #header .logo {
 	background-image: url('../img/logo/logo-dark.svg') !important;
 	width: 196px !important;
 	height: 48px !important;
 	background-size: contain !important;
 	margin-bottom: 8px;
-	filter: none !important;
+	filter: var(--rc-logo-glow) !important;
 }
 
 @media (prefers-color-scheme: dark) {
 	#body-login #header .logo { background-image: url('../img/logo/logo.svg') !important; }
 }
 
-/* the card */
-#body-login .guest-box,
-#body-login .setup-form {
+body#body-login[data-theme-light] #header .logo,
+body#body-login[data-theme-light-highcontrast] #header .logo { background-image: url('../img/logo/logo-dark.svg') !important; }
+body#body-login[data-theme-dark] #header .logo,
+body#body-login[data-theme-dark-highcontrast] #header .logo { background-image: url('../img/logo/logo.svg') !important; }
+
+/* the card is a terminal window: 16% frame, the window black, no shadow */
+#body-login .guest-box:not(footer),
+#body-login .setup-form,
+#body-login .body-login-container.update,
+#body-login #guest-content-vue {
+	position: relative;
 	background: var(--rc-background) !important;
 	color: var(--rc-foreground) !important;
-	border: 1px solid var(--rc-border) !important;
-	border-radius: 12px !important;
-	box-shadow: var(--rc-shadow) !important;
+	border: 1px solid var(--rc-border-window) !important;
+	border-radius: var(--rc-radius) !important;
+	box-shadow: none !important;
 	backdrop-filter: none !important;
 	-webkit-backdrop-filter: none !important;
 }
@@ -176,9 +659,9 @@ html:has(> body[data-theme-dark-highcontrast]) { background-color: #18181b !impo
 #body-login .login-form h2,
 #body-login .login-box h2 {
 	font-size: 18px;
-	font-weight: 600;
+	font-weight: 700;
 	letter-spacing: -0.02em;
-	color: var(--rc-foreground);
+	color: var(--rc-strong);
 	text-align: start;
 	margin-bottom: 12px;
 	padding: 0;
@@ -191,7 +674,7 @@ html:has(> body[data-theme-dark-highcontrast]) { background-color: #18181b !impo
 	margin: 0;
 }
 
-/* footer: plain muted line instead of the pill */
+/* footer: a plain muted line instead of the pill */
 #body-login footer.guest-box {
 	background: transparent !important;
 	border: 0 !important;
@@ -207,19 +690,9 @@ html:has(> body[data-theme-dark-highcontrast]) { background-color: #18181b !impo
 	font-weight: 500;
 }
 
-/* installer: drop the autoconfig notice, turn the docs box into a quiet link */
+/* installer: drop the autoconfig notice and the Nextcloud docs box */
 #body-login [data-cy-setup-form-note='autoconfig'] { display: none !important; }
-
-#body-login .setup-form > .notecard--info:last-child {
-	border: 0 !important;
-	padding: 0 !important;
-	justify-content: center;
-	color: var(--rc-muted-foreground) !important;
-	font-size: 12.5px;
-}
-
-#body-login .setup-form > .notecard--info:last-child .notecard__icon { display: none !important; }
-#body-login .setup-form > .notecard--info:last-child a { color: var(--rc-foreground); text-decoration: underline; text-underline-offset: 3px; }
+#body-login .setup-form > .notecard--info:last-child { display: none !important; }
 
 #body-login .setup-form .input-field { margin: 0 !important; }
 
@@ -242,118 +715,6 @@ html:has(> body[data-theme-dark-highcontrast]) { background-color: #18181b !impo
 
 #body-login .setup-form summary:hover { color: var(--rc-foreground); }
 
-/* ------------------------------------------------------- shared components */
-
-/* Inputs: h-9, 1px input border, rounded-md, shadow-sm, ring on focus */
-.input-field__input,
-input[type='text'], input[type='password'], input[type='email'], input[type='search'],
-input[type='url'], input[type='number'], input[type='tel'], textarea, select {
-	font-family: inherit;
-}
-
-.input-field .input-field__input {
-	border: 1px solid var(--rc-input) !important;
-	border-radius: 6px !important;
-	box-shadow: var(--rc-shadow-sm);
-	background: var(--color-main-background) !important;
-	transition: border-color 0.15s ease, box-shadow 0.15s ease;
-}
-
-.input-field .input-field__input:hover:not([disabled]) {
-	border-color: var(--rc-ring) !important;
-}
-
-.input-field .input-field__input:focus-visible,
-.input-field .input-field__input:focus {
-	border-color: var(--rc-ring) !important;
-	box-shadow: 0 0 0 3px color-mix(in srgb, var(--rc-ring) 35%, transparent) !important;
-	outline: none !important;
-}
-
-.input-field__label { font-weight: 400; }
-
-/* Buttons */
-.button-vue {
-	border-radius: 6px !important;
-	font-weight: 500 !important;
-	letter-spacing: -0.01em;
-	transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
-}
-
-.button-vue--vue-primary {
-	background-color: var(--color-primary-element) !important;
-	color: var(--color-primary-element-text) !important;
-	box-shadow: var(--rc-shadow-sm);
-}
-
-.button-vue--vue-primary:hover:not(:disabled) {
-	background-color: var(--color-primary-element-hover) !important;
-}
-
-.button-vue--vue-secondary {
-	background-color: var(--color-main-background) !important;
-	color: var(--color-main-text) !important;
-	border: 1px solid var(--rc-input) !important;
-	box-shadow: var(--rc-shadow-sm);
-}
-
-.button-vue--vue-secondary:hover:not(:disabled) {
-	background-color: var(--rc-muted) !important;
-}
-
-.button-vue:focus-visible {
-	outline: none !important;
-	box-shadow: 0 0 0 2px var(--color-main-background), 0 0 0 4px var(--rc-ring) !important;
-}
-
-/* Alerts (Nextcloud "notecard"): shadcn Alert, no thick side bar, no tint.
-   The component paints itself from --note-background / --note-theme. */
-.notecard.notecard,
-.notecard.notecard--success, .notecard.notecard--info,
-.notecard.notecard--warning, .notecard.notecard--error {
-	--note-background: var(--color-main-background) !important;
-	background-color: var(--color-main-background) !important;
-}
-
-.notecard {
-	background: var(--color-main-background) !important;
-	color: var(--color-main-text) !important;
-	border: 1px solid var(--rc-border) !important;
-	border-radius: var(--rc-radius) !important;
-	padding: 12px 14px !important;
-	margin: 0 !important;
-	text-align: start;
-	font-size: 13px;
-	line-height: 1.5;
-}
-
-.notecard__heading { font-weight: 600 !important; margin-bottom: 2px; }
-.notecard--success .notecard__icon { color: #16a34a !important; }
-.notecard--info .notecard__icon { color: var(--rc-muted-foreground) !important; }
-.notecard--warning .notecard__icon { color: #d97706 !important; }
-.notecard--error { border-color: color-mix(in srgb, var(--rc-destructive) 45%, var(--rc-border)) !important; }
-.notecard--error, .notecard--error .notecard__icon { color: var(--rc-destructive) !important; }
-
-/* Checkbox / radio "button variant" groups (database type picker) */
-.checkbox-content--button-variant {
-	border-color: var(--rc-input) !important;
-}
-
-/* Modals and popovers: card surface, hairline border, soft shadow */
-.modal-container,
-.v-popper__inner,
-.action-item__popper .v-popper__inner {
-	border: 1px solid var(--color-border) !important;
-	box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.08) !important;
-}
-
-/* Selection colour */
-::selection { background: color-mix(in srgb, var(--rc-foreground) 18%, transparent); }
-
-/* installer: the Nextcloud docs link is not ours to show */
-#body-login .setup-form > .notecard--info:last-child { display: none !important; }
-
-
 /* login: the inner form is not a second card */
 #body-login .guest-box .login-form,
 #body-login .guest-box .login-box {
@@ -365,21 +726,19 @@ input[type='url'], input[type='number'], input[type='tel'], textarea, select {
 
 /* border-box: with the padding on top, the sign-up card (which lacks the
    login box's own border-box) came out 408px wide on a 390px phone */
-#body-login .guest-box:not(footer) { padding: 24px !important; width: min(400px, calc(100vw - 32px)); box-sizing: border-box; text-align: start; }
+#body-login .guest-box:not(footer) { padding: 28px 24px 24px !important; width: min(400px, calc(100vw - 32px)); box-sizing: border-box; text-align: start; }
+
+/* A wide box (the exception page with its trace) keeps its width. */
+#body-login .guest-box.wide:not(footer) { width: min(720px, calc(100vw - 32px)) !important; }
 
 /* 403 and 404 (core/templates/403.php, 404.php): the login card, laid out like
-   RobinMail's error pages — a quiet round icon in place of Nextcloud's 64px
+   RobinMail's error pages — a quiet square icon in place of Nextcloud's 64px
    one, the text in the muted colour, a full-width button. */
 #body-login .body-login-container.update {
 	width: min(384px, calc(100vw - 32px)) !important;
 	box-sizing: border-box;
 	margin: 0 auto !important;
 	padding: 32px 24px 24px !important;
-	background: var(--rc-background) !important;
-	color: var(--rc-foreground) !important;
-	border: 1px solid var(--rc-border) !important;
-	border-radius: 12px !important;
-	box-shadow: var(--rc-shadow) !important;
 	text-align: center;
 }
 
@@ -387,7 +746,7 @@ input[type='url'], input[type='number'], input[type='tel'], textarea, select {
 	width: 48px !important;
 	height: 48px !important;
 	margin: 0 auto 16px !important;
-	border-radius: 50%;
+	border-radius: var(--rc-radius);
 	background-color: var(--rc-muted) !important;
 	background-size: 22px !important;
 	opacity: .7;
@@ -396,8 +755,8 @@ input[type='url'], input[type='number'], input[type='tel'], textarea, select {
 #body-login .body-login-container.update h2 {
 	margin: 0 0 6px !important;
 	font-size: 20px !important;
-	font-weight: 600 !important;
-	letter-spacing: -0.025em;
+	font-weight: 700 !important;
+	letter-spacing: -0.02em;
 	word-break: keep-all;
 }
 
@@ -428,21 +787,19 @@ input[type='url'], input[type='number'], input[type='tel'], textarea, select {
 }
 
 /* ------------------------------------------------------- logged-in pages:
-   no background picture, zinc canvas, white header with the dark wordmark,
-   the app itself on a white card (Nextcloud's body container). */
+   no background picture, the page black (white) around the app, which sits
+   in one terminal window (Nextcloud's body container). */
 
 body:not(#body-login) {
 	--image-background: none !important;
-	--color-background-plain: var(--rc-muted) !important;
-	--color-background-plain-text: var(--rc-foreground) !important;
-	--color-main-background-blur: var(--rc-muted) !important;
+	--color-main-background-blur: var(--rc-background) !important;
 	--filter-background-blur: none !important;
-	background: var(--rc-muted) none !important;
+	background: var(--rc-page) none !important;
 }
 
 body:not(#body-login) #header {
 	background: transparent !important;
-	color: var(--rc-foreground) !important;
+	color: var(--rc-strong) !important;
 }
 
 body:not(#body-login) #header .logo,
@@ -465,60 +822,53 @@ body[data-theme-light]:not(#body-login) #nextcloud .logo,
 body[data-theme-light-highcontrast]:not(#body-login) #header .logo,
 body[data-theme-light-highcontrast]:not(#body-login) #nextcloud .logo { background-image: url('../img/logo/logo-dark.svg') !important; }
 
-/* app sidebar sits on the canvas, content on a bordered card */
+/* the app in one window: 16% frame, 0.2rem, no shadow */
 body:not(#body-login) #content,
 body:not(#body-login) #content-vue {
-	border: 1px solid var(--color-border) !important;
-	box-shadow: var(--rc-shadow-sm) !important;
+	border: 1px solid var(--rc-border-window) !important;
+	border-radius: var(--rc-radius) !important;
+	box-shadow: none !important;
 }
 
 body:not(#body-login) .app-navigation {
 	background: transparent !important;
 	backdrop-filter: none !important;
 	-webkit-backdrop-filter: none !important;
-	border-inline-end: 1px solid var(--color-border) !important;
+	border-inline-end: 1px solid var(--rc-border) !important;
 }
 
-body:not(#body-login) .app-navigation-entry.active,
-body:not(#body-login) .app-navigation-entry--active {
-	background-color: var(--color-background-hover) !important;
-}
-
-body:not(#body-login) .app-navigation-entry.active .app-navigation-entry__name,
-body:not(#body-login) .app-navigation-entry--active .app-navigation-entry__name { font-weight: 600; }
-
-/* dashboard widgets: solid cards */
+/* dashboard widgets: solid windows */
 body:not(#body-login) .panel,
 body:not(#body-login) .dashboard .panel--content {
 	background: var(--color-main-background) !important;
 	backdrop-filter: none !important;
 	-webkit-backdrop-filter: none !important;
-	border: 1px solid var(--color-border) !important;
-	box-shadow: var(--rc-shadow-sm) !important;
+	border: 1px solid var(--rc-border-window) !important;
+	border-radius: var(--rc-radius) !important;
+	box-shadow: none !important;
 }
 
-#app-dashboard > h2 { color: var(--rc-foreground) !important; font-weight: 600; letter-spacing: -0.02em; }
+#app-dashboard > h2 { color: var(--rc-strong) !important; }
 
-/* unified search box in the header */
+/* header search: a framed field, like a command line */
 body:not(#body-login) #header .unified-search-menu .input-field__input,
 body:not(#body-login) #header input[type='search'] {
 	background: var(--color-main-background) !important;
 	color: var(--color-main-text) !important;
-	border: 1px solid var(--color-border) !important;
+	border: 1px solid var(--rc-border-window) !important;
 }
 
-/* header search: a bordered field like shadcn's command trigger */
 body:not(#body-login) #header .unified-search-input__button {
 	background: var(--color-main-background) !important;
 	color: var(--rc-muted-foreground) !important;
-	border: 1px solid var(--color-border) !important;
+	border: 1px solid var(--rc-border-window) !important;
 	border-radius: var(--rc-radius) !important;
-	box-shadow: var(--rc-shadow-sm) !important;
+	box-shadow: none !important;
 	backdrop-filter: none !important;
 }
 
 body:not(#body-login) #header .unified-search-input__button:hover {
-	border-color: var(--rc-ring) !important;
+	border-color: var(--rc-input-hover) !important;
 	color: var(--rc-foreground) !important;
 }
 
@@ -541,10 +891,23 @@ body:not(#body-login) #header #nextcloud {
 }
 
 /* header app icons are white SVGs drawn for a dark backdrop: invert them on
-   the light canvas, leave them alone on the dark one */
+   the light page, leave them alone on the dark one */
 body:not(#body-login) {
 	--background-image-invert-if-bright: invert(100%) !important;
 	--background-invert-if-bright: invert(100%) !important;
+}
+
+@media (prefers-color-scheme: dark) {
+	body:not(#body-login):not([data-theme-light]):not([data-theme-light-highcontrast]) {
+		--background-image-invert-if-bright: no !important;
+		--background-invert-if-bright: no !important;
+	}
+}
+
+body[data-theme-dark]:not(#body-login),
+body[data-theme-dark-highcontrast]:not(#body-login) {
+	--background-image-invert-if-bright: no !important;
+	--background-invert-if-bright: no !important;
 }
 
 /* settings tables on a phone: the notification table (activity) and the
@@ -560,44 +923,6 @@ body:not(#body-login) {
 	}
 }
 
-/* primary buttons follow shadcn: near-black on light, near-white on dark */
-body:not(#body-login) {
-	--color-primary-element: #18181b !important;
-	--color-primary-element-hover: #27272a !important;
-	--color-primary-element-text: #fafafa !important;
-	--color-primary-element-text-dark: #fafafa !important;
-	--color-primary-element-light: #f4f4f5 !important;
-	--color-primary-element-light-hover: #e4e4e7 !important;
-	--color-primary-element-light-text: #18181b !important;
-}
-
-@media (prefers-color-scheme: dark) {
-	body:not(#body-login):not([data-theme-light]):not([data-theme-light-highcontrast]) {
-		--background-image-invert-if-bright: no !important;
-		--background-invert-if-bright: no !important;
-		--color-primary-element: #fafafa !important;
-		--color-primary-element-hover: #e4e4e7 !important;
-		--color-primary-element-text: #18181b !important;
-		--color-primary-element-text-dark: #18181b !important;
-		--color-primary-element-light: #27272a !important;
-		--color-primary-element-light-hover: #3f3f46 !important;
-		--color-primary-element-light-text: #fafafa !important;
-	}
-}
-
-body[data-theme-dark]:not(#body-login),
-body[data-theme-dark-highcontrast]:not(#body-login) {
-	--background-image-invert-if-bright: no !important;
-	--background-invert-if-bright: no !important;
-	--color-primary-element: #fafafa !important;
-	--color-primary-element-hover: #e4e4e7 !important;
-	--color-primary-element-text: #18181b !important;
-	--color-primary-element-text-dark: #18181b !important;
-	--color-primary-element-light: #27272a !important;
-	--color-primary-element-light-hover: #3f3f46 !important;
-	--color-primary-element-light-text: #fafafa !important;
-}
-
 /* installer, "Storage & database": quiet sub-headings, database type as tabs */
 #body-login .setup-form details legend {
 	font-size: 13px !important;
@@ -610,42 +935,48 @@ body[data-theme-dark-highcontrast]:not(#body-login) {
 #body-login .setup-form details > fieldset { gap: 10px; }
 
 #body-login .setup-form__database-type-select {
-	display: grid !important;
-	grid-template-columns: repeat(3, minmax(0, 1fr));
+	display: flex !important;
 	gap: 4px;
-	padding: 4px !important;
+	padding: 3px !important;
 	margin: 0 !important;
-	background: var(--rc-muted);
-	border: 0 !important;
+	background: transparent;
+	border: 1px solid var(--rc-border) !important;
 	border-radius: var(--rc-radius);
 }
 
 #body-login .setup-form__database-type-select .checkbox-radio-switch {
+	flex: 1 1 auto;
+	min-width: 0;
 	margin: 0 !important;
 	border: 0 !important;
-	border-radius: 6px !important;
+	border-radius: var(--rc-radius) !important;
+	background: transparent !important;
 	width: auto !important;
 }
 
 #body-login .setup-form__database-type-select .checkbox-content--button-variant {
-	border: 0 !important;
-	border-radius: 6px !important;
-	background: transparent !important;
-	color: var(--rc-muted-foreground) !important;
+	width: 100% !important;
+	height: 100% !important;
+	display: flex !important;
+	align-items: center !important;
 	justify-content: center !important;
 	min-height: 32px !important;
-	padding: 0 6px !important;
+	padding: 0 8px !important;
+	border: 0 !important;
+	border-radius: var(--rc-radius) !important;
+	background: transparent !important;
+	color: var(--rc-muted-foreground) !important;
 	font-weight: 500;
-	font-size: 13px;
+	font-size: 12.5px;
 	white-space: nowrap;
 }
 
 #body-login .setup-form__database-type-select .checkbox-content--button-variant .checkbox-content__icon { display: none !important; }
 
 #body-login .setup-form__database-type-select .checkbox-radio-switch--checked .checkbox-content--button-variant {
-	background: var(--rc-background) !important;
-	color: var(--rc-foreground) !important;
-	box-shadow: var(--rc-shadow-sm), 0 0 0 1px var(--rc-border) !important;
+	background: var(--rc-muted) !important;
+	color: var(--rc-strong) !important;
+	box-shadow: none !important;
 }
 
 #body-login .setup-form details p:not(.setup-form__database-type-select) {
@@ -654,45 +985,23 @@ body[data-theme-dark-highcontrast]:not(#body-login) {
 	text-align: start;
 }
 
-#body-login .setup-form__database-type-select {
-	display: flex !important;
-}
-
-#body-login .setup-form__database-type-select .checkbox-radio-switch {
-	flex: 1 1 auto;
-	background: transparent !important;
-	min-width: 0;
-}
-
-#body-login .setup-form__database-type-select .checkbox-content--button-variant {
-	width: 100% !important;
-	height: 100% !important;
+#body-login .setup-form__database-type-select .checkbox-content__wrapper {
 	display: flex !important;
 	align-items: center !important;
-	padding: 0 8px !important;
-	font-size: 12.5px;
-}
-
-#body-login .setup-form__database-type-select .checkbox-content__wrapper {
-	width: 100%;
 	justify-content: center;
-	text-align: center;
+	width: 100%;
+	height: 100%;
+	min-height: 30px;
 	margin: 0 !important;
+	text-align: center;
 }
 
 #body-login .setup-form__database-type-select .checkbox-content__text {
 	overflow: hidden;
 	text-overflow: ellipsis;
+	line-height: 1.2;
+	padding: 0 !important;
 }
-
-#body-login .setup-form__database-type-select .checkbox-content__wrapper {
-	display: flex !important;
-	align-items: center !important;
-	height: 100%;
-	min-height: 30px;
-}
-
-#body-login .setup-form__database-type-select .checkbox-content__text { line-height: 1.2; padding: 0 !important; }
 
 /* ------------------------------------------------- Nextcloud leftovers */
 
@@ -726,43 +1035,26 @@ a[href^="https://help.nextcloud.com"] { display: none !important; }
 #contactsmenu { display: none !important; }
 
 /* =================================================================== guest
-   pages, round two (2026-10-27): one ambient backdrop, the card centred,
-   a choreographed entrance, the sign-up steps told apart, and the pages the
-   first round never reached (two-factor, confirmation, success, errors). */
+   pages as one scene (brand kit, 2026-10-27): scan lines and a dark edge
+   over the whole window, the card a terminal window opening in the middle,
+   its rows switching on one after another, the one title a prompt with a
+   blinking block cursor. */
 
 /* --------------------------------------------------------------- motion */
 
-#body-login {
-	--rc-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-	--rc-glow: 22%;
-	--rc-card-shadow: 0.55;
-}
-
-@media (prefers-color-scheme: light) { #body-login { --rc-glow: 12%; --rc-card-shadow: 0.16; } }
-body#body-login[data-theme-light],
-body#body-login[data-theme-light-highcontrast] { --rc-glow: 12%; --rc-card-shadow: 0.16; }
-body#body-login[data-theme-dark],
-body#body-login[data-theme-dark-highcontrast] { --rc-glow: 22%; --rc-card-shadow: 0.55; }
-
-@keyframes rc-rise {
-	from { opacity: 0; transform: translateY(14px) scale(0.98); filter: blur(6px); }
-	to { opacity: 1; transform: none; filter: none; }
+@keyframes rc-window {
+	from { opacity: 0; transform: scale(0.9); }
+	to { opacity: 1; transform: none; }
 }
 
 @keyframes rc-row {
-	from { opacity: 0; transform: translateY(8px); }
+	from { opacity: 0; transform: translateY(4px); }
 	to { opacity: 1; transform: none; }
 }
 
 @keyframes rc-logo {
-	from { opacity: 0; transform: translateY(-8px); filter: blur(4px); }
-	to { opacity: 1; transform: none; filter: none; }
-}
-
-@keyframes rc-drift {
-	0% { transform: translate3d(-4%, -3%, 0) rotate(0deg) scale(1); }
-	50% { transform: translate3d(3%, 4%, 0) rotate(8deg) scale(1.08); }
-	100% { transform: translate3d(5%, -2%, 0) rotate(-5deg) scale(1.03); }
+	from { opacity: 0; transform: translateY(-6px); }
+	to { opacity: 1; transform: none; }
 }
 
 @keyframes rc-shake {
@@ -772,44 +1064,31 @@ body#body-login[data-theme-dark-highcontrast] { --rc-glow: 22%; --rc-card-shadow
 	40%, 60% { transform: translateX(5px); }
 }
 
-/* ------------------------------------------------------------- backdrop
-   The flat dot grid fades out towards the edges, and three soft glows drift
-   very slowly behind the card. Fixed pseudo-elements: they never scroll or
-   take clicks, and the glow layer is one composited transform. */
+/* the block cursor: on and off once a second, no fade */
+@keyframes rc-blink { 50% { opacity: 0; } }
+@keyframes rc-blink-bg { 50% { background-size: 0 0; } }
 
-#body-login {
-	background: var(--rc-muted) none !important;
-	isolation: isolate;
-}
+/* ---------------------------------------------------------------- scene
+   Fixed pseudo-elements: they never scroll or take clicks. The dark edge
+   sits behind the card, the scan lines (3px apart, 1px of white at 2.2%)
+   over everything, as on a screen. */
 
 #body-login::before,
 #body-login::after {
 	content: '';
 	position: fixed;
+	inset: 0;
 	pointer-events: none;
 }
 
 #body-login::before {
-	inset: 0;
 	z-index: -1;
-	background-image:
-		radial-gradient(38% 34% at 50% 46%, color-mix(in srgb, var(--rc-foreground) 5%, transparent), transparent 70%),
-		radial-gradient(circle at 1px 1px, color-mix(in srgb, var(--rc-foreground) 12%, transparent) 1px, transparent 0);
-	background-size: 100% 100%, 22px 22px;
-	-webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, #000 15%, transparent 80%);
-	mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, #000 15%, transparent 80%);
+	background: radial-gradient(ellipse at center, transparent 55%, var(--rc-vignette));
 }
 
 #body-login::after {
-	inset: -30%;
-	z-index: -2;
-	background:
-		radial-gradient(30% 26% at 36% 36%, color-mix(in srgb, #818cf8 var(--rc-glow), transparent), transparent 70%),
-		radial-gradient(28% 24% at 66% 64%, color-mix(in srgb, #38bdf8 var(--rc-glow), transparent), transparent 70%),
-		radial-gradient(22% 20% at 62% 30%, color-mix(in srgb, #e879f9 calc(var(--rc-glow) * 0.6), transparent), transparent 70%);
-	filter: blur(56px);
-	animation: rc-drift 40s ease-in-out infinite alternate;
-	will-change: transform;
+	z-index: 100000;
+	background: repeating-linear-gradient(to bottom, var(--rc-scanline) 0 1px, transparent 1px 3px);
 }
 
 /* --------------------------------------------------------------- layout
@@ -827,9 +1106,9 @@ body#body-login[data-theme-dark-highcontrast] { --rc-glow: 22%; --rc-card-shadow
 
 #body-login .wrapper .v-align { margin-block: 0 !important; }
 
-#body-login #header .logo { animation: rc-logo 0.7s var(--rc-ease-out) both; }
+#body-login #header .logo { animation: rc-logo 0.52s var(--rc-ease) both; }
 
-#body-login footer.guest-box { animation: rc-row 0.6s var(--rc-ease-out) 0.5s both; }
+#body-login footer.guest-box { animation: rc-row 0.4s var(--rc-ease) 0.5s both; }
 
 /* The login form is a Vue app mounted on an empty <div id="login">, which on
    a phone comes seconds after the page (core-common.js is 5.8MB of script).
@@ -839,45 +1118,69 @@ body#body-login[data-theme-dark-highcontrast] { --rc-glow: 22%; --rc-card-shadow
    element, so the rule is gone once the form is there. */
 #body-login #login:empty { min-height: 408px; }
 
-/* ----------------------------------------------------------------- card
-   A touch of glass so the glow shows through at the edges, a hairline
-   highlight along the top, a long soft shadow. */
-
+/* the window opens: 0.9 to full size in 0.52s */
 #body-login .guest-box:not(footer),
-#body-login .body-login-container.update {
-	position: relative;
-	background: color-mix(in srgb, var(--rc-background) 84%, transparent) !important;
-	backdrop-filter: blur(18px) saturate(1.25) !important;
-	-webkit-backdrop-filter: blur(18px) saturate(1.25) !important;
-	box-shadow:
-		inset 0 1px 0 0 color-mix(in srgb, var(--rc-foreground) 7%, transparent),
-		0 28px 64px -32px rgb(0 0 0 / var(--rc-card-shadow)) !important;
-	animation: rc-rise 0.75s var(--rc-ease-out) 0.08s both;
+#body-login .body-login-container.update,
+#body-login #guest-content-vue {
+	animation: rc-window 0.52s var(--rc-ease) 0.08s both;
 }
 
-#body-login .guest-box:not(footer) { padding: 28px 24px 24px !important; }
-
-/* A wide box (the exception page with its trace) keeps its width: the
-   400px rule above was squeezing it. */
-#body-login .guest-box.wide:not(footer) { width: min(720px, calc(100vw - 32px)) !important; }
-
-/* Rows follow the card in, one after another: the sign-up steps, the login
+/* Rows switch on after the card, 45ms apart: the sign-up steps, the login
    form, and the plain PHP pages. */
 #body-login .guest-box:not(footer) :is(fieldset, .login-form__fieldset) > :not([type='hidden']):not(.hidden),
 #body-login .guest-box:not(footer) > :is(h2, p, ul, form, .buttons),
-#body-login .body-login-container.update > * {
-	animation: rc-row 0.55s var(--rc-ease-out) both;
-	animation-delay: calc(0.18s + var(--rc-i, 0) * 0.045s);
+#body-login .body-login-container.update > *,
+#body-login #guest-content-vue > * {
+	animation: rc-row 0.3s var(--rc-ease) both;
+	animation-delay: calc(0.22s + var(--rc-i, 0) * 0.045s);
 }
 
-:is(fieldset, .login-form__fieldset, .guest-box, .body-login-container.update) > :nth-child(1) { --rc-i: 0; }
-:is(fieldset, .login-form__fieldset, .guest-box, .body-login-container.update) > :nth-child(2) { --rc-i: 1; }
-:is(fieldset, .login-form__fieldset, .guest-box, .body-login-container.update) > :nth-child(3) { --rc-i: 2; }
-:is(fieldset, .login-form__fieldset, .guest-box, .body-login-container.update) > :nth-child(4) { --rc-i: 3; }
-:is(fieldset, .login-form__fieldset, .guest-box, .body-login-container.update) > :nth-child(5) { --rc-i: 4; }
-:is(fieldset, .login-form__fieldset, .guest-box, .body-login-container.update) > :nth-child(6) { --rc-i: 5; }
-:is(fieldset, .login-form__fieldset, .guest-box, .body-login-container.update) > :nth-child(7) { --rc-i: 6; }
-:is(fieldset, .login-form__fieldset, .guest-box, .body-login-container.update) > :nth-child(n + 8) { --rc-i: 7; }
+:is(fieldset, .login-form__fieldset, .guest-box, .body-login-container.update, #guest-content-vue) > :nth-child(1) { --rc-i: 0; }
+:is(fieldset, .login-form__fieldset, .guest-box, .body-login-container.update, #guest-content-vue) > :nth-child(2) { --rc-i: 1; }
+:is(fieldset, .login-form__fieldset, .guest-box, .body-login-container.update, #guest-content-vue) > :nth-child(3) { --rc-i: 2; }
+:is(fieldset, .login-form__fieldset, .guest-box, .body-login-container.update, #guest-content-vue) > :nth-child(4) { --rc-i: 3; }
+:is(fieldset, .login-form__fieldset, .guest-box, .body-login-container.update, #guest-content-vue) > :nth-child(5) { --rc-i: 4; }
+:is(fieldset, .login-form__fieldset, .guest-box, .body-login-container.update, #guest-content-vue) > :nth-child(6) { --rc-i: 5; }
+:is(fieldset, .login-form__fieldset, .guest-box, .body-login-container.update, #guest-content-vue) > :nth-child(7) { --rc-i: 6; }
+:is(fieldset, .login-form__fieldset, .guest-box, .body-login-container.update, #guest-content-vue) > :nth-child(n + 8) { --rc-i: 7; }
+
+/* -------------------------------------------------------------- prompt
+   The one title of each guest page starts with the prompt sign and ends in
+   the block cursor. */
+
+#body-login .login-box h2,
+#body-login .guest-box > h2:first-of-type,
+#body-login .body-login-container.update h2,
+#body-login .two-factor .two-factor-header,
+#body-login #guest-content-vue h2 {
+	color: var(--rc-strong) !important;
+}
+
+#body-login .login-box h2::before,
+#body-login .guest-box > h2:first-of-type::before,
+#body-login .body-login-container.update h2::before,
+#body-login .two-factor .two-factor-header::before,
+#body-login #guest-content-vue h2::before {
+	content: '>';
+	margin-inline-end: 0.2em;
+	font-family: var(--rc-font-term);
+	font-weight: 700;
+}
+
+#body-login .login-box h2::after,
+#body-login .guest-box > h2:first-of-type::after,
+#body-login .body-login-container.update h2::after,
+#body-login .two-factor .two-factor-header::after,
+#body-login #guest-content-vue h2::after {
+	content: '';
+	display: inline-block;
+	width: 0.55em;
+	height: 1.05em;
+	margin-inline-start: 0.1em;
+	vertical-align: -0.17em;
+	background: currentColor;
+	animation: rc-blink 1s steps(1) infinite;
+}
 
 /* ------------------------------------------------------- inputs, buttons */
 
@@ -894,20 +1197,16 @@ body#body-login[data-theme-dark-highcontrast] { --rc-glow: 22%; --rc-card-shadow
 #body-login .input-field:focus-within .input-field__label { color: var(--rc-foreground) !important; }
 
 #body-login :is(.button-vue, a.button, input[type='submit']) {
-	transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.12s ease, box-shadow 0.2s ease !important;
+	transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.12s ease !important;
 }
 
 #body-login :is(.button-vue, a.button, input[type='submit']):active:not(:disabled) { transform: scale(0.98); }
 
-#body-login :is(.button-vue--primary, .button-vue--vue-primary):hover:not(:disabled) {
-	box-shadow: 0 6px 18px -8px color-mix(in srgb, var(--rc-primary) 55%, transparent) !important;
-}
-
 /* A primary button that is not ready yet reads as "not yet", not as a dead
-   grey slab: same shape, quiet fill, muted text. */
+   grey slab: same shape, the pressed grey, muted text. */
 #body-login :is(.button-vue--primary, .button-vue--vue-primary):disabled {
 	opacity: 1 !important;
-	background-color: color-mix(in srgb, var(--rc-foreground) 9%, var(--rc-background)) !important;
+	background-color: var(--rc-muted) !important;
 	color: var(--rc-muted-foreground) !important;
 	border-color: transparent !important;
 	box-shadow: none !important;
@@ -952,7 +1251,7 @@ body#body-login[data-theme-dark-highcontrast] { --rc-glow: 22%; --rc-card-shadow
 #body-login .guest-box h2 {
 	margin: 0 0 6px !important;
 	font-size: 18px !important;
-	font-weight: 600 !important;
+	font-weight: 700 !important;
 	letter-spacing: -0.02em;
 	word-break: keep-all;
 }
@@ -981,7 +1280,7 @@ body#body-login[data-theme-dark-highcontrast] { --rc-glow: 22%; --rc-card-shadow
 	padding: 0 16px !important;
 	box-sizing: border-box;
 	border: 0 !important;
-	border-radius: 6px !important;
+	border-radius: var(--rc-radius) !important;
 	background: var(--rc-primary) !important;
 	color: var(--rc-primary-foreground) !important;
 	font-size: 14px !important;
@@ -1004,8 +1303,8 @@ body#body-login[data-theme-dark-highcontrast] { --rc-glow: 22%; --rc-card-shadow
 #body-login .two-factor .two-factor-header {
 	margin: 0 0 6px !important;
 	font-size: 20px !important;
-	font-weight: 600 !important;
-	letter-spacing: -0.025em;
+	font-weight: 700 !important;
+	letter-spacing: -0.02em;
 }
 
 #body-login .two-factor > p:not(:has(a)) {
@@ -1031,7 +1330,7 @@ body#body-login[data-theme-dark-highcontrast] { --rc-glow: 22%; --rc-card-shadow
 	transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.12s ease;
 }
 
-#body-login .two-factor a.two-factor-provider:hover { background: var(--rc-muted); border-color: var(--rc-ring); }
+#body-login .two-factor a.two-factor-provider:hover { background: var(--rc-muted); border-color: var(--rc-input-hover); }
 #body-login .two-factor a.two-factor-provider:active { transform: scale(0.99); }
 
 #body-login .two-factor a.two-factor-provider::after {
@@ -1043,7 +1342,7 @@ body#body-login[data-theme-dark-highcontrast] { --rc-glow: 22%; --rc-card-shadow
 	border: solid var(--rc-muted-foreground);
 	border-width: 0 1.5px 1.5px 0;
 	transform: rotate(-45deg);
-	transition: transform 0.2s var(--rc-ease-out);
+	transition: transform 0.2s var(--rc-ease);
 }
 
 #body-login .two-factor a.two-factor-provider:hover::after { transform: translateX(3px) rotate(-45deg); }
@@ -1063,43 +1362,46 @@ body#body-login[data-theme-dark-highcontrast] { --rc-glow: 22%; --rc-card-shadow
 
 #body-login .two-factor a.two-factor-secondary:hover { color: var(--rc-foreground) !important; }
 
+/* the code: terminal digits, spaced like a code */
 #body-login .two-factor input:is([type='tel'], [type='text'], [type='number']) {
 	width: 100%;
 	height: 40px;
 	box-sizing: border-box;
 	border: 1px solid var(--rc-input) !important;
-	border-radius: 6px !important;
+	border-radius: var(--rc-radius) !important;
 	background: var(--rc-background) !important;
 	color: var(--rc-foreground) !important;
-	font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+	font-family: var(--rc-font-term);
 	font-size: 18px;
 	letter-spacing: 0.3em;
 	text-align: center;
 }
 
-#body-login .two-factor input:focus {
-	border-color: var(--rc-ring) !important;
-	box-shadow: 0 0 0 3px color-mix(in srgb, var(--rc-ring) 35%, transparent) !important;
-	outline: none !important;
+#body-login .two-factor input:focus-visible {
+	border-color: var(--rc-input-hover) !important;
+	outline: 2px solid var(--rc-ring) !important;
+	outline-offset: 2px !important;
+	box-shadow: none !important;
 }
 
 /* -------------------------------------------------------- sign-up steps
    registration app: #registration_email → _verification → _user. A three-part
    progress line on top that fills from the last step to this one, a title
-   and a hint per step. Korean pages only: the title and hint are written
-   here, not translated strings. */
+   and a hint per step. The title and hint are written here, not translated
+   strings. */
 
 @property --rc-fill { syntax: '<percentage>'; inherits: false; initial-value: 0%; }
 
 #body-login :is(#registration_email, #registration_verification, #registration_user) .guest-box:not(footer) {
 	--rc-done: 0%;
 	--rc-now: 33.333%;
-	padding-top: 52px !important;
+	padding-top: 50px !important;
 }
 
 #body-login #registration_verification .guest-box:not(footer) { --rc-done: 33.333%; --rc-now: 66.666%; }
 #body-login #registration_user .guest-box:not(footer) { --rc-done: 66.666%; --rc-now: 100%; }
 
+/* the progress line: square, three segments, white (black on light) */
 :is(#registration_email, #registration_verification, #registration_user) .guest-box::before,
 :is(#registration_email, #registration_verification, #registration_user) .guest-box::after {
 	content: '';
@@ -1108,36 +1410,44 @@ body#body-login[data-theme-dark-highcontrast] { --rc-glow: 22%; --rc-card-shadow
 	left: 24px;
 	right: 24px;
 	height: 3px;
-	border-radius: 3px;
+	border-radius: 0;
 	-webkit-mask-image: linear-gradient(90deg, #000 calc(33.333% - 3px), transparent 0 calc(33.333% + 3px), #000 0 calc(66.666% - 3px), transparent 0 calc(66.666% + 3px), #000 0);
 	mask-image: linear-gradient(90deg, #000 calc(33.333% - 3px), transparent 0 calc(33.333% + 3px), #000 0 calc(66.666% - 3px), transparent 0 calc(66.666% + 3px), #000 0);
 }
 
-:is(#registration_email, #registration_verification, #registration_user) .guest-box::before { background: var(--rc-border); }
+:is(#registration_email, #registration_verification, #registration_user) .guest-box::before { background: var(--rc-border-window); }
 
 @keyframes rc-fill { from { --rc-fill: var(--rc-done); } to { --rc-fill: var(--rc-now); } }
 
 :is(#registration_email, #registration_verification, #registration_user) .guest-box::after {
-	background: linear-gradient(90deg, var(--rc-foreground) var(--rc-fill), transparent 0);
-	animation: rc-fill 0.9s var(--rc-ease-out) 0.35s both;
+	background: linear-gradient(90deg, var(--rc-strong) var(--rc-fill), transparent 0);
+	animation: rc-fill 0.9s var(--rc-ease) 0.35s both;
 }
 
+/* the step title: the page's prompt, the cursor drawn as a background block
+   at its end (a pseudo-element can't hold a second one) */
 :is(#registration_email, #registration_verification, #registration_user) form::before {
 	display: block;
+	width: fit-content;
+	max-width: 100%;
+	box-sizing: border-box;
 	margin-bottom: 4px;
+	padding-inline-end: 0.75em;
+	font-family: 'Robin Prompt', var(--rc-font);
 	font-size: 18px;
-	font-weight: 600;
+	font-weight: 700;
 	letter-spacing: -0.02em;
-	color: var(--rc-foreground);
-	animation: rc-row 0.55s var(--rc-ease-out) 0.14s both;
+	color: var(--rc-strong);
+	background: linear-gradient(currentColor, currentColor) no-repeat right center / 0.55em 1.05em;
+	animation: rc-row 0.3s var(--rc-ease) 0.14s both, rc-blink-bg 1s steps(1) infinite;
 }
 
-#registration_email form::before { content: 'Create your RobinCloud account'; }
-#registration_verification form::before { content: 'Check your email'; }
-#registration_user form::before { content: 'Your account'; }
-html[lang^='ko'] #registration_email form::before { content: 'RobinCloud 가입'; }
-html[lang^='ko'] #registration_verification form::before { content: '메일을 확인해 주세요'; }
-html[lang^='ko'] #registration_user form::before { content: '계정 정보'; }
+#registration_email form::before { content: '> Create your RobinCloud account'; }
+#registration_verification form::before { content: '> Check your email'; }
+#registration_user form::before { content: '> Your account'; }
+html[lang^='ko'] #registration_email form::before { content: '> RobinCloud 가입'; }
+html[lang^='ko'] #registration_verification form::before { content: '> 메일을 확인해 주세요'; }
+html[lang^='ko'] #registration_user form::before { content: '> 계정 정보'; }
 
 :is(#registration_email, #registration_verification) fieldset::before {
 	display: block;
@@ -1146,7 +1456,7 @@ html[lang^='ko'] #registration_user form::before { content: '계정 정보'; }
 	line-height: 1.55;
 	color: var(--rc-muted-foreground);
 	word-break: keep-all;
-	animation: rc-row 0.55s var(--rc-ease-out) 0.16s both;
+	animation: rc-row 0.3s var(--rc-ease) 0.16s both;
 }
 
 #registration_email fieldset::before { content: 'We will email you a code. Once an admin approves, RobinCloud and RobinMail are yours to use.'; }
@@ -1167,7 +1477,7 @@ html[lang^='ko'] #registration_verification fieldset::before { content: '방금 
 	word-break: keep-all;
 }
 
-/* step 3: the username rules are a hint, not a green success message */
+/* step 3: the username rules are a hint, not a success message */
 #registration_user .notecard {
 	border: 0 !important;
 	background: var(--rc-muted) !important;
@@ -1192,15 +1502,11 @@ html[lang^='ko'] #registration_verification fieldset::before { content: '방금 
 
 html[lang^='ko'] #registration_user .input-field:has(input[name='password'])::after {
 	content: '10자 이상, 흔히 쓰는 비밀번호는 안 돼요.';
-	display: block;
-	margin-top: 6px;
-	font-size: 12px;
-	color: var(--rc-muted-foreground);
 }
 
-/* step 2: the code is spaced like a code */
+/* step 2: the code in terminal digits, spaced like a code */
 #registration_verification .input-field__input {
-	font-family: ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, Consolas, monospace;
+	font-family: var(--rc-font-term);
 	letter-spacing: 0.14em;
 }
 
@@ -1210,9 +1516,8 @@ html[lang^='ko'] #registration_user .input-field:has(input[name='password'])::af
 
 /* ------------------------------------------------- Vue guest pages (v3)
    Pages built on NcGuestContent (#guest-content-vue: connecting an app
-   (login flow), password-protected shares, the LDAP password renewal) never
-   wore the card: 700px wide, a black slab with a hard 10px glow, the title
-   centred. Same card as the login now, same entrance. */
+   (login flow), password-protected shares, the LDAP password renewal):
+   the same window as the login, the same entrance. */
 
 #body-login #guest-content-vue {
 	width: min(400px, calc(100vw - 32px)) !important;
@@ -1222,34 +1527,12 @@ html[lang^='ko'] #registration_user .input-field:has(input[name='password'])::af
 	padding: 28px 24px 24px !important;
 	gap: 12px;
 	text-align: start;
-	color: var(--rc-foreground) !important;
-	border: 1px solid var(--rc-border) !important;
-	border-radius: 12px !important;
-	background: color-mix(in srgb, var(--rc-background) 84%, transparent) !important;
-	backdrop-filter: blur(18px) saturate(1.25) !important;
-	-webkit-backdrop-filter: blur(18px) saturate(1.25) !important;
-	box-shadow:
-		inset 0 1px 0 0 color-mix(in srgb, var(--rc-foreground) 7%, transparent),
-		0 28px 64px -32px rgb(0 0 0 / var(--rc-card-shadow)) !important;
-	animation: rc-rise 0.75s var(--rc-ease-out) 0.08s both;
 }
-
-#body-login #guest-content-vue > * {
-	animation: rc-row 0.55s var(--rc-ease-out) both;
-	animation-delay: calc(0.18s + var(--rc-i, 0) * 0.045s);
-}
-
-#guest-content-vue > :nth-child(1) { --rc-i: 0; }
-#guest-content-vue > :nth-child(2) { --rc-i: 1; }
-#guest-content-vue > :nth-child(3) { --rc-i: 2; }
-#guest-content-vue > :nth-child(4) { --rc-i: 3; }
-#guest-content-vue > :nth-child(5) { --rc-i: 4; }
-#guest-content-vue > :nth-child(n + 6) { --rc-i: 5; }
 
 #body-login #guest-content-vue h2 {
 	margin: 0 0 2px !important;
 	font-size: 18px !important;
-	font-weight: 600 !important;
+	font-weight: 700 !important;
 	letter-spacing: -0.02em;
 	text-align: start !important;
 	word-break: keep-all;
@@ -1266,8 +1549,8 @@ html[lang^='ko'] #registration_user .input-field:has(input[name='password'])::af
 }
 
 #body-login #guest-content-vue .notecard--warning {
-	border-color: color-mix(in srgb, #d97706 35%, var(--rc-border)) !important;
-	background: color-mix(in srgb, #d97706 6%, var(--rc-background)) !important;
+	border-color: color-mix(in srgb, var(--rc-amber) 45%, var(--rc-border)) !important;
+	background: var(--rc-amber-surface) !important;
 }
 
 #body-login #guest-content-vue .notecard__heading { font-size: 14px !important; line-height: 1.4 !important; }
@@ -1301,20 +1584,14 @@ html[lang^='ko'] #body-login #guest-content-vue form[class*='publicShareAuth']::
 }
 
 /* ================================================================ app motion
-   (2026-10-27) Inside the app the pages were still: the content snapped in,
-   menus and dialogs appeared at full size, the empty folder was a grey 64px
-   glyph. Now the same short shadcn motion as the mail and sign-up pages:
-   150-320ms, a strong ease-out, opacity and a few pixels of travel or a 4%
-   scale, nothing on every keystroke or scroll. One motion for everyone: no
-   reduced-motion variant (robin, 2026-10-27). */
+   (2026-10-27) The same short motion as the mail and sign-up pages:
+   150-320ms, the brand's ease-out, opacity and a few pixels of travel or a
+   4% scale, nothing on every keystroke or scroll, nothing that loops. One
+   motion for everyone: no reduced-motion variant (robin, D-021). */
 
 @keyframes rc-up { from { opacity: 0; transform: translateY(6px); } }
 @keyframes rc-pop { from { opacity: 0; transform: scale(0.96); } }
 @keyframes rc-fade { from { opacity: 0; } }
-
-body:not(#body-login) {
-	--rc-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-}
 
 /* The page: content rises once as it loads. No fill: an animation that
    keeps holding a transform makes the element a containing block, and the
@@ -1323,13 +1600,13 @@ body:not(#body-login) {
    and none at all on anything that holds dialogs. */
 body:not(#body-login) #app-content-vue,
 body:not(#body-login) #app-content {
-	animation: rc-up 0.32s var(--rc-ease-out);
+	animation: rc-up 0.32s var(--rc-ease);
 }
 
 /* the left navigation: entries come in top to bottom, 25ms apart (the first
    twelve; it is the page's first frame, never repeated on navigation) */
 body:not(#body-login) .app-navigation .app-navigation-entry-wrapper {
-	animation: rc-up 0.3s var(--rc-ease-out) backwards;
+	animation: rc-up 0.3s var(--rc-ease) backwards;
 }
 
 body:not(#body-login) .app-navigation .app-navigation-entry-wrapper:nth-child(2) { animation-delay: 25ms; }
@@ -1348,11 +1625,11 @@ body:not(#body-login) .app-navigation-entry {
 	transition: background-color 0.15s ease, color 0.15s ease;
 }
 
-/* Menus (the ⋯ actions, "New", the user menu): shadcn's dropdown, a 4%
-   scale from the side they open on plus a fade. The wrapper moves, not the
-   popper, which floating-ui positions with its own transform. */
+/* Menus (the ⋯ actions, "New", the user menu): a 4% scale from the side
+   they open on plus a fade. The wrapper moves, not the popper, which
+   floating-ui positions with its own transform. */
 .v-popper__popper--shown .v-popper__wrapper {
-	animation: rc-pop 0.16s var(--rc-ease-out, cubic-bezier(0.16, 1, 0.3, 1));
+	animation: rc-pop 0.16s var(--rc-ease, cubic-bezier(0.22, 1, 0.36, 1));
 	transform-origin: top center;
 }
 
@@ -1365,19 +1642,20 @@ body:not(#body-login) .app-navigation-entry {
 /* Dialogs: zoom in from 96% over the fading backdrop. */
 .modal-mask .modal-container,
 .dialog__modal .modal-container {
-	animation: rc-pop 0.2s var(--rc-ease-out, cubic-bezier(0.16, 1, 0.3, 1));
+	animation: rc-pop 0.2s var(--rc-ease, cubic-bezier(0.22, 1, 0.36, 1));
 }
 
-/* Toasts come up from the bottom edge, like sonner. */
+/* Toasts come up from the bottom edge. */
+div[class^='_toast_'],
 .toastify.dialogs {
-	animation: rc-up 0.3s var(--rc-ease-out, cubic-bezier(0.16, 1, 0.3, 1));
+	animation: rc-up 0.3s var(--rc-ease, cubic-bezier(0.22, 1, 0.36, 1));
 }
 
-/* Empty folders and lists: the icon in a quiet rounded tile instead of a
+/* Empty folders and lists: the icon in a quiet square tile instead of a
    bare 64px grey glyph, the title and text sized like the mail app's empty
    pane, and the whole block rising in. */
 body:not(#body-login) .empty-content {
-	animation: rc-up 0.36s var(--rc-ease-out) 0.08s backwards;
+	animation: rc-up 0.36s var(--rc-ease) 0.08s backwards;
 }
 
 body:not(#body-login) .empty-content__icon {
@@ -1386,7 +1664,9 @@ body:not(#body-login) .empty-content__icon {
 	min-width: 0 !important;
 	min-height: 0 !important;
 	margin: 0 auto 16px !important;
-	border-radius: 14px;
+	border: 1px solid var(--rc-border-window);
+	border-radius: var(--rc-radius);
+	box-sizing: border-box;
 	background: var(--rc-muted) !important;
 	background-size: 24px !important;
 	opacity: 1 !important;
@@ -1409,8 +1689,8 @@ body:not(#body-login) .empty-content__icon > * {
 body:not(#body-login) .empty-content__name {
 	margin-bottom: 4px !important;
 	font-size: 16px !important;
-	font-weight: 600 !important;
-	letter-spacing: -0.01em;
+	font-weight: 700 !important;
+	letter-spacing: -0.02em;
 }
 
 body:not(#body-login) .empty-content__description {
@@ -1423,56 +1703,35 @@ body:not(#body-login) .empty-content__description {
 }
 
 /* ============================================================ app pages,
-   round two (2026-10-27, robin: "UI 다 예쁘게"): the last Nextcloud colours
-   inside the app, a navigation you can see the current page in, lighter
-   list furniture, quiet scrollbars, phone-sized inputs. */
+   round two (2026-10-27): a navigation you can see the current page in,
+   lighter list furniture, quiet scrollbars, phone-sized inputs. */
 
-body:not(#body-login) {
-	--rc-nav-active: var(--rc-background);
-	--rc-nav-active-ring: var(--rc-border);
-	--rc-nav-hover: color-mix(in srgb, var(--rc-foreground) 5%, transparent);
-}
-
-@media (prefers-color-scheme: dark) {
-	body:not(#body-login):not([data-theme-light]):not([data-theme-light-highcontrast]) {
-		--rc-nav-active: #27272a;
-		--rc-nav-active-ring: transparent;
-	}
-}
-
-body[data-theme-dark]:not(#body-login),
-body[data-theme-dark-highcontrast]:not(#body-login) {
-	--rc-nav-active: #27272a;
-	--rc-nav-active-ring: transparent;
-}
-
-/* Info was Nextcloud blue (the ⓘ in notes, setup checks, two-factor): zinc
-   like the rest. Success, warning and error keep their colours. */
-body {
-	--color-info: var(--rc-muted) !important;
-	--color-info-hover: var(--rc-border) !important;
-	--color-info-text: var(--rc-foreground) !important;
-	--color-element-info: var(--rc-muted-foreground) !important;
-}
-
-/* Navigation: the current page was a 3px bar on a fill the same colour as
-   the canvas. Now a raised white entry (zinc-800 on dark), like shadcn's
-   sidebar, and a hover you can see. */
+/* Navigation: the current page is the pressed grey with a 2px bar in the
+   text colour on its leading edge (like a selected line in a terminal
+   menu), bold; no pill, no shadow. */
 body:not(#body-login) .app-navigation-entry:hover:not(.active):not(.app-navigation-entry--active) {
-	background-color: var(--rc-nav-hover) !important;
+	background-color: var(--rc-muted) !important;
 }
 
 body:not(#body-login) .app-navigation-entry.active,
 body:not(#body-login) .app-navigation-entry--active {
-	background-color: var(--rc-nav-active) !important;
-	box-shadow: var(--rc-shadow-sm), 0 0 0 1px var(--rc-nav-active-ring);
+	background-color: var(--rc-muted) !important;
+	box-shadow: inset 2px 0 0 var(--rc-strong) !important;
 }
+
+body:not(#body-login) .app-navigation-entry.active :is(.app-navigation-entry__name, .app-navigation-entry-icon),
+body:not(#body-login) .app-navigation-entry--active :is(.app-navigation-entry__name, .app-navigation-entry-icon) {
+	color: var(--rc-strong) !important;
+}
+
+body:not(#body-login) .app-navigation-entry.active .app-navigation-entry__name,
+body:not(#body-login) .app-navigation-entry--active .app-navigation-entry__name { font-weight: 600; }
 
 body:not(#body-login) .app-navigation-entry.active::before,
 body:not(#body-login) .app-navigation-entry--active::before { display: none !important; }
 
-/* Files: folders in the muted grey instead of solid black, checkboxes at
-   shadcn's size with a grey outline until ticked. */
+/* Files: folders in the muted grey instead of solid white/black, checkboxes
+   at a smaller size with a grey outline until ticked. */
 body:not(#body-login) .files-list__row-icon > .folder-icon,
 body:not(#body-login) .files-list__row-icon > .folder-open-icon {
 	color: var(--rc-muted-foreground) !important;
@@ -1495,22 +1754,14 @@ body:not(#body-login) .files-list__thead .files-list__column-sort-button {
 	font-weight: 500 !important;
 }
 
-/* The other fields drawn outside Nextcloud's input: the date picker kept a
-   grey 8px box, the dropdowns (language, groups) their own border. */
-body:not(#body-login) .native-datetime-picker--input,
-body:not(#body-login) .vs__dropdown-toggle {
-	border: 1px solid var(--rc-input) !important;
-	border-radius: 6px !important;
-	box-shadow: var(--rc-shadow-sm);
-	background: var(--color-main-background) !important;
+/* sizes are terminal numbers ("80 KB"); dates stay in Pretendard (they are
+   Korean, "3분 전"), with even digits */
+body:not(#body-login) td.files-list__row-size {
+	font-family: var(--rc-font-term);
+	font-size: 12.5px;
 }
 
-body:not(#body-login) .native-datetime-picker--input:focus,
-body:not(#body-login) .vs--open .vs__dropdown-toggle {
-	border-color: var(--rc-ring) !important;
-	box-shadow: 0 0 0 3px color-mix(in srgb, var(--rc-ring) 35%, transparent) !important;
-	outline: none !important;
-}
+body:not(#body-login) td.files-list__row-mtime { font-variant-numeric: tabular-nums; }
 
 /* Scrollbars: thin and quiet instead of the browser's grey slab. */
 body:not(#body-login),
@@ -1531,22 +1782,21 @@ body:not(#body-login) * {
 }
 
 /* ========================================================== round three
-   (2026-10-27, robin: "UI랑 애니메이션 더 예쁘게 최대로"): buttons answer a
-   press, the row icons step back until the row is pointed at, the details
-   panel slides in with shadcn tabs, and scrollbars show only where the
-   pointer is. */
+   (2026-10-27): buttons answer a press, the row icons step back until the
+   row is pointed at, the details panel slides in with square tabs, and
+   scrollbars show only where the pointer is. */
 
 @keyframes rc-side-in { from { opacity: 0; transform: translateX(12px); } }
 
 /* Buttons give a little under the pointer, as in the mail app. */
 body:not(#body-login) .button-vue {
-	transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease, transform 0.15s var(--rc-ease-out);
+	transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.15s var(--rc-ease);
 }
 
 body:not(#body-login) .button-vue:active:not(:disabled) { transform: scale(0.97); }
 
-/* File rows: the share and ⋯ icons sat at full white on every row, a column
-   of noise. Muted until the row is pointed at, focused or open. */
+/* File rows: the share and ⋯ icons sat at full strength on every row, a
+   column of noise. Muted until the row is pointed at, focused or open. */
 body:not(#body-login) .files-list__row-actions .button-vue {
 	color: var(--rc-muted-foreground) !important;
 }
@@ -1563,25 +1813,26 @@ body:not(#body-login) .files-list__row-actions .button-vue :is(.material-design-
 /* The details panel slides in from the right edge. No fill (see "app
    motion": a held transform would trap the dialogs it opens). */
 body:not(#body-login) aside.app-sidebar {
-	animation: rc-side-in 0.26s var(--rc-ease-out);
+	animation: rc-side-in 0.26s var(--rc-ease);
 }
 
-/* Its tabs as shadcn Tabs: a muted track, the current tab a raised chip,
-   icon and label on one line. Nextcloud stacked the icon over the label in
-   a 67px block and marked the current one twice (a fill and a 4px bar). */
+/* Its tabs: one framed strip, the current tab the pressed grey, icon and
+   label on one line. Nextcloud stacked the icon over the label in a 67px
+   block and marked the current one twice (a fill and a 4px bar). */
 body:not(#body-login) .app-sidebar-tabs__nav {
-	gap: 0 !important;
+	gap: 2px !important;
 	margin: 4px 10px 10px !important;
-	padding: 3px !important;
-	border-radius: 10px;
-	background: var(--rc-muted);
+	padding: 2px !important;
+	border: 1px solid var(--rc-border);
+	border-radius: var(--rc-radius);
+	background: transparent;
 }
 
 body:not(#body-login) .app-sidebar-tabs__tab {
 	height: 30px !important;
 	min-height: 30px !important;
-	border: 1px solid transparent !important;
-	border-radius: 7px !important;
+	border: 0 !important;
+	border-radius: var(--rc-radius) !important;
 	background: transparent !important;
 	box-shadow: none !important;
 	color: var(--rc-muted-foreground) !important;
@@ -1589,13 +1840,11 @@ body:not(#body-login) .app-sidebar-tabs__tab {
 
 body:not(#body-login) .app-sidebar-tabs__tab::after { display: none !important; }
 
-body:not(#body-login) .app-sidebar-tabs__tab:hover:not(.active) { color: var(--rc-foreground) !important; }
+body:not(#body-login) .app-sidebar-tabs__tab:hover:not(.active) { color: var(--rc-foreground) !important; background: color-mix(in srgb, var(--rc-muted) 60%, transparent) !important; }
 
 body:not(#body-login) .app-sidebar-tabs__tab.active {
-	background: var(--rc-nav-active) !important;
-	border-color: var(--rc-nav-active-ring) !important;
-	box-shadow: var(--rc-shadow-sm) !important;
-	color: var(--rc-foreground) !important;
+	background: var(--rc-muted) !important;
+	color: var(--rc-strong) !important;
 }
 
 body:not(#body-login) .app-sidebar-tabs__tab .checkbox-content {
