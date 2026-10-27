@@ -1177,3 +1177,95 @@ html[lang^='ko'] #registration_user .input-field:has(input[name='password'])::af
 /* "back to login" under the button: quiet */
 :is(#registration_email, #registration_verification) a.button-vue--tertiary { color: var(--rc-muted-foreground) !important; }
 :is(#registration_email, #registration_verification) a.button-vue--tertiary:hover { color: var(--rc-foreground) !important; background: transparent !important; }
+
+/* ------------------------------------------------- Vue guest pages (v3)
+   Pages built on NcGuestContent (#guest-content-vue: connecting an app
+   (login flow), password-protected shares, the LDAP password renewal) never
+   wore the card: 700px wide, a black slab with a hard 10px glow, the title
+   centred. Same card as the login now, same entrance. */
+
+#body-login #guest-content-vue {
+	width: min(400px, calc(100vw - 32px)) !important;
+	max-width: none !important;
+	box-sizing: border-box;
+	margin: 0 auto !important;
+	padding: 28px 24px 24px !important;
+	gap: 12px;
+	text-align: start;
+	color: var(--rc-foreground) !important;
+	border: 1px solid var(--rc-border) !important;
+	border-radius: 12px !important;
+	background: color-mix(in srgb, var(--rc-background) 84%, transparent) !important;
+	backdrop-filter: blur(18px) saturate(1.25) !important;
+	-webkit-backdrop-filter: blur(18px) saturate(1.25) !important;
+	box-shadow:
+		inset 0 1px 0 0 color-mix(in srgb, var(--rc-foreground) 7%, transparent),
+		0 28px 64px -32px rgb(0 0 0 / var(--rc-card-shadow)) !important;
+	animation: rc-rise 0.75s var(--rc-ease-out) 0.08s both;
+}
+
+#body-login #guest-content-vue > * {
+	animation: rc-row 0.55s var(--rc-ease-out) both;
+	animation-delay: calc(0.18s + var(--rc-i, 0) * 0.045s);
+}
+
+#guest-content-vue > :nth-child(1) { --rc-i: 0; }
+#guest-content-vue > :nth-child(2) { --rc-i: 1; }
+#guest-content-vue > :nth-child(3) { --rc-i: 2; }
+#guest-content-vue > :nth-child(4) { --rc-i: 3; }
+#guest-content-vue > :nth-child(5) { --rc-i: 4; }
+#guest-content-vue > :nth-child(n + 6) { --rc-i: 5; }
+
+#body-login #guest-content-vue h2 {
+	margin: 0 0 2px !important;
+	font-size: 18px !important;
+	font-weight: 600 !important;
+	letter-spacing: -0.02em;
+	text-align: start !important;
+	word-break: keep-all;
+}
+
+#body-login #guest-content-vue :is(p, .notecard) { word-break: keep-all; }
+
+/* The two notes (what is asked, the phishing warning) are one quiet hint and
+   one amber warning, not two black boxes with a 20px heading. */
+#body-login #guest-content-vue .notecard--info {
+	border: 0 !important;
+	background: var(--rc-muted) !important;
+	color: var(--rc-muted-foreground) !important;
+}
+
+#body-login #guest-content-vue .notecard--warning {
+	border-color: color-mix(in srgb, #d97706 35%, var(--rc-border)) !important;
+	background: color-mix(in srgb, #d97706 6%, var(--rc-background)) !important;
+}
+
+#body-login #guest-content-vue .notecard__heading { font-size: 14px !important; line-height: 1.4 !important; }
+#body-login #guest-content-vue .notecard p:not(.notecard__heading) { color: var(--rc-muted-foreground); }
+
+/* Buttons the card's width, the main one first. */
+#body-login #guest-content-vue :is(a, button).button-vue:not(.input-field__trailing-button) {
+	width: 100% !important;
+	max-width: none !important;
+	margin: 0 !important;
+}
+
+#body-login #guest-content-vue :is(a, button).button-vue--vue-primary:not(.input-field__trailing-button) { margin-top: 4px !important; }
+
+/* Password-protected share: the field and its arrow button in one row. */
+#body-login #guest-content-vue form { display: flex; flex-direction: column; gap: 12px; }
+#body-login #guest-content-vue .input-field { margin: 0 !important; }
+
+/* ...with a line saying where the password comes from. */
+#body-login #guest-content-vue form[class*='publicShareAuth']::before {
+	content: 'This file is shared with a password. Enter the one you were given.';
+	margin-top: -6px;
+	font-size: 13.5px;
+	line-height: 1.55;
+	color: var(--rc-muted-foreground);
+	word-break: keep-all;
+}
+
+html[lang^='ko'] #body-login #guest-content-vue form[class*='publicShareAuth']::before {
+	content: '공유한 사람에게 받은 비밀번호를 넣어 주세요.';
+}

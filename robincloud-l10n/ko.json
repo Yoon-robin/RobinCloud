@@ -413,7 +413,15 @@
     "Use backup code": "백업 코드 쓰기",
     "Cancel login": "로그인 취소",
     "Error while validating your second factor": "두 번째 인증을 확인하지 못했어요",
-    "Error": "오류"
+    "Error": "오류",
+    "Please log in before granting \"{client}\" access to your {instanceName} account.": "\"{client}\"이(가) {instanceName} 계정을 쓰려고 해요. 허용하려면 먼저 로그인해 주세요.",
+    "Currently logged in as {userDisplayName} ({userId}).": "지금 {userDisplayName}({userId})(으)로 로그인돼 있어요.",
+    "Account access": "계정 접근 허용",
+    "Account connected": "연결됐어요",
+    "Grant access": "허용",
+    "Submit": "열기",
+    "App password": "앱 비밀번호",
+    "Email address": "이메일 주소"
   },
   "registration": {
     "Register": "가입 신청",
