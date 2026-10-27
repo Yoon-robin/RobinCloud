@@ -702,3 +702,478 @@ a[href^="https://help.nextcloud.com"] { display: none !important; }
    Talk, mail, contacts and friends are gone, so the header's contacts menu
    has nothing to offer. */
 #contactsmenu { display: none !important; }
+
+/* =================================================================== guest
+   pages, round two (2026-10-27): one ambient backdrop, the card centred,
+   a choreographed entrance, the sign-up steps told apart, and the pages the
+   first round never reached (two-factor, confirmation, success, errors). */
+
+/* --------------------------------------------------------------- motion */
+
+#body-login {
+	--rc-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+	--rc-glow: 22%;
+	--rc-card-shadow: 0.55;
+}
+
+@media (prefers-color-scheme: light) { #body-login { --rc-glow: 12%; --rc-card-shadow: 0.16; } }
+body#body-login[data-theme-light],
+body#body-login[data-theme-light-highcontrast] { --rc-glow: 12%; --rc-card-shadow: 0.16; }
+body#body-login[data-theme-dark],
+body#body-login[data-theme-dark-highcontrast] { --rc-glow: 22%; --rc-card-shadow: 0.55; }
+
+@keyframes rc-rise {
+	from { opacity: 0; transform: translateY(14px) scale(0.98); filter: blur(6px); }
+	to { opacity: 1; transform: none; filter: none; }
+}
+
+@keyframes rc-row {
+	from { opacity: 0; transform: translateY(8px); }
+	to { opacity: 1; transform: none; }
+}
+
+@keyframes rc-logo {
+	from { opacity: 0; transform: translateY(-8px); filter: blur(4px); }
+	to { opacity: 1; transform: none; filter: none; }
+}
+
+@keyframes rc-drift {
+	0% { transform: translate3d(-4%, -3%, 0) rotate(0deg) scale(1); }
+	50% { transform: translate3d(3%, 4%, 0) rotate(8deg) scale(1.08); }
+	100% { transform: translate3d(5%, -2%, 0) rotate(-5deg) scale(1.03); }
+}
+
+@keyframes rc-shake {
+	10%, 90% { transform: translateX(-1px); }
+	20%, 80% { transform: translateX(3px); }
+	30%, 50%, 70% { transform: translateX(-5px); }
+	40%, 60% { transform: translateX(5px); }
+}
+
+/* ------------------------------------------------------------- backdrop
+   The flat dot grid fades out towards the edges, and three soft glows drift
+   very slowly behind the card. Fixed pseudo-elements: they never scroll or
+   take clicks, and the glow layer is one composited transform. */
+
+#body-login {
+	background: var(--rc-muted) none !important;
+	isolation: isolate;
+}
+
+#body-login::before,
+#body-login::after {
+	content: '';
+	position: fixed;
+	pointer-events: none;
+}
+
+#body-login::before {
+	inset: 0;
+	z-index: -1;
+	background-image:
+		radial-gradient(38% 34% at 50% 46%, color-mix(in srgb, var(--rc-foreground) 5%, transparent), transparent 70%),
+		radial-gradient(circle at 1px 1px, color-mix(in srgb, var(--rc-foreground) 12%, transparent) 1px, transparent 0);
+	background-size: 100% 100%, 22px 22px;
+	-webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, #000 15%, transparent 80%);
+	mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, #000 15%, transparent 80%);
+}
+
+#body-login::after {
+	inset: -30%;
+	z-index: -2;
+	background:
+		radial-gradient(30% 26% at 36% 36%, color-mix(in srgb, #818cf8 var(--rc-glow), transparent), transparent 70%),
+		radial-gradient(28% 24% at 66% 64%, color-mix(in srgb, #38bdf8 var(--rc-glow), transparent), transparent 70%),
+		radial-gradient(22% 20% at 62% 30%, color-mix(in srgb, #e879f9 calc(var(--rc-glow) * 0.6), transparent), transparent 70%);
+	filter: blur(56px);
+	animation: rc-drift 40s ease-in-out infinite alternate;
+	will-change: transform;
+}
+
+/* --------------------------------------------------------------- layout
+   Logo + card centred in the window (Nextcloud parks them near the top).
+   The footer line stays below; 64px is its height. */
+
+#body-login .wrapper {
+	min-height: calc(100dvh - 64px);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	box-sizing: border-box;
+	padding-block: 32px 8px;
+}
+
+#body-login .wrapper .v-align { margin-block: 0 !important; }
+
+#body-login #header .logo { animation: rc-logo 0.7s var(--rc-ease-out) both; }
+
+#body-login footer.guest-box { animation: rc-row 0.6s var(--rc-ease-out) 0.5s both; }
+
+/* ----------------------------------------------------------------- card
+   A touch of glass so the glow shows through at the edges, a hairline
+   highlight along the top, a long soft shadow. */
+
+#body-login .guest-box:not(footer),
+#body-login .body-login-container.update {
+	position: relative;
+	background: color-mix(in srgb, var(--rc-background) 84%, transparent) !important;
+	backdrop-filter: blur(18px) saturate(1.25) !important;
+	-webkit-backdrop-filter: blur(18px) saturate(1.25) !important;
+	box-shadow:
+		inset 0 1px 0 0 color-mix(in srgb, var(--rc-foreground) 7%, transparent),
+		0 28px 64px -32px rgb(0 0 0 / var(--rc-card-shadow)) !important;
+	animation: rc-rise 0.75s var(--rc-ease-out) 0.08s both;
+}
+
+#body-login .guest-box:not(footer) { padding: 28px 24px 24px !important; }
+
+/* A wide box (the exception page with its trace) keeps its width: the
+   400px rule above was squeezing it. */
+#body-login .guest-box.wide:not(footer) { width: min(720px, calc(100vw - 32px)) !important; }
+
+/* Rows follow the card in, one after another: the sign-up steps, the login
+   form, and the plain PHP pages. */
+#body-login .guest-box:not(footer) :is(fieldset, .login-form__fieldset) > :not([type='hidden']):not(.hidden),
+#body-login .guest-box:not(footer) > :is(h2, p, ul, form, .buttons),
+#body-login .body-login-container.update > * {
+	animation: rc-row 0.55s var(--rc-ease-out) both;
+	animation-delay: calc(0.18s + var(--rc-i, 0) * 0.045s);
+}
+
+:is(fieldset, .login-form__fieldset, .guest-box, .body-login-container.update) > :nth-child(1) { --rc-i: 0; }
+:is(fieldset, .login-form__fieldset, .guest-box, .body-login-container.update) > :nth-child(2) { --rc-i: 1; }
+:is(fieldset, .login-form__fieldset, .guest-box, .body-login-container.update) > :nth-child(3) { --rc-i: 2; }
+:is(fieldset, .login-form__fieldset, .guest-box, .body-login-container.update) > :nth-child(4) { --rc-i: 3; }
+:is(fieldset, .login-form__fieldset, .guest-box, .body-login-container.update) > :nth-child(5) { --rc-i: 4; }
+:is(fieldset, .login-form__fieldset, .guest-box, .body-login-container.update) > :nth-child(6) { --rc-i: 5; }
+:is(fieldset, .login-form__fieldset, .guest-box, .body-login-container.update) > :nth-child(7) { --rc-i: 6; }
+:is(fieldset, .login-form__fieldset, .guest-box, .body-login-container.update) > :nth-child(n + 8) { --rc-i: 7; }
+
+/* ------------------------------------------------------- inputs, buttons */
+
+/* Chrome paints autofilled fields pale yellow/blue over the dark card. */
+#body-login input:-webkit-autofill,
+#body-login input:-webkit-autofill:hover,
+#body-login input:-webkit-autofill:focus {
+	-webkit-text-fill-color: var(--rc-foreground) !important;
+	-webkit-box-shadow: 0 0 0 1000px var(--rc-background) inset !important;
+	caret-color: var(--rc-foreground);
+	transition: background-color 9999s;
+}
+
+#body-login .input-field:focus-within .input-field__label { color: var(--rc-foreground) !important; }
+
+#body-login :is(.button-vue, a.button, input[type='submit']) {
+	transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.12s ease, box-shadow 0.2s ease !important;
+}
+
+#body-login :is(.button-vue, a.button, input[type='submit']):active:not(:disabled) { transform: scale(0.98); }
+
+#body-login :is(.button-vue--primary, .button-vue--vue-primary):hover:not(:disabled) {
+	box-shadow: 0 6px 18px -8px color-mix(in srgb, var(--rc-primary) 55%, transparent) !important;
+}
+
+/* A primary button that is not ready yet reads as "not yet", not as a dead
+   grey slab: same shape, quiet fill, muted text. */
+#body-login :is(.button-vue--primary, .button-vue--vue-primary):disabled {
+	opacity: 1 !important;
+	background-color: color-mix(in srgb, var(--rc-foreground) 9%, var(--rc-background)) !important;
+	color: var(--rc-muted-foreground) !important;
+	border-color: transparent !important;
+	box-shadow: none !important;
+	cursor: not-allowed !important;
+}
+
+/* The verified address on the last sign-up step: shown, plainly locked. */
+#body-login .input-field--disabled,
+#body-login .input-field--disabled .input-field__input,
+#body-login .input-field--disabled .input-field__label { opacity: 1 !important; }
+
+#body-login .input-field--disabled .input-field__input {
+	background: var(--rc-muted) !important;
+	color: var(--rc-muted-foreground) !important;
+	border-style: dashed !important;
+	cursor: not-allowed;
+}
+
+/* Its label floated half over the dashed border (Nextcloud lifts a filled
+   field's label onto the line, with no backing): above the field instead. */
+#body-login .input-field--disabled,
+#body-login .input-field--disabled .input-field__main-wrapper { height: auto !important; overflow: visible !important; }
+#body-login .input-field--disabled .input-field__main-wrapper { display: flex; flex-direction: column-reverse; }
+#body-login .input-field--disabled .input-field__input { height: 36px !important; min-height: 36px !important; flex: none; }
+#body-login .input-field--disabled .input-field__label {
+	position: static !important;
+	transform: none !important;
+	inset: auto !important;
+	margin: 0 0 6px 2px !important;
+	padding: 0 !important;
+	font-size: 12.5px !important;
+	line-height: 1.2 !important;
+	color: var(--rc-muted-foreground) !important;
+	background: none !important;
+}
+
+/* Errors arrive with a short shake instead of just appearing. */
+#body-login .notecard--error { animation: rc-shake 0.42s ease both; }
+
+/* Plain PHP pages (success, confirmation, errors): their buttons were never
+   restyled, so they kept Nextcloud's own pill. */
+#body-login .guest-box h2 {
+	margin: 0 0 6px !important;
+	font-size: 18px !important;
+	font-weight: 600 !important;
+	letter-spacing: -0.02em;
+	word-break: keep-all;
+}
+
+#body-login .guest-box > p,
+#body-login .guest-box form > p,
+#body-login .guest-box li > p {
+	font-size: 14px;
+	line-height: 1.6;
+	color: var(--rc-muted-foreground);
+	word-break: keep-all;
+}
+
+#body-login .guest-box p.hint { font-size: 13px; opacity: 0.85; }
+#body-login .guest-box > ul { margin: 12px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+
+#body-login .guest-box :is(a.button.primary, input[type='submit'].primary),
+#body-login .body-login-container.update .two-factor-primary {
+	display: flex !important;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 36px !important;
+	min-height: 36px !important;
+	margin: 20px 0 0 !important;
+	padding: 0 16px !important;
+	box-sizing: border-box;
+	border: 0 !important;
+	border-radius: 6px !important;
+	background: var(--rc-primary) !important;
+	color: var(--rc-primary-foreground) !important;
+	font-size: 14px !important;
+	font-weight: 500 !important;
+	cursor: pointer;
+}
+
+#body-login .guest-box :is(a.button.primary, input[type='submit'].primary):hover,
+#body-login .body-login-container.update .two-factor-primary:hover {
+	background: var(--rc-primary-hover) !important;
+}
+
+#body-login .guest-box .buttons { margin: 0; }
+
+/* ----------------------------------------------------------- two-factor
+   Provider list as quiet rows with a chevron, the secondary links muted. */
+
+#body-login .body-login-container.update.two-factor { text-align: start; }
+
+#body-login .two-factor .two-factor-header {
+	margin: 0 0 6px !important;
+	font-size: 20px !important;
+	font-weight: 600 !important;
+	letter-spacing: -0.025em;
+}
+
+#body-login .two-factor > p:not(:has(a)) {
+	margin: 0 0 16px !important;
+	font-size: 14px;
+	line-height: 1.6;
+	color: var(--rc-muted-foreground);
+	word-break: keep-all;
+}
+
+#body-login .two-factor ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+
+#body-login .two-factor a.two-factor-provider {
+	display: flex !important;
+	align-items: center;
+	gap: 12px;
+	padding: 12px 14px !important;
+	border: 1px solid var(--rc-border);
+	border-radius: var(--rc-radius);
+	background: var(--rc-background);
+	color: var(--rc-foreground) !important;
+	text-align: start;
+	transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.12s ease;
+}
+
+#body-login .two-factor a.two-factor-provider:hover { background: var(--rc-muted); border-color: var(--rc-ring); }
+#body-login .two-factor a.two-factor-provider:active { transform: scale(0.99); }
+
+#body-login .two-factor a.two-factor-provider::after {
+	content: '';
+	margin-inline-start: auto;
+	flex: none;
+	width: 7px;
+	height: 7px;
+	border: solid var(--rc-muted-foreground);
+	border-width: 0 1.5px 1.5px 0;
+	transform: rotate(-45deg);
+	transition: transform 0.2s var(--rc-ease-out);
+}
+
+#body-login .two-factor a.two-factor-provider:hover::after { transform: translateX(3px) rotate(-45deg); }
+#body-login .two-factor a.two-factor-provider img { width: 20px; height: 20px; opacity: 0.8; filter: var(--background-invert-if-dark); }
+#body-login .two-factor a.two-factor-provider p { margin: 0; font-size: 12.5px; color: var(--rc-muted-foreground); }
+
+#body-login .two-factor a.two-factor-secondary {
+	display: inline-block;
+	margin-top: 14px;
+	font-size: 13px;
+	color: var(--rc-muted-foreground) !important;
+	text-decoration: underline;
+	text-underline-offset: 3px;
+	text-decoration-color: color-mix(in srgb, var(--rc-muted-foreground) 40%, transparent);
+	transition: color 0.15s ease;
+}
+
+#body-login .two-factor a.two-factor-secondary:hover { color: var(--rc-foreground) !important; }
+
+#body-login .two-factor input:is([type='tel'], [type='text'], [type='number']) {
+	width: 100%;
+	height: 40px;
+	box-sizing: border-box;
+	border: 1px solid var(--rc-input) !important;
+	border-radius: 6px !important;
+	background: var(--rc-background) !important;
+	color: var(--rc-foreground) !important;
+	font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+	font-size: 18px;
+	letter-spacing: 0.3em;
+	text-align: center;
+}
+
+#body-login .two-factor input:focus {
+	border-color: var(--rc-ring) !important;
+	box-shadow: 0 0 0 3px color-mix(in srgb, var(--rc-ring) 35%, transparent) !important;
+	outline: none !important;
+}
+
+/* -------------------------------------------------------- sign-up steps
+   registration app: #registration_email → _verification → _user. A three-part
+   progress line on top that fills from the last step to this one, a title
+   and a hint per step. Korean pages only: the title and hint are written
+   here, not translated strings. */
+
+@property --rc-fill { syntax: '<percentage>'; inherits: false; initial-value: 0%; }
+
+#body-login :is(#registration_email, #registration_verification, #registration_user) .guest-box:not(footer) {
+	--rc-done: 0%;
+	--rc-now: 33.333%;
+	padding-top: 52px !important;
+}
+
+#body-login #registration_verification .guest-box:not(footer) { --rc-done: 33.333%; --rc-now: 66.666%; }
+#body-login #registration_user .guest-box:not(footer) { --rc-done: 66.666%; --rc-now: 100%; }
+
+:is(#registration_email, #registration_verification, #registration_user) .guest-box::before,
+:is(#registration_email, #registration_verification, #registration_user) .guest-box::after {
+	content: '';
+	position: absolute;
+	top: 24px;
+	left: 24px;
+	right: 24px;
+	height: 3px;
+	border-radius: 3px;
+	-webkit-mask-image: linear-gradient(90deg, #000 calc(33.333% - 3px), transparent 0 calc(33.333% + 3px), #000 0 calc(66.666% - 3px), transparent 0 calc(66.666% + 3px), #000 0);
+	mask-image: linear-gradient(90deg, #000 calc(33.333% - 3px), transparent 0 calc(33.333% + 3px), #000 0 calc(66.666% - 3px), transparent 0 calc(66.666% + 3px), #000 0);
+}
+
+:is(#registration_email, #registration_verification, #registration_user) .guest-box::before { background: var(--rc-border); }
+
+@keyframes rc-fill { from { --rc-fill: var(--rc-done); } to { --rc-fill: var(--rc-now); } }
+
+:is(#registration_email, #registration_verification, #registration_user) .guest-box::after {
+	background: linear-gradient(90deg, var(--rc-foreground) var(--rc-fill), transparent 0);
+	animation: rc-fill 0.9s var(--rc-ease-out) 0.35s both;
+}
+
+:is(#registration_email, #registration_verification, #registration_user) form::before {
+	display: block;
+	margin-bottom: 4px;
+	font-size: 18px;
+	font-weight: 600;
+	letter-spacing: -0.02em;
+	color: var(--rc-foreground);
+	animation: rc-row 0.55s var(--rc-ease-out) 0.14s both;
+}
+
+#registration_email form::before { content: 'Create your RobinCloud account'; }
+#registration_verification form::before { content: 'Check your email'; }
+#registration_user form::before { content: 'Your account'; }
+html[lang^='ko'] #registration_email form::before { content: 'RobinCloud 가입'; }
+html[lang^='ko'] #registration_verification form::before { content: '메일을 확인해 주세요'; }
+html[lang^='ko'] #registration_user form::before { content: '계정 정보'; }
+
+:is(#registration_email, #registration_verification) fieldset::before {
+	display: block;
+	margin: 0 0 4px;
+	font-size: 13.5px;
+	line-height: 1.55;
+	color: var(--rc-muted-foreground);
+	word-break: keep-all;
+	animation: rc-row 0.55s var(--rc-ease-out) 0.16s both;
+}
+
+#registration_email fieldset::before { content: 'We will email you a code. Once an admin approves, RobinCloud and RobinMail are yours to use.'; }
+#registration_verification fieldset::before { content: 'Enter the code from the email we just sent. Nothing after a few minutes? Check your spam folder.'; }
+html[lang^='ko'] #registration_email fieldset::before { content: '이메일로 인증 코드를 보내 드려요. 관리자가 승인하면 RobinCloud와 RobinMail을 바로 쓸 수 있어요.'; }
+html[lang^='ko'] #registration_verification fieldset::before { content: '방금 보낸 메일의 인증 코드를 넣어 주세요. 몇 분이 지나도 안 오면 스팸함도 확인해 주세요.'; }
+
+:is(#registration_email, #registration_verification, #registration_user) fieldset { display: flex; flex-direction: column; gap: 12px; }
+:is(#registration_email, #registration_verification, #registration_user) .input-field { margin: 0 !important; }
+:is(#registration_email, #registration_verification, #registration_user) fieldset > .button-vue--primary { margin-top: 4px; }
+
+/* step 3: the intro line becomes the hint under the title */
+#registration_user fieldset > p {
+	margin: 0 !important;
+	font-size: 13.5px;
+	line-height: 1.55;
+	color: var(--rc-muted-foreground);
+	word-break: keep-all;
+}
+
+/* step 3: the username rules are a hint, not a green success message */
+#registration_user .notecard {
+	border: 0 !important;
+	background: var(--rc-muted) !important;
+	--note-background: var(--rc-muted) !important;
+	color: var(--rc-muted-foreground) !important;
+	font-size: 12.5px;
+	padding: 10px 12px !important;
+	word-break: keep-all;
+}
+
+#registration_user .notecard__icon { display: none !important; }
+
+/* step 3: what the password needs, under the field (password_policy: 10 or
+   more characters, not a common one) */
+#registration_user .input-field:has(input[name='password'])::after {
+	content: 'At least 10 characters, not a common password.';
+	display: block;
+	margin-top: 6px;
+	font-size: 12px;
+	color: var(--rc-muted-foreground);
+}
+
+html[lang^='ko'] #registration_user .input-field:has(input[name='password'])::after {
+	content: '10자 이상, 흔히 쓰는 비밀번호는 안 돼요.';
+	display: block;
+	margin-top: 6px;
+	font-size: 12px;
+	color: var(--rc-muted-foreground);
+}
+
+/* step 2: the code is spaced like a code */
+#registration_verification .input-field__input {
+	font-family: ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, Consolas, monospace;
+	letter-spacing: 0.14em;
+}
+
+/* "back to login" under the button: quiet */
+:is(#registration_email, #registration_verification) a.button-vue--tertiary { color: var(--rc-muted-foreground) !important; }
+:is(#registration_email, #registration_verification) a.button-vue--tertiary:hover { color: var(--rc-foreground) !important; background: transparent !important; }
