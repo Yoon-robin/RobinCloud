@@ -1269,3 +1269,125 @@ html[lang^='ko'] #registration_user .input-field:has(input[name='password'])::af
 html[lang^='ko'] #body-login #guest-content-vue form[class*='publicShareAuth']::before {
 	content: '공유한 사람에게 받은 비밀번호를 넣어 주세요.';
 }
+
+/* ================================================================ app motion
+   (2026-10-27) Inside the app the pages were still: the content snapped in,
+   menus and dialogs appeared at full size, the empty folder was a grey 64px
+   glyph. Now the same short shadcn motion as the mail and sign-up pages:
+   150-320ms, a strong ease-out, opacity and a few pixels of travel or a 4%
+   scale, nothing on every keystroke or scroll. One motion for everyone: no
+   reduced-motion variant (robin, 2026-10-27). */
+
+@keyframes rc-up { from { opacity: 0; transform: translateY(6px); } }
+@keyframes rc-pop { from { opacity: 0; transform: scale(0.96); } }
+@keyframes rc-fade { from { opacity: 0; } }
+
+body:not(#body-login) {
+	--rc-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* The page: content rises once as it loads. No fill: an animation that
+   keeps holding a transform makes the element a containing block, and the
+   dialogs mounted inside it (new folder, sharing) were then laid out and
+   stacked inside the page instead of over it. Only `backwards` fill (delays)
+   and none at all on anything that holds dialogs. */
+body:not(#body-login) #app-content-vue,
+body:not(#body-login) #app-content {
+	animation: rc-up 0.32s var(--rc-ease-out);
+}
+
+/* the left navigation: entries come in top to bottom, 25ms apart (the first
+   twelve; it is the page's first frame, never repeated on navigation) */
+body:not(#body-login) .app-navigation .app-navigation-entry-wrapper {
+	animation: rc-up 0.3s var(--rc-ease-out) backwards;
+}
+
+body:not(#body-login) .app-navigation .app-navigation-entry-wrapper:nth-child(2) { animation-delay: 25ms; }
+body:not(#body-login) .app-navigation .app-navigation-entry-wrapper:nth-child(3) { animation-delay: 50ms; }
+body:not(#body-login) .app-navigation .app-navigation-entry-wrapper:nth-child(4) { animation-delay: 75ms; }
+body:not(#body-login) .app-navigation .app-navigation-entry-wrapper:nth-child(5) { animation-delay: 100ms; }
+body:not(#body-login) .app-navigation .app-navigation-entry-wrapper:nth-child(6) { animation-delay: 125ms; }
+body:not(#body-login) .app-navigation .app-navigation-entry-wrapper:nth-child(7) { animation-delay: 150ms; }
+body:not(#body-login) .app-navigation .app-navigation-entry-wrapper:nth-child(8) { animation-delay: 175ms; }
+body:not(#body-login) .app-navigation .app-navigation-entry-wrapper:nth-child(9) { animation-delay: 200ms; }
+body:not(#body-login) .app-navigation .app-navigation-entry-wrapper:nth-child(10) { animation-delay: 225ms; }
+body:not(#body-login) .app-navigation .app-navigation-entry-wrapper:nth-child(n + 11) { animation-delay: 250ms; }
+
+/* entries: the hover fill eases in */
+body:not(#body-login) .app-navigation-entry {
+	transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+/* Menus (the ⋯ actions, "New", the user menu): shadcn's dropdown, a 4%
+   scale from the side they open on plus a fade. The wrapper moves, not the
+   popper, which floating-ui positions with its own transform. */
+.v-popper__popper--shown .v-popper__wrapper {
+	animation: rc-pop 0.16s var(--rc-ease-out, cubic-bezier(0.16, 1, 0.3, 1));
+	transform-origin: top center;
+}
+
+.v-popper__popper--shown[data-popper-placement^='top'] .v-popper__wrapper { transform-origin: bottom center; }
+.v-popper__popper--shown[data-popper-placement^='left'] .v-popper__wrapper { transform-origin: center right; }
+.v-popper__popper--shown[data-popper-placement^='right'] .v-popper__wrapper { transform-origin: center left; }
+.v-popper__popper--shown[data-popper-placement$='-start'] .v-popper__wrapper { transform-origin: top left; }
+.v-popper__popper--shown[data-popper-placement$='-end'] .v-popper__wrapper { transform-origin: top right; }
+
+/* Dialogs: zoom in from 96% over the fading backdrop. */
+.modal-mask .modal-container,
+.dialog__modal .modal-container {
+	animation: rc-pop 0.2s var(--rc-ease-out, cubic-bezier(0.16, 1, 0.3, 1));
+}
+
+/* Toasts come up from the bottom edge, like sonner. */
+.toastify.dialogs {
+	animation: rc-up 0.3s var(--rc-ease-out, cubic-bezier(0.16, 1, 0.3, 1));
+}
+
+/* Empty folders and lists: the icon in a quiet rounded tile instead of a
+   bare 64px grey glyph, the title and text sized like the mail app's empty
+   pane, and the whole block rising in. */
+body:not(#body-login) .empty-content {
+	animation: rc-up 0.36s var(--rc-ease-out) 0.08s backwards;
+}
+
+body:not(#body-login) .empty-content__icon {
+	width: 56px !important;
+	height: 56px !important;
+	min-width: 0 !important;
+	min-height: 0 !important;
+	margin: 0 auto 16px !important;
+	border-radius: 14px;
+	background: var(--rc-muted) !important;
+	background-size: 24px !important;
+	opacity: 1 !important;
+	color: var(--rc-muted-foreground);
+	display: flex !important;
+	align-items: center;
+	justify-content: center;
+}
+
+body:not(#body-login) .empty-content__icon svg {
+	width: 26px !important;
+	height: 26px !important;
+}
+
+body:not(#body-login) .empty-content__icon .material-design-icon,
+body:not(#body-login) .empty-content__icon > * {
+	opacity: 0.8;
+}
+
+body:not(#body-login) .empty-content__name {
+	margin-bottom: 4px !important;
+	font-size: 16px !important;
+	font-weight: 600 !important;
+	letter-spacing: -0.01em;
+}
+
+body:not(#body-login) .empty-content__description {
+	max-width: 360px;
+	margin: 0 auto;
+	color: var(--rc-muted-foreground) !important;
+	font-size: 14px;
+	line-height: 1.6;
+	word-break: keep-all;
+}

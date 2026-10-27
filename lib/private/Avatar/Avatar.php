@@ -102,6 +102,15 @@ abstract class Avatar implements IAvatar {
 	 * Select the rendering font based on the user's display name and language
 	 */
 	private function getFont(string $userDisplayName): string {
+		// Hangul and kana are not \p{Han}: a Korean or Japanese name fell
+		// through to NotoSans-Regular, which has neither, and the avatar came
+		// out as a blank disc (RobinCloud, 2026-10-27).
+		if (preg_match('/\p{Hangul}/u', $userDisplayName) === 1) {
+			return __DIR__ . '/../../../core/fonts/NotoSansKR-Regular.ttf';
+		}
+		if (preg_match('/[\p{Hiragana}\p{Katakana}]/u', $userDisplayName) === 1) {
+			return __DIR__ . '/../../../core/fonts/NotoSansJP-Regular.ttf';
+		}
 		if (preg_match('/\p{Han}/u', $userDisplayName) === 1) {
 			switch ($this->getAvatarLanguage()) {
 				case 'zh_TW':
