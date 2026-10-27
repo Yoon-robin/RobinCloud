@@ -440,9 +440,13 @@ body:not(#body-login) #nextcloud .logo {
 }
 
 body[data-theme-dark]:not(#body-login) #header .logo,
-body[data-theme-dark]:not(#body-login) #nextcloud .logo { background-image: url('../img/logo/logo.svg') !important; }
+body[data-theme-dark]:not(#body-login) #nextcloud .logo,
+body[data-theme-dark-highcontrast]:not(#body-login) #header .logo,
+body[data-theme-dark-highcontrast]:not(#body-login) #nextcloud .logo { background-image: url('../img/logo/logo.svg') !important; }
 body[data-theme-light]:not(#body-login) #header .logo,
-body[data-theme-light]:not(#body-login) #nextcloud .logo { background-image: url('../img/logo/logo-dark.svg') !important; }
+body[data-theme-light]:not(#body-login) #nextcloud .logo,
+body[data-theme-light-highcontrast]:not(#body-login) #header .logo,
+body[data-theme-light-highcontrast]:not(#body-login) #nextcloud .logo { background-image: url('../img/logo/logo-dark.svg') !important; }
 
 /* app sidebar sits on the canvas, content on a bordered card */
 body:not(#body-login) #content,
@@ -551,7 +555,7 @@ body:not(#body-login) {
 }
 
 @media (prefers-color-scheme: dark) {
-	body:not(#body-login):not([data-theme-light]) {
+	body:not(#body-login):not([data-theme-light]):not([data-theme-light-highcontrast]) {
 		--background-image-invert-if-bright: no !important;
 		--background-invert-if-bright: no !important;
 		--color-primary-element: #fafafa !important;
@@ -564,7 +568,8 @@ body:not(#body-login) {
 	}
 }
 
-body[data-theme-dark]:not(#body-login) {
+body[data-theme-dark]:not(#body-login),
+body[data-theme-dark-highcontrast]:not(#body-login) {
 	--background-image-invert-if-bright: no !important;
 	--background-invert-if-bright: no !important;
 	--color-primary-element: #fafafa !important;
