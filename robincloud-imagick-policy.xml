@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE policymap [
+  <!ELEMENT policymap (policy)*>
+  <!ATTLIST policymap xmlns CDATA #FIXED "">
+  <!ELEMENT policy EMPTY>
+  <!ATTLIST policy xmlns CDATA #FIXED "">
+  <!ATTLIST policy domain NMTOKEN #REQUIRED>
+  <!ATTLIST policy name NMTOKEN #IMPLIED>
+  <!ATTLIST policy pattern CDATA #IMPLIED>
+  <!ATTLIST policy rights NMTOKEN #IMPLIED>
+  <!ATTLIST policy stealth NMTOKEN #IMPLIED>
+  <!ATTLIST policy value CDATA #IMPLIED>
+]>
+<!--
+  RobinCloud: ImageMagick only gets the formats RobinCloud actually hands it
+  (Nextcloud advisory GHSA-7hwf-8pcj-33h4). Imagick picks the coder from the
+  file's content, so the stock open policy let a user file reach PS, MSL, TEXT
+  and ~130 other coders. Used here: HEIC previews, SVG avatars and theming
+  icons (SVG is drawn through MVG), PNG/ICO output. Everything else is denied;
+  the last matching rule wins.
+-->
+<policymap>
+  <policy domain="Undefined" rights="none"/>
+  <policy domain="resource" name="memory" value="1024MiB"/>
+  <policy domain="resource" name="map" value="2048MiB"/>
+  <policy domain="resource" name="area" value="256MP"/>
+  <policy domain="resource" name="disk" value="2GiB"/>
+  <policy domain="resource" name="width" value="32KP"/>
+  <policy domain="resource" name="height" value="32KP"/>
+  <policy domain="path" rights="none" pattern="@*"/>
+  <policy domain="delegate" rights="none" pattern="*"/>
+  <!-- SVG asks the inkscape delegate first (not installed) and falls back to
+       MSVG only if the policy lets it ask -->
+  <policy domain="delegate" rights="execute" pattern="inkscape"/>
+  <policy domain="coder" rights="none" pattern="*"/>
+  <policy domain="coder" rights="read|write" pattern="{PNG,PNG8,PNG24,PNG32,PNG48,PNG64,PNG00,JPEG,JPG,GIF,WEBP,BMP,ICO}"/>
+  <policy domain="coder" rights="read" pattern="{HEIC,HEIF,SVG,MSVG,MVG}"/>
+</policymap>
