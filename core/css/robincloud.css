@@ -76,6 +76,23 @@ body[data-theme-dark-highcontrast] {
 	--rc-shadow: none;
 }
 
+/* ------------------------------------------------------------------ canvas
+   Nextcloud paints <html> with --color-background-plain, which the theming
+   CSS sets on :root to Nextcloud blue (#00679e); only <body> got our colour.
+   Whatever <body> does not cover showed blue: the first frames of a load, the
+   iPhone's bottom safe area, the rubber band past the edges (B-196). The
+   canvas is zinc now, following a theme picked in Settings too. */
+:root {
+	--color-background-plain: var(--rc-muted) !important;
+	--image-background: none !important;
+}
+
+html { background-color: var(--rc-muted) !important; }
+html:has(> body[data-theme-light]),
+html:has(> body[data-theme-light-highcontrast]) { background-color: #f4f4f5 !important; }
+html:has(> body[data-theme-dark]),
+html:has(> body[data-theme-dark-highcontrast]) { background-color: #18181b !important; }
+
 /* ------------------------------------------------------- guest pages (login,
    installer, errors). Nextcloud's own variables are re-pointed at the tokens
    so every Vue component on these pages follows them. */
@@ -1395,4 +1412,112 @@ body:not(#body-login) .empty-content__description {
 	font-size: 14px;
 	line-height: 1.6;
 	word-break: keep-all;
+}
+
+/* ============================================================ app pages,
+   round two (2026-10-27, robin: "UI 다 예쁘게"): the last Nextcloud colours
+   inside the app, a navigation you can see the current page in, lighter
+   list furniture, quiet scrollbars, phone-sized inputs. */
+
+body:not(#body-login) {
+	--rc-nav-active: var(--rc-background);
+	--rc-nav-active-ring: var(--rc-border);
+	--rc-nav-hover: color-mix(in srgb, var(--rc-foreground) 5%, transparent);
+}
+
+@media (prefers-color-scheme: dark) {
+	body:not(#body-login):not([data-theme-light]):not([data-theme-light-highcontrast]) {
+		--rc-nav-active: #27272a;
+		--rc-nav-active-ring: transparent;
+	}
+}
+
+body[data-theme-dark]:not(#body-login),
+body[data-theme-dark-highcontrast]:not(#body-login) {
+	--rc-nav-active: #27272a;
+	--rc-nav-active-ring: transparent;
+}
+
+/* Info was Nextcloud blue (the ⓘ in notes, setup checks, two-factor): zinc
+   like the rest. Success, warning and error keep their colours. */
+body {
+	--color-info: var(--rc-muted) !important;
+	--color-info-hover: var(--rc-border) !important;
+	--color-info-text: var(--rc-foreground) !important;
+	--color-element-info: var(--rc-muted-foreground) !important;
+}
+
+/* Navigation: the current page was a 3px bar on a fill the same colour as
+   the canvas. Now a raised white entry (zinc-800 on dark), like shadcn's
+   sidebar, and a hover you can see. */
+body:not(#body-login) .app-navigation-entry:hover:not(.active):not(.app-navigation-entry--active) {
+	background-color: var(--rc-nav-hover) !important;
+}
+
+body:not(#body-login) .app-navigation-entry.active,
+body:not(#body-login) .app-navigation-entry--active {
+	background-color: var(--rc-nav-active) !important;
+	box-shadow: var(--rc-shadow-sm), 0 0 0 1px var(--rc-nav-active-ring);
+}
+
+body:not(#body-login) .app-navigation-entry.active::before,
+body:not(#body-login) .app-navigation-entry--active::before { display: none !important; }
+
+/* Files: folders in the muted grey instead of solid black, checkboxes at
+   shadcn's size with a grey outline until ticked. */
+body:not(#body-login) .files-list__row-icon > .folder-icon,
+body:not(#body-login) .files-list__row-icon > .folder-open-icon {
+	color: var(--rc-muted-foreground) !important;
+}
+
+body:not(#body-login) .checkbox-content__icon:not(.checkbox-content__icon--checked),
+body:not(#body-login) .checkbox-content__icon:not(.checkbox-content__icon--checked) > .material-design-icon {
+	color: var(--rc-muted-foreground) !important;
+}
+
+body:not(#body-login) .files-list .checkbox-content__icon svg {
+	width: 20px !important;
+	height: 20px !important;
+}
+
+/* the list's column titles: small and muted, like a table header */
+body:not(#body-login) .files-list__thead .files-list__column,
+body:not(#body-login) .files-list__thead .files-list__column-sort-button {
+	color: var(--rc-muted-foreground) !important;
+	font-weight: 500 !important;
+}
+
+/* The other fields drawn outside Nextcloud's input: the date picker kept a
+   grey 8px box, the dropdowns (language, groups) their own border. */
+body:not(#body-login) .native-datetime-picker--input,
+body:not(#body-login) .vs__dropdown-toggle {
+	border: 1px solid var(--rc-input) !important;
+	border-radius: 6px !important;
+	box-shadow: var(--rc-shadow-sm);
+	background: var(--color-main-background) !important;
+}
+
+body:not(#body-login) .native-datetime-picker--input:focus,
+body:not(#body-login) .vs--open .vs__dropdown-toggle {
+	border-color: var(--rc-ring) !important;
+	box-shadow: 0 0 0 3px color-mix(in srgb, var(--rc-ring) 35%, transparent) !important;
+	outline: none !important;
+}
+
+/* Scrollbars: thin and quiet instead of the browser's grey slab. */
+body:not(#body-login),
+body:not(#body-login) * {
+	scrollbar-width: thin;
+	scrollbar-color: color-mix(in srgb, var(--rc-foreground) 18%, transparent) transparent;
+}
+
+/* Phones and tablets: iPhone Safari zooms into any field under 16px when it
+   is tapped and stays zoomed after (D-036, B-195). */
+@media (max-width: 1024px) {
+	input:not([type='checkbox']):not([type='radio']):not([type='range']):not([type='file']),
+	select,
+	textarea,
+	.input-field__input {
+		font-size: 16px !important;
+	}
 }

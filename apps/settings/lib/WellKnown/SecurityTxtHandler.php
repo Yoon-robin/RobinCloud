@@ -22,12 +22,12 @@ class SecurityTxtHandler implements IHandler {
 			return $previousResponse;
 		}
 
-		$response = 'Contact: https://hackerone.com/nextcloud
-Expires: 2026-12-31T23:00:00.000Z
-Acknowledgments: https://hackerone.com/nextcloud/thanks
-Acknowledgments: https://github.com/nextcloud/security-advisories/security/advisories
-Policy: https://hackerone.com/nextcloud
-Preferred-Languages: en
+		// RobinCloud: reports go to robin, not to Nextcloud's HackerOne (D-034).
+		// Expires has to stay under a year away (RFC 9116): renew it before then.
+		$response = 'Contact: mailto:robin@yoonrobin.xyz
+Expires: 2027-10-01T00:00:00.000Z
+Preferred-Languages: ko, en
+Canonical: https://cloud.yoonrobin.xyz/.well-known/security.txt
 ';
 
 		return new GenericResponse(new TextPlainResponse($response, 200));
