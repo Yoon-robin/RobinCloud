@@ -831,6 +831,14 @@ body#body-login[data-theme-dark-highcontrast] { --rc-glow: 22%; --rc-card-shadow
 
 #body-login footer.guest-box { animation: rc-row 0.6s var(--rc-ease-out) 0.5s both; }
 
+/* The login form is a Vue app mounted on an empty <div id="login">, which on
+   a phone comes seconds after the page (core-common.js is 5.8MB of script).
+   Until then the centred column held only the logo, and it jumped 200px up
+   when the form arrived (CLS 0.13 on a phone). The empty mount point keeps
+   the form's place, 408px on a phone and a PC alike; Vue replaces the
+   element, so the rule is gone once the form is there. */
+#body-login #login:empty { min-height: 408px; }
+
 /* ----------------------------------------------------------------- card
    A touch of glass so the glow shows through at the edges, a hairline
    highlight along the top, a long soft shadow. */
