@@ -32,6 +32,40 @@ function rebrand(string $text): string {
 	return preg_replace(WORD, 'RobinCloud', $text);
 }
 
+/*
+ * Korean that JS libraries bake into the bundles: @nextcloud/vue ships its own
+ * gettext tables as {l:"ko",t:{"msgid":{v:["번역"]},…}} inside every bundle
+ * that uses it (NcPasswordField's "암호 표시" on the login page). Those never
+ * see <app>/l10n/ko.json, so the overlay's "_bundle" section ({"msgid":
+ * "번역"}) is rewritten in place, only inside the "ko" tables. Singular
+ * entries only ({v:[one]}), which is all the library has for these.
+ */
+$bundleKo = [];
+if (is_file(__DIR__ . '/robincloud-l10n/ko.json')) {
+	$bundleKo = (json_decode(file_get_contents(__DIR__ . '/robincloud-l10n/ko.json'), true) ?: [])['_bundle'] ?? [];
+}
+
+function bundleKo(string $js, array $strings): string {
+	$flags = JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES;
+	$out = '';
+	$pos = 0;
+	while ($strings && ($start = strpos($js, '{l:"ko",t:{', $pos)) !== false) {
+		// a table runs until the next locale's {l:"…"; anything between the
+		// last locale and the next table is code, which never has the shape
+		$end = strpos($js, '{l:"', $start + 1);
+		$end = $end === false ? strlen($js) : $end;
+		$table = substr($js, $start, $end - $start);
+		foreach ($strings as $msgid => $ko) {
+			$key = json_encode((string)$msgid, $flags);
+			$entry = $key . ':{v:[' . json_encode($ko, $flags) . ']}';
+			$table = preg_replace_callback('/' . preg_quote($key, '/') . ':\{v:\["(?:[^"\\\\]|\\\\.)*"\]\}/', fn () => $entry, $table);
+		}
+		$out .= substr($js, $pos, $start - $pos) . $table;
+		$pos = $end;
+	}
+	return $out . substr($js, $pos);
+}
+
 $stats = ['l10n' => 0, 'js' => 0, 'php' => 0, 'info' => 0];
 
 $it = new RecursiveIteratorIterator(
@@ -52,12 +86,16 @@ foreach ($it as $file) {
 	} elseif (preg_match('#/(dist|js)/[^/]+\.m?js$#', $rel)) {
 		$kind = 'js';
 		$old = file_get_contents($path);
-		if (strpos($old, 'Nextcloud') === false) {
+		$koTables = $bundleKo && strpos($old, '{l:"ko",t:{') !== false;
+		if (strpos($old, 'Nextcloud') === false && !$koTables) {
 			continue;
 		}
 		// minified bundles keep their licence notices on the same line as the
 		// code, so the word rule's own GmbH/contributors exceptions do the job
 		$new = rebrand($old);
+		if ($koTables) {
+			$new = bundleKo($new, $bundleKo);
+		}
 	} elseif (str_ends_with($name, '.php') && strpos($rel, '/l10n/') === false) {
 		$kind = 'php';
 		$old = file_get_contents($path);

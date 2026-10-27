@@ -1,5 +1,5 @@
 {
-  "_comment": "RobinCloud Korean overlay: strings Nextcloud ships untranslated, and shipped translations rewritten in the plain 해요체 the rest of RobinCloud uses (2026-10-27: 비밀번호 not 암호, no 당신, no ~하십시오). Keys are the exact msgids after robincloud-rebrand.php has run. Merged into <app>/l10n/ko.json and ko.js by that script.",
+  "_comment": "RobinCloud Korean overlay: strings Nextcloud ships untranslated, and shipped translations rewritten in the plain 해요체 the rest of RobinCloud uses (2026-10-27: 비밀번호 not 암호, no 당신, no ~하십시오). Keys are the exact msgids after robincloud-rebrand.php has run. Merged into <app>/l10n/ko.json and ko.js by that script. \"_bundle\" = Korean baked into JS library bundles (@nextcloud/vue gettext tables), rewritten inside their {l:\"ko\"} tables by the same script.",
   "settings": {
     "Checking your server …": "서버 확인 중…",
     "Checking your server …": "서버 확인 중…",
@@ -352,7 +352,9 @@
     "Search global and public address book for people": "전역 공개 주소록에서 사람 검색",
     "Allow people to publish their data to a global and public address book": "사용자가 자기 정보를 전역 공개 주소록에 올릴 수 있게 허용",
     "Automatically accept shares from trusted federated accounts and groups by default": "신뢰하는 연합 계정과 그룹의 공유를 기본으로 자동 수락",
-    "Incoming share could not be processed": "받은 공유를 처리하지 못했습니다"
+    "Incoming share could not be processed": "받은 공유를 처리하지 못했습니다",
+    "Couldn't establish a federated share, maybe the password was wrong.": "연합 공유를 만들지 못했어요. 비밀번호가 틀렸을 수 있어요.",
+    "Remote share password": "원격 공유 비밀번호"
   },
   "dav": {
     "Out of office replacement (optional)": "부재 중 대리인(선택)",
@@ -1406,5 +1408,13 @@
     "Could not create account": "계정을 만들지 못했어요",
     "Account disabled": "계정이 비활성화됐어요",
     "Storage is temporarily not available": "저장소를 잠시 쓸 수 없어요"
+  },
+  "_bundle": {
+    "Show password": "비밀번호 표시",
+    "Hide password": "비밀번호 숨기기",
+    "Password is secure": "안전한 비밀번호예요"
+  },
+  "serverinfo": {
+    "Password": "비밀번호"
   }
 }
