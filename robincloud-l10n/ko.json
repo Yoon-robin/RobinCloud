@@ -275,7 +275,29 @@
     "You are accessing your instance over a secure connection, however your instance is generating insecure URLs. This likely means that your instance is behind a reverse proxy and the RobinCloud `overwrite*` config values are not set correctly.": "안전한 연결로 서버에 접속했지만, 서버가 안전하지 않은 URL을 만들고 있습니다. 서버가 역방향 프록시 뒤에 있는데 RobinCloud `overwrite*` 설정이 올바르지 않을 가능성이 높습니다.",
     "Your instance is generating insecure URLs. If you access your instance over HTTPS, this likely means that your instance is behind a reverse proxy and the RobinCloud `overwrite*` config values are not set correctly.": "서버가 안전하지 않은 URL을 만들고 있습니다. HTTPS로 접속했다면, 서버가 역방향 프록시 뒤에 있는데 RobinCloud `overwrite*` 설정이 올바르지 않을 가능성이 높습니다.",
     "You are accessing your instance over a secure connection, and your instance is generating secure URLs.": "안전한 연결로 서버에 접속했고, 서버도 안전한 URL을 만들고 있습니다.",
-    "Your webserver is not set up to serve `.js.map` files. Without these files, JavaScript Source Maps won't function properly, making it more challenging to troubleshoot and debug any issues that may arise.": "웹 서버가 `.js.map` 파일을 제공하도록 설정되지 않았습니다. 이 파일이 없으면 JavaScript 소스 맵이 제대로 동작하지 않아 문제를 찾고 디버깅하기가 더 어려워집니다."
+    "Your webserver is not set up to serve `.js.map` files. Without these files, JavaScript Source Maps won't function properly, making it more challenging to troubleshoot and debug any issues that may arise.": "웹 서버가 `.js.map` 파일을 제공하도록 설정되지 않았습니다. 이 파일이 없으면 JavaScript 소스 맵이 제대로 동작하지 않아 문제를 찾고 디버깅하기가 더 어려워집니다.",
+    "Settings saved": "설정을 저장했어요",
+    "Unable to change full name": "이름을 바꾸지 못했어요",
+    "Unable to change email address": "이메일 주소를 바꾸지 못했어요",
+    "Unable to set invalid phone number": "전화번호가 올바르지 않아 저장하지 못했어요",
+    "Unable to set invalid website": "웹사이트 주소가 올바르지 않아 저장하지 못했어요",
+    "Failed to save setting": "설정을 저장하지 못했어요",
+    "Unable to update date of birth": "생일을 바꾸지 못했어요",
+    "Unable to update primary email address": "주 이메일 주소를 바꾸지 못했어요",
+    "Unable to delete additional email address": "추가 이메일 주소를 삭제하지 못했어요",
+    "Unable to delete primary email address": "주 이메일 주소를 삭제하지 못했어요",
+    "Unable to add additional email address": "이메일 주소를 추가하지 못했어요",
+    "Unable to update additional email address": "추가 이메일 주소를 바꾸지 못했어요",
+    "Unable to update language": "언어를 바꾸지 못했어요",
+    "Unable to update locale": "지역을 바꾸지 못했어요",
+    "Unable to update profile enabled state": "프로필 사용 여부를 바꾸지 못했어요",
+    "Unable to update {property}": "{property}을(를) 바꾸지 못했어요",
+    "Authentication required": "인증이 필요해요",
+    "Could not delete the app token": "앱 토큰을 삭제하지 못했어요",
+    "Unable to update visibility of {displayId}": "{displayId}의 공개 범위를 바꾸지 못했어요",
+    "Display name was successfully changed": "표시 이름을 바꿨어요",
+    "Email was successfully changed": "이메일을 바꿨어요",
+    "Developed by the {communityopen}RobinCloud community{linkclose}, the {githubopen}source code{linkclose} is licensed under the {licenseopen}AGPL{linkclose}.": "{communityopen}오픈소스 커뮤니티{linkclose}가 만든 소프트웨어를 바탕으로 해요. {githubopen}소스 코드{linkclose}는 {licenseopen}<abbr title=\"Affero General Public License\">AGPL</abbr>{linkclose} 라이선스를 따라요."
   },
   "theming": {
     "Misc accessibility options": "기타 접근성 옵션",
@@ -365,7 +387,8 @@
     "Configure PDF viewer settings": "PDF 뷰어 설정",
     "PDF Viewer": "PDF 뷰어",
     "Enable PDF scripting": "PDF 스크립트 사용",
-    "Enabling PDF scripting allows JavaScript execution within PDF documents. This enables form calculations and dynamic content, but may pose security risks with untrusted PDFs. PDF scripts run in a sandboxed environment.": "PDF 스크립트를 켜면 PDF 문서 안의 JavaScript가 실행됩니다. 양식 계산이나 동적인 내용이 동작하지만, 믿을 수 없는 PDF에서는 보안 위험이 될 수 있습니다. PDF 스크립트는 격리된 환경에서 실행됩니다."
+    "Enabling PDF scripting allows JavaScript execution within PDF documents. This enables form calculations and dynamic content, but may pose security risks with untrusted PDFs. PDF scripts run in a sandboxed environment.": "PDF 스크립트를 켜면 PDF 문서 안의 JavaScript가 실행됩니다. 양식 계산이나 동적인 내용이 동작하지만, 믿을 수 없는 PDF에서는 보안 위험이 될 수 있습니다. PDF 스크립트는 격리된 환경에서 실행됩니다.",
+    "File upload failed.": "파일을 업로드하지 못했어요."
   },
   "systemtags": {
     "If enabled, only administrators can create and edit tags. Accounts can still assign and remove them from files.": "켜면 관리자만 태그를 만들고 고칠 수 있습니다. 사용자는 기존 태그를 파일에 붙이고 떼는 것만 할 수 있습니다.",
@@ -422,7 +445,10 @@
   },
   "files_downloadlimit": {
     "Default download limit for external shares": "외부 공유의 기본 다운로드 횟수 제한",
-    "Failed to remove default download limit": "기본 다운로드 제한을 없애지 못했습니다"
+    "Failed to remove default download limit": "기본 다운로드 제한을 없애지 못했습니다",
+    "Failed to set download limit": "다운로드 횟수 제한을 설정하지 못했어요",
+    "Failed to remove download limit": "다운로드 횟수 제한을 없애지 못했어요",
+    "Failed to set default download limit": "기본 다운로드 횟수 제한을 설정하지 못했어요"
   },
   "notes": {
     "Organize your notes in categories.": "메모를 분류별로 정리하세요."
@@ -678,7 +704,23 @@
     "Your data directory and files are probably accessible from the internet because the <code>.htaccess</code> file does not work.": "<code>.htaccess</code> 파일이 작동하지 않아 데이터 디렉터리와 파일이 인터넷에 노출될 수 있습니다.",
     "Administration account password": "관리자 계정 비밀번호",
     "Database password": "데이터베이스 비밀번호",
-    "Chatting, video calls, screen sharing, online meetings and web conferencing – in your browser and with mobile apps.": "채팅, 영상 통화, 화면 공유, 온라인 미팅과 웹 회의 – 브라우저와 모바일 앱에서."
+    "Chatting, video calls, screen sharing, online meetings and web conferencing – in your browser and with mobile apps.": "채팅, 영상 통화, 화면 공유, 온라인 미팅과 웹 회의 – 브라우저와 모바일 앱에서.",
+    "Could not write file to disk": "디스크에 파일을 쓰지 못했어요",
+    "Invalid file provided": "잘못된 파일이에요",
+    "No image or file provided": "사진이나 파일이 없어요",
+    "Cannot generate more than 12 images": "이미지는 12개까지만 만들 수 있어요",
+    "Cannot generate less than 1 image": "이미지는 1개 이상 만들어야 해요",
+    "Image not found": "이미지를 찾지 못했어요",
+    "No translation provider available": "사용할 수 있는 번역 기능이 없어요",
+    "Could not detect language": "언어를 알아내지 못했어요",
+    "Unable to translate": "번역하지 못했어요",
+    "Failed to add the public link to your RobinCloud": "내 RobinCloud에 공개 링크를 추가하지 못했어요",
+    "Direct link copied": "직접 링크를 복사했어요",
+    "Could not load your contacts": "연락처를 불러오지 못했어요",
+    "Failed to rename the project": "프로젝트 이름을 바꾸지 못했어요",
+    "Failed to create a project": "프로젝트를 만들지 못했어요",
+    "Failed to add the item to the project": "프로젝트에 항목을 추가하지 못했어요",
+    "Unable to retrieve the group list": "그룹 목록을 가져오지 못했어요"
   },
   "registration": {
     "Register": "가입 신청",
@@ -686,7 +728,7 @@
     "Registration is only allowed with the following domains: %s": "다음 도메인으로만 가입할 수 있어요: %s",
     "Invalid username policy regex": "아이디 규칙 정규식이 잘못되었습니다",
     "New user \"%1$s\" has created an account on %2$s": "새 사용자 \"%1$s\"님이 %2$s에 계정을 만들었어요",
-    "no email address given": "이메일 없음",
+    "no email address given": "이메일 주소를 입력해 주세요",
     "Email (optional)": "이메일(선택)",
     "Require administrator approval": "관리자 승인 필요",
     "Enabling \"administrator approval\" will prevent registrations from mobile and desktop clients to complete as the credentials cannot be verified by the client until the user was enabled.": "\"관리자 승인\"을 켜면 사용자가 승인되기 전까지 앱이 로그인 정보를 확인할 수 없어서, 모바일·데스크톱 앱에서는 가입을 끝낼 수 없습니다.",
@@ -734,11 +776,13 @@
     "Login name policy": "아이디 정책",
     "Caution: The user instructions will not be translated and will therefore be displayed as configured below for all users regardless of their actual language.": "주의: 사용자 안내 문구는 번역되지 않으므로, 사용자의 언어와 상관없이 아래에 적은 그대로 표시됩니다.",
     "Add additional user instructions (e.g. for choosing their login name). If configured the text is displayed in the account creation step of the registration process.": "추가 사용자 안내(예: 아이디 정하는 법)를 적습니다. 적어 두면 가입 과정의 계정 만들기 단계에 표시됩니다.",
-    "Add additional user instructions (e.g. for choosing their login name). If configured the text is embedded in the verification-email.": "추가 사용자 안내(예: 아이디 정하는 법)를 적습니다. 적어 두면 인증 메일에 들어갑니다."
+    "Add additional user instructions (e.g. for choosing their login name). If configured the text is embedded in the verification-email.": "추가 사용자 안내(예: 아이디 정하는 법)를 적습니다. 적어 두면 인증 메일에 들어갑니다.",
+    "Approval required": "승인이 필요해요"
   },
   "profile": {
     "Profile picker": "프로필 선택기",
-    "The profile does not exist or is unavailable.": "프로필이 없거나 볼 수 없어요."
+    "The profile does not exist or is unavailable.": "프로필이 없거나 볼 수 없어요.",
+    "Profile not found": "프로필을 찾을 수 없어요"
   },
   "files": {
     "Folder name must not be empty.": "폴더 이름을 비워 둘 수 없어요.",
@@ -865,7 +909,28 @@
     "You need to select a new owner for the file or folder.": "파일이나 폴더의 새 소유자를 골라 주세요.",
     "Transfer \"{path}\"": "\"{path}\" 이전",
     "Create an app password": "앱 비밀번호 만들기",
-    "Required for WebDAV authentication because Two-Factor Authentication is enabled for this account.": "이 계정은 2단계 인증을 쓰고 있어서 WebDAV 인증에 필요해요."
+    "Required for WebDAV authentication because Two-Factor Authentication is enabled for this account.": "이 계정은 2단계 인증을 쓰고 있어서 WebDAV 인증에 필요해요.",
+    "Folder not found": "폴더를 찾을 수 없어요",
+    "File not found": "파일을 찾을 수 없어요",
+    "Could not refresh storage stats": "저장 공간 정보를 새로 고치지 못했어요",
+    "Ownership transfer request sent": "소유권 이전 요청을 보냈어요",
+    "Cannot transfer ownership of a file or folder you do not own": "내 것이 아닌 파일이나 폴더는 소유권을 넘길 수 없어요",
+    "No file or folder selected": "파일이나 폴더를 고르지 않았어요",
+    "The file could not be found": "파일을 찾을 수 없어요",
+    "Unable to create new file from template": "템플릿으로 새 파일을 만들지 못했어요",
+    "Failed to convert file": "파일을 변환하지 못했어요",
+    "Move or copy operation failed": "옮기거나 복사하지 못했어요",
+    "Failed to redirect to client": "클라이언트로 넘어가지 못했어요",
+    "Unable to initialize the templates directory": "템플릿 폴더를 준비하지 못했어요",
+    "No files to upload": "업로드할 파일이 없어요",
+    "No files to process": "처리할 파일이 없어요",
+    "Some files could not be copied": "일부 파일을 복사하지 못했어요",
+    "Some files could not be moved": "일부 파일을 옮기지 못했어요",
+    "Could not rename \"{oldName}\"": "\"{oldName}\"의 이름을 바꾸지 못했어요",
+    "Storage is temporarily not available": "저장소를 잠시 쓸 수 없어요",
+    "Invalid path selected": "잘못된 경로를 골랐어요",
+    "Not enough free space": "남은 공간이 부족해요",
+    "Unable to change the favorite state of the file": "즐겨찾기를 바꾸지 못했어요"
   },
   "files_sharing": {
     "You are not allowed to share \"%s\".": "\"%s\" 항목을 공유할 권한이 없어요.",
@@ -891,7 +956,7 @@
     "Replace current password": "현재 비밀번호 바꾸기",
     "Password expires {passwordExpirationTime}": "비밀번호가 {passwordExpirationTime}에 만료됨",
     "Password expired": "비밀번호 만료됨",
-    "Share password saved": "공유 비밀번호 저장됨",
+    "Share password saved": "공유 비밀번호를 저장했어요",
     "Password created successfully": "비밀번호를 만들었어요",
     "Error generating password from password policy": "비밀번호 정책에 맞는 비밀번호를 만들지 못했어요",
     "Your administrator has enforced a {count} days expiration policy.": "관리자가 만료 기간을 {count}일로 정해 두었어요.",
@@ -1019,12 +1084,42 @@
     "Custom share link tokens have been disabled by the administrator": "관리자가 공유 링크 토큰 직접 정하기를 꺼 두었어요",
     "Invalid date. Format must be YYYY-MM-DD": "날짜가 잘못됐어요. YYYY-MM-DD 형식으로 넣어 주세요.",
     "You are not allowed to send mail notifications": "메일 알림을 보낼 권한이 없어요.",
-    "This application enables people to share files within RobinCloud. If enabled, the admin can choose which groups can share files. The applicable people can then share files and folders with other accounts and groups within RobinCloud. In addition, if the admin enables the share link feature, an external link can be used to share files with other people outside of RobinCloud. Admins can also enforce passwords, expirations dates, and enable server to server sharing via share links, as well as sharing from mobile devices.\nTurning the feature off removes shared files and folders on the server for all share recipients, and also on the sync clients and mobile apps. More information is available in the RobinCloud Documentation.": "이 앱을 사용하여 RobinCloud 내에서 사용자간 파일을 공유할 수 있습니다. 앱을 활성화하면 관리자가 파일 공유를 허용할 그룹을 지정할 수 있습니다. 공유가 허용된 사용자는 RobinCloud 내의 다른 계정이나 그룹과 파일이나 폴더를 공유할 수 있습니다. 추가로 관리자가 링크 공유 기능을 활성화하면 RobinCloud 외부 사용자와 파일을 공유할 수 있는 외부 링크가 생성됩니다. 관리자는 비밀번호나 만료 날짜 사용을 강제할 수 있으며, 공유 링크로 서버간 공유 기능이나 모바일 장치에서 공유를 활성화할 수 있습니다.\n공유 기능을 비활성화하면 서버에 있는 모든 공유된 파일이나 폴더를 삭제하며, 동기화 클라이언트나 모바일 앱에도 적용됩니다. 자세한 정보를 보려면 RobinCloud 문서를 참조하십시오."
+    "This application enables people to share files within RobinCloud. If enabled, the admin can choose which groups can share files. The applicable people can then share files and folders with other accounts and groups within RobinCloud. In addition, if the admin enables the share link feature, an external link can be used to share files with other people outside of RobinCloud. Admins can also enforce passwords, expirations dates, and enable server to server sharing via share links, as well as sharing from mobile devices.\nTurning the feature off removes shared files and folders on the server for all share recipients, and also on the sync clients and mobile apps. More information is available in the RobinCloud Documentation.": "이 앱을 사용하여 RobinCloud 내에서 사용자간 파일을 공유할 수 있습니다. 앱을 활성화하면 관리자가 파일 공유를 허용할 그룹을 지정할 수 있습니다. 공유가 허용된 사용자는 RobinCloud 내의 다른 계정이나 그룹과 파일이나 폴더를 공유할 수 있습니다. 추가로 관리자가 링크 공유 기능을 활성화하면 RobinCloud 외부 사용자와 파일을 공유할 수 있는 외부 링크가 생성됩니다. 관리자는 비밀번호나 만료 날짜 사용을 강제할 수 있으며, 공유 링크로 서버간 공유 기능이나 모바일 장치에서 공유를 활성화할 수 있습니다.\n공유 기능을 비활성화하면 서버에 있는 모든 공유된 파일이나 폴더를 삭제하며, 동기화 클라이언트나 모바일 앱에도 적용됩니다. 자세한 정보를 보려면 RobinCloud 문서를 참조하십시오.",
+    "Could not delete share": "공유를 삭제하지 못했어요",
+    "Could not create share": "공유를 만들지 못했어요",
+    "Could not lock node": "항목을 잠그지 못했어요",
+    "Could not lock path": "경로를 잠그지 못했어요",
+    "no sharing rights on this item": "이 항목을 공유할 권한이 없어요",
+    "No sharing rights on this item": "이 항목을 공유할 권한이 없어요",
+    "No mail notification configured for this share type": "이 공유 방식에는 메일 알림이 설정되어 있지 않아요",
+    "Failed to generate a unique token": "고유 토큰을 만들지 못했어요",
+    "Share API is disabled": "공유 API가 꺼져 있어요",
+    "Link copied": "링크를 복사했어요",
+    "Email already added": "이미 추가한 이메일이에요",
+    "Invalid email address": "이메일 주소가 올바르지 않아요",
+    "File request created": "파일 요청을 만들었어요",
+    "Invalid path selected": "잘못된 경로를 골랐어요",
+    "Resharing is not allowed": "다시 공유할 수 없어요",
+    "Failed to generate a new token": "새 토큰을 만들지 못했어요",
+    "Unable to fetch inherited shares": "상속된 공유를 가져오지 못했어요",
+    "Unable to load the shares list": "공유 목록을 불러오지 못했어요",
+    "Could not update share": "공유를 바꾸지 못했어요",
+    "Share saved": "공유를 저장했어요",
+    "Share expiry date saved": "공유 만료일을 저장했어요",
+    "Share hide-download state saved": "다운로드 숨기기 설정을 저장했어요",
+    "Share label saved": "공유 이름을 저장했어요",
+    "Share note for recipient saved": "받는 사람에게 남길 메모를 저장했어요",
+    "Share permissions saved": "공유 권한을 저장했어요",
+    "Share not found": "공유를 찾을 수 없어요"
   },
   "files_versions": {
     "Block file versioning": "파일 버전 만들기 막기",
     "Automatic tag based blocking of file version creation.": "태그에 따라 파일 버전이 만들어지지 않게 자동으로 막습니다.",
-    "A new version is created": "새 버전이 만들어질 때"
+    "A new version is created": "새 버전이 만들어질 때",
+    "Initial version restored": "처음 버전으로 복원했어요",
+    "Version restored": "버전을 복원했어요",
+    "Could not restore version": "버전을 복원하지 못했어요",
+    "Could not delete version": "버전을 삭제하지 못했어요"
   },
   "files_reminders": {
     "Files reminder": "파일 알림",
@@ -1036,7 +1131,9 @@
     "Set reminder for '{fileName}'": "'{fileName}' 알림 설정",
     "Reminder at custom date & time": "날짜·시간을 정해 알림",
     "Reminder set": "알림을 설정했어요",
-    "Custom reminder": "직접 정한 알림"
+    "Custom reminder": "직접 정한 알림",
+    "Failed to set reminder": "알림을 설정하지 못했어요",
+    "Failed to clear reminder": "알림을 지우지 못했어요"
   },
   "files_lock": {
     "File is currently locked by %s": "%s님이 파일을 잠가 두었어요",
@@ -1081,10 +1178,12 @@
     "Go back to previous menu": "이전 메뉴로",
     "Normal": "보통",
     "Loop": "반복",
-    "Ad": "광고"
+    "Ad": "광고",
+    "Image saved": "이미지를 저장했어요"
   },
   "twofactor_totp": {
-    "Could not confirm TOTP": "TOTP를 확인하지 못했어요"
+    "Could not confirm TOTP": "TOTP를 확인하지 못했어요",
+    "Could not enable TOTP": "TOTP를 켜지 못했어요"
   },
   "appstore": {
     "App store": "앱 스토어",
@@ -1101,7 +1200,10 @@
     "Selection of the speaker device is currently not supported by Safari": "Safari에서는 아직 스피커를 고를 수 없어요",
     "An unexpected error occurred, ask your administration to check the logs.": "예상하지 못한 오류가 났어요. 관리자에게 로그 확인을 요청하세요.",
     "Push notifications might be unreliable": "푸시 알림이 제대로 오지 않을 수 있어요",
-    "Play sound when a call started (requires RobinCloud Talk)": "새 통화가 시작될 때 소리 재생하기 (RobinCloud 토크 필요)"
+    "Play sound when a call started (requires RobinCloud Talk)": "새 통화가 시작될 때 소리 재생하기 (RobinCloud 토크 필요)",
+    "Failed to perform action": "동작을 실행하지 못했어요",
+    "Failed to dismiss notification": "알림을 해제하지 못했어요",
+    "Failed to dismiss all notifications": "알림을 모두 해제하지 못했어요"
   },
   "text": {
     "Offline since {time}.": "{time}부터 오프라인이에요.",
@@ -1142,7 +1244,19 @@
     "Edit inline formula": "문장 속 수식 편집",
     "Start writing or type '/' to add…": "글을 쓰거나 '/'를 눌러 추가하세요…",
     "Close table of contents": "목차 닫기",
-    "Pin table of contents": "목차 고정"
+    "Pin table of contents": "목차 고정",
+    "File not found": "파일을 찾을 수 없어요",
+    "The file was uploaded": "파일을 업로드했어요",
+    "The file was only partially uploaded": "파일이 일부만 업로드됐어요",
+    "No file was uploaded": "업로드한 파일이 없어요",
+    "Could not write file to disk": "디스크에 파일을 쓰지 못했어요",
+    "No file uploaded or file size exceeds maximum of %s": "파일을 업로드하지 않았거나 크기가 최대 %s를 넘어요",
+    "Failed to insert from Files": "파일에서 넣지 못했어요",
+    "RobinCloud Assistant result copied": "RobinCloud 어시스턴트 결과를 복사했어요",
+    "Could not copy result to clipboard": "결과를 클립보드에 복사하지 못했어요",
+    "Failed to load": "불러오지 못했어요",
+    "Could not copy to the clipboard": "클립보드에 복사하지 못했어요",
+    "Translation failed": "번역하지 못했어요"
   },
   "photos": {
     "Mark selection as favorite": "선택한 항목을 즐겨찾기로",
@@ -1240,7 +1354,11 @@
     "%1$s assigned %2$s to %3$s": "%1$s님이 %3$s에 %2$s을(를) 붙임"
   },
   "comments": {
-    "1 new comment": "새 댓글 1개"
+    "1 new comment": "새 댓글 1개",
+    "Could not reload comments": "댓글을 다시 불러오지 못했어요",
+    "Failed to mark comments as read": "댓글을 읽음으로 표시하지 못했어요",
+    "Unable to load the comments list": "댓글 목록을 불러오지 못했어요",
+    "Comment deleted": "댓글을 삭제했어요"
   },
   "twofactor_backupcodes": {
     "Unable to open a new tab for printing": "인쇄할 새 탭을 열 수 없어요",
@@ -1280,6 +1398,13 @@
     "Logged in account must be an admin": "관리자만 열 수 있어요",
     "Organization": "조직",
     "Note": "메모",
-    "Set an admin password.": "관리자 비밀번호를 설정하세요."
+    "Set an admin password.": "관리자 비밀번호를 설정하세요.",
+    "Failed to create file from template": "템플릿으로 새 파일을 만들지 못했어요",
+    "Empty filename is not allowed": "파일 이름을 비워 둘 수 없어요",
+    "Cannot generate more than 12 images": "이미지는 12개까지만 만들 수 있어요",
+    "Cannot generate less than 1 image": "이미지는 1개 이상 만들어야 해요",
+    "Could not create account": "계정을 만들지 못했어요",
+    "Account disabled": "계정이 비활성화됐어요",
+    "Storage is temporarily not available": "저장소를 잠시 쓸 수 없어요"
   }
 }
