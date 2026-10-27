@@ -13,7 +13,12 @@ set -euo pipefail
 SRC="$(cd "$(dirname "$0")" && pwd)"
 cd "$SRC/.."
 cp "$SRC/Dockerfile.robincloud" Dockerfile
-docker build -q -t robincloud:34.0.5 . >/dev/null
+# The RUN steps run inside dockerd, where `nice` does not reach: put them in
+# the low-weight robinbuild.slice (CPUWeight 10) when the server has it, so a
+# 3 GB build does not take the CPU from the live site and mail (B-147).
+low=()
+[ -d /sys/fs/cgroup/robinbuild.slice ] && low=(--cgroup-parent=/robinbuild.slice)
+docker build -q "${low[@]}" -t robincloud:34.0.5 . >/dev/null
 cd /opt/stack
 occ() { docker compose exec -T -u www-data robincloud php occ "$@"; }
 
