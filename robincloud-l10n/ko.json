@@ -439,7 +439,7 @@
     "Please create your username following the scheme 'firstname.lastname'.": "아이디는 '이름.성' 형식으로 만들어 주세요.",
     "Verify your %s registration request": "%s 가입 인증 코드",
     "Registration": "가입",
-    "Email address verified, you can now complete your registration.": "아래 인증 코드를 가입 화면에 넣거나 \"가입 계속하기\"를 눌러 계정을 만드세요.",
+    "Email address verified, you can now complete your registration.": "아래 인증 코드를 가입 화면에 넣거나, ‘가입 계속하기’ 버튼을 눌러 계정을 만들어 주세요.",
     "Verification code: %s": "인증 코드: %s",
     "Continue registration": "가입 계속하기",
     "Request verification link": "인증 코드 받기",
@@ -725,5 +725,8 @@
   "twofactor_backupcodes": {
     "Unable to open a new tab for printing": "인쇄할 새 탭을 열 수 없습니다",
     "List of backup codes": "백업 코드 목록"
+  },
+  "lib": {
+    "This is an automatically sent email, please do not reply.": "자동으로 보낸 메일이에요. 이 메일에는 답장할 수 없어요."
   }
 }
