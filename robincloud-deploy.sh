@@ -49,15 +49,16 @@ docker compose exec -T robincloud apachectl -k graceful 2>/dev/null
 # the version, so a changed icon would otherwise keep being linked by its old URL
 docker compose exec -T redis sh -c 'redis-cli --scan --pattern "*imagePath-*" | xargs -r redis-cli del' >/dev/null
 
-# Core CSS and JS go out as immutable for six months under ?v=<hash>-<counter>,
-# and the hash only moves with the version: without a new counter a changed
-# robincloud.css stays cached (Cloudflare, browsers) under the old URL.
-if [ "$installed" = yes ]; then
-  cb=$(occ config:app:get theming cachebuster 2>/dev/null | tr -dc 0-9)
-  occ config:app:set theming cachebuster --value=$(( ${cb:-0} + 1 )) >/dev/null
-fi
 [ "$installed" = yes ] && occ maintenance:mode --off >/dev/null
 trap - EXIT
+# Core CSS and JS go out as immutable for six months under ?v=<hash>-<counter>,
+# and the hash only moves with the version: without a new counter a changed
+# robincloud.css stays cached (Cloudflare, browsers) under the old URL. After
+# maintenance mode, which prints a warning on every occ call.
+if [ "$installed" = yes ]; then
+  cb=$(occ config:app:get theming cachebuster | tr -dc 0-9)
+  occ config:app:set theming cachebuster --value=$(( ${cb:-0} + 1 )) >/dev/null
+fi
 
 # fail loudly if the login page doesn't come back
 code=$(curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:8080/login)
