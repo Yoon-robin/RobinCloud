@@ -1521,3 +1521,113 @@ body:not(#body-login) * {
 		font-size: 16px !important;
 	}
 }
+
+/* ========================================================== round three
+   (2026-10-27, robin: "UI랑 애니메이션 더 예쁘게 최대로"): buttons answer a
+   press, the row icons step back until the row is pointed at, the details
+   panel slides in with shadcn tabs, and scrollbars show only where the
+   pointer is. */
+
+@keyframes rc-side-in { from { opacity: 0; transform: translateX(12px); } }
+
+/* Buttons give a little under the pointer, as in the mail app. */
+body:not(#body-login) .button-vue {
+	transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease, transform 0.15s var(--rc-ease-out);
+}
+
+body:not(#body-login) .button-vue:active:not(:disabled) { transform: scale(0.97); }
+
+/* File rows: the share and ⋯ icons sat at full white on every row, a column
+   of noise. Muted until the row is pointed at, focused or open. */
+body:not(#body-login) .files-list__row-actions .button-vue {
+	color: var(--rc-muted-foreground) !important;
+}
+
+body:not(#body-login) .files-list__row:is(:hover, :focus-within, .files-list__row--active) .files-list__row-actions .button-vue {
+	color: var(--rc-foreground) !important;
+}
+
+/* (the share icon paints its own colour; let it follow the button's) */
+body:not(#body-login) .files-list__row-actions .button-vue :is(.material-design-icon, svg) {
+	color: inherit !important;
+}
+
+/* The details panel slides in from the right edge. No fill (see "app
+   motion": a held transform would trap the dialogs it opens). */
+body:not(#body-login) aside.app-sidebar {
+	animation: rc-side-in 0.26s var(--rc-ease-out);
+}
+
+/* Its tabs as shadcn Tabs: a muted track, the current tab a raised chip,
+   icon and label on one line. Nextcloud stacked the icon over the label in
+   a 67px block and marked the current one twice (a fill and a 4px bar). */
+body:not(#body-login) .app-sidebar-tabs__nav {
+	gap: 0 !important;
+	margin: 4px 10px 10px !important;
+	padding: 3px !important;
+	border-radius: 10px;
+	background: var(--rc-muted);
+}
+
+body:not(#body-login) .app-sidebar-tabs__tab {
+	height: 30px !important;
+	min-height: 30px !important;
+	border: 1px solid transparent !important;
+	border-radius: 7px !important;
+	background: transparent !important;
+	box-shadow: none !important;
+	color: var(--rc-muted-foreground) !important;
+}
+
+body:not(#body-login) .app-sidebar-tabs__tab::after { display: none !important; }
+
+body:not(#body-login) .app-sidebar-tabs__tab:hover:not(.active) { color: var(--rc-foreground) !important; }
+
+body:not(#body-login) .app-sidebar-tabs__tab.active {
+	background: var(--rc-nav-active) !important;
+	border-color: var(--rc-nav-active-ring) !important;
+	box-shadow: var(--rc-shadow-sm) !important;
+	color: var(--rc-foreground) !important;
+}
+
+body:not(#body-login) .app-sidebar-tabs__tab .checkbox-content {
+	flex-direction: row !important;
+	justify-content: center;
+	gap: 6px !important;
+	height: 100%;
+	min-height: 0 !important;
+	padding: 0 10px !important;
+	font-size: 13px;
+	font-weight: 500;
+}
+
+body:not(#body-login) .app-sidebar-tabs__tab .checkbox-content__icon,
+body:not(#body-login) .app-sidebar-tabs__tab .checkbox-content__icon .material-design-icon {
+	width: 16px !important;
+	height: 16px !important;
+	min-width: 0 !important;
+	color: inherit !important;
+}
+
+body:not(#body-login) .app-sidebar-tabs__tab .checkbox-content__icon svg {
+	width: 16px !important;
+	height: 16px !important;
+}
+
+/* the icon's own box was 34px tall and pushed the glyph under the label's
+   line; the label took the free width and left the icon at the far edge */
+body:not(#body-login) .app-sidebar-tabs__tab .icon-vue {
+	width: 16px !important;
+	height: 16px !important;
+	min-width: 0 !important;
+	min-height: 0 !important;
+}
+
+body:not(#body-login) .app-sidebar-tabs__tab .checkbox-content__wrapper { flex: none !important; }
+
+/* Scrollbars show where the pointer is: a thin grey thumb over the panel
+   under it, nothing on the others. Panels that overflow by a pixel or two
+   (the details panel did by 2px) no longer wear a full-height bar. */
+body:not(#body-login) *:not(:hover) {
+	scrollbar-color: transparent transparent;
+}
