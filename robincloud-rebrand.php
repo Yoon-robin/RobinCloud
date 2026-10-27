@@ -107,9 +107,12 @@ if (is_file($overlayFile)) {
 		if ($app[0] === '_' || !is_array($strings)) {
 			continue;
 		}
-		$candidates = $app === 'core' ? ["$root/core/l10n"] : ["$root/apps/$app/l10n", "$root/custom_apps/$app/l10n", "$root/$app/l10n"];
+		// "core" and "lib" are not apps: core/ is told by its shipped.json, lib/
+		// (server strings such as the mail footer) by lib/private next to l10n/
+		$candidates = in_array($app, ['core', 'lib'], true) ? ["$root/$app/l10n"] : ["$root/apps/$app/l10n", "$root/custom_apps/$app/l10n", "$root/$app/l10n"];
+		$marker = ['core' => '/shipped.json', 'lib' => '/private/Mail'][$app] ?? '/appinfo/info.xml';
 		foreach ($candidates as $dir) {
-			if (!is_dir(dirname($dir)) || !is_file(dirname($dir) . ($app === 'core' ? '/shipped.json' : '/appinfo/info.xml'))) {
+			if (!is_dir(dirname($dir)) || !file_exists(dirname($dir) . $marker)) {
 				continue;
 			}
 			@mkdir($dir);
