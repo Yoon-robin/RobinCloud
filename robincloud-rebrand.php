@@ -25,8 +25,11 @@ if ($root === '' || !is_dir($root)) {
 	exit(1);
 }
 
-// (?<!\|) and (?!\)\s*-) keep regex alternations like (?:ownCloud|Nextcloud)-iOS intact
-const WORD = '/(?<!\|)\bNextcloud\b(?![-\/])(?!\)\s*-)(?! GmbH)(?! contributors)/';
+// (?<!\|) and (?!\)\s*-) keep regex alternations like (?:ownCloud|Nextcloud)-iOS intact.
+// The files are rewritten as source text, so a JSON/JS escape such as \n or
+// \t right before the word leaves a letter there and \b never fires
+// ("…!\n\nNextcloud Calendar"): after \n, \r or \t the word starts too.
+const WORD = '/(?<!\|)(?:(?<=\\\\[nrt])|\b)Nextcloud\b(?![-\/])(?!\)\s*-)(?! GmbH)(?! contributors)/';
 
 function rebrand(string $text): string {
 	return preg_replace(WORD, 'RobinCloud', $text);
