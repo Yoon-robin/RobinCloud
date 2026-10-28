@@ -2033,3 +2033,226 @@ body:not(#body-login) .app-sidebar-tabs__tab .checkbox-content__wrapper { flex: 
 body:not(#body-login) *:not(:hover) {
 	scrollbar-color: transparent transparent;
 }
+
+/* ================================================================ uploads
+   (2026-10-28, robin: "클라우드 파일업로드 UI개선해줘") The upload picker's
+   progress was a bare 200px line hanging off the "새로 만들기" button, its
+   "남은 시간 계산 중" below the header row. Now a chip on the header's
+   middle line: a 4px bar over the time left and the speed, the cancel
+   button beside it, both coming in like the rest of the app. The fill
+   follows the progress instead of jumping (Chrome; Firefox steps). */
+
+/* numbers inside Korean text ("00:06:39 남음 (48 KB∕s)"): the terminal
+   face for the digits only, so spaces and Hangul stay Pretendard */
+@font-face {
+	font-family: 'Robin Digits';
+	font-style: normal;
+	font-weight: 400 700;
+	font-display: swap;
+	src: url('../fonts/robin-term.woff2') format('woff2');
+	unicode-range: U+0030-003A, U+002F, U+2215;
+}
+
+body:not(#body-login) .upload-picker.files-list__header-upload-button {
+	display: inline-flex !important;
+	align-items: center !important;
+}
+
+body:not(#body-login) .upload-picker .upload-picker__progress {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 5px;
+	box-sizing: border-box;
+	height: 34px;
+	margin: 0 0 0 8px !important;
+	padding: 0 12px !important;
+	border: 1px solid var(--rc-chip-line);
+	border-radius: var(--rc-radius);
+	background: var(--rc-chip-bg), var(--rc-card);
+	box-shadow: var(--rc-chip-top);
+	overflow: hidden;
+}
+
+body:not(#body-login) .upload-picker--uploading .upload-picker__progress {
+	width: 224px !important;
+	max-width: 224px !important;
+	animation: rc-up 220ms var(--rc-ease) backwards;
+}
+
+body:not(#body-login) .upload-picker__progress .progress-bar--linear {
+	--progress-bar-height: 4px !important;
+	height: 4px !important;
+	margin: 0 !important;
+	border-radius: 2px !important;
+	background: var(--rc-muted) !important;
+}
+
+body:not(#body-login) .upload-picker__progress .progress-bar--linear::-webkit-progress-value {
+	background: var(--rc-strong) !important;
+	border-radius: 2px !important;
+	transition: width 420ms var(--rc-ease);
+}
+
+body:not(#body-login) .upload-picker__progress .progress-bar--linear::-moz-progress-bar {
+	background: var(--rc-strong) !important;
+	border-radius: 2px !important;
+}
+
+/* a failed file: the bar goes red, the brand's one colour for an error */
+body:not(#body-login) .upload-picker__progress .progress-bar--error::-webkit-progress-value {
+	background: var(--rc-red) !important;
+}
+
+body:not(#body-login) .upload-picker__progress p {
+	margin: 0 !important;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	font: 500 11px/13px 'Robin Digits', var(--rc-font);
+	color: var(--rc-muted-foreground);
+}
+
+body:not(#body-login) .upload-picker__progress p span span {
+	color: var(--rc-faint);
+}
+
+body:not(#body-login) .upload-picker__cancel {
+	margin-left: 4px !important;
+	animation: rc-pop 200ms var(--rc-ease) backwards;
+}
+
+body:not(#body-login) .upload-picker__cancel:hover,
+body:not(#body-login) .upload-picker__cancel:focus-visible {
+	color: var(--rc-red) !important;
+	background: var(--rc-red-surface) !important;
+}
+
+/* phones: a narrower chip, the speed left out */
+@media (max-width: 512px) {
+	body:not(#body-login) .upload-picker--uploading .upload-picker__progress {
+		width: 128px !important;
+		max-width: 128px !important;
+		margin-left: 6px !important;
+		padding: 0 10px !important;
+	}
+
+	body:not(#body-login) .upload-picker__progress p span span {
+		display: none;
+	}
+}
+
+/* Dragging files over the list: the notice was a dashed box with a large
+   grey line of text. Now a window-like card: the tray in a lit tile, the
+   line in the title colour, coming in with a 4% scale. */
+body:not(#body-login) .files-list__drag-drop-notice {
+	padding: 8px 12px 0 !important;
+}
+
+body:not(#body-login) .files-list__drag-drop-notice-wrapper {
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	gap: 14px !important;
+	box-sizing: border-box;
+	min-height: 88px;
+	border: 1.5px dashed var(--rc-input-hover) !important;
+	border-radius: var(--rc-radius-pop) !important;
+	background: var(--rc-chip-bg), var(--rc-card) !important;
+	box-shadow: var(--rc-win-glow);
+	animation: rc-pop 0.2s var(--rc-ease);
+}
+
+body:not(#body-login) .files-list__drag-drop-notice-wrapper > .material-design-icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex: none;
+	width: 44px;
+	height: 44px;
+	margin: 0 !important;
+	border: 1px solid var(--rc-chip-line);
+	border-radius: var(--rc-radius);
+	background: var(--rc-chip-bg), var(--rc-muted);
+	box-shadow: var(--rc-chip-top);
+	color: var(--rc-strong);
+	filter: var(--rc-icon-glow);
+	animation: rc-up 0.28s var(--rc-ease) 0.06s backwards;
+}
+
+body:not(#body-login) .files-list__drag-drop-notice-wrapper > .material-design-icon svg {
+	width: 22px !important;
+	height: 22px !important;
+}
+
+body:not(#body-login) .files-list-drag-drop-notice__title {
+	margin: 0 !important;
+	font-size: 15px !important;
+	font-weight: 600 !important;
+	letter-spacing: -0.01em;
+	color: var(--rc-strong) !important;
+}
+
+/* Grid view: each file a quiet card (a hairline, not a border, so the
+   grid's sizes stay), its picture or folder on a rounded tile instead of
+   a bare grey glyph or a photo cut off at the card's edge. Pointing lights
+   the frame. */
+body:not(#body-login) .files-list--grid tbody .files-list__row {
+	border-radius: var(--rc-radius-pop);
+	box-shadow: inset 0 0 0 1px var(--rc-border);
+	transition: background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+body:not(#body-login) .files-list--grid tbody .files-list__row:hover,
+body:not(#body-login) .files-list--grid tbody .files-list__row:focus-within {
+	box-shadow: inset 0 0 0 1px var(--rc-input-hover);
+}
+
+body:not(#body-login) .files-list--grid tbody .files-list__row-icon {
+	border-radius: var(--rc-radius) !important;
+	background: var(--rc-muted);
+	overflow: hidden;
+}
+
+body:not(#body-login) .files-list--grid tbody .files-list__row-icon > .material-design-icon,
+body:not(#body-login) .files-list--grid tbody .files-list__row-icon > .folder-icon {
+	color: var(--rc-faint) !important;
+	transform: scale(0.62);
+}
+
+body:not(#body-login) .files-list--grid tbody .files-list__row-icon-preview-container,
+body:not(#body-login) .files-list--grid tbody .files-list__row-icon-preview {
+	border-radius: var(--rc-radius) !important;
+}
+
+/* Empty folders and lists, second pass: the tile catches the light (glass
+   and a lit frame on dark) and the parts come in one after another — the
+   tile with a small scale, then the title, the text and the button. */
+body:not(#body-login) .empty-content {
+	animation: none;
+}
+
+body:not(#body-login) .empty-content__icon {
+	border-color: var(--rc-chip-line) !important;
+	background: var(--rc-chip-bg), var(--rc-muted) !important;
+	box-shadow: var(--rc-chip-top), var(--rc-win-glow);
+	color: var(--rc-strong) !important;
+	animation: rc-pop 0.3s var(--rc-ease) 0.06s backwards;
+}
+
+body:not(#body-login) .empty-content__icon > * {
+	filter: var(--rc-icon-glow);
+}
+
+body:not(#body-login) .empty-content__name { animation: rc-up 0.32s var(--rc-ease) 0.12s backwards; }
+body:not(#body-login) .empty-content__description { animation: rc-up 0.32s var(--rc-ease) 0.17s backwards; }
+body:not(#body-login) .empty-content__action { animation: rc-up 0.32s var(--rc-ease) 0.22s backwards; }
+
+/* A folder that answers fast showed its spinner for a blink; it now waits
+   a quarter second before fading in. */
+body:not(#body-login) #app-content-vue .files-list__loading,
+body:not(#body-login) #app-content-vue > .loading-icon,
+body:not(#body-login) .app-content .empty-content + .loading-icon,
+body:not(#body-login) .files-list__table .loading-icon {
+	animation: rc-fade 0.2s ease 0.25s backwards;
+}
