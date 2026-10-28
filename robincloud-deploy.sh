@@ -20,6 +20,11 @@ low=()
 [ -d /sys/fs/cgroup/robinbuild.slice ] && low=(--cgroup-parent=/robinbuild.slice)
 docker build -q "${low[@]}" -t robincloud:34.0.5 . >/dev/null
 cd /opt/stack
+# One maintenance job at a time: the nightly backup (/opt/backup/robin-backup.sh)
+# switches maintenance mode on and off too, and whichever finished first would
+# turn it off under the other. Wait up to 30 min for it (03:15, a minute or so).
+exec 9>"${ROBIN_MAINT_LOCK:-/run/lock/robin-maint.lock}"
+flock -n 9 || { echo "another maintenance job (backup?) is running, waiting..." >&2; flock -w 1800 9 || { echo "maintenance lock busy for 30 min, giving up" >&2; exit 1; }; }
 occ() { docker compose exec -T -u www-data robincloud php occ "$@"; }
 
 installed=no
