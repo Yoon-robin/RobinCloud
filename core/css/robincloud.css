@@ -37,7 +37,13 @@
    the same greys over: white windows, #0b0b0b text; amber and red go a few
    steps darker there so they stay readable on white. Borders are the
    opaque mix of white (black) over the window, so overlapping lines don't
-   add up. */
+   add up.
+   Light and glass, as on the site (2026-10-28, B-206/B-208): white only, on
+   dark only, and only on things that hold still — the logo, the login card,
+   primary buttons, toasts, the current page's icon. Never on anything that
+   blinks, on body text or on the dense lists. The glass is the login card
+   and dialogs (sheen + lit frame) and, smaller, secondary buttons, the
+   current navigation entry and chips. On light all of these are "none". */
 
 :root {
 	--rc-page: #f7f7f7;
@@ -76,7 +82,28 @@
 	--rc-scanline: rgb(0 0 0 / 2.2%);
 	--rc-vignette: rgb(0 0 0 / 8%);
 	--rc-logo-glow: none;
-	--rc-radius: 0.2rem;
+	--rc-win-glow: 0 0 #0000;
+	--rc-win-depth: 0 0 #0000;
+	--rc-primary-glow: 0 0 #0000;
+	--rc-primary-glow-hover: 0 0 #0000;
+	--rc-toast-glow: 0 0 #0000;
+	--rc-icon-glow: none;
+	--rc-glass-sheen: linear-gradient(transparent, transparent);
+	--rc-glass-frame: linear-gradient(var(--rc-border-window), var(--rc-border-window));
+	--rc-glass-border: var(--rc-border-window);
+	--rc-chip-bg: linear-gradient(transparent, transparent);
+	--rc-chip-bg-hover: linear-gradient(transparent, transparent);
+	--rc-chip-line: var(--rc-border-window);
+	--rc-chip-top: 0 0 #0000;
+	--rc-selected-fill: var(--rc-muted);
+	--rc-selected-line: transparent;
+	/* Rounder than the kit's 0.2rem, as on the site (robin, 2026-10-27, "too
+	   square"): boxes and controls 10px, small tags 7px, menus 12px, windows
+	   18px. No pills: buttons and selections stay boxes. */
+	--rc-radius: 10px;
+	--rc-radius-sm: 7px;
+	--rc-radius-pop: 12px;
+	--rc-radius-win: 18px;
 	--rc-ease: cubic-bezier(0.22, 1, 0.36, 1);
 	--rc-font: 'Pretendard Variable', Pretendard, -apple-system, 'Segoe UI', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
 	--rc-font-term: 'Robin Term', 'Cascadia Code', 'Cascadia Mono', Consolas, 'D2Coding', 'Pretendard Variable', Pretendard, monospace;
@@ -119,7 +146,22 @@
 		--rc-pop-shadow: 0 12px 32px -12px rgb(0 0 0 / 0.7);
 		--rc-scanline: rgb(255 255 255 / 2.2%);
 		--rc-vignette: rgb(0 0 0 / 55%);
-		--rc-logo-glow: drop-shadow(0 0 10px rgb(255 255 255 / 22%)) drop-shadow(0 0 28px rgb(255 255 255 / 10%));
+		--rc-logo-glow: drop-shadow(0 0 6px rgba(255, 255, 255, 0.5)) drop-shadow(0 0 18px rgba(255, 255, 255, 0.28)) drop-shadow(0 0 42px rgba(255, 255, 255, 0.14));
+		--rc-win-glow: 0 0 28px rgba(255, 255, 255, 0.1), 0 0 80px rgba(255, 255, 255, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+		--rc-win-depth: 0 24px 70px rgba(0, 0, 0, 0.5);
+		--rc-primary-glow: 0 0 20px rgba(255, 255, 255, 0.18);
+		--rc-primary-glow-hover: 0 0 28px rgba(255, 255, 255, 0.3);
+		--rc-toast-glow: 0 0 24px rgba(255, 255, 255, 0.2);
+		--rc-icon-glow: drop-shadow(0 0 6px rgba(255, 255, 255, 0.32));
+		--rc-glass-sheen: linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0) 46%);
+		--rc-glass-frame: linear-gradient(160deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.16) 26%, rgba(255, 255, 255, 0.06) 58%, rgba(255, 255, 255, 0.2));
+		--rc-glass-border: rgba(255, 255, 255, 0.07);
+		--rc-chip-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.025));
+		--rc-chip-bg-hover: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+		--rc-chip-line: rgba(255, 255, 255, 0.1);
+		--rc-chip-top: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+		--rc-selected-fill: transparent;
+		--rc-selected-line: rgba(255, 255, 255, 0.1);
 	}
 }
 
@@ -165,6 +207,21 @@ body[data-theme-light-highcontrast] {
 	--rc-scanline: rgb(0 0 0 / 2.2%);
 	--rc-vignette: rgb(0 0 0 / 8%);
 	--rc-logo-glow: none;
+	--rc-win-glow: 0 0 #0000;
+	--rc-win-depth: 0 0 #0000;
+	--rc-primary-glow: 0 0 #0000;
+	--rc-primary-glow-hover: 0 0 #0000;
+	--rc-toast-glow: 0 0 #0000;
+	--rc-icon-glow: none;
+	--rc-glass-sheen: linear-gradient(transparent, transparent);
+	--rc-glass-frame: linear-gradient(var(--rc-border-window), var(--rc-border-window));
+	--rc-glass-border: var(--rc-border-window);
+	--rc-chip-bg: linear-gradient(transparent, transparent);
+	--rc-chip-bg-hover: linear-gradient(transparent, transparent);
+	--rc-chip-line: var(--rc-border-window);
+	--rc-chip-top: 0 0 #0000;
+	--rc-selected-fill: var(--rc-muted);
+	--rc-selected-line: transparent;
 }
 
 body[data-theme-dark],
@@ -204,7 +261,22 @@ body[data-theme-dark-highcontrast] {
 	--rc-pop-shadow: 0 12px 32px -12px rgb(0 0 0 / 0.7);
 	--rc-scanline: rgb(255 255 255 / 2.2%);
 	--rc-vignette: rgb(0 0 0 / 55%);
-	--rc-logo-glow: drop-shadow(0 0 10px rgb(255 255 255 / 22%)) drop-shadow(0 0 28px rgb(255 255 255 / 10%));
+	--rc-logo-glow: drop-shadow(0 0 6px rgba(255, 255, 255, 0.5)) drop-shadow(0 0 18px rgba(255, 255, 255, 0.28)) drop-shadow(0 0 42px rgba(255, 255, 255, 0.14));
+	--rc-win-glow: 0 0 28px rgba(255, 255, 255, 0.1), 0 0 80px rgba(255, 255, 255, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+	--rc-win-depth: 0 24px 70px rgba(0, 0, 0, 0.5);
+	--rc-primary-glow: 0 0 20px rgba(255, 255, 255, 0.18);
+	--rc-primary-glow-hover: 0 0 28px rgba(255, 255, 255, 0.3);
+	--rc-toast-glow: 0 0 24px rgba(255, 255, 255, 0.2);
+	--rc-icon-glow: drop-shadow(0 0 6px rgba(255, 255, 255, 0.32));
+	--rc-glass-sheen: linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0) 46%);
+	--rc-glass-frame: linear-gradient(160deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.16) 26%, rgba(255, 255, 255, 0.06) 58%, rgba(255, 255, 255, 0.2));
+	--rc-glass-border: rgba(255, 255, 255, 0.07);
+	--rc-chip-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.025));
+	--rc-chip-bg-hover: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+	--rc-chip-line: rgba(255, 255, 255, 0.1);
+	--rc-chip-top: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+	--rc-selected-fill: transparent;
+	--rc-selected-line: rgba(255, 255, 255, 0.1);
 }
 
 body[data-theme-light-highcontrast] {
@@ -309,16 +381,17 @@ body {
 	--color-border-assistant: linear-gradient(var(--rc-border-window), var(--rc-border-window)) !important;
 	--color-element-assistant: linear-gradient(var(--rc-primary), var(--rc-primary)) !important;
 	--color-element-assistant-icon: linear-gradient(var(--rc-foreground), var(--rc-foreground)) !important;
-	/* shape: 0.2rem everywhere, the pill and "rounded" sizes included */
-	--border-radius-small: var(--rc-radius) !important;
+	/* shape: small 7px, controls 10px (the pill and "rounded" sizes too, so
+	   nothing turns into a pill), menus 12px, windows 18px */
+	--border-radius-small: var(--rc-radius-sm) !important;
 	--border-radius-element: var(--rc-radius) !important;
-	--border-radius-container: var(--rc-radius) !important;
-	--border-radius-container-large: var(--rc-radius) !important;
-	--border-radius: var(--rc-radius) !important;
+	--border-radius-container: var(--rc-radius-pop) !important;
+	--border-radius-container-large: var(--rc-radius-win) !important;
+	--border-radius: var(--rc-radius-sm) !important;
 	--border-radius-large: var(--rc-radius) !important;
 	--border-radius-rounded: var(--rc-radius) !important;
 	--border-radius-pill: var(--rc-radius) !important;
-	--body-container-radius: var(--rc-radius) !important;
+	--body-container-radius: var(--rc-radius-win) !important;
 	--border-width-input: 1px !important;
 	--border-width-input-focused: 1px !important;
 	--font-face: var(--rc-font) !important;
@@ -408,19 +481,19 @@ body .input-field .input-field__input:is(:focus, :focus-within, :active, :hover)
 .input-field__label { font-weight: 400; }
 
 /* Nextcloud derives paddings from the corner radius (a field's text inset,
-   its label, a button's sides): at 0.2rem the text sat 3px from the line.
-   The 8px they had before the square corners, set directly. */
+   its label, a button's sides), so a change of corner moves the text. Set
+   directly instead: 10px inside a field, 12px at a button's sides. */
 .input-field:not(.input-field--leading-icon),
 .textarea {
-	--input-padding-start: 8px !important;
+	--input-padding-start: 10px !important;
 }
 
 .input-field:not(.input-field--trailing-icon),
 .textarea {
-	--input-padding-end: 8px !important;
+	--input-padding-end: 10px !important;
 }
 
-.input-field__helper-text-message { padding-inline: 8px !important; }
+.input-field__helper-text-message { padding-inline: 10px !important; }
 .textarea .textarea__input { padding-block: 8px !important; }
 .native-datetime-picker--input { padding-inline-start: 10px !important; }
 .nc-select.v-select.select.vs--single .vs__selected { padding-inline: 10px !important; }
@@ -433,35 +506,49 @@ body .input-field .input-field__input:is(:focus, :focus-within, :active, :hover)
 
 .button-vue { --button-radius: 8px !important; }
 
-/* Buttons. Default (secondary): clear with a 16% line, #1b1b1b under the
-   pointer. Primary: the text colour as a fill. No shadows. */
+/* Buttons. Default (secondary): on dark the small-box glass (a little white
+   from above, a faint edge, a lit top line), brighter under the pointer; on
+   light clear with the frame line, grey under the pointer. Primary: the text
+   colour as a fill, with a steady white glow on dark (more under the
+   pointer). */
 .button-vue {
 	border-radius: var(--rc-radius) !important;
 	font-weight: 500 !important;
 	letter-spacing: -0.01em;
 	box-shadow: none !important;
-	transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+	transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, box-shadow 0.2s ease;
 }
 
 .button-vue:is(.button-vue--primary, .button-vue--vue-primary) {
 	background-color: var(--rc-primary) !important;
 	color: var(--rc-primary-foreground) !important;
 	border: 1px solid var(--rc-primary) !important;
+	box-shadow: var(--rc-primary-glow) !important;
 }
 
 .button-vue:is(.button-vue--primary, .button-vue--vue-primary):hover:not(:disabled) {
 	background-color: var(--rc-primary-hover) !important;
 	border-color: var(--rc-primary-hover) !important;
+	box-shadow: var(--rc-primary-glow-hover) !important;
+}
+
+/* no glow in the busy places: tables and lists of rows (apps, users, files) */
+:is(table, [role='table'], .files-list, .apps-list, .user-list) .button-vue:is(.button-vue--primary, .button-vue--vue-primary),
+:is(table, [role='table'], .files-list, .apps-list, .user-list) .button-vue:is(.button-vue--primary, .button-vue--vue-primary):hover:not(:disabled) {
+	box-shadow: none !important;
 }
 
 .button-vue:is(.button-vue--secondary, .button-vue--vue-secondary) {
 	background-color: transparent !important;
+	background-image: var(--rc-chip-bg) !important;
 	color: var(--rc-strong) !important;
-	border: 1px solid var(--rc-border-window) !important;
+	border: 1px solid var(--rc-chip-line) !important;
+	box-shadow: var(--rc-chip-top) !important;
 }
 
 .button-vue:is(.button-vue--secondary, .button-vue--vue-secondary):hover:not(:disabled) {
-	background-color: var(--rc-muted) !important;
+	background-color: var(--rc-selected-fill) !important;
+	background-image: var(--rc-chip-bg-hover) !important;
 }
 
 /* delete and the like: red line and text, a red tint under the pointer */
@@ -533,14 +620,38 @@ a.button-vue:focus-visible {
 	border-color: var(--rc-input) !important;
 }
 
-/* Modals, menus, popovers: a window frame and only a faint black depth
+/* Menus and popovers: a window frame, 12px, and only a faint black depth
    shadow under it. */
 .modal-container,
 .v-popper__inner {
 	border: 1px solid var(--rc-border-window) !important;
-	border-radius: var(--rc-radius) !important;
+	border-radius: var(--rc-radius-pop) !important;
 	box-shadow: var(--rc-pop-shadow) !important;
 }
+
+/* Dialogs are windows, 18px, and on dark glass (as the site's card, B-208):
+   a faint sheen down the top over the window black, and a 1px frame bright
+   at the top-left corner fading round the sides over a 7% line. The frame is
+   a gradient under the padding box, so it needs no pseudo-element. On light:
+   the plain frame line. */
+.modal-container {
+	border: 1px solid transparent !important;
+	border-radius: var(--rc-radius-win) !important;
+	background:
+		var(--rc-glass-sheen) padding-box,
+		linear-gradient(var(--rc-background), var(--rc-background)) padding-box,
+		var(--rc-glass-frame) border-box,
+		linear-gradient(var(--rc-glass-border), var(--rc-glass-border)) border-box !important;
+	box-shadow: var(--rc-win-depth), var(--rc-pop-shadow) !important;
+}
+
+/* The search dialog's sticky header paints the window black over the sheen,
+   which left a hard-edged box: no sheen there, the frame stays. */
+.modal-container:has(.unified-search-modal__header) { --rc-glass-sheen: linear-gradient(transparent, transparent); }
+
+/* small things: tooltips 7px */
+.v-popper--theme-tooltip .v-popper__inner,
+.v-popper--theme-tooltip .v-popper__wrapper { border-radius: var(--rc-radius-sm) !important; }
 
 /* Toasts: an inverted strip, Pretendard 600; an error or warning keeps a
    3px bar in its colour on the leading edge. @nextcloud/dialogs names its
@@ -552,7 +663,7 @@ div[class^='_toast_'],
 	color: var(--rc-toast-foreground) !important;
 	border: 0 !important;
 	border-radius: var(--rc-radius) !important;
-	box-shadow: var(--rc-pop-shadow) !important;
+	box-shadow: var(--rc-toast-glow), var(--rc-pop-shadow) !important;
 	font-family: var(--rc-font);
 	font-weight: 600;
 }
@@ -566,35 +677,42 @@ div[class^='_toast_'][class*='_toast_warning_'],
 :is(div[class^='_toast_'], .toastify.dialogs) .button-vue:hover:not(:disabled) { background-color: color-mix(in srgb, currentColor 12%, transparent) !important; }
 
 /* App menu (the grid in the header): the popover sets its own 8px corner;
-   the app icons keep their round tiles (the one round shape the brand
-   allows) but lose the glossy bevel; an unread dot is "new", amber. */
+   the app icons sit on 10px tiles without the glossy bevel; an unread dot is
+   "new", amber. */
 .app-menu__popover { --border-radius-element: var(--rc-radius) !important; }
 .app-item__circle { background-image: none !important; box-shadow: none !important; border-radius: var(--rc-radius) !important; }
 .app-item--outlined .app-item__circle { box-shadow: inset 0 0 0 1px var(--rc-border-window) !important; }
 .app-item__unread { background-color: var(--rc-amber) !important; }
 
-/* the owner chip in the sharing tab and other user bubbles, chips (search
-   filters, tags): square too */
-.user-bubble__content { border-radius: var(--rc-radius) !important; }
-.nc-chip { --chip-radius: var(--rc-radius) !important; border-radius: var(--rc-radius) !important; }
+/* the owner bubble in the sharing tab and other user bubbles, tags: 7px;
+   chips (search filters): 10px in the small-box glass */
+.user-bubble__content { border-radius: var(--rc-radius-sm) !important; }
+.files-list__system-tag,
+.systemtags-select__tag { border-radius: var(--rc-radius-sm) !important; }
+.nc-chip {
+	--chip-radius: var(--rc-radius) !important;
+	border-radius: var(--rc-radius) !important;
+	background-image: var(--rc-chip-bg) !important;
+	box-shadow: inset 0 0 0 1px var(--rc-chip-line), var(--rc-chip-top) !important;
+}
 
 /* menus: one depth shadow (on the wrapper, where Nextcloud puts its own),
    the frame on the inside */
-.v-popper__wrapper { box-shadow: var(--rc-pop-shadow) !important; border-radius: var(--rc-radius) !important; }
+.v-popper__wrapper { box-shadow: var(--rc-pop-shadow) !important; border-radius: var(--rc-radius-pop) !important; }
 .v-popper__inner { box-shadow: none !important; }
 
 /* the header's own menus (account, notifications) are not poppers */
 .header-menu__wrapper {
 	border: 1px solid var(--rc-border-window) !important;
-	border-radius: var(--rc-radius) !important;
+	border-radius: var(--rc-radius-pop) !important;
 	box-shadow: var(--rc-pop-shadow) !important;
 	filter: none !important;
 }
 
-/* counters (unread, trash): numbers in the terminal face, a square tag */
+/* counters (unread, trash): numbers in the terminal face, a 7px tag */
 .counter-bubble__counter {
 	font-family: var(--rc-font-term) !important;
-	border-radius: var(--rc-radius) !important;
+	border-radius: var(--rc-radius-sm) !important;
 }
 
 /* ------------------------------------------------------- guest pages (login,
@@ -611,8 +729,8 @@ div[class^='_toast_'][class*='_toast_warning_'],
 	isolation: isolate;
 }
 
-/* the wordmark: dark on light, light on dark, and the page's one glow (dark
-   theme only, --rc-logo-glow) */
+/* the wordmark: dark on light, light on dark, and the page's brightest glow
+   (dark theme only, --rc-logo-glow, the site's three layers) */
 #body-login #header .logo {
 	background-image: url('../img/logo/logo-dark.svg') !important;
 	width: 196px !important;
@@ -631,17 +749,26 @@ body#body-login[data-theme-light-highcontrast] #header .logo { background-image:
 body#body-login[data-theme-dark] #header .logo,
 body#body-login[data-theme-dark-highcontrast] #header .logo { background-image: url('../img/logo/logo.svg') !important; }
 
-/* the card is a terminal window: 16% frame, the window black, no shadow */
+/* The card is a terminal window, 18px, and on dark the site's glass card
+   (B-206, B-208): the window black under a faint sheen from the top, a 1px
+   frame bright at the top-left corner over a 7% line (a gradient under the
+   padding box, since the sign-up steps use ::before/::after for their
+   progress line), a white glow round it and a dark shadow below. On light:
+   the plain frame line, no glow. */
 #body-login .guest-box:not(footer),
 #body-login .setup-form,
 #body-login .body-login-container.update,
 #body-login #guest-content-vue {
 	position: relative;
-	background: var(--rc-background) !important;
+	background:
+		var(--rc-glass-sheen) padding-box,
+		linear-gradient(var(--rc-background), var(--rc-background)) padding-box,
+		var(--rc-glass-frame) border-box,
+		linear-gradient(var(--rc-glass-border), var(--rc-glass-border)) border-box !important;
 	color: var(--rc-foreground) !important;
-	border: 1px solid var(--rc-border-window) !important;
-	border-radius: var(--rc-radius) !important;
-	box-shadow: none !important;
+	border: 1px solid transparent !important;
+	border-radius: var(--rc-radius-win) !important;
+	box-shadow: var(--rc-win-glow), var(--rc-win-depth) !important;
 	backdrop-filter: none !important;
 	-webkit-backdrop-filter: none !important;
 }
@@ -746,7 +873,7 @@ body#body-login[data-theme-dark-highcontrast] #header .logo { background-image: 
 	width: 48px !important;
 	height: 48px !important;
 	margin: 0 auto 16px !important;
-	border-radius: var(--rc-radius);
+	border-radius: var(--rc-radius-pop);
 	background-color: var(--rc-muted) !important;
 	background-size: 22px !important;
 	opacity: .7;
@@ -784,6 +911,7 @@ body#body-login[data-theme-dark-highcontrast] #header .logo { background-image: 
 	border-radius: var(--rc-radius) !important;
 	font-size: 14px !important;
 	font-weight: 500 !important;
+	box-shadow: var(--rc-primary-glow);
 }
 
 /* ------------------------------------------------------- logged-in pages:
@@ -805,7 +933,7 @@ body:not(#body-login) #header {
 body:not(#body-login) #header .logo,
 body:not(#body-login) #nextcloud .logo {
 	background-image: url('../img/logo/logo-dark.svg') !important;
-	filter: none !important;
+	filter: var(--rc-logo-glow) !important;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -822,11 +950,12 @@ body[data-theme-light]:not(#body-login) #nextcloud .logo,
 body[data-theme-light-highcontrast]:not(#body-login) #header .logo,
 body[data-theme-light-highcontrast]:not(#body-login) #nextcloud .logo { background-image: url('../img/logo/logo-dark.svg') !important; }
 
-/* the app in one window: 16% frame, 0.2rem, no shadow */
+/* the app in one window: 16% frame, 18px, no shadow or glow (it is full of
+   lists) */
 body:not(#body-login) #content,
 body:not(#body-login) #content-vue {
 	border: 1px solid var(--rc-border-window) !important;
-	border-radius: var(--rc-radius) !important;
+	border-radius: var(--rc-radius-win) !important;
 	box-shadow: none !important;
 }
 
@@ -949,7 +1078,7 @@ body[data-theme-dark-highcontrast]:not(#body-login) {
 	min-width: 0;
 	margin: 0 !important;
 	border: 0 !important;
-	border-radius: var(--rc-radius) !important;
+	border-radius: var(--rc-radius-sm) !important;
 	background: transparent !important;
 	width: auto !important;
 }
@@ -963,7 +1092,7 @@ body[data-theme-dark-highcontrast]:not(#body-login) {
 	min-height: 32px !important;
 	padding: 0 8px !important;
 	border: 0 !important;
-	border-radius: var(--rc-radius) !important;
+	border-radius: var(--rc-radius-sm) !important;
 	background: transparent !important;
 	color: var(--rc-muted-foreground) !important;
 	font-weight: 500;
@@ -1285,12 +1414,14 @@ a[href^="https://help.nextcloud.com"] { display: none !important; }
 	color: var(--rc-primary-foreground) !important;
 	font-size: 14px !important;
 	font-weight: 500 !important;
+	box-shadow: var(--rc-primary-glow) !important;
 	cursor: pointer;
 }
 
 #body-login .guest-box :is(a.button.primary, input[type='submit'].primary):hover,
 #body-login .body-login-container.update .two-factor-primary:hover {
 	background: var(--rc-primary-hover) !important;
+	box-shadow: var(--rc-primary-glow-hover) !important;
 }
 
 #body-login .guest-box .buttons { margin: 0; }
@@ -1665,7 +1796,7 @@ body:not(#body-login) .empty-content__icon {
 	min-height: 0 !important;
 	margin: 0 auto 16px !important;
 	border: 1px solid var(--rc-border-window);
-	border-radius: var(--rc-radius);
+	border-radius: var(--rc-radius-pop);
 	box-sizing: border-box;
 	background: var(--rc-muted) !important;
 	background-size: 24px !important;
@@ -1706,22 +1837,27 @@ body:not(#body-login) .empty-content__description {
    round two (2026-10-27): a navigation you can see the current page in,
    lighter list furniture, quiet scrollbars, phone-sized inputs. */
 
-/* Navigation: the current page is the pressed grey with a 2px bar in the
-   text colour on its leading edge (like a selected line in a terminal
-   menu), bold; no pill, no shadow. */
+/* Navigation: the current page is a 10px box, bold, its icon lit. On dark
+   the small-box glass (a little white from above, a faint edge, a lit top
+   line) with a soft glow on the icon; on light the pressed grey. No pill. */
 body:not(#body-login) .app-navigation-entry:hover:not(.active):not(.app-navigation-entry--active) {
 	background-color: var(--rc-muted) !important;
 }
 
 body:not(#body-login) .app-navigation-entry.active,
 body:not(#body-login) .app-navigation-entry--active {
-	background-color: var(--rc-muted) !important;
-	box-shadow: inset 2px 0 0 var(--rc-strong) !important;
+	background: var(--rc-chip-bg), var(--rc-selected-fill) !important;
+	box-shadow: inset 0 0 0 1px var(--rc-selected-line), var(--rc-chip-top) !important;
 }
 
 body:not(#body-login) .app-navigation-entry.active :is(.app-navigation-entry__name, .app-navigation-entry-icon),
 body:not(#body-login) .app-navigation-entry--active :is(.app-navigation-entry__name, .app-navigation-entry-icon) {
 	color: var(--rc-strong) !important;
+}
+
+body:not(#body-login) .app-navigation-entry.active .app-navigation-entry-icon,
+body:not(#body-login) .app-navigation-entry--active .app-navigation-entry-icon {
+	filter: var(--rc-icon-glow);
 }
 
 body:not(#body-login) .app-navigation-entry.active .app-navigation-entry__name,
@@ -1752,6 +1888,14 @@ body:not(#body-login) .files-list__thead .files-list__column,
 body:not(#body-login) .files-list__thead .files-list__column-sort-button {
 	color: var(--rc-muted-foreground) !important;
 	font-weight: 500 !important;
+}
+
+/* A row under the pointer or open in the details panel: a 10px box, flat
+   (no glass on the list). Its own separator goes clear so the line does not
+   bend round the corners; the rows keep display: flex, so the corner clips. */
+body:not(#body-login) tr.files-list__row:is(:hover, .files-list__row--active, .files-list__row--picked, .files-list__row--dragover) {
+	border-radius: var(--rc-radius);
+	border-bottom-color: transparent !important;
 }
 
 /* sizes are terminal numbers ("80 KB"); dates stay in Pretendard (they are
@@ -1832,7 +1976,7 @@ body:not(#body-login) .app-sidebar-tabs__tab {
 	height: 30px !important;
 	min-height: 30px !important;
 	border: 0 !important;
-	border-radius: var(--rc-radius) !important;
+	border-radius: 8px !important;
 	background: transparent !important;
 	box-shadow: none !important;
 	color: var(--rc-muted-foreground) !important;
@@ -1843,7 +1987,8 @@ body:not(#body-login) .app-sidebar-tabs__tab::after { display: none !important; 
 body:not(#body-login) .app-sidebar-tabs__tab:hover:not(.active) { color: var(--rc-foreground) !important; background: color-mix(in srgb, var(--rc-muted) 60%, transparent) !important; }
 
 body:not(#body-login) .app-sidebar-tabs__tab.active {
-	background: var(--rc-muted) !important;
+	background: var(--rc-chip-bg), var(--rc-selected-fill) !important;
+	box-shadow: inset 0 0 0 1px var(--rc-selected-line), var(--rc-chip-top) !important;
 	color: var(--rc-strong) !important;
 }
 
