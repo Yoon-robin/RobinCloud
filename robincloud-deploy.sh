@@ -47,7 +47,22 @@ docker run --rm -v stack_robincloud:/var/www/html --entrypoint sh robincloud:34.
 if [ "$installed" = yes ]; then
   docker compose exec -T -u www-data robincloud sh -c \
     'mv /var/www/html/.htaccess.robincloud-new /var/www/html/.htaccess && php occ maintenance:update:htaccess >/dev/null'
-  occ upgrade --no-interaction >/dev/null || true
+  # With maintenance mode on (it is, since line 32) `occ upgrade` answers 2 when
+  # no upgrade is needed and 0 after a successful one. Anything else (1, 4, 5)
+  # is a failed upgrade: `|| true` used to hide it and the EXIT trap then opened
+  # the site on a half-upgraded database (B-235). Stop with maintenance mode on.
+  rc=0
+  up=$(occ upgrade --no-interaction 2>&1) || rc=$?
+  case "$rc" in
+    0|2) ;;
+    *)
+      trap - EXIT
+      echo "RobinCloud upgrade FAILED (occ upgrade exit $rc); maintenance mode stays ON." >&2
+      printf '%s\n' "$up" | tail -20 >&2
+      echo "Fix it, then: docker compose exec -u www-data robincloud php occ upgrade; php occ maintenance:mode --off" >&2
+      exit 1
+      ;;
+  esac
 else
   docker compose exec -T -u www-data robincloud mv /var/www/html/.htaccess.robincloud-new /var/www/html/.htaccess
 fi
