@@ -559,7 +559,7 @@
     "Alternative log in using app password": "앱 비밀번호로 로그인",
     "Wrong login or password.": "아이디 또는 비밀번호가 틀렸어요.",
     "Too many failed login attempts from your location. Try again in 30 seconds.": "로그인에 너무 많이 실패했어요. 30초 뒤에 다시 해 주세요.",
-    "This account is disabled": "아직 승인되지 않았거나 쓸 수 없는 계정이에요",
+    "This account is disabled": "사용이 중지된 계정이에요",
     "Please contact your administrator.": "관리자에게 문의해 주세요.",
     "Please try again or contact your administrator.": "다시 해 보거나 관리자에게 문의해 주세요.",
     "An internal error occurred.": "내부 오류가 났어요.",

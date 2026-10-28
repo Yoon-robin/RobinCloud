@@ -1590,9 +1590,9 @@ html[lang^='ko'] #registration_user form::before { content: '> 계정 정보'; }
 	animation: rc-row 0.3s var(--rc-ease) 0.16s both;
 }
 
-#registration_email fieldset::before { content: 'We will email you a code. Once an admin approves, RobinCloud and RobinMail are yours to use.'; }
+#registration_email fieldset::before { content: 'We will email you a code. Once you sign up, RobinCloud and RobinMail are yours to use.'; }
 #registration_verification fieldset::before { content: 'Enter the code from the email we just sent. Nothing after a few minutes? Check your spam folder.'; }
-html[lang^='ko'] #registration_email fieldset::before { content: '이메일로 인증 코드를 보내 드려요. 관리자가 승인하면 RobinCloud와 RobinMail을 바로 쓸 수 있어요.'; }
+html[lang^='ko'] #registration_email fieldset::before { content: '이메일로 인증 코드를 보내 드려요. 가입하면 RobinCloud와 RobinMail을 바로 쓸 수 있어요.'; }
 html[lang^='ko'] #registration_verification fieldset::before { content: '방금 보낸 메일의 인증 코드를 넣어 주세요. 몇 분이 지나도 안 오면 스팸함도 확인해 주세요.'; }
 
 :is(#registration_email, #registration_verification, #registration_user) fieldset { display: flex; flex-direction: column; gap: 12px; }
