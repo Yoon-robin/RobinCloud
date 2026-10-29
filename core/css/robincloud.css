@@ -1012,11 +1012,14 @@ body:not(#body-login) #nextcloud .logo {
 	background-position: center !important;
 }
 
-/* the header link around the wordmark must not crop it */
+/* the header link around the wordmark must not crop it, nor its glow: the
+   link is overflow: hidden, which cut the three-layer light (42px) square
+   around the logo */
 body:not(#body-login) #header #nextcloud {
 	width: auto !important;
 	min-width: 124px;
 	padding-inline: 6px;
+	overflow: visible !important;
 }
 
 /* header app icons are white SVGs drawn for a dark backdrop: invert them on
@@ -1860,6 +1863,13 @@ body:not(#body-login) .app-navigation-entry--active .app-navigation-entry-icon {
 	filter: var(--rc-icon-glow);
 }
 
+/* the entry's link is overflow: hidden and the icon sits on its edge, so the
+   icon's light was cut on three sides; the name keeps its own ellipsis */
+body:not(#body-login) .app-navigation-entry.active .app-navigation-entry-link,
+body:not(#body-login) .app-navigation-entry--active .app-navigation-entry-link {
+	overflow: visible !important;
+}
+
 body:not(#body-login) .app-navigation-entry.active .app-navigation-entry__name,
 body:not(#body-login) .app-navigation-entry--active .app-navigation-entry__name { font-weight: 600; }
 
@@ -2056,6 +2066,12 @@ body:not(#body-login) *:not(:hover) {
 body:not(#body-login) .upload-picker.files-list__header-upload-button {
 	display: inline-flex !important;
 	align-items: center !important;
+}
+
+/* 새로 만들기 is the file list's own button: no light inside lists (brand
+   kit), and #app-content-vue scrolls, which cut its top off square */
+body:not(#body-login) .files-list__header-upload-button .button-vue {
+	box-shadow: none !important;
 }
 
 body:not(#body-login) .upload-picker .upload-picker__progress {
