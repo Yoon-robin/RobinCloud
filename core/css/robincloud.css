@@ -2256,3 +2256,71 @@ body:not(#body-login) .app-content .empty-content + .loading-icon,
 body:not(#body-login) .files-list__table .loading-icon {
 	animation: rc-fade 0.2s ease 0.25s backwards;
 }
+
+/* ========================================================== search and
+   details (2026-10-29): the search dialog's folders came in the stock blue
+   and its results landed all at once; the sharing tab drew two grey discs
+   and a white one; switching tabs in the details panel cut without motion. */
+
+/* Search results: a folder in the list's muted grey (the stock blue icon
+   is only a shape here), other type icons without their colour, and a
+   picture or page preview on a rounded tile with a hairline, so a white
+   page does not float on the dark window. */
+body:not(#body-login) .result-item__icon.icon-folder {
+	background: var(--rc-muted-foreground) !important;
+	-webkit-mask: url('../img/filetypes/folder.svg') center / 26px no-repeat;
+	mask: url('../img/filetypes/folder.svg') center / 26px no-repeat;
+}
+
+body:not(#body-login) .result-item__icon--no-preview:not(.icon-folder) { filter: grayscale(1); }
+
+body:not(#body-login) .result-item__icon:not(.result-item__icon--no-preview) {
+	border-radius: var(--rc-radius-sm) !important;
+	outline: 1px solid var(--rc-border);
+	outline-offset: -1px;
+}
+
+/* the results rise in, one after another */
+body:not(#body-login) .unified-search-modal__results .result-title { animation: rc-fade 0.2s ease backwards; }
+body:not(#body-login) .unified-search-modal__results .result-item { animation: rc-up 0.26s var(--rc-ease) backwards; }
+body:not(#body-login) .unified-search-modal__results .result-item:nth-child(2) { animation-delay: 0.03s; }
+body:not(#body-login) .unified-search-modal__results .result-item:nth-child(3) { animation-delay: 0.06s; }
+body:not(#body-login) .unified-search-modal__results .result-item:nth-child(4) { animation-delay: 0.09s; }
+body:not(#body-login) .unified-search-modal__results .result-item:nth-child(5) { animation-delay: 0.12s; }
+body:not(#body-login) .unified-search-modal__results .result-item:nth-child(n + 6) { animation-delay: 0.15s; }
+
+/* Sharing tab: "who has access", the internal link and the public link each
+   on the same quiet square tile as the empty screens, the glyph drawn in
+   the text colour (the stock ones are white pictures on grey or white). */
+body:not(#body-login) .sharing-entry .avatar-shared,
+body:not(#body-login) .sharing-entry .avatar-external,
+body:not(#body-login) .sharing-entry .avatar-link-share {
+	position: relative;
+	border-radius: var(--rc-radius) !important;
+	background: var(--rc-chip-bg), var(--rc-muted) !important;
+	box-shadow: inset 0 0 0 1px var(--rc-chip-line), var(--rc-chip-top);
+}
+
+body:not(#body-login) .sharing-entry__avatar:has(.avatar-link-share) {
+	border-radius: var(--rc-radius) !important;
+	background: none !important;
+}
+
+body:not(#body-login) .sharing-entry .avatar-shared::before,
+body:not(#body-login) .sharing-entry .avatar-external::before,
+body:not(#body-login) .sharing-entry .avatar-link-share::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: var(--rc-foreground);
+	-webkit-mask: var(--rc-share-glyph) center / 16px no-repeat;
+	mask: var(--rc-share-glyph) center / 16px no-repeat;
+}
+
+body:not(#body-login) .sharing-entry .avatar-shared { --rc-share-glyph: url('../img/actions/more.svg'); }
+body:not(#body-login) .sharing-entry .avatar-external { --rc-share-glyph: url('../img/actions/external.svg'); }
+body:not(#body-login) .sharing-entry .avatar-link-share { --rc-share-glyph: url('../img/actions/public.svg'); }
+
+/* Details panel: the chosen tab's content comes up instead of cutting in.
+   No fill, as above. */
+body:not(#body-login) .app-sidebar__tab--active { animation: rc-up 0.22s var(--rc-ease); }
