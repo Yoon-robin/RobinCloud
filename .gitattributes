@@ -3,4 +3,6 @@
 /dist/* binary
 /package-lock.json merge=binary
 /core/css/*.css* binary
+# our own stylesheet is hand-written: diff it as text
+/core/css/robincloud.css -binary diff merge text
 /.devcontainer/*.sh text eol=lf

@@ -2100,7 +2100,8 @@ body:not(#body-login) .upload-picker__progress .progress-bar--linear::-moz-progr
 }
 
 /* a failed file: the bar goes red, the brand's one colour for an error */
-body:not(#body-login) .upload-picker__progress .progress-bar--error::-webkit-progress-value {
+body:not(#body-login) .upload-picker__progress .progress-bar--error::-webkit-progress-value,
+body:not(#body-login) .upload-picker__progress .progress-bar--error::-moz-progress-bar {
 	background: var(--rc-red) !important;
 }
 
@@ -2111,10 +2112,6 @@ body:not(#body-login) .upload-picker__progress p {
 	text-overflow: ellipsis;
 	font: 500 11px/13px 'Robin Digits', var(--rc-font);
 	color: var(--rc-muted-foreground);
-}
-
-body:not(#body-login) .upload-picker__progress p span span {
-	color: var(--rc-faint);
 }
 
 body:not(#body-login) .upload-picker__cancel {
