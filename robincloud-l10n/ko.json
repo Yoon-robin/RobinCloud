@@ -725,7 +725,7 @@
     "Unable to retrieve the group list": "그룹 목록을 가져오지 못했어요"
   },
   "registration": {
-    "Register": "가입 신청",
+    "Register": "회원가입",
     "Registration is not allowed with the following domains: %s": "다음 도메인으로는 가입할 수 없어요: %s",
     "Registration is only allowed with the following domains: %s": "다음 도메인으로만 가입할 수 있어요: %s",
     "Invalid username policy regex": "아이디 규칙 정규식이 잘못되었습니다",
