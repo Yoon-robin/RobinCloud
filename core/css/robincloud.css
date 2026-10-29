@@ -2324,3 +2324,36 @@ body:not(#body-login) .sharing-entry .avatar-link-share { --rc-share-glyph: url(
 /* Details panel: the chosen tab's content comes up instead of cutting in.
    No fill, as above. */
 body:not(#body-login) .app-sidebar__tab--active { animation: rc-up 0.22s var(--rc-ease); }
+
+/* ========================================================== list previews
+   and the phone upload button (2026-10-29): a preview still loading was
+   a solid square in the spinner colour (--color-loading-dark, the title
+   colour here: black on light, a white flash on dark); a white preview (a
+   text page, a light logo) vanished into the light list; on narrow screens
+   the floating upload button sat on top of the open details panel. */
+
+/* still loading: the quiet muted tile the grid uses */
+body:not(#body-login) .files-list__row-icon-preview:not(.files-list__row-icon-preview--loaded) {
+	background: var(--rc-muted) !important;
+}
+
+/* list rows: a small rounded preview with a hairline, so white ones keep
+   an edge (grid cards have their own tile) */
+body:not(#body-login) .files-list:not(.files-list--grid) .files-list__row-icon-preview {
+	border-radius: var(--rc-radius-sm);
+	outline: 1px solid var(--rc-border);
+	outline-offset: -1px;
+}
+
+/* the details panel open over the list: the floating button steps aside */
+body:not(#body-login):has(aside.app-sidebar:not([style*='display: none'])) .files-list__header-upload-button--narrow {
+	display: none !important;
+}
+
+/* The details panel's picture takes focus when the panel opens; its ring
+   sat outside the box, where the panel clips the top and sides, leaving a
+   stray 2px bar under the picture. Drawn inside instead. */
+body:not(#body-login) .app-sidebar-header__figure:focus-visible {
+	outline-offset: -2px;
+	border-radius: var(--rc-radius-sm);
+}
