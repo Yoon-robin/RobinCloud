@@ -2100,7 +2100,12 @@ body:not(#body-login) .upload-picker__progress .progress-bar--linear::-moz-progr
 }
 
 /* a failed file: the bar goes red, the brand's one colour for an error */
-body:not(#body-login) .upload-picker__progress .progress-bar--error::-webkit-progress-value,
+body:not(#body-login) .upload-picker__progress .progress-bar--error::-webkit-progress-value {
+	background: var(--rc-red) !important;
+}
+
+/* its own rule: a browser drops a whole selector list over a vendor
+   pseudo-element it does not know */
 body:not(#body-login) .upload-picker__progress .progress-bar--error::-moz-progress-bar {
 	background: var(--rc-red) !important;
 }
