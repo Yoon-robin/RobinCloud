@@ -851,6 +851,10 @@ body#body-login[data-theme-dark-highcontrast] #header .logo { background-image: 
 	padding: 0 !important;
 }
 
+/* The "Register" button sits in its own wrapper straight under the last text
+   link ("Forgot password?"), so it touched it; a little air between them. */
+#body-login .login-box__alternative-logins { margin-top: 12px; }
+
 /* border-box: with the padding on top, the sign-up card (which lacks the
    login box's own border-box) came out 408px wide on a 390px phone */
 #body-login .guest-box:not(footer) { padding: 28px 24px 24px !important; width: min(400px, calc(100vw - 32px)); box-sizing: border-box; text-align: start; }
