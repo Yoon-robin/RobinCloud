@@ -1228,6 +1228,10 @@ a[href^="https://help.nextcloud.com"] { display: none !important; }
    The footer line stays below; 64px is its height. */
 
 #body-login .wrapper {
+	/* guest.css gives .wrapper margin-block: 10vh auto above 1024px; on top of
+	   the full-height box below that pushed the page 10vh past the window
+	   (a scrollbar and a card sitting low on every desktop guest page). */
+	margin-block: 0 auto;
 	min-height: calc(100dvh - 64px);
 	display: flex;
 	flex-direction: column;
