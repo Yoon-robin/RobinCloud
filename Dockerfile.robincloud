@@ -27,5 +27,8 @@ RUN a2enconf robincloud-proxy >/dev/null
 COPY src/robincloud-imagick-policy.xml /etc/ImageMagick-7/policy.xml
 # PHP caches sized for this server (after the image's opcache-recommended.ini)
 COPY src/robincloud-php.ini /usr/local/etc/php/conf.d/zz-robincloud.ini
+# fontconfig cache for Apache workers (HOME is unset there; see the file)
+COPY src/robincloud-fonts.conf /etc/fonts/local.conf
+RUN mkdir -p /var/www/.cache/fontconfig && chown -R www-data:www-data /var/www/.cache
 LABEL org.opencontainers.image.source="https://github.com/Yoon-robin/RobinCloud" \
       org.opencontainers.image.licenses="AGPL-3.0-or-later"
