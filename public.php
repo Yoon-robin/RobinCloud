@@ -95,7 +95,15 @@ try {
 		$status = $ex instanceof ServiceUnavailableException ? 503 : 500;
 	}
 	//show the user a detailed error page
-	Server::get(LoggerInterface::class)->error($ex->getMessage(), ['app' => 'public', 'exception' => $ex]);
+	// A plain 404 (no/unknown service) is a scanner or a stale link, not a server error: keep it out of the
+	// error log so the admin overview's "errors in the log" warning only shows real problems.
+	$logger = Server::get(LoggerInterface::class);
+	$context = ['app' => 'public', 'exception' => $ex];
+	if ($status === 404) {
+		$logger->debug($ex->getMessage(), $context);
+	} else {
+		$logger->error($ex->getMessage(), $context);
+	}
 	Server::get(ITemplateManager::class)->printExceptionErrorPage($ex, $status);
 } catch (Error $ex) {
 	//show the user a detailed error page
