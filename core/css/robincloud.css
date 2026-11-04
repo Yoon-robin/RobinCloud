@@ -2377,3 +2377,21 @@ body:not(#body-login) .app-sidebar-header__figure:focus-visible {
 	outline-offset: -2px;
 	border-radius: var(--rc-radius-sm);
 }
+
+/* Photos on a phone: the title and "필터로 새 앨범 만들기" share one row, and
+   at 320px the button ran 23px past the screen. Icon only there; the words
+   stay as the button's accessible name. */
+@media (max-width: 480px) {
+	.photos-navigation__content__left .timeline__header__left .button-vue__text {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
+		clip-path: inset(50%);
+		white-space: nowrap;
+	}
+	.photos-navigation__content__left .timeline__header__left .button-vue--icon-and-text {
+		padding-inline: 0;
+		min-width: var(--default-clickable-area);
+	}
+}

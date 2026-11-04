@@ -1262,7 +1262,8 @@
     "Could not copy result to clipboard": "결과를 클립보드에 복사하지 못했어요",
     "Failed to load": "불러오지 못했어요",
     "Could not copy to the clipboard": "클립보드에 복사하지 못했어요",
-    "Translation failed": "번역하지 못했어요"
+    "Translation failed": "번역하지 못했어요",
+    "Italic": "기울임"
   },
   "photos": {
     "Mark selection as favorite": "선택한 항목을 즐겨찾기로",
@@ -1338,6 +1339,33 @@
     ],
     "_%n photo_::_%n photos_": [
       "사진 %n장"
+    ],
+    "All your media": "모든 미디어",
+    "Last Month": "지난달",
+    "Custom…": "직접 고르기…",
+    "Pick folder": "폴더 고르기",
+    "Select a source folder for your media": "사진과 영상을 가져올 폴더를 골라 주세요",
+    "Select the default upload location for your media": "사진과 영상을 올릴 기본 폴더를 골라 주세요",
+    "Open the full size \"{name}\" image": "\"{name}\" 원본 크기로 보기",
+    "Favorite image, open the full size \"{name}\" image": "즐겨찾는 이미지, \"{name}\" 원본 크기로 보기",
+    "Open the \"{name}\" folder": "\"{name}\" 폴더 열기",
+    "{startDate} to {endDate}": "{startDate}~{endDate}",
+    "Delete collection": "모음 지우기",
+    "Leave shared album": "공유 앨범에서 나가기",
+    "Are you sure you want to delete {collectionName}? This action cannot be undone.": "{collectionName}을(를) 지울까요? 되돌릴 수 없어요.",
+    "Could not load photos folder": "사진 폴더를 불러오지 못했어요",
+    "Error fetching files": "파일을 불러오지 못했어요",
+    "Failed to fetch collection.": "모음을 불러오지 못했어요.",
+    "Failed to fetch collections list.": "모음 목록을 불러오지 못했어요.",
+    "Failed to fetch faces list.": "인물 목록을 불러오지 못했어요.",
+    "The folder {folder} does not exist anymore. You can remove it from your media folders in the Photos settings.": "{folder} 폴더가 더는 없어요. 사진 설정의 미디어 폴더에서 빼 주세요.",
+    "Failed to delete {fileName}": "{fileName}을(를) 지우지 못했어요",
+    "Failed to set favorite state for {fileName}": "{fileName}의 즐겨찾기를 바꾸지 못했어요",
+    "_Move photo to a different person_::_Move photos to a different person_": [
+      "사진을 다른 인물로 옮기기"
+    ],
+    "_Remove photo from person_::_Remove photos from person_": [
+      "인물에서 사진 빼기"
     ]
   },
   "workflowengine": {
