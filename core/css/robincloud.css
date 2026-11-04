@@ -2403,3 +2403,13 @@ body:not(#body-login) .app-sidebar-header__figure:focus-visible {
 main.app-content > .hidden-visually[role='none'] {
 	display: none;
 }
+
+/* The sharing sidebar's "External shares" recipient box offers only e-mail
+   addresses and federated cloud IDs. Here both are off (share-by-mail and
+   outgoing federation are disabled, so typing an address finds nothing), which
+   left a dead-end box above the public-link row. Hide just that box in the
+   section that holds the link list; existing shares and the link row stay. If
+   either feature is ever enabled, remove this rule. */
+.app-sidebar section > .sharing-search:has(~ ul.sharing-link-list) {
+	display: none;
+}

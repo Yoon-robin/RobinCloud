@@ -980,7 +980,7 @@
     "You do not have enough permissions to share this file.": "이 파일을 공유할 권한이 부족해요.",
     "this share just expired.": "이 공유는 방금 만료됐어요.",
     "Share files within your organization. Recipients who can already view the file can also use this link for easy access.": "조직 안에서 파일을 공유하세요. 이미 파일을 볼 수 있는 사람도 이 링크로 쉽게 열 수 있어요.",
-    "Share files with others outside your organization via public links and email addresses. You can also share to {productName} accounts on other instances using their federated cloud ID.": "공개 링크나 이메일 주소로 조직 밖의 사람과 파일을 공유할 수 있어요. 연합 클라우드 ID로 다른 서버의 {productName} 계정과도 공유할 수 있어요.",
+    "Share files with others outside your organization via public links and email addresses. You can also share to {productName} accounts on other instances using their federated cloud ID.": "공개 링크로 조직 밖의 사람과 파일을 공유할 수 있어요.",
     "Set the public share link token to something easy to remember or generate a new token. It is not recommended to use a guessable token for shares which contain sensitive information.": "공개 공유 링크 토큰을 기억하기 쉽게 정하거나 새로 만드세요. 민감한 정보가 든 공유에는 추측하기 쉬운 토큰을 쓰지 않는 게 좋아요.",
     "Tokens must contain at least 1 character and may only contain letters, numbers, or a hyphen": "토큰은 1자 이상이어야 하고 영문자, 숫자, 하이픈(-)만 쓸 수 있어요.",
     "Searching …": "검색 중…",
