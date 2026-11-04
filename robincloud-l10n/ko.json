@@ -298,7 +298,9 @@
     "Display name was successfully changed": "표시 이름을 바꿨어요",
     "Email was successfully changed": "이메일을 바꿨어요",
     "Developed by the {communityopen}RobinCloud community{linkclose}, the {githubopen}source code{linkclose} is licensed under the {licenseopen}AGPL{linkclose}.": "{communityopen}오픈소스 커뮤니티{linkclose}가 만든 소프트웨어를 바탕으로 해요. {githubopen}소스 코드{linkclose}는 {licenseopen}<abbr title=\"Affero General Public License\">AGPL</abbr>{linkclose} 라이선스를 따라요.",
-    "Add WebAuthn device": "패스키 추가"
+    "Add WebAuthn device": "패스키 추가",
+    "Move up": "위로 이동",
+    "Move down": "아래로 이동"
   },
   "theming": {
     "Misc accessibility options": "기타 접근성 옵션",
@@ -341,7 +343,9 @@
     "Customization has been disabled by your administrator": "관리자가 꾸미기 기능을 꺼 두었어요",
     "Universal access is very important to us. We follow web standards and check to make everything usable also without mouse, and assistive software such as screenreaders. We aim to be compliant with the {linkstart}Web Content Accessibility Guidelines{linkend} 2.1 on AA level, with the high contrast theme even on AAA level.": "누구나 쓸 수 있는 화면을 중요하게 생각해요. 웹 표준을 따르고, 마우스 없이도, 스크린 리더 같은 보조 기술로도 모든 기능을 쓸 수 있는지 확인해요. {linkstart}웹 콘텐츠 접근성 지침(WCAG){linkend} 2.1 AA 수준, 고대비 테마는 AAA 수준까지 맞추는 것을 목표로 해요.",
     "If you find any issues, do not hesitate to report them on {issuetracker}our issue tracker{linkend}. And if you want to get involved, come join {designteam}our design team{linkend}!": "쓰다가 불편한 점이 있으면 관리자에게 알려 주세요.",
-    "OpenDyslexic is a free typeface/font designed to mitigate some of the common reading errors caused by dyslexia.": "OpenDyslexic은 난독증이 있는 사람이 읽기 쉽게 만든 무료 글꼴이에요."
+    "OpenDyslexic is a free typeface/font designed to mitigate some of the common reading errors caused by dyslexia.": "OpenDyslexic은 난독증이 있는 사람이 읽기 쉽게 만든 무료 글꼴이에요.",
+    "Navigation bar app order": "내비게이션 바 앱 순서",
+    "Current selected app: {app}, position {position} of {total}": "현재 선택한 앱: {app}, {total}개 중 {position}번째"
   },
   "federatedfilesharing": {
     "Your Federated Cloud ID": "내 연합 클라우드 ID",
@@ -1442,6 +1446,14 @@
     "Could not create account": "계정을 만들지 못했어요",
     "Account disabled": "계정이 비활성화됐어요",
     "Storage is temporarily not available": "저장소를 잠시 쓸 수 없어요"
+  },
+  "_early": {
+    "theming": {
+      "settings": {
+        "Move up": "위로 이동",
+        "Move down": "아래로 이동"
+      }
+    }
   },
   "_bundle": {
     "Show password": "비밀번호 표시",

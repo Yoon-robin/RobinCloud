@@ -223,13 +223,20 @@ if (is_file($overlayFile)) {
 			$json = is_array($json) ? $json : ['translations' => [], 'pluralForm' => 'nplurals=1; plural=0;'];
 			$before = $json['translations'];
 			$json['translations'] = array_merge($json['translations'], $strings);
-			if ($json['translations'] === $before && is_file("$dir/ko.js")) {
+			$flags = JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT;
+			$js = "OC.L10N.register(\n    " . json_encode($app) . ",\n    "
+				. json_encode((object)$json['translations'], $flags) . ",\n" . json_encode($json['pluralForm']) . ");\n";
+			// "_early": strings of another domain that this app's script asks for before
+			// that domain's own ko.js has run (theming's module script runs before
+			// settings' ko.js, so its \"settings\" labels stayed English)
+			foreach ($overlay['_early'][$app] ?? [] as $domain => $early) {
+				$js .= "OC.L10N.register(" . json_encode($domain) . ", " . json_encode((object)$early, $flags) . ", " . json_encode($json['pluralForm']) . ");\n";
+			}
+			if ($json['translations'] === $before && is_file("$dir/ko.js") && (!isset($overlay['_early'][$app]) || file_get_contents("$dir/ko.js") === $js)) {
 				continue;
 			}
-			$flags = JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT;
 			file_put_contents("$dir/ko.json", json_encode($json, $flags) . "\n");
-			file_put_contents("$dir/ko.js", "OC.L10N.register(\n    " . json_encode($app) . ",\n    "
-				. json_encode((object)$json['translations'], $flags) . ",\n" . json_encode($json['pluralForm']) . ");\n");
+			file_put_contents("$dir/ko.js", $js);
 			$merged++;
 		}
 	}
