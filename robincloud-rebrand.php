@@ -129,6 +129,25 @@ foreach ($it as $file) {
 	}
 }
 
+// Strings upstream hands out without ->t(), so no translation reaches them:
+// wrap them in the app's own ->t() (idempotent: the old text is gone after)
+$untranslated = [
+	'apps/twofactor_totp/lib/Provider/TotpProvider.php' => [
+		"return 'TOTP (Authenticator app)';" => "return \$this->l10n->t('TOTP (Authenticator app)');",
+	],
+];
+foreach ($untranslated as $rel => $pairs) {
+	$path = "$root/$rel";
+	if (is_file($path)) {
+		$old = file_get_contents($path);
+		$new = strtr($old, $pairs);
+		if ($new !== $old) {
+			file_put_contents($path, $new);
+			$stats['php']++;
+		}
+	}
+}
+
 foreach ($stats as $kind => $n) {
 	echo str_pad($kind, 6), " files rebranded: $n\n";
 }
