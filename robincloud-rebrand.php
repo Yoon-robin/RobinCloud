@@ -163,20 +163,30 @@ foreach ($it as $file) {
 }
 
 // Strings upstream hands out without ->t(), so no translation reaches them:
-// wrap them in the app's own ->t() (idempotent: the old text is gone after)
+// wrap them in the app's own ->t(). And English names upstream gives the
+// user's own files: the Photos app's default folder (made the first time the
+// app opens, on top of every file list) is /사진, server default and the
+// bundle's fallback alike. Idempotent: the old text is gone after. A path
+// may be a glob (hashed bundle names).
 $untranslated = [
 	'apps/twofactor_totp/lib/Provider/TotpProvider.php' => [
 		"return 'TOTP (Authenticator app)';" => "return \$this->l10n->t('TOTP (Authenticator app)');",
 	],
+	'apps/photos/lib/Service/UserConfigService.php' => [
+		"'photosLocation' => '/Photos'," => "'photosLocation' => '/사진',",
+		"'photosSourceFolders' => '[\"/Photos\"]'," => "'photosSourceFolders' => '[\"/사진\"]',",
+	],
+	'apps/photos/js/index-*.chunk.mjs' => [
+		"\"photosSourceFolders\",'[\"/Photos\"]'" => "\"photosSourceFolders\",'[\"/사진\"]'",
+	],
 ];
 foreach ($untranslated as $rel => $pairs) {
-	$path = "$root/$rel";
-	if (is_file($path)) {
+	foreach (glob("$root/$rel") ?: [] as $path) {
 		$old = file_get_contents($path);
 		$new = strtr($old, $pairs);
 		if ($new !== $old) {
 			file_put_contents($path, $new);
-			$stats['php']++;
+			$stats[str_ends_with($path, '.php') ? 'php' : 'js']++;
 		}
 	}
 }
