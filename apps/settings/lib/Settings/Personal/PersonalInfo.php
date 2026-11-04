@@ -289,7 +289,17 @@ class PersonalInfo implements ISettings {
 		$uid = $user->getUID();
 		$userLang = $this->config->getUserValue($uid, 'core', 'lang', $this->l10nFactory->findLanguage());
 		$userLocaleString = $this->config->getUserValue($uid, 'core', 'locale', $this->l10nFactory->findLocale($userLang));
-		$localeCodes = $this->l10nFactory->findAvailableLocales();
+		// locales.json names are English ("Korean (South Korea)"); show them in the user's own
+		// language through intl so a Korean screen does not mix in English (RobinCloud).
+		$localeCodes = array_map(function (array $locale) use ($userLang): array {
+			if (class_exists(\Locale::class)) {
+				$name = \Locale::getDisplayName($locale['code'], $userLang);
+				if ($name !== '' && $name !== $locale['code']) {
+					$locale['name'] = $name;
+				}
+			}
+			return $locale;
+		}, $this->l10nFactory->findAvailableLocales());
 		$userLocale = array_filter($localeCodes, fn ($value) => $userLocaleString === $value['code']);
 
 		if (!empty($userLocale)) {
