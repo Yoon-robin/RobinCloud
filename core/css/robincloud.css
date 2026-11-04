@@ -2395,3 +2395,11 @@ body:not(#body-login) .app-sidebar-header__figure:focus-visible {
 		min-width: var(--default-clickable-area);
 	}
 }
+
+/* Photos 7.0.0 dumps its three loading-placeholder SVG data URIs into
+   off-screen spans as text (innerHTML of a data: string). Invisible, but a
+   screen reader reads ~2,000 characters of URI gibberish on every Photos
+   page; the spans do nothing, so take them out of the accessibility tree. */
+main.app-content > .hidden-visually[role='none'] {
+	display: none;
+}
