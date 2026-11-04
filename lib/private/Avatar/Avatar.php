@@ -89,8 +89,7 @@ abstract class Avatar implements IAvatar {
 	 *
 	 */
 	protected function getAvatarVector(string $userDisplayName, int $size, bool $darkTheme): string {
-		$fgRGB = $this->avatarBackgroundColor($userDisplayName);
-		$bgRGB = $fgRGB->alphaBlending(0.1, $darkTheme ? new Color(0, 0, 0) : new Color(255, 255, 255));
+		[$fgRGB, $bgRGB] = $this->avatarColors($userDisplayName, $darkTheme);
 		$fill = sprintf('%02x%02x%02x', $bgRGB->red(), $bgRGB->green(), $bgRGB->blue());
 		$fgFill = sprintf('%02x%02x%02x', $fgRGB->red(), $fgRGB->green(), $fgRGB->blue());
 		$text = $this->getAvatarText();
@@ -162,8 +161,7 @@ abstract class Avatar implements IAvatar {
 	 */
 	protected function generateAvatar(string $userDisplayName, int $size, bool $darkTheme): string {
 		$text = $this->getAvatarText();
-		$textColor = $this->avatarBackgroundColor($userDisplayName);
-		$backgroundColor = $textColor->alphaBlending(0.1, $darkTheme ? new Color(0, 0, 0) : new Color(255, 255, 255));
+		[$textColor, $backgroundColor] = $this->avatarColors($userDisplayName, $darkTheme);
 
 		$im = imagecreatetruecolor($size, $size);
 		if ($im === false) {
@@ -259,6 +257,20 @@ abstract class Avatar implements IAvatar {
 		}
 		// chars in md5 goes up to f, hex:16
 		return intval($final % $maximum);
+	}
+
+	/**
+	 * Letter and disc colors of a generated avatar.
+	 *
+	 * RobinCloud keeps its identity monochrome (zinc grays), so every
+	 * generated avatar uses the same pair instead of a per-name hue.
+	 *
+	 * @return array{0: Color, 1: Color} [letter, background]
+	 */
+	protected function avatarColors(string $userDisplayName, bool $darkTheme): array {
+		return $darkTheme
+			? [new Color(161, 161, 170), new Color(39, 39, 42)]
+			: [new Color(82, 82, 91), new Color(244, 244, 245)];
 	}
 
 	/**
