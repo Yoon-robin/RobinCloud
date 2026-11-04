@@ -1151,6 +1151,11 @@ body[data-theme-dark-highcontrast]:not(#body-login) {
 #settings-personal-theming .settings-section.background,
 #settings-personal-theming .settings-section:has(+ .settings-section.background) { display: none !important; }
 
+/* settings hints: Korean breaks between any two syllables by default, which
+   left a lone "요." on the second line at 390px; keep words whole and let the
+   browser even out the last line */
+.settings-hint { word-break: keep-all; text-wrap: pretty; }
+
 /* overview: Nextcloud's release channels and security scan don't apply */
 #updatenotification,
 #security-warning p:has(a[href*="scan.nextcloud.com"]) { display: none !important; }
