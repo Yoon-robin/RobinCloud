@@ -42,28 +42,61 @@ function rebrand(string $text): string {
  * see <app>/l10n/ko.json, so the overlay's "_bundle" section ({"msgid":
  * "번역"}) is rewritten in place, only inside the "ko" tables. Singular
  * entries only ({v:[one]}), which is all the library has for these.
+ * A msgid the Korean table lacks altogether ("Keyboard shortcuts") goes in at
+ * the front of it, when another language of the same table set has it, so it
+ * is one the library really uses there.
  */
 $bundleKo = [];
 if (is_file(__DIR__ . '/robincloud-l10n/ko.json')) {
 	$bundleKo = (json_decode(file_get_contents(__DIR__ . '/robincloud-l10n/ko.json'), true) ?: [])['_bundle'] ?? [];
 }
 
+// The tables of one library sit side by side: [{l:"ar",t:{…}},{l:"ast",…},…].
+// From the Korean table at $start, the stretch of its neighbours that follow
+// one another with nothing but "}}," in between.
+function koGroup(string $js, int $start): string {
+	$from = $start;
+	while (substr($js, $from - 3, 3) === '}},' && ($p = strrpos($js, '{l:"', $from - strlen($js) - 1)) !== false) {
+		$from = $p;
+	}
+	$to = $start;
+	while (($n = strpos($js, '{l:"', $to + 1)) !== false && substr($js, $n - 3, 3) === '}},') {
+		$to = $n;
+	}
+	$n = strpos($js, '{l:"', $to + 1);
+	return substr($js, $from, ($n === false ? strlen($js) : $n) - $from);
+}
+
 function bundleKo(string $js, array $strings): string {
 	$flags = JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES;
+	$head = '{l:"ko",t:{';
 	$out = '';
 	$pos = 0;
-	while ($strings && ($start = strpos($js, '{l:"ko",t:{', $pos)) !== false) {
+	while ($strings && ($start = strpos($js, $head, $pos)) !== false) {
 		// a table runs until the next locale's {l:"…"; anything between the
 		// last locale and the next table is code, which never has the shape
 		$end = strpos($js, '{l:"', $start + 1);
 		$end = $end === false ? strlen($js) : $end;
 		$table = substr($js, $start, $end - $start);
+		$group = null;
+		$add = '';
 		foreach ($strings as $msgid => $ko) {
-			$key = json_encode((string)$msgid, $flags);
+			$msgid = (string)$msgid;
+			$key = json_encode($msgid, $flags);
+			// the minifier drops the quotes of keys that are plain names (Back:{v:…})
+			$keys = '(?:' . preg_quote($key, '/')
+				. (preg_match('/^[A-Za-z_$][\w$]*$/', $msgid) ? '|(?<=[{,])' . preg_quote($msgid, '/') : '') . ')';
 			$entry = $key . ':{v:[' . json_encode($ko, $flags) . ']}';
-			$table = preg_replace_callback('/' . preg_quote($key, '/') . ':\{v:\["(?:[^"\\\\]|\\\\.)*"\]\}/', fn () => $entry, $table);
+			$table = preg_replace_callback('/' . $keys . ':\{v:\["(?:[^"\\\\]|\\\\.)*"\]\}/', fn () => $entry, $table);
+			if (preg_match('/' . $keys . ':\{/', $table)) {
+				continue;
+			}
+			$group ??= koGroup($js, $start);
+			if (preg_match('/' . $keys . ':\{v:\[/', $group)) {
+				$add .= $entry . ',';
+			}
 		}
-		$out .= substr($js, $pos, $start - $pos) . $table;
+		$out .= substr($js, $pos, $start - $pos) . $head . $add . substr($table, strlen($head));
 		$pos = $end;
 	}
 	return $out . substr($js, $pos);

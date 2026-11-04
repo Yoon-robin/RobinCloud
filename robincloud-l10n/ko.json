@@ -1445,7 +1445,32 @@
   "_bundle": {
     "Show password": "비밀번호 표시",
     "Hide password": "비밀번호 숨기기",
-    "Password is secure": "안전한 비밀번호예요"
+    "Password is secure": "안전한 비밀번호예요",
+    "Keyboard shortcuts": "키보드 단축키",
+    "Copy to clipboard": "클립보드에 복사",
+    "Copied": "복사했어요",
+    "Search …": "검색…",
+    "No color": "색 없음",
+    "White": "흰색",
+    "Black": "검은색",
+    "Escape": "Esc",
+    "Invalid date": "날짜가 올바르지 않아요",
+    "paused": "일시 정지됨",
+    "Cancel uploads": "업로드 취소",
+    "Estimating …": "남은 시간 계산 중…",
+    "Upload progress": "업로드 진행 상황",
+    "assembling": "합치는 중",
+    "Upload from device": "기기에서 업로드",
+    "New": "새로 만들기",
+    "View profile": "프로필 보기",
+    "Profile of {user}": "{user}님의 프로필",
+    "Loading profile": "프로필 불러오는 중",
+    "Send message": "메시지 보내기",
+    "Start call": "통화 시작",
+    "Edit profile": "프로필 편집",
+    "Loading actions": "메뉴 불러오는 중",
+    "Local time: {time}": "현지 시간: {time}",
+    "Widget height": "위젯 높이"
   },
   "serverinfo": {
     "Password": "비밀번호"
