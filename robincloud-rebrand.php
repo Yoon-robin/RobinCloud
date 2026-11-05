@@ -179,6 +179,13 @@ $untranslated = [
 	'apps/photos/js/index-*.chunk.mjs' => [
 		"\"photosSourceFolders\",'[\"/Photos\"]'" => "\"photosSourceFolders\",'[\"/사진\"]'",
 	],
+	// Photos 7.0.0 still builds its "Details" tab with OCA.Files.Sidebar.Tab,
+	// which Files 34 no longer has: every Photos page threw a TypeError. Skip
+	// the tab when the old API is missing (upstream master drops it too); the
+	// file's DAV property registrations above it still run.
+	'apps/photos/js/photos-sidebar.mjs' => [
+		'const c=new OCA.Files.Sidebar.Tab(' => 'const c=window.OCA.Files?.Sidebar&&new OCA.Files.Sidebar.Tab(',
+	],
 ];
 foreach ($untranslated as $rel => $pairs) {
 	foreach (glob("$root/$rel") ?: [] as $path) {
