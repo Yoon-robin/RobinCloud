@@ -186,6 +186,11 @@ $untranslated = [
 	'apps/photos/js/photos-sidebar.mjs' => [
 		'const c=new OCA.Files.Sidebar.Tab(' => 'const c=window.OCA.Files?.Sidebar&&new OCA.Files.Sidebar.Tab(',
 	],
+	// The app store sidebar's empty state is a bare literal, not t(): it showed
+	// English "No such app" on a Korean page.
+	'dist/appstore-main.mjs' => [
+		'name:"No such app"' => 'name:"앱을 찾을 수 없어요"',
+	],
 ];
 foreach ($untranslated as $rel => $pairs) {
 	foreach (glob("$root/$rel") ?: [] as $path) {
