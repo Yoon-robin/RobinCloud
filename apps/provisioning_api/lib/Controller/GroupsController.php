@@ -168,7 +168,7 @@ class GroupsController extends AUserDataOCSController {
 		// Check subadmin has access to this group
 		$isAdmin = $this->groupManager->isAdmin($user->getUID());
 		$isDelegatedAdmin = $this->groupManager->isDelegatedAdmin($user->getUID());
-		if ($isAdmin || $isDelegatedAdmin || $isSubadminOfGroup || $isMember) {
+		if ($isAdmin || $isDelegatedAdmin || $isSubadminOfGroup || ($isMember && $this->memberMayListGroup())) {
 			$users = $this->groupManager->get($groupId)->getUsers();
 			$users = array_map(function ($user) {
 				/** @var IUser $user */
@@ -180,6 +180,16 @@ class GroupsController extends AUserDataOCSController {
 		}
 
 		throw new OCSForbiddenException();
+	}
+
+	/**
+	 * RobinCloud: a plain member may list the other members of a group only while
+	 * account enumeration is allowed. Everyone who signs up lands in the same
+	 * group, so otherwise any newcomer gets every account id and can then look
+	 * each one up by full match (display name, mail address).
+	 */
+	private function memberMayListGroup(): bool {
+		return $this->config->getAppValue('core', 'shareapi_allow_share_dialog_user_enumeration', 'yes') === 'yes';
 	}
 
 	/**
