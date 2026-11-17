@@ -32,6 +32,17 @@ occ status --output=json 2>/dev/null | grep -q '"installed":true' && installed=y
 [ "$installed" = yes ] && occ maintenance:mode --on >/dev/null
 trap '[ "$installed" = yes ] && occ maintenance:mode --off >/dev/null' EXIT
 
+# What the browsers keep: every stylesheet, script, icon and font the pages
+# link, as one fingerprint. Taken before and after the copy to tell whether
+# the cache counter has to move (see the end).
+static_sum() {
+  docker compose exec -T robincloud sh -c 'cd /var/www/html && find core apps dist custom_apps themes -type f \
+    \( -name "*.css" -o -name "*.js" -o -name "*.mjs" -o -name "*.svg" -o -name "*.png" -o -name "*.woff2" \) -print0 2>/dev/null |
+    sort -z | xargs -0 sha1sum 2>/dev/null | sha1sum | cut -d" " -f1' 2>/dev/null || true
+}
+before=
+[ "$installed" = yes ] && before=$(static_sum)
+
 if [ "${1:-}" = --recreate ]; then
   docker compose up -d robincloud cron >/dev/null
 fi
@@ -80,9 +91,21 @@ trap - EXIT
 # and the hash only moves with the version: without a new counter a changed
 # robincloud.css stays cached (Cloudflare, browsers) under the old URL. After
 # maintenance mode, which prints a warning on every occ call.
+# Only when one of those files did change: a new counter throws away all two
+# hundred files each browser holds, and from Korea the first page after that
+# takes 13 to 18 seconds (Cloudflare's Los Angeles edge has none of them
+# either, and fetches each from Tokyo; measured 2026-11-17). The counter went
+# from 27 to 50 in three weeks of deploys that mostly touched PHP.
+# ROBINCLOUD_BUMP=1 moves it regardless.
 if [ "$installed" = yes ]; then
-  cb=$(occ config:app:get theming cachebuster | tr -dc 0-9)
-  occ config:app:set theming cachebuster --value=$(( ${cb:-0} + 1 )) >/dev/null
+  after=$(static_sum)
+  if [ "${ROBINCLOUD_BUMP:-}" = 1 ] || [ -z "$before" ] || [ -z "$after" ] || [ "$before" != "$after" ]; then
+    cb=$(occ config:app:get theming cachebuster | tr -dc 0-9)
+    occ config:app:set theming cachebuster --value=$(( ${cb:-0} + 1 )) >/dev/null
+    echo "static files changed: cache counter $(( ${cb:-0} + 1 ))"
+  else
+    echo "static files unchanged: cache counter stays"
+  fi
 fi
 
 # fail loudly if the login page doesn't come back
