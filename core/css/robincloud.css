@@ -1714,6 +1714,13 @@ html[lang^='ko'] #body-login #guest-content-vue form[class*='publicShareAuth']::
 
 @keyframes rc-up { from { opacity: 0; transform: translateY(6px); } }
 @keyframes rc-pop { from { opacity: 0; transform: scale(0.96); } }
+/* B-457 (the Neverlose site): a menu fades in 6px from the side it opens
+   on, its size unchanged; a dialog 6px up and 0.98 to 1 */
+@keyframes rc-menu-down { from { opacity: 0; transform: translateY(-6px); } }
+@keyframes rc-menu-up { from { opacity: 0; transform: translateY(6px); } }
+@keyframes rc-menu-left { from { opacity: 0; transform: translateX(6px); } }
+@keyframes rc-menu-right { from { opacity: 0; transform: translateX(-6px); } }
+@keyframes rc-dialog { from { opacity: 0; transform: translateY(6px) scale(0.98); } }
 @keyframes rc-fade { from { opacity: 0; } }
 
 /* The page: content rises once as it loads. No fill: an animation that
@@ -1766,13 +1773,16 @@ body:not(#body-login) .app-navigation-entry:not(.active):not(.app-navigation-ent
 	color: var(--rc-muted-foreground) !important;
 }
 
-/* Menus (the ⋯ actions, "New", the user menu): a 4% scale from the side
-   they open on plus a fade. The wrapper moves, not the popper, which
+/* Menus (the ⋯ actions, "New", the user menu): a fade and 6px from the
+   side they open on, 0.22s. The wrapper moves, not the popper, which
    floating-ui positions with its own transform. */
 .v-popper__popper--shown .v-popper__wrapper {
-	animation: rc-pop 0.16s var(--rc-ease, cubic-bezier(0.22, 1, 0.36, 1));
+	animation: rc-menu-down 0.22s var(--rc-ease, cubic-bezier(0.22, 1, 0.36, 1));
 	transform-origin: top center;
 }
+.v-popper__popper--shown[data-popper-placement^='top'] .v-popper__wrapper { animation-name: rc-menu-up; }
+.v-popper__popper--shown[data-popper-placement^='left'] .v-popper__wrapper { animation-name: rc-menu-left; }
+.v-popper__popper--shown[data-popper-placement^='right'] .v-popper__wrapper { animation-name: rc-menu-right; }
 
 .v-popper__popper--shown[data-popper-placement^='top'] .v-popper__wrapper { transform-origin: bottom center; }
 .v-popper__popper--shown[data-popper-placement^='left'] .v-popper__wrapper { transform-origin: center right; }
@@ -1780,16 +1790,17 @@ body:not(#body-login) .app-navigation-entry:not(.active):not(.app-navigation-ent
 .v-popper__popper--shown[data-popper-placement$='-start'] .v-popper__wrapper { transform-origin: top left; }
 .v-popper__popper--shown[data-popper-placement$='-end'] .v-popper__wrapper { transform-origin: top right; }
 
-/* Dialogs: zoom in from 96% over the fading backdrop. */
+/* Dialogs: 6px up and 0.98 to 1 over the fading backdrop, 0.24s. */
 .modal-mask .modal-container,
 .dialog__modal .modal-container {
-	animation: rc-pop 0.2s var(--rc-ease, cubic-bezier(0.22, 1, 0.36, 1));
+	animation: rc-dialog 0.24s var(--rc-ease, cubic-bezier(0.22, 1, 0.36, 1));
 }
 
-/* Toasts come up from the bottom edge. */
+/* Toasts come up 8px from the bottom edge, 0.24s. */
+@keyframes rc-toast { from { opacity: 0; transform: translateY(8px); } }
 div[class^='_toast_'],
 .toastify.dialogs {
-	animation: rc-up 0.3s var(--rc-ease, cubic-bezier(0.22, 1, 0.36, 1));
+	animation: rc-toast 0.24s var(--rc-ease, cubic-bezier(0.22, 1, 0.36, 1));
 }
 
 /* Empty folders and lists: the icon in a quiet square tile instead of a
