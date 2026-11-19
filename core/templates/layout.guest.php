@@ -27,10 +27,10 @@ p($theme->getTitle());
 		<meta name="apple-itunes-app" content="app-id=<?php p($theme->getiTunesAppId()); ?>">
 		<?php } ?>
 		<meta name="theme-color" content="<?php p($theme->getColorPrimary()); ?>">
-		<link rel="icon" sizes="32x32" href="<?php print_unescaped(image_path('core', 'favicon.ico')); /* IE11+ supports png */ ?>">
+		<link rel="icon" sizes="32x32" href="<?php print_unescaped(image_path('core', 'favicon.ico')); /* IE11+ supports png */ ?>?v=<?php p(substr(md5_file(\OC::$SERVERROOT . '/core/img/favicon.svg'), 0, 8)); ?>">
 		<link rel="icon" type="image/svg+xml" href="<?php print_unescaped(image_path('core', 'favicon.svg')); ?>?v=<?php p(substr(md5_file(\OC::$SERVERROOT . '/core/img/favicon.svg'), 0, 8)); ?>">
-		<link rel="apple-touch-icon" href="<?php print_unescaped(image_path('core', 'favicon-touch.png')); ?>">
-		<link rel="mask-icon" sizes="any" href="<?php print_unescaped(image_path('core', 'favicon-mask.svg')); ?>" color="<?php p($theme->getColorPrimary()); ?>">
+		<link rel="apple-touch-icon" href="<?php print_unescaped(image_path('core', 'favicon-touch.png')); ?>?v=<?php p(substr(md5_file(\OC::$SERVERROOT . '/core/img/favicon.svg'), 0, 8)); ?>">
+		<link rel="mask-icon" sizes="any" href="<?php print_unescaped(image_path('core', 'favicon-mask.svg')); ?>?v=<?php p(substr(md5_file(\OC::$SERVERROOT . '/core/img/favicon.svg'), 0, 8)); ?>" color="<?php p($theme->getColorPrimary()); ?>">
 		<link rel="manifest" href="<?php print_unescaped(image_path('core', 'manifest.json')); ?>" crossorigin="use-credentials">
 		<?php emit_css_loading_tags($_); ?>
 		<?php emit_script_loading_tags($_); ?>
