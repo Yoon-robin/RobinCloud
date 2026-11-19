@@ -19,46 +19,49 @@
 }
 
 /* ------------------------------------------------------------------ tokens
-   Dark is the V3 kit as measured off the Neverlose footage (2026-11-19,
-   docs/brand/robinx-v3-tokens.css): the canvas and the navigation #222533
-   (--side, lighter than the content), the app window, cards and dialogs
-   #15161f (--page / --card, told apart by the #25262f line), controls
-   #1d1e2b, a row pointed at #2a2d3e, pressed and chosen #33364a; text
-   #fff / #d9dbe2 / #9497ab / #868aa0; lines #25262f and #2e3040. Menus are
-   solid #14141d in a rgb(57 61 76 / 80%) line, rows blue 12% under the
-   pointer. One blue: #4e83ff for switches, focus, links and the chosen icon,
-   #3566e8 as a fill under white text (#2f5cd6 under the pointer). Light
-   turns the steps over: canvas and navigation #eceef4, the window #f5f6fa,
-   cards white in a #e3e5ec line, text #15161f, blue #3566e8. Amber and red
-   only tell a state, a few steps darker on light so they read on white.
+   Dark is the V3.1 kit (2026-11-19, docs/brand/robinx-v3-tokens.css): the
+   surfaces as the Neverlose menu looks, the lines, blue and corners off its
+   official picture. The canvas and the navigation #222533 (--side, lighter
+   than the content), the app window, cards and dialogs #15161f (--page /
+   --card, told apart by a faint #1c1e28 line), controls #1d1d2b in a
+   #2a2b37 line, a row pointed at #2a2d3e, pressed and chosen #33374a; text
+   #fff / #d9dbe2 / #a3a3a8 / #8b8fa5. Menus are solid #14141d in a
+   rgb(57 61 76 / 80%) line, rows blue 12% under the pointer. One blue:
+   #4f7dff for switches, focus, links and the chosen icon, #3566e8 as a fill
+   under white text (#2f5cd6 under the pointer). Light turns the steps over
+   as the official light menu does: the window #f5f5f6, canvas and
+   navigation #ebebed, cards a step darker #e9e9ec in a #d9d9de line, grey
+   text, blue #2d58d1 (#3566e8 as a fill). Amber and red only tell a state,
+   a few steps darker on light so they read there.
    No glow and no glass: floating things (menus, dialogs, toasts, the login
    card) get one soft shadow, everything else a 1px line. */
 
 :root {
-	--rc-page: #eceef4;
-	--rc-background: #f5f6fa;
-	--rc-background-rgb: 245, 246, 250;
-	--rc-card: #ffffff;
-	--rc-card-rgb: 255, 255, 255;
-	--rc-raise: #ffffff;
-	--rc-hover: #e3e6ee;
-	--rc-muted: #dadee8;
-	--rc-muted-strong: #d0d5e0;
-	--rc-foreground: #15161f;
-	--rc-foreground-rgb: 21, 22, 31;
-	--rc-strong: #15161f;
-	--rc-muted-foreground: #5d6075;
-	--rc-muted-foreground-rgb: 93, 96, 117;
-	--rc-faint: #6a6e85;
-	--rc-border: #e3e5ec;
-	--rc-border-window: #d7d9e2;
-	--rc-input: #cfd2dc;
+	--rc-page: #ebebed;
+	--rc-background: #f5f5f6;
+	--rc-background-rgb: 245, 245, 246;
+	--rc-card: #e9e9ec;
+	--rc-card-rgb: 233, 233, 236;
+	--rc-raise: #dcdce1;
+	--rc-sunk: #c9c9cf;
+	--rc-hover: #e0e0e4;
+	--rc-muted: #d2d2d8;
+	--rc-muted-strong: #c9c9cf;
+	--rc-foreground: #2b2b30;
+	--rc-foreground-rgb: 43, 43, 48;
+	--rc-strong: #000000;
+	--rc-muted-foreground: #55555c;
+	--rc-muted-foreground-rgb: 85, 85, 92;
+	--rc-faint: #67676f;
+	--rc-border: #d9d9de;
+	--rc-border-window: #cfcfd5;
+	--rc-input: #c4c4cb;
 	--rc-input-hover: rgb(53 102 232 / 55%);
-	--rc-accent: #3566e8;
-	--rc-accent-rgb: 53, 102, 232;
-	--rc-accent-text: #2f5cd6;
-	--rc-accent-soft: rgb(53 102 232 / 12%);
-	--rc-ring: #3566e8;
+	--rc-accent: #2d58d1;
+	--rc-accent-rgb: 45, 88, 209;
+	--rc-accent-text: #2d58d1;
+	--rc-accent-soft: rgb(53 102 232 / 14%);
+	--rc-ring: #2d58d1;
 	--rc-primary: #3566e8;
 	--rc-primary-foreground: #ffffff;
 	--rc-primary-hover: #2f5cd6;
@@ -73,20 +76,22 @@
 	--rc-red-surface: #fbe9e9;
 	--rc-red-surface-hover: #f8dcdc;
 	--rc-pop-shadow: 0 10px 30px rgb(21 22 31 / 10%), 0 2px 6px rgb(21 22 31 / 6%);
-	--rc-pop: #ffffff;
-	--rc-pop-rgb: 255, 255, 255;
-	--rc-pop-line: #d7d9e2;
+	--rc-pop: #fbfbfc;
+	--rc-pop-rgb: 251, 251, 252;
+	--rc-pop-line: #d2d2d8;
 	--rc-pop-hover: rgb(53 102 232 / 10%);
 	--rc-pop-edge: 0 0 0 transparent;
 	--rc-menu-shadow: 0 8px 24px rgb(21 22 31 / 12%);
-	/* corners: chips and small buttons 5px, buttons, fields and rows 6px,
-	   cards and toasts 13px, menus 16px, dialogs, the app window and the
-	   login card 14px. Only switches and status dots are round. */
+	/* corners, the official menu's (V3.1): chips, small buttons, fields and
+	   buttons 6px, navigation rows 7px, cards and toasts 15px, menus,
+	   dialogs, the app window and the login card 16px. Only switches and
+	   status dots are round. */
 	--rc-radius: 6px;
-	--rc-radius-sm: 5px;
-	--rc-radius-card: 13px;
+	--rc-radius-sm: 6px;
+	--rc-radius-row: 7px;
+	--rc-radius-card: 15px;
 	--rc-radius-pop: 16px;
-	--rc-radius-win: 14px;
+	--rc-radius-win: 16px;
 	--rc-ease: cubic-bezier(0.22, 1, 0.36, 1);
 	--rc-font: 'Pretendard Variable', Pretendard, -apple-system, 'Segoe UI', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
 	--rc-font-term: 'Robin Term', 'Cascadia Code', 'Cascadia Mono', Consolas, 'D2Coding', 'Pretendard Variable', Pretendard, monospace;
@@ -99,25 +104,26 @@
 		--rc-background-rgb: 21, 22, 31;
 		--rc-card: #15161f;
 		--rc-card-rgb: 21, 22, 31;
-		--rc-raise: #1d1e2b;
+		--rc-raise: #1d1d2b;
+		--rc-sunk: #05080f;
 		--rc-hover: #2a2d3e;
-		--rc-muted: #33364a;
-		--rc-muted-strong: #3b3e54;
+		--rc-muted: #33374a;
+		--rc-muted-strong: #3b3f54;
 		--rc-foreground: #d9dbe2;
 		--rc-foreground-rgb: 217, 219, 226;
 		--rc-strong: #ffffff;
-		--rc-muted-foreground: #9497ab;
-		--rc-muted-foreground-rgb: 148, 151, 171;
-		--rc-faint: #868aa0;
-		--rc-border: #25262f;
-		--rc-border-window: #2e3040;
-		--rc-input: #2e3040;
-		--rc-input-hover: rgb(78 131 255 / 55%);
-		--rc-accent: #4e83ff;
-		--rc-accent-rgb: 78, 131, 255;
-		--rc-accent-text: #4e83ff;
-		--rc-accent-soft: rgb(78 131 255 / 16%);
-		--rc-ring: #4e83ff;
+		--rc-muted-foreground: #a3a3a8;
+		--rc-muted-foreground-rgb: 163, 163, 168;
+		--rc-faint: #8b8fa5;
+		--rc-border: #1c1e28;
+		--rc-border-window: #23242f;
+		--rc-input: #2a2b37;
+		--rc-input-hover: rgb(79 125 255 / 55%);
+		--rc-accent: #4f7dff;
+		--rc-accent-rgb: 79, 125, 255;
+		--rc-accent-text: #4f7dff;
+		--rc-accent-soft: rgb(79 125 255 / 16%);
+		--rc-ring: #4f7dff;
 		--rc-primary: #3566e8;
 		--rc-primary-foreground: #ffffff;
 		--rc-primary-hover: #2f5cd6;
@@ -135,7 +141,7 @@
 		--rc-pop: #14141d;
 		--rc-pop-rgb: 20, 20, 29;
 		--rc-pop-line: rgb(57 61 76 / 80%);
-		--rc-pop-hover: rgb(78 131 255 / 12%);
+		--rc-pop-hover: rgb(79 125 255 / 12%);
 		--rc-pop-edge: inset 0 1px 0 rgb(255 255 255 / 8%);
 		--rc-menu-shadow: 0 8px 24px rgb(0 0 0 / 40%);
 	}
@@ -147,30 +153,31 @@
    (below). */
 body[data-theme-light],
 body[data-theme-light-highcontrast] {
-	--rc-page: #eceef4;
-	--rc-background: #f5f6fa;
-	--rc-background-rgb: 245, 246, 250;
-	--rc-card: #ffffff;
-	--rc-card-rgb: 255, 255, 255;
-	--rc-raise: #ffffff;
-	--rc-hover: #e3e6ee;
-	--rc-muted: #dadee8;
-	--rc-muted-strong: #d0d5e0;
-	--rc-foreground: #15161f;
-	--rc-foreground-rgb: 21, 22, 31;
-	--rc-strong: #15161f;
-	--rc-muted-foreground: #5d6075;
-	--rc-muted-foreground-rgb: 93, 96, 117;
-	--rc-faint: #6a6e85;
-	--rc-border: #e3e5ec;
-	--rc-border-window: #d7d9e2;
-	--rc-input: #cfd2dc;
+	--rc-page: #ebebed;
+	--rc-background: #f5f5f6;
+	--rc-background-rgb: 245, 245, 246;
+	--rc-card: #e9e9ec;
+	--rc-card-rgb: 233, 233, 236;
+	--rc-raise: #dcdce1;
+	--rc-sunk: #c9c9cf;
+	--rc-hover: #e0e0e4;
+	--rc-muted: #d2d2d8;
+	--rc-muted-strong: #c9c9cf;
+	--rc-foreground: #2b2b30;
+	--rc-foreground-rgb: 43, 43, 48;
+	--rc-strong: #000000;
+	--rc-muted-foreground: #55555c;
+	--rc-muted-foreground-rgb: 85, 85, 92;
+	--rc-faint: #67676f;
+	--rc-border: #d9d9de;
+	--rc-border-window: #cfcfd5;
+	--rc-input: #c4c4cb;
 	--rc-input-hover: rgb(53 102 232 / 55%);
-	--rc-accent: #3566e8;
-	--rc-accent-rgb: 53, 102, 232;
-	--rc-accent-text: #2f5cd6;
-	--rc-accent-soft: rgb(53 102 232 / 12%);
-	--rc-ring: #3566e8;
+	--rc-accent: #2d58d1;
+	--rc-accent-rgb: 45, 88, 209;
+	--rc-accent-text: #2d58d1;
+	--rc-accent-soft: rgb(53 102 232 / 14%);
+	--rc-ring: #2d58d1;
 	--rc-primary: #3566e8;
 	--rc-primary-foreground: #ffffff;
 	--rc-primary-hover: #2f5cd6;
@@ -185,9 +192,9 @@ body[data-theme-light-highcontrast] {
 	--rc-red-surface: #fbe9e9;
 	--rc-red-surface-hover: #f8dcdc;
 	--rc-pop-shadow: 0 10px 30px rgb(21 22 31 / 10%), 0 2px 6px rgb(21 22 31 / 6%);
-	--rc-pop: #ffffff;
-	--rc-pop-rgb: 255, 255, 255;
-	--rc-pop-line: #d7d9e2;
+	--rc-pop: #fbfbfc;
+	--rc-pop-rgb: 251, 251, 252;
+	--rc-pop-line: #d2d2d8;
 	--rc-pop-hover: rgb(53 102 232 / 10%);
 	--rc-pop-edge: 0 0 0 transparent;
 	--rc-menu-shadow: 0 8px 24px rgb(21 22 31 / 12%);
@@ -200,25 +207,26 @@ body[data-theme-dark-highcontrast] {
 	--rc-background-rgb: 21, 22, 31;
 	--rc-card: #15161f;
 	--rc-card-rgb: 21, 22, 31;
-	--rc-raise: #1d1e2b;
+	--rc-raise: #1d1d2b;
+	--rc-sunk: #05080f;
 	--rc-hover: #2a2d3e;
-	--rc-muted: #33364a;
-	--rc-muted-strong: #3b3e54;
+	--rc-muted: #33374a;
+	--rc-muted-strong: #3b3f54;
 	--rc-foreground: #d9dbe2;
 	--rc-foreground-rgb: 217, 219, 226;
 	--rc-strong: #ffffff;
-	--rc-muted-foreground: #9497ab;
-	--rc-muted-foreground-rgb: 148, 151, 171;
-	--rc-faint: #868aa0;
-	--rc-border: #25262f;
-	--rc-border-window: #2e3040;
-	--rc-input: #2e3040;
-	--rc-input-hover: rgb(78 131 255 / 55%);
-	--rc-accent: #4e83ff;
-	--rc-accent-rgb: 78, 131, 255;
-	--rc-accent-text: #4e83ff;
-	--rc-accent-soft: rgb(78 131 255 / 16%);
-	--rc-ring: #4e83ff;
+	--rc-muted-foreground: #a3a3a8;
+	--rc-muted-foreground-rgb: 163, 163, 168;
+	--rc-faint: #8b8fa5;
+	--rc-border: #1c1e28;
+	--rc-border-window: #23242f;
+	--rc-input: #2a2b37;
+	--rc-input-hover: rgb(79 125 255 / 55%);
+	--rc-accent: #4f7dff;
+	--rc-accent-rgb: 79, 125, 255;
+	--rc-accent-text: #4f7dff;
+	--rc-accent-soft: rgb(79 125 255 / 16%);
+	--rc-ring: #4f7dff;
 	--rc-primary: #3566e8;
 	--rc-primary-foreground: #ffffff;
 	--rc-primary-hover: #2f5cd6;
@@ -236,7 +244,7 @@ body[data-theme-dark-highcontrast] {
 	--rc-pop: #14141d;
 	--rc-pop-rgb: 20, 20, 29;
 	--rc-pop-line: rgb(57 61 76 / 80%);
-	--rc-pop-hover: rgb(78 131 255 / 12%);
+	--rc-pop-hover: rgb(79 125 255 / 12%);
 	--rc-pop-edge: inset 0 1px 0 rgb(255 255 255 / 8%);
 	--rc-menu-shadow: 0 8px 24px rgb(0 0 0 / 40%);
 }
@@ -374,9 +382,11 @@ body {
 
 html { background-color: var(--rc-page) !important; }
 html:has(> body[data-theme-light]),
-html:has(> body[data-theme-light-highcontrast]) { background-color: #eceef4 !important; }
+html:has(> body[data-theme-light-highcontrast]) { background-color: #ebebed !important; }
 html:has(> body[data-theme-dark]),
 html:has(> body[data-theme-dark-highcontrast]) { background-color: #222533 !important; }
+/* the login page sits on the window colour, so its edges do too */
+html:has(> body#body-login) { background-color: var(--rc-background) !important; }
 
 /* ------------------------------------------------------------- typography
    Pretendard for everything, titles 600-700 at -0.01em; Robin Term only for
@@ -702,32 +712,40 @@ div[class^='_toast_'][class*='_toast_warning_'],
 
 	font-family: var(--rc-font);
 	color: var(--rc-foreground);
-	background: var(--rc-page) none !important;
+	background: var(--rc-background) none !important;
 	-webkit-font-smoothing: antialiased;
 	isolation: isolate;
 }
 
-/* the wordmark: dark on light, light on dark, no glow */
+/* Over the card, as on every RobinX login (docs/brand.md 뼈대): the
+   service tile (35, the dark tile with the white cloud, the same on both
+   themes) and the name beside it, 14px 700, 11 apart (B-451; the
+   line-drawn wordmark stood alone here). */
 #body-login #header .logo {
-	background-image: url('../img/logo/logo-dark.svg?v=icon-20261119') !important;
-	width: 196px !important;
-	height: 48px !important;
-	background-size: contain !important;
-	margin-bottom: 8px;
+	display: inline-flex !important;
+	align-items: center;
+	gap: 11px;
+	width: auto !important;
+	height: 35px !important;
+	padding-left: 46px;
+	margin-bottom: 14px;
+	box-sizing: border-box;
+	background: url('../img/favicon.svg?v=icon-20261119') left center / 35px 35px no-repeat !important;
 	filter: none !important;
+	text-indent: 0 !important;
+	overflow: visible !important;
+	font-size: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-	#body-login #header .logo { background-image: url('../img/logo/logo.svg?v=icon-20261119') !important; }
+#body-login #header .logo::after {
+	content: 'RobinCloud';
+	font: 700 14px/1 var(--rc-font);
+	letter-spacing: -0.01em;
+	color: var(--rc-strong);
 }
 
-body#body-login[data-theme-light] #header .logo,
-body#body-login[data-theme-light-highcontrast] #header .logo { background-image: url('../img/logo/logo-dark.svg?v=icon-20261119') !important; }
-body#body-login[data-theme-dark] #header .logo,
-body#body-login[data-theme-dark-highcontrast] #header .logo { background-image: url('../img/logo/logo.svg?v=icon-20261119') !important; }
-
-/* The card: the card colour (#15161f, white on light), 14px, the card line and,
-   since it floats alone in the middle of the page, the soft shadow. The
+/* The card: the card colour, 15px and the card line alone, like the mail
+   login (no shadow: on the page colour the line is the edge). The
    sign-up steps use ::before/::after for their progress line, so the card
    draws nothing with pseudo-elements. */
 #body-login .guest-box:not(footer),
@@ -740,8 +758,8 @@ body#body-login[data-theme-dark-highcontrast] #header .logo { background-image: 
 	background: var(--rc-card) !important;
 	color: var(--rc-foreground) !important;
 	border: 1px solid var(--rc-border) !important;
-	border-radius: var(--rc-radius-win) !important;
-	box-shadow: var(--rc-pop-shadow) !important;
+	border-radius: var(--rc-radius-card) !important;
+	box-shadow: none !important;
 	backdrop-filter: none !important;
 	-webkit-backdrop-filter: none !important;
 }
@@ -892,9 +910,9 @@ body#body-login[data-theme-dark-highcontrast] #header .logo { background-image: 
 }
 
 /* ------------------------------------------------------- logged-in pages:
-   no background picture, the canvas (#222533, light #eceef4) around the
+   no background picture, the canvas (#222533, light #ebebed) around the
    app, which sits in one window (Nextcloud's body container): the
-   navigation on the canvas colour, the content #15161f (light #f5f6fa). */
+   navigation on the canvas colour, the content #15161f (light #f5f5f6). */
 
 body:not(#body-login) {
 	--image-background: none !important;
@@ -1683,7 +1701,25 @@ body:not(#body-login) .app-navigation .app-navigation-entry-wrapper:nth-child(n 
 
 /* entries: the hover fill eases in */
 body:not(#body-login) .app-navigation-entry {
-	transition: background-color 0.15s ease, color 0.15s ease;
+	transition: background-color 0.13s ease, color 0.13s ease;
+	min-height: 32px !important;
+	height: 32px;
+	border-radius: var(--rc-radius-row) !important;
+}
+
+body:not(#body-login) .app-navigation-entry .app-navigation-entry-link,
+body:not(#body-login) .app-navigation-entry .app-navigation-entry-button {
+	min-height: 32px !important;
+	height: 32px !important;
+}
+
+/* rows 5 apart (Nextcloud's list gap is 4) */
+body:not(#body-login) .app-navigation-list {
+	gap: 5px !important;
+}
+
+body:not(#body-login) .app-navigation-entry:not(.active):not(.app-navigation-entry--active) .app-navigation-entry__name {
+	color: var(--rc-muted-foreground) !important;
 }
 
 /* Menus (the ⋯ actions, "New", the user menu): a 4% scale from the side
@@ -1795,7 +1831,7 @@ body:not(#body-login) .app-navigation-entry:not(.active):not(.app-navigation-ent
 }
 
 body:not(#body-login) .app-navigation-entry.active .app-navigation-entry__name,
-body:not(#body-login) .app-navigation-entry--active .app-navigation-entry__name { font-weight: 600; }
+body:not(#body-login) .app-navigation-entry--active .app-navigation-entry__name { font-weight: inherit; }
 
 body:not(#body-login) .app-navigation-entry.active::before,
 body:not(#body-login) .app-navigation-entry--active::before { display: none !important; }
@@ -2322,3 +2358,40 @@ main.app-content > .hidden-visually[role='none'] {
 .app-sidebar section > .sharing-search:has(~ ul.sharing-link-list) {
 	display: none;
 }
+
+/* ----------------------------------------------------------------- switches
+   The Neverlose switch (V3.1, docs/brand.md): 32x20, a 16px knob 2px in that
+   moves 12px; off is the deep #05080f track with a grey knob, on is the one
+   blue with a white knob. Drawn on Nextcloud's switch box in place of its
+   toggle icon. */
+body .checkbox-radio-switch-switch .checkbox-content__icon {
+	position: relative;
+	width: 32px !important;
+	height: 20px !important;
+	min-width: 32px;
+	margin-inline-end: 8px;
+	border-radius: 10px;
+	background: var(--rc-sunk);
+	transition: background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Nextcloud's toggle drawing (an icon-vue or material icon) goes; the box draws the switch */
+body .checkbox-radio-switch-switch .checkbox-content__icon > * { opacity: 0 !important; }
+
+body .checkbox-radio-switch-switch .checkbox-content__icon::after {
+	content: "";
+	position: absolute;
+	top: 2px;
+	left: 2px;
+	width: 16px;
+	height: 16px;
+	border-radius: 50%;
+	background: #7d8791;
+	transition: transform 0.15s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.15s ease;
+}
+
+body .checkbox-radio-switch-switch.checkbox-radio-switch--checked .checkbox-content__icon { background: var(--rc-accent); }
+body .checkbox-radio-switch-switch.checkbox-radio-switch--checked .checkbox-content__icon::after { background: #fff; transform: translateX(12px); }
+body .checkbox-radio-switch-switch:hover .checkbox-content__icon,
+body .checkbox-radio-switch-switch:focus-within .checkbox-content__icon { box-shadow: 0 0 0 1px rgba(var(--rc-accent-rgb), 0.22); }
+body .checkbox-radio-switch-switch.checkbox-radio-switch--disabled .checkbox-content__icon { opacity: 0.45; }
