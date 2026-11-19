@@ -21,11 +21,13 @@
 /* ------------------------------------------------------------------ tokens
    Dark is the V3.1 kit (2026-11-19, docs/brand/robinx-v3-tokens.css): the
    surfaces as the Neverlose menu looks, the lines, blue and corners off its
-   official picture. The canvas and the navigation #222533 (--side, lighter
-   than the content), the app window, cards and dialogs #15161f (--page /
-   --card, told apart by a faint #1c1e28 line), controls #1d1d2b in a
-   #2a2b37 line, a row pointed at #2a2d3e, pressed and chosen #33374a; text
-   #fff / #d9dbe2 / #a3a3a8 / #8b8fa5. Menus are solid #14141d in a
+   official picture; V3.2 (late 2026-11-19): surfaces are the official glass
+   layers set over a dark scene (docs/design/neverlose-reference/replica/).
+   The canvas and the navigation #070a11 (--side, nearly the content's black),
+   the app window #0b0d13 (--page) in a faint #21212a line, cards and dialogs
+   #111219 (--card, a step lighter), controls #191925 in a #25262e line, a row
+   pointed at #17181f, pressed and chosen #272830; text
+   #fff / #d6d6db / #a3a3a8 / #8b8fa5. Menus are solid #14141d in a
    rgb(57 61 76 / 80%) line, rows blue 12% under the pointer. One blue:
    #4f7dff for switches, focus, links and the chosen icon, #3566e8 as a fill
    under white text (#2f5cd6 under the pointer). Light turns the steps over
@@ -99,25 +101,25 @@
 
 @media (prefers-color-scheme: dark) {
 	:root {
-		--rc-page: #222533;
-		--rc-background: #15161f;
-		--rc-background-rgb: 21, 22, 31;
-		--rc-card: #15161f;
-		--rc-card-rgb: 21, 22, 31;
-		--rc-raise: #1d1d2b;
+		--rc-page: #070a11;
+		--rc-background: #0b0d13;
+		--rc-background-rgb: 11, 13, 19;
+		--rc-card: #111219;
+		--rc-card-rgb: 17, 18, 25;
+		--rc-raise: #191925;
 		--rc-sunk: #05080f;
-		--rc-hover: #2a2d3e;
-		--rc-muted: #33374a;
-		--rc-muted-strong: #3b3f54;
-		--rc-foreground: #d9dbe2;
-		--rc-foreground-rgb: 217, 219, 226;
+		--rc-hover: #17181f;
+		--rc-muted: #272830;
+		--rc-muted-strong: #2f3038;
+		--rc-foreground: #d6d6db;
+		--rc-foreground-rgb: 214, 214, 219;
 		--rc-strong: #ffffff;
 		--rc-muted-foreground: #a3a3a8;
 		--rc-muted-foreground-rgb: 163, 163, 168;
 		--rc-faint: #8b8fa5;
-		--rc-border: #1c1e28;
-		--rc-border-window: #23242f;
-		--rc-input: #2a2b37;
+		--rc-border: #1a1b21;
+		--rc-border-window: #21212a;
+		--rc-input: #25262e;
 		--rc-input-hover: rgb(79 125 255 / 55%);
 		--rc-accent: #4f7dff;
 		--rc-accent-rgb: 79, 125, 255;
@@ -202,25 +204,25 @@ body[data-theme-light-highcontrast] {
 
 body[data-theme-dark],
 body[data-theme-dark-highcontrast] {
-	--rc-page: #222533;
-	--rc-background: #15161f;
-	--rc-background-rgb: 21, 22, 31;
-	--rc-card: #15161f;
-	--rc-card-rgb: 21, 22, 31;
-	--rc-raise: #1d1d2b;
+	--rc-page: #070a11;
+	--rc-background: #0b0d13;
+	--rc-background-rgb: 11, 13, 19;
+	--rc-card: #111219;
+	--rc-card-rgb: 17, 18, 25;
+	--rc-raise: #191925;
 	--rc-sunk: #05080f;
-	--rc-hover: #2a2d3e;
-	--rc-muted: #33374a;
-	--rc-muted-strong: #3b3f54;
-	--rc-foreground: #d9dbe2;
-	--rc-foreground-rgb: 217, 219, 226;
+	--rc-hover: #17181f;
+	--rc-muted: #272830;
+	--rc-muted-strong: #2f3038;
+	--rc-foreground: #d6d6db;
+	--rc-foreground-rgb: 214, 214, 219;
 	--rc-strong: #ffffff;
 	--rc-muted-foreground: #a3a3a8;
 	--rc-muted-foreground-rgb: 163, 163, 168;
 	--rc-faint: #8b8fa5;
-	--rc-border: #1c1e28;
-	--rc-border-window: #23242f;
-	--rc-input: #2a2b37;
+	--rc-border: #1a1b21;
+	--rc-border-window: #21212a;
+	--rc-input: #25262e;
 	--rc-input-hover: rgb(79 125 255 / 55%);
 	--rc-accent: #4f7dff;
 	--rc-accent-rgb: 79, 125, 255;
@@ -384,7 +386,7 @@ html { background-color: var(--rc-page) !important; }
 html:has(> body[data-theme-light]),
 html:has(> body[data-theme-light-highcontrast]) { background-color: #ebebed !important; }
 html:has(> body[data-theme-dark]),
-html:has(> body[data-theme-dark-highcontrast]) { background-color: #222533 !important; }
+html:has(> body[data-theme-dark-highcontrast]) { background-color: #070a11 !important; }
 /* the login page sits on the window colour, so its edges do too */
 html:has(> body#body-login) { background-color: var(--rc-background) !important; }
 
@@ -910,9 +912,9 @@ div[class^='_toast_'][class*='_toast_warning_'],
 }
 
 /* ------------------------------------------------------- logged-in pages:
-   no background picture, the canvas (#222533, light #ebebed) around the
+   no background picture, the canvas (#070a11, light #ebebed) around the
    app, which sits in one window (Nextcloud's body container): the
-   navigation on the canvas colour, the content #15161f (light #f5f5f6). */
+   navigation on the canvas colour, the content #0b0d13 (light #f5f5f6). */
 
 body:not(#body-login) {
 	--image-background: none !important;
@@ -1805,7 +1807,7 @@ body:not(#body-login) .empty-content__description {
 
 /* Navigation: the current page is a 6px box in the pressed colour, its
    name in the title colour at 600 and its icon blue; under the pointer the
-   hover colour (#2a2d3e on dark). No pill, no glow. */
+   hover colour (#17181f on dark). No pill, no glow. */
 body:not(#body-login) .app-navigation-entry:hover:not(.active):not(.app-navigation-entry--active) {
 	background-color: var(--rc-hover) !important;
 }
