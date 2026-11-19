@@ -19,46 +19,49 @@
 }
 
 /* ------------------------------------------------------------------ tokens
-   Dark is the V3 kit (docs/brand/robinx-v3-tokens.css): the canvas and the
-   navigation #0a0c10 (--side), the app window #0d0f14 (--page), cards,
-   menus and dialogs #151821, controls #1b1f2a, pressed and chosen #222736;
-   text #eceef4 / #c8ccd6 / #8b91a1 / #7f8597; lines white 7% and 12% (as
-   opaque mixes, so overlapping lines don't add up). One blue: #6c84ff for
-   switches, focus, links and the chosen icon, #4f68e8 as a fill under white
-   text. Light turns the steps over: canvas #f5f6fa, window and cards white,
-   text #151821, blue #4f68e8 (#3d55d4 where it is text). Amber and red only
-   tell a state, a few steps darker on light so they read on white.
+   Dark is the V3 kit as measured off the Neverlose footage (2026-11-19,
+   docs/brand/robinx-v3-tokens.css): the canvas and the navigation #222533
+   (--side, lighter than the content), the app window, cards and dialogs
+   #15161f (--page / --card, told apart by the #25262f line), controls
+   #1d1e2b, a row pointed at #2a2d3e, pressed and chosen #33364a; text
+   #fff / #d9dbe2 / #9497ab / #868aa0; lines #25262f and #2e3040. Menus are
+   solid #14141d in a rgb(57 61 76 / 80%) line, rows blue 12% under the
+   pointer. One blue: #4e83ff for switches, focus, links and the chosen icon,
+   #3566e8 as a fill under white text (#2f5cd6 under the pointer). Light
+   turns the steps over: canvas and navigation #eceef4, the window #f5f6fa,
+   cards white in a #e3e5ec line, text #15161f, blue #3566e8. Amber and red
+   only tell a state, a few steps darker on light so they read on white.
    No glow and no glass: floating things (menus, dialogs, toasts, the login
    card) get one soft shadow, everything else a 1px line. */
 
 :root {
-	--rc-page: #f5f6fa;
-	--rc-background: #ffffff;
-	--rc-background-rgb: 255, 255, 255;
+	--rc-page: #eceef4;
+	--rc-background: #f5f6fa;
+	--rc-background-rgb: 245, 246, 250;
 	--rc-card: #ffffff;
 	--rc-card-rgb: 255, 255, 255;
 	--rc-raise: #ffffff;
-	--rc-hover: #f0f2f7;
-	--rc-muted: #e8ebf2;
-	--rc-muted-strong: #dde1ea;
-	--rc-foreground: #2b303c;
-	--rc-foreground-rgb: 43, 48, 60;
-	--rc-strong: #151821;
-	--rc-muted-foreground: #5c6273;
-	--rc-muted-foreground-rgb: 92, 98, 115;
-	--rc-faint: #6b7184;
-	--rc-border: #e3e6ed;
-	--rc-border-window: #d5d9e2;
-	--rc-input: #cdd2dc;
-	--rc-input-hover: #9ba1b0;
-	--rc-accent: #4f68e8;
-	--rc-accent-rgb: 79, 104, 232;
-	--rc-accent-text: #3d55d4;
-	--rc-accent-soft: rgb(79 104 232 / 12%);
-	--rc-ring: #4f68e8;
-	--rc-primary: #4f68e8;
+	--rc-hover: #e3e6ee;
+	--rc-muted: #dadee8;
+	--rc-muted-strong: #d0d5e0;
+	--rc-foreground: #15161f;
+	--rc-foreground-rgb: 21, 22, 31;
+	--rc-strong: #15161f;
+	--rc-muted-foreground: #5d6075;
+	--rc-muted-foreground-rgb: 93, 96, 117;
+	--rc-faint: #6a6e85;
+	--rc-border: #e3e5ec;
+	--rc-border-window: #d7d9e2;
+	--rc-input: #cfd2dc;
+	--rc-input-hover: rgb(53 102 232 / 55%);
+	--rc-accent: #3566e8;
+	--rc-accent-rgb: 53, 102, 232;
+	--rc-accent-text: #2f5cd6;
+	--rc-accent-soft: rgb(53 102 232 / 12%);
+	--rc-ring: #3566e8;
+	--rc-primary: #3566e8;
 	--rc-primary-foreground: #ffffff;
-	--rc-primary-hover: #5d75f2;
+	--rc-primary-hover: #2f5cd6;
 	--rc-amber: #b45309;
 	--rc-amber-rgb: 180, 83, 9;
 	--rc-amber-text: #92400e;
@@ -69,13 +72,20 @@
 	--rc-red-text: #b91c1c;
 	--rc-red-surface: #fbe9e9;
 	--rc-red-surface-hover: #f8dcdc;
-	--rc-pop-shadow: 0 10px 30px rgb(21 24 33 / 10%), 0 2px 6px rgb(21 24 33 / 6%);
-	/* corners: chips and small buttons 6px, buttons, fields and rows 8px,
-	   cards and menus 12px, dialogs and the login card 14px. Only switches
-	   and status dots are round. */
-	--rc-radius: 8px;
-	--rc-radius-sm: 6px;
-	--rc-radius-pop: 12px;
+	--rc-pop-shadow: 0 10px 30px rgb(21 22 31 / 10%), 0 2px 6px rgb(21 22 31 / 6%);
+	--rc-pop: #ffffff;
+	--rc-pop-rgb: 255, 255, 255;
+	--rc-pop-line: #d7d9e2;
+	--rc-pop-hover: rgb(53 102 232 / 10%);
+	--rc-pop-edge: 0 0 0 transparent;
+	--rc-menu-shadow: 0 8px 24px rgb(21 22 31 / 12%);
+	/* corners: chips and small buttons 5px, buttons, fields and rows 6px,
+	   cards and toasts 13px, menus 16px, dialogs, the app window and the
+	   login card 14px. Only switches and status dots are round. */
+	--rc-radius: 6px;
+	--rc-radius-sm: 5px;
+	--rc-radius-card: 13px;
+	--rc-radius-pop: 16px;
 	--rc-radius-win: 14px;
 	--rc-ease: cubic-bezier(0.22, 1, 0.36, 1);
 	--rc-font: 'Pretendard Variable', Pretendard, -apple-system, 'Segoe UI', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
@@ -84,33 +94,33 @@
 
 @media (prefers-color-scheme: dark) {
 	:root {
-		--rc-page: #0a0c10;
-		--rc-background: #0d0f14;
-		--rc-background-rgb: 13, 15, 20;
-		--rc-card: #151821;
-		--rc-card-rgb: 21, 24, 33;
-		--rc-raise: #1b1f2a;
-		--rc-hover: #1b1f2a;
-		--rc-muted: #222736;
-		--rc-muted-strong: #2a3042;
-		--rc-foreground: #c8ccd6;
-		--rc-foreground-rgb: 200, 204, 214;
-		--rc-strong: #eceef4;
-		--rc-muted-foreground: #8b91a1;
-		--rc-muted-foreground-rgb: 139, 145, 161;
-		--rc-faint: #7f8597;
-		--rc-border: #23262f;
-		--rc-border-window: #31343c;
-		--rc-input: #31343c;
-		--rc-input-hover: #4a5060;
-		--rc-accent: #6c84ff;
-		--rc-accent-rgb: 108, 132, 255;
-		--rc-accent-text: #8a9dff;
-		--rc-accent-soft: rgb(108 132 255 / 14%);
-		--rc-ring: #6c84ff;
-		--rc-primary: #4f68e8;
+		--rc-page: #222533;
+		--rc-background: #15161f;
+		--rc-background-rgb: 21, 22, 31;
+		--rc-card: #15161f;
+		--rc-card-rgb: 21, 22, 31;
+		--rc-raise: #1d1e2b;
+		--rc-hover: #2a2d3e;
+		--rc-muted: #33364a;
+		--rc-muted-strong: #3b3e54;
+		--rc-foreground: #d9dbe2;
+		--rc-foreground-rgb: 217, 219, 226;
+		--rc-strong: #ffffff;
+		--rc-muted-foreground: #9497ab;
+		--rc-muted-foreground-rgb: 148, 151, 171;
+		--rc-faint: #868aa0;
+		--rc-border: #25262f;
+		--rc-border-window: #2e3040;
+		--rc-input: #2e3040;
+		--rc-input-hover: rgb(78 131 255 / 55%);
+		--rc-accent: #4e83ff;
+		--rc-accent-rgb: 78, 131, 255;
+		--rc-accent-text: #4e83ff;
+		--rc-accent-soft: rgb(78 131 255 / 16%);
+		--rc-ring: #4e83ff;
+		--rc-primary: #3566e8;
 		--rc-primary-foreground: #ffffff;
-		--rc-primary-hover: #5d75f2;
+		--rc-primary-hover: #2f5cd6;
 		--rc-amber: #f5b942;
 		--rc-amber-rgb: 245, 185, 66;
 		--rc-amber-text: #f5b942;
@@ -122,6 +132,12 @@
 		--rc-red-surface: #30222a;
 		--rc-red-surface-hover: #3d272f;
 		--rc-pop-shadow: 0 10px 30px rgb(0 0 0 / 45%), 0 2px 6px rgb(0 0 0 / 30%);
+		--rc-pop: #14141d;
+		--rc-pop-rgb: 20, 20, 29;
+		--rc-pop-line: rgb(57 61 76 / 80%);
+		--rc-pop-hover: rgb(78 131 255 / 12%);
+		--rc-pop-edge: inset 0 1px 0 rgb(255 255 255 / 8%);
+		--rc-menu-shadow: 0 8px 24px rgb(0 0 0 / 40%);
 	}
 }
 
@@ -131,33 +147,33 @@
    (below). */
 body[data-theme-light],
 body[data-theme-light-highcontrast] {
-	--rc-page: #f5f6fa;
-	--rc-background: #ffffff;
-	--rc-background-rgb: 255, 255, 255;
+	--rc-page: #eceef4;
+	--rc-background: #f5f6fa;
+	--rc-background-rgb: 245, 246, 250;
 	--rc-card: #ffffff;
 	--rc-card-rgb: 255, 255, 255;
 	--rc-raise: #ffffff;
-	--rc-hover: #f0f2f7;
-	--rc-muted: #e8ebf2;
-	--rc-muted-strong: #dde1ea;
-	--rc-foreground: #2b303c;
-	--rc-foreground-rgb: 43, 48, 60;
-	--rc-strong: #151821;
-	--rc-muted-foreground: #5c6273;
-	--rc-muted-foreground-rgb: 92, 98, 115;
-	--rc-faint: #6b7184;
-	--rc-border: #e3e6ed;
-	--rc-border-window: #d5d9e2;
-	--rc-input: #cdd2dc;
-	--rc-input-hover: #9ba1b0;
-	--rc-accent: #4f68e8;
-	--rc-accent-rgb: 79, 104, 232;
-	--rc-accent-text: #3d55d4;
-	--rc-accent-soft: rgb(79 104 232 / 12%);
-	--rc-ring: #4f68e8;
-	--rc-primary: #4f68e8;
+	--rc-hover: #e3e6ee;
+	--rc-muted: #dadee8;
+	--rc-muted-strong: #d0d5e0;
+	--rc-foreground: #15161f;
+	--rc-foreground-rgb: 21, 22, 31;
+	--rc-strong: #15161f;
+	--rc-muted-foreground: #5d6075;
+	--rc-muted-foreground-rgb: 93, 96, 117;
+	--rc-faint: #6a6e85;
+	--rc-border: #e3e5ec;
+	--rc-border-window: #d7d9e2;
+	--rc-input: #cfd2dc;
+	--rc-input-hover: rgb(53 102 232 / 55%);
+	--rc-accent: #3566e8;
+	--rc-accent-rgb: 53, 102, 232;
+	--rc-accent-text: #2f5cd6;
+	--rc-accent-soft: rgb(53 102 232 / 12%);
+	--rc-ring: #3566e8;
+	--rc-primary: #3566e8;
 	--rc-primary-foreground: #ffffff;
-	--rc-primary-hover: #5d75f2;
+	--rc-primary-hover: #2f5cd6;
 	--rc-amber: #b45309;
 	--rc-amber-rgb: 180, 83, 9;
 	--rc-amber-text: #92400e;
@@ -168,38 +184,44 @@ body[data-theme-light-highcontrast] {
 	--rc-red-text: #b91c1c;
 	--rc-red-surface: #fbe9e9;
 	--rc-red-surface-hover: #f8dcdc;
-	--rc-pop-shadow: 0 10px 30px rgb(21 24 33 / 10%), 0 2px 6px rgb(21 24 33 / 6%);
+	--rc-pop-shadow: 0 10px 30px rgb(21 22 31 / 10%), 0 2px 6px rgb(21 22 31 / 6%);
+	--rc-pop: #ffffff;
+	--rc-pop-rgb: 255, 255, 255;
+	--rc-pop-line: #d7d9e2;
+	--rc-pop-hover: rgb(53 102 232 / 10%);
+	--rc-pop-edge: 0 0 0 transparent;
+	--rc-menu-shadow: 0 8px 24px rgb(21 22 31 / 12%);
 }
 
 body[data-theme-dark],
 body[data-theme-dark-highcontrast] {
-	--rc-page: #0a0c10;
-	--rc-background: #0d0f14;
-	--rc-background-rgb: 13, 15, 20;
-	--rc-card: #151821;
-	--rc-card-rgb: 21, 24, 33;
-	--rc-raise: #1b1f2a;
-	--rc-hover: #1b1f2a;
-	--rc-muted: #222736;
-	--rc-muted-strong: #2a3042;
-	--rc-foreground: #c8ccd6;
-	--rc-foreground-rgb: 200, 204, 214;
-	--rc-strong: #eceef4;
-	--rc-muted-foreground: #8b91a1;
-	--rc-muted-foreground-rgb: 139, 145, 161;
-	--rc-faint: #7f8597;
-	--rc-border: #23262f;
-	--rc-border-window: #31343c;
-	--rc-input: #31343c;
-	--rc-input-hover: #4a5060;
-	--rc-accent: #6c84ff;
-	--rc-accent-rgb: 108, 132, 255;
-	--rc-accent-text: #8a9dff;
-	--rc-accent-soft: rgb(108 132 255 / 14%);
-	--rc-ring: #6c84ff;
-	--rc-primary: #4f68e8;
+	--rc-page: #222533;
+	--rc-background: #15161f;
+	--rc-background-rgb: 21, 22, 31;
+	--rc-card: #15161f;
+	--rc-card-rgb: 21, 22, 31;
+	--rc-raise: #1d1e2b;
+	--rc-hover: #2a2d3e;
+	--rc-muted: #33364a;
+	--rc-muted-strong: #3b3e54;
+	--rc-foreground: #d9dbe2;
+	--rc-foreground-rgb: 217, 219, 226;
+	--rc-strong: #ffffff;
+	--rc-muted-foreground: #9497ab;
+	--rc-muted-foreground-rgb: 148, 151, 171;
+	--rc-faint: #868aa0;
+	--rc-border: #25262f;
+	--rc-border-window: #2e3040;
+	--rc-input: #2e3040;
+	--rc-input-hover: rgb(78 131 255 / 55%);
+	--rc-accent: #4e83ff;
+	--rc-accent-rgb: 78, 131, 255;
+	--rc-accent-text: #4e83ff;
+	--rc-accent-soft: rgb(78 131 255 / 16%);
+	--rc-ring: #4e83ff;
+	--rc-primary: #3566e8;
 	--rc-primary-foreground: #ffffff;
-	--rc-primary-hover: #5d75f2;
+	--rc-primary-hover: #2f5cd6;
 	--rc-amber: #f5b942;
 	--rc-amber-rgb: 245, 185, 66;
 	--rc-amber-text: #f5b942;
@@ -211,28 +233,34 @@ body[data-theme-dark-highcontrast] {
 	--rc-red-surface: #30222a;
 	--rc-red-surface-hover: #3d272f;
 	--rc-pop-shadow: 0 10px 30px rgb(0 0 0 / 45%), 0 2px 6px rgb(0 0 0 / 30%);
+	--rc-pop: #14141d;
+	--rc-pop-rgb: 20, 20, 29;
+	--rc-pop-line: rgb(57 61 76 / 80%);
+	--rc-pop-hover: rgb(78 131 255 / 12%);
+	--rc-pop-edge: inset 0 1px 0 rgb(255 255 255 / 8%);
+	--rc-menu-shadow: 0 8px 24px rgb(0 0 0 / 40%);
 }
 
 body[data-theme-light-highcontrast] {
 	--rc-foreground: #000000;
 	--rc-strong: #000000;
-	--rc-muted-foreground: #3a3f4c;
-	--rc-border: #8a90a0;
-	--rc-border-window: #6b7184;
-	--rc-input: #6b7184;
-	--rc-input-hover: #3a3f4c;
-	--rc-accent-text: #2f45b8;
+	--rc-muted-foreground: #383b4c;
+	--rc-border: #878ba0;
+	--rc-border-window: #6a6e85;
+	--rc-input: #6a6e85;
+	--rc-input-hover: #383b4c;
+	--rc-accent-text: #2148b8;
 }
 
 body[data-theme-dark-highcontrast] {
 	--rc-foreground: #ffffff;
 	--rc-strong: #ffffff;
-	--rc-muted-foreground: #c8ccd6;
-	--rc-border: #5a6070;
-	--rc-border-window: #7f8597;
-	--rc-input: #7f8597;
-	--rc-input-hover: #c8ccd6;
-	--rc-accent-text: #aab8ff;
+	--rc-muted-foreground: #d9dbe2;
+	--rc-border: #5b5f78;
+	--rc-border-window: #868aa0;
+	--rc-input: #868aa0;
+	--rc-input-hover: #d9dbe2;
+	--rc-accent-text: #a6c1ff;
 }
 
 /* ------------------------------------------- Nextcloud's own variables
@@ -294,9 +322,9 @@ body {
 	--color-loading-light: var(--rc-border-window) !important;
 	--color-loading-dark: var(--rc-accent) !important;
 	--color-scrollbar: color-mix(in srgb, var(--rc-strong) 14%, transparent) transparent !important;
-	/* the primary colour is the one blue: the fill (#4f68e8, white text on
+	/* the primary colour is the one blue: the fill (#3566e8, white text on
 	   it) for buttons, ticked boxes and switches; the "light" variant (a
-	   chosen chip, a picked row) is the blue at 12-14% with blue text */
+	   chosen chip, a picked row) is the blue at 12-16% with blue text */
 	--color-primary: var(--rc-primary) !important;
 	--color-primary-text: var(--rc-primary-foreground) !important;
 	--color-primary-hover: var(--rc-primary-hover) !important;
@@ -320,11 +348,12 @@ body {
 	--color-border-assistant: linear-gradient(var(--rc-border-window), var(--rc-border-window)) !important;
 	--color-element-assistant: linear-gradient(var(--rc-primary), var(--rc-primary)) !important;
 	--color-element-assistant-icon: linear-gradient(var(--rc-foreground), var(--rc-foreground)) !important;
-	/* shape: small 6px, controls 8px (the pill and "rounded" sizes too, so
-	   nothing turns into a pill), cards and menus 12px, dialogs 14px */
+	/* shape: small 5px, controls 6px (the pill and "rounded" sizes too, so
+	   nothing turns into a pill), cards 13px, dialogs 14px; menus get their
+	   16px below */
 	--border-radius-small: var(--rc-radius-sm) !important;
 	--border-radius-element: var(--rc-radius) !important;
-	--border-radius-container: var(--rc-radius-pop) !important;
+	--border-radius-container: var(--rc-radius-card) !important;
 	--border-radius-container-large: var(--rc-radius-win) !important;
 	--border-radius: var(--rc-radius-sm) !important;
 	--border-radius-large: var(--rc-radius) !important;
@@ -345,9 +374,9 @@ body {
 
 html { background-color: var(--rc-page) !important; }
 html:has(> body[data-theme-light]),
-html:has(> body[data-theme-light-highcontrast]) { background-color: #f5f6fa !important; }
+html:has(> body[data-theme-light-highcontrast]) { background-color: #eceef4 !important; }
 html:has(> body[data-theme-dark]),
-html:has(> body[data-theme-dark-highcontrast]) { background-color: #0a0c10 !important; }
+html:has(> body[data-theme-dark-highcontrast]) { background-color: #222533 !important; }
 
 /* ------------------------------------------------------------- typography
    Pretendard for everything, titles 600-700 at -0.01em; Robin Term only for
@@ -385,7 +414,7 @@ code, kbd, pre, samp, tt { font-family: var(--rc-font-term); }
 
 /* ------------------------------------------------------- shared components */
 
-/* Inputs: the control colour (--raise) inside a 12% line, 8px, no shadow;
+/* Inputs: the control colour (--raise) inside the strong line, 6px, no shadow;
    hover strengthens the line, focus turns it blue and adds the 2px outline. */
 .input-field__input,
 input[type='text'], input[type='password'], input[type='email'], input[type='search'],
@@ -454,11 +483,11 @@ body .input-field .input-field__input:is(:focus, :focus-within, :active, :hover)
 .hint-body,
 .color-picker { padding: 8px !important; }
 
-.button-vue { --button-radius: 8px !important; }
+.button-vue { --button-radius: 6px !important; }
 
-/* Buttons. Default (secondary): the control colour in a 12% line, the
-   pressed colour under the pointer. Primary: the blue fill (#4f68e8) with
-   white text, a step brighter under the pointer. No glow. */
+/* Buttons. Default (secondary): the control colour in the strong line, the
+   pressed colour under the pointer. Primary: the blue fill (#3566e8) with
+   white text, a step darker (#2f5cd6) under the pointer. No glow. */
 .button-vue {
 	border-radius: var(--rc-radius) !important;
 	font-weight: 500 !important;
@@ -560,37 +589,47 @@ a.button-vue:focus-visible {
 	border-color: var(--rc-input) !important;
 }
 
-/* Menus, popovers and dialogs float: the card colour, a 12% line, 12px
-   (dialogs 14px) and the soft shadow. Inside them Nextcloud paints with
-   --color-main-background, so that is the card colour there too (the
-   search dialog's sticky header used to leave a box of window colour). */
-.modal-container,
-.v-popper__popper,
-.header-menu__wrapper,
-.header-menu__content {
+/* Dialogs float: the card colour, the strong line, 14px and the soft
+   shadow. Menus and popovers are solid #14141d (white on light) in their
+   own line, 16px, a row under the pointer blue 12%. Inside them Nextcloud
+   paints with --color-main-background, so that is their colour there too
+   (the search dialog's sticky header used to leave a box of window
+   colour). */
+.modal-container {
 	--color-main-background: var(--rc-card) !important;
 	--color-main-background-rgb: var(--rc-card-rgb) !important;
 	--color-main-background-translucent: rgba(var(--rc-card-rgb), .97) !important;
 	--color-main-background-blur: var(--rc-card) !important;
 }
 
-.modal-container,
-.v-popper__inner {
-	border: 1px solid var(--rc-border-window) !important;
-	border-radius: var(--rc-radius-pop) !important;
-	box-shadow: var(--rc-pop-shadow) !important;
+.v-popper__popper,
+.header-menu__wrapper,
+.header-menu__content {
+	--color-main-background: var(--rc-pop) !important;
+	--color-main-background-rgb: var(--rc-pop-rgb) !important;
+	--color-main-background-translucent: var(--rc-pop) !important;
+	--color-main-background-blur: var(--rc-pop) !important;
+	--color-background-hover: var(--rc-pop-hover) !important;
 }
 
 .modal-container {
+	border: 1px solid var(--rc-border-window) !important;
 	border-radius: var(--rc-radius-win) !important;
+	box-shadow: var(--rc-pop-shadow) !important;
 	background: var(--rc-card) !important;
 }
 
-/* small things: tooltips 6px */
+.v-popper__inner {
+	border: 1px solid var(--rc-pop-line) !important;
+	border-radius: var(--rc-radius-pop) !important;
+	background: var(--rc-pop) !important;
+}
+
+/* small things: tooltips 5px */
 .v-popper--theme-tooltip .v-popper__inner,
 .v-popper--theme-tooltip .v-popper__wrapper { border-radius: var(--rc-radius-sm) !important; }
 
-/* Toasts: a floating card (12% line, 12px, the soft shadow), Pretendard
+/* Toasts: a floating card (the strong line, 13px, the soft shadow), Pretendard
    500; an error or warning has its whole line in red or amber, and its
    action (undo, open) is blue text. @nextcloud/dialogs names its
    classes with a build hash (_toast_v43ag_11, _toast_error_…), hence the
@@ -600,7 +639,7 @@ div[class^='_toast_'],
 	background-color: var(--rc-card) !important;
 	color: var(--rc-strong) !important;
 	border: 1px solid var(--rc-border-window) !important;
-	border-radius: var(--rc-radius-pop) !important;
+	border-radius: var(--rc-radius-card) !important;
 	box-shadow: var(--rc-pop-shadow) !important;
 	font-family: var(--rc-font);
 	font-weight: 500;
@@ -615,16 +654,16 @@ div[class^='_toast_'][class*='_toast_warning_'],
 :is(div[class^='_toast_'], .toastify.dialogs) :is(.button-vue--icon-only, .toast-close) { color: var(--rc-muted-foreground) !important; }
 :is(div[class^='_toast_'], .toastify.dialogs) .button-vue:hover:not(:disabled) { background-color: var(--rc-muted) !important; }
 
-/* App menu (the grid in the header): the popover sets its own 8px corner;
-   the app icons sit on 8px tiles without the glossy bevel; an unread dot is
+/* App menu (the grid in the header): the popover sets its own 6px corner;
+   the app icons sit on 6px tiles without the glossy bevel; an unread dot is
    "new", blue. */
 .app-menu__popover { --border-radius-element: var(--rc-radius) !important; }
 .app-item__circle { background-image: none !important; box-shadow: none !important; border-radius: var(--rc-radius) !important; }
 .app-item--outlined .app-item__circle { box-shadow: inset 0 0 0 1px var(--rc-border-window) !important; }
 .app-item__unread { background-color: var(--rc-accent) !important; }
 
-/* the owner bubble in the sharing tab and other user bubbles, tags: 6px;
-   chips (search filters): 6px, the control colour in a 12% line */
+/* the owner bubble in the sharing tab and other user bubbles, tags: 5px;
+   chips (search filters): 5px, the control colour in the strong line */
 .user-bubble__content { border-radius: var(--rc-radius-sm) !important; }
 .files-list__system-tag,
 .systemtags-select__tag { border-radius: var(--rc-radius-sm) !important; }
@@ -636,19 +675,20 @@ div[class^='_toast_'][class*='_toast_warning_'],
 }
 
 /* menus: one depth shadow (on the wrapper, where Nextcloud puts its own),
-   the frame on the inside */
-.v-popper__wrapper { box-shadow: var(--rc-pop-shadow) !important; border-radius: var(--rc-radius-pop) !important; }
-.v-popper__inner { box-shadow: none !important; }
+   the frame and a 1px light along the top edge on the inside */
+.v-popper__wrapper { box-shadow: var(--rc-menu-shadow) !important; border-radius: var(--rc-radius-pop) !important; }
+.v-popper__inner { box-shadow: var(--rc-pop-edge) !important; }
 
 /* the header's own menus (account, notifications) are not poppers */
 .header-menu__wrapper {
-	border: 1px solid var(--rc-border-window) !important;
+	background: var(--rc-pop) !important;
+	border: 1px solid var(--rc-pop-line) !important;
 	border-radius: var(--rc-radius-pop) !important;
-	box-shadow: var(--rc-pop-shadow) !important;
+	box-shadow: var(--rc-pop-edge), var(--rc-menu-shadow) !important;
 	filter: none !important;
 }
 
-/* counters (unread, trash): even digits, a 6px tag */
+/* counters (unread, trash): even digits, a 5px tag */
 .counter-bubble__counter {
 	font-variant-numeric: tabular-nums;
 	border-radius: var(--rc-radius-sm) !important;
@@ -669,7 +709,7 @@ div[class^='_toast_'][class*='_toast_warning_'],
 
 /* the wordmark: dark on light, light on dark, no glow */
 #body-login #header .logo {
-	background-image: url('../img/logo/logo-dark.svg') !important;
+	background-image: url('../img/logo/logo-dark.svg?v=icon-20261119') !important;
 	width: 196px !important;
 	height: 48px !important;
 	background-size: contain !important;
@@ -678,15 +718,15 @@ div[class^='_toast_'][class*='_toast_warning_'],
 }
 
 @media (prefers-color-scheme: dark) {
-	#body-login #header .logo { background-image: url('../img/logo/logo.svg') !important; }
+	#body-login #header .logo { background-image: url('../img/logo/logo.svg?v=icon-20261119') !important; }
 }
 
 body#body-login[data-theme-light] #header .logo,
-body#body-login[data-theme-light-highcontrast] #header .logo { background-image: url('../img/logo/logo-dark.svg') !important; }
+body#body-login[data-theme-light-highcontrast] #header .logo { background-image: url('../img/logo/logo-dark.svg?v=icon-20261119') !important; }
 body#body-login[data-theme-dark] #header .logo,
-body#body-login[data-theme-dark-highcontrast] #header .logo { background-image: url('../img/logo/logo.svg') !important; }
+body#body-login[data-theme-dark-highcontrast] #header .logo { background-image: url('../img/logo/logo.svg?v=icon-20261119') !important; }
 
-/* The card: the card colour (#151821, white on light), 14px, a 7% line and,
+/* The card: the card colour (#15161f, white on light), 14px, the card line and,
    since it floats alone in the middle of the page, the soft shadow. The
    sign-up steps use ::before/::after for their progress line, so the card
    draws nothing with pseudo-elements. */
@@ -810,7 +850,7 @@ body#body-login[data-theme-dark-highcontrast] #header .logo { background-image: 
 	width: 48px !important;
 	height: 48px !important;
 	margin: 0 auto 16px !important;
-	border-radius: var(--rc-radius-pop);
+	border-radius: var(--rc-radius-card);
 	background-color: var(--rc-muted) !important;
 	background-size: 22px !important;
 	opacity: .7;
@@ -852,9 +892,9 @@ body#body-login[data-theme-dark-highcontrast] #header .logo { background-image: 
 }
 
 /* ------------------------------------------------------- logged-in pages:
-   no background picture, the canvas (#0a0c10, light #f5f6fa) around the
+   no background picture, the canvas (#222533, light #eceef4) around the
    app, which sits in one window (Nextcloud's body container): the
-   navigation on the canvas colour, the content #0d0f14 (white on light). */
+   navigation on the canvas colour, the content #15161f (light #f5f6fa). */
 
 body:not(#body-login) {
 	--image-background: none !important;
@@ -870,25 +910,25 @@ body:not(#body-login) #header {
 
 body:not(#body-login) #header .logo,
 body:not(#body-login) #nextcloud .logo {
-	background-image: url('../img/logo/logo-dark.svg') !important;
+	background-image: url('../img/logo/logo-dark.svg?v=icon-20261119') !important;
 	filter: none !important;
 }
 
 @media (prefers-color-scheme: dark) {
 	body:not(#body-login) #header .logo,
-	body:not(#body-login) #nextcloud .logo { background-image: url('../img/logo/logo.svg') !important; }
+	body:not(#body-login) #nextcloud .logo { background-image: url('../img/logo/logo.svg?v=icon-20261119') !important; }
 }
 
 body[data-theme-dark]:not(#body-login) #header .logo,
 body[data-theme-dark]:not(#body-login) #nextcloud .logo,
 body[data-theme-dark-highcontrast]:not(#body-login) #header .logo,
-body[data-theme-dark-highcontrast]:not(#body-login) #nextcloud .logo { background-image: url('../img/logo/logo.svg') !important; }
+body[data-theme-dark-highcontrast]:not(#body-login) #nextcloud .logo { background-image: url('../img/logo/logo.svg?v=icon-20261119') !important; }
 body[data-theme-light]:not(#body-login) #header .logo,
 body[data-theme-light]:not(#body-login) #nextcloud .logo,
 body[data-theme-light-highcontrast]:not(#body-login) #header .logo,
-body[data-theme-light-highcontrast]:not(#body-login) #nextcloud .logo { background-image: url('../img/logo/logo-dark.svg') !important; }
+body[data-theme-light-highcontrast]:not(#body-login) #nextcloud .logo { background-image: url('../img/logo/logo-dark.svg?v=icon-20261119') !important; }
 
-/* the app in one window: a 12% line, 14px, no shadow (it is full of lists) */
+/* the app in one window: the strong line, 14px, no shadow (it is full of lists) */
 body:not(#body-login) #content,
 body:not(#body-login) #content-vue {
 	border: 1px solid var(--rc-border-window) !important;
@@ -900,7 +940,8 @@ body:not(#body-login) .app-navigation {
 	background: var(--rc-page) !important;
 	backdrop-filter: none !important;
 	-webkit-backdrop-filter: none !important;
-	border-inline-end: 1px solid var(--rc-border) !important;
+	/* no line on the navigation side: its own colour is the edge */
+	border-inline-end: 1px solid transparent !important;
 }
 
 /* dashboard widgets: cards */
@@ -910,7 +951,7 @@ body:not(#body-login) .dashboard .panel--content {
 	backdrop-filter: none !important;
 	-webkit-backdrop-filter: none !important;
 	border: 1px solid var(--rc-border) !important;
-	border-radius: var(--rc-radius-pop) !important;
+	border-radius: var(--rc-radius-card) !important;
 	box-shadow: none !important;
 }
 
@@ -1225,7 +1266,7 @@ a[href^="https://help.nextcloud.com"] { display: none !important; }
 #body-login :is(.button-vue, a.button, input[type='submit']):active:not(:disabled) { transform: scale(0.98); }
 
 /* A primary button that is not ready yet reads as "not yet", not as a dead
-   slab: same shape, the pressed colour in a 12% line, grey text. */
+   slab: same shape, the pressed colour in the strong line, grey text. */
 #body-login :is(.button-vue--primary, .button-vue--vue-primary):disabled {
 	opacity: 1 !important;
 	background-color: var(--rc-muted) !important;
@@ -1685,7 +1726,7 @@ body:not(#body-login) .empty-content__icon {
 	min-height: 0 !important;
 	margin: 0 auto 16px !important;
 	border: 1px solid var(--rc-border-window);
-	border-radius: var(--rc-radius-pop);
+	border-radius: var(--rc-radius-card);
 	box-sizing: border-box;
 	background: var(--rc-muted) !important;
 	background-size: 24px !important;
@@ -1726,9 +1767,9 @@ body:not(#body-login) .empty-content__description {
    round two (2026-10-27): a navigation you can see the current page in,
    lighter list furniture, quiet scrollbars, phone-sized inputs. */
 
-/* Navigation: the current page is an 8px box in the pressed colour, its
+/* Navigation: the current page is a 6px box in the pressed colour, its
    name in the title colour at 600 and its icon blue; under the pointer the
-   control colour. No pill, no glow. */
+   hover colour (#2a2d3e on dark). No pill, no glow. */
 body:not(#body-login) .app-navigation-entry:hover:not(.active):not(.app-navigation-entry--active) {
 	background-color: var(--rc-hover) !important;
 }
@@ -1783,7 +1824,7 @@ body:not(#body-login) .files-list__thead .files-list__column-sort-button {
 	font-weight: 500 !important;
 }
 
-/* A row under the pointer or open in the details panel: an 8px box, flat. Its own separator goes clear so the line does not
+/* A row under the pointer or open in the details panel: a 6px box, flat. Its own separator goes clear so the line does not
    bend round the corners; the rows keep display: flex, so the corner clips. */
 body:not(#body-login) tr.files-list__row:is(:hover, .files-list__row--active, .files-list__row--picked, .files-list__row--dragover) {
 	border-radius: var(--rc-radius);
@@ -2052,7 +2093,7 @@ body:not(#body-login) .files-list__drag-drop-notice-wrapper {
 	box-sizing: border-box;
 	min-height: 88px;
 	border: 1.5px dashed color-mix(in srgb, var(--rc-accent) 60%, transparent) !important;
-	border-radius: var(--rc-radius-pop) !important;
+	border-radius: var(--rc-radius-card) !important;
 	background: var(--rc-card) !important;
 	animation: rc-pop 0.2s var(--rc-ease);
 }
@@ -2089,7 +2130,7 @@ body:not(#body-login) .files-list-drag-drop-notice__title {
    a bare grey glyph or a photo cut off at the card's edge. Pointing lights
    the frame. */
 body:not(#body-login) .files-list--grid tbody .files-list__row {
-	border-radius: var(--rc-radius-pop);
+	border-radius: var(--rc-radius-card);
 	box-shadow: inset 0 0 0 1px var(--rc-border);
 	transition: background-color 0.15s ease, box-shadow 0.15s ease;
 }
