@@ -404,6 +404,7 @@ body { font-family: var(--rc-font); font-weight: 600; }
 	--font-weight-element: 650 !important;
 	--font-weight-heading: 750 !important;
 }
+body :is(input, textarea, select) { font-weight: var(--font-weight-default); }
 
 code, kbd, pre, samp, tt { font-family: var(--rc-font-term); }
 
