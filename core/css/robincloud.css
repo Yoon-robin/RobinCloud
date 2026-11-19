@@ -1848,10 +1848,14 @@ body:not(#body-login) .empty-content__description {
    lighter list furniture, quiet scrollbars, phone-sized inputs. */
 
 /* Navigation: the current page is a 6px box in the pressed colour, its
-   name in the title colour at 600 and its icon blue; under the pointer the
-   hover colour (#17181f on dark). No pill, no glow. */
+   name in the title colour and its icon blue; under the pointer the same
+   pressed box and the same white name, the icon left grey (B-457: the two
+   differ only by the icon). No pill, no glow. */
 body:not(#body-login) .app-navigation-entry:hover:not(.active):not(.app-navigation-entry--active) {
-	background-color: var(--rc-hover) !important;
+	background-color: var(--rc-muted) !important;
+}
+body:not(#body-login) .app-navigation-entry:hover:not(.active):not(.app-navigation-entry--active) .app-navigation-entry__name {
+	color: var(--rc-strong) !important;
 }
 
 body:not(#body-login) .app-navigation-entry.active,
