@@ -395,7 +395,15 @@ html:has(> body#body-login) { background-color: var(--rc-background) !important;
    what a machine reads (code, the verification code). Numbers that change
    (sizes, counters, time left) keep even digits instead. */
 
-body { font-family: var(--rc-font); }
+body { font-family: var(--rc-font); font-weight: 600; }
+
+/* B-456 (robin 2026-11-20 "Pretendard bold"): Pretendard one notch heavier.
+   Nextcloud reads its weights from these three; the theme sets them on body. */
+:root, body {
+	--font-weight-default: 600 !important;
+	--font-weight-element: 650 !important;
+	--font-weight-heading: 750 !important;
+}
 
 code, kbd, pre, samp, tt { font-family: var(--rc-font-term); }
 
@@ -405,7 +413,7 @@ code, kbd, pre, samp, tt { font-family: var(--rc-font-term); }
 .modal-container h2,
 .dialog__name,
 .app-sidebar-header__mainname {
-	font-weight: 700 !important;
+	font-weight: 800 !important;
 	letter-spacing: -0.01em;
 }
 
@@ -413,7 +421,7 @@ code, kbd, pre, samp, tt { font-family: var(--rc-font-term); }
    spaced; Latin ones in capitals, Korean as it is */
 .app-navigation-caption__name {
 	font-size: 11px !important;
-	font-weight: 600 !important;
+	font-weight: 700 !important;
 	letter-spacing: 0.06em;
 	text-transform: uppercase;
 	color: var(--rc-muted-foreground) !important;
@@ -469,7 +477,7 @@ body .input-field .input-field__input:is(:focus, :focus-within, :active, :hover)
 	box-shadow: none !important;
 }
 
-.input-field__label { font-weight: 400; }
+.input-field__label { font-weight: 600; }
 
 /* Nextcloud derives paddings from the corner radius (a field's text inset,
    its label, a button's sides), so a change of corner moves the text. Set
@@ -502,7 +510,7 @@ body .input-field .input-field__input:is(:focus, :focus-within, :active, :hover)
    white text, a step darker (#2f5cd6) under the pointer. No glow. */
 .button-vue {
 	border-radius: var(--rc-radius) !important;
-	font-weight: 500 !important;
+	font-weight: 650 !important;
 	letter-spacing: -0.01em;
 	box-shadow: none !important;
 	transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, box-shadow 0.2s ease;
@@ -588,7 +596,7 @@ a.button-vue:focus-visible {
 	line-height: 1.5;
 }
 
-.notecard__heading { font-weight: 600 !important; margin-bottom: 2px; }
+.notecard__heading { font-weight: 700 !important; margin-bottom: 2px; }
 .notecard--success .notecard__icon { color: var(--rc-foreground) !important; }
 .notecard--info .notecard__icon { color: var(--rc-muted-foreground) !important; }
 .notecard--warning { border-color: color-mix(in srgb, var(--rc-amber) 45%, var(--rc-border)) !important; }
@@ -654,7 +662,7 @@ div[class^='_toast_'],
 	border-radius: var(--rc-radius-card) !important;
 	box-shadow: var(--rc-pop-shadow) !important;
 	font-family: var(--rc-font);
-	font-weight: 500;
+	font-weight: 650;
 }
 
 div[class^='_toast_'] [class^='_toastMessage_'] { color: inherit !important; }
@@ -741,7 +749,7 @@ div[class^='_toast_'][class*='_toast_warning_'],
 
 #body-login #header .logo::after {
 	content: 'RobinCloud';
-	font: 700 14px/1 var(--rc-font);
+	font: 800 14px/1 var(--rc-font);
 	letter-spacing: -0.01em;
 	color: var(--rc-strong);
 }
@@ -779,7 +787,7 @@ div[class^='_toast_'][class*='_toast_warning_'],
 #body-login .login-form h2,
 #body-login .login-box h2 {
 	font-size: 18px;
-	font-weight: 700;
+	font-weight: 800;
 	letter-spacing: -0.01em;
 	color: var(--rc-strong);
 	text-align: start;
@@ -807,7 +815,7 @@ div[class^='_toast_'][class*='_toast_warning_'],
 #body-login footer.guest-box .info a,
 #body-login footer.guest-box .entity-name {
 	color: var(--rc-muted-foreground) !important;
-	font-weight: 500;
+	font-weight: 650;
 }
 
 /* installer: drop the autoconfig notice and the Nextcloud docs box */
@@ -827,7 +835,7 @@ div[class^='_toast_'][class*='_toast_warning_'],
 
 #body-login .setup-form summary {
 	padding: 10px 0;
-	font-weight: 500;
+	font-weight: 650;
 	color: var(--rc-muted-foreground);
 	text-align: start;
 	cursor: pointer;
@@ -879,7 +887,7 @@ div[class^='_toast_'][class*='_toast_warning_'],
 #body-login .body-login-container.update h2 {
 	margin: 0 0 6px !important;
 	font-size: 20px !important;
-	font-weight: 700 !important;
+	font-weight: 800 !important;
 	letter-spacing: -0.01em;
 	word-break: keep-all;
 }
@@ -907,7 +915,7 @@ div[class^='_toast_'][class*='_toast_warning_'],
 	box-sizing: border-box;
 	border-radius: var(--rc-radius) !important;
 	font-size: 14px !important;
-	font-weight: 500 !important;
+	font-weight: 650 !important;
 	box-shadow: none;
 }
 
@@ -1055,7 +1063,7 @@ body[data-theme-dark-highcontrast]:not(#body-login) {
 /* installer, "Storage & database": quiet sub-headings, database type as tabs */
 #body-login .setup-form details legend {
 	font-size: 13px !important;
-	font-weight: 500 !important;
+	font-weight: 650 !important;
 	color: var(--rc-muted-foreground) !important;
 	margin: 6px 0 4px !important;
 	letter-spacing: 0;
@@ -1095,7 +1103,7 @@ body[data-theme-dark-highcontrast]:not(#body-login) {
 	border-radius: var(--rc-radius-sm) !important;
 	background: transparent !important;
 	color: var(--rc-muted-foreground) !important;
-	font-weight: 500;
+	font-weight: 650;
 	font-size: 12.5px;
 	white-space: nowrap;
 }
@@ -1334,7 +1342,7 @@ a[href^="https://help.nextcloud.com"] { display: none !important; }
 #body-login .guest-box h2 {
 	margin: 0 0 6px !important;
 	font-size: 18px !important;
-	font-weight: 700 !important;
+	font-weight: 800 !important;
 	letter-spacing: -0.01em;
 	word-break: keep-all;
 }
@@ -1368,7 +1376,7 @@ a[href^="https://help.nextcloud.com"] { display: none !important; }
 	background: var(--rc-primary) !important;
 	color: var(--rc-primary-foreground) !important;
 	font-size: 14px !important;
-	font-weight: 500 !important;
+	font-weight: 650 !important;
 	box-shadow: none !important;
 	cursor: pointer;
 }
@@ -1390,7 +1398,7 @@ a[href^="https://help.nextcloud.com"] { display: none !important; }
 	margin: 0 0 6px !important;
 	text-align: start;
 	font-size: 20px !important;
-	font-weight: 700 !important;
+	font-weight: 800 !important;
 	letter-spacing: -0.01em;
 }
 
@@ -1415,7 +1423,7 @@ a[href^="https://help.nextcloud.com"] { display: none !important; }
 	font-size: 13px;
 	color: var(--rc-red-text) !important;
 }
-#body-login .two-factor > p:has(> strong) strong { font-weight: 500; }
+#body-login .two-factor > p:has(> strong) strong { font-weight: 650; }
 
 /* the two links (backup code, cancel) share one line under the form */
 #body-login .two-factor > p:has(> a.two-factor-secondary) {
@@ -1550,7 +1558,7 @@ a[href^="https://help.nextcloud.com"] { display: none !important; }
 	margin-bottom: 4px;
 	font-family: var(--rc-font);
 	font-size: 18px;
-	font-weight: 700;
+	font-weight: 800;
 	letter-spacing: -0.01em;
 	color: var(--rc-strong);
 	animation: rc-row 0.3s var(--rc-ease) 0.1s both;
@@ -1646,7 +1654,7 @@ html[lang^='ko'] #registration_user .input-field:has(input[name='password'])::af
 #body-login #guest-content-vue h2 {
 	margin: 0 0 2px !important;
 	font-size: 18px !important;
-	font-weight: 700 !important;
+	font-weight: 800 !important;
 	letter-spacing: -0.01em;
 	text-align: start !important;
 	word-break: keep-all;
@@ -1821,7 +1829,7 @@ body:not(#body-login) .empty-content__icon > * {
 body:not(#body-login) .empty-content__name {
 	margin-bottom: 4px !important;
 	font-size: 16px !important;
-	font-weight: 700 !important;
+	font-weight: 800 !important;
 	letter-spacing: -0.01em;
 }
 
@@ -1892,7 +1900,7 @@ body:not(#body-login) .files-list .checkbox-content__icon svg {
 body:not(#body-login) .files-list__thead .files-list__column,
 body:not(#body-login) .files-list__thead .files-list__column-sort-button {
 	color: var(--rc-muted-foreground) !important;
-	font-weight: 500 !important;
+	font-weight: 650 !important;
 }
 
 /* A row under the pointer or open in the details panel: a 6px box, flat. Its own separator goes clear so the line does not
@@ -2004,7 +2012,7 @@ body:not(#body-login) .app-sidebar-tabs__tab .checkbox-content {
 	min-height: 0 !important;
 	padding: 0 10px !important;
 	font-size: 13px;
-	font-weight: 500;
+	font-weight: 650;
 }
 
 body:not(#body-login) .app-sidebar-tabs__tab .checkbox-content__icon,
@@ -2118,7 +2126,7 @@ body:not(#body-login) .upload-picker__progress p {
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
-	font: 500 11px/13px var(--rc-font);
+	font: 650 11px/13px var(--rc-font);
 	font-variant-numeric: tabular-nums;
 	color: var(--rc-muted-foreground);
 }
@@ -2191,7 +2199,7 @@ body:not(#body-login) .files-list__drag-drop-notice-wrapper > .material-design-i
 body:not(#body-login) .files-list-drag-drop-notice__title {
 	margin: 0 !important;
 	font-size: 15px !important;
-	font-weight: 600 !important;
+	font-weight: 700 !important;
 	letter-spacing: -0.01em;
 	color: var(--rc-strong) !important;
 }
