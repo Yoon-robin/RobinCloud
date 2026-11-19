@@ -133,6 +133,8 @@ class DefaultPublicShareTemplateProvider implements IPublicShareTemplateProvider
 		// CSP to allow office
 		$csp = new ContentSecurityPolicy();
 		$csp->addAllowedFrameDomain('\'self\'');
+		// the files list registers its preview service worker here too; without this every public share logged a CSP error
+		$csp->addAllowedWorkerSrcDomain('\'self\'');
 
 		$response = new PublicTemplateResponse(
 			'files',
