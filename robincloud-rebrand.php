@@ -150,7 +150,10 @@ foreach ($it as $file) {
 		$old = file_get_contents($path);
 		$koTables = $bundleKo && strpos($old, '{l:"ko",t:{') !== false;
 		$poTables = $bundleKo && strpos($old, 'Language:"ko"') !== false;
-		if (strpos($old, 'Nextcloud') === false && !$koTables && !$poTables) {
+		// Photos writes month headings with a fixed "MMMM YYYY", which in Korean
+		// came out as "11월 2026"; Korean puts the year first
+		$monthYear = str_contains($rel, 'apps/photos/') && preg_match('/"MMMM? YYYY"/', $old);
+		if (strpos($old, 'Nextcloud') === false && !$koTables && !$poTables && !$monthYear) {
 			continue;
 		}
 		// minified bundles keep their licence notices on the same line as the
@@ -161,6 +164,11 @@ foreach ($it as $file) {
 		}
 		if ($poTables) {
 			$new = bundleKoPo($new, $bundleKo);
+		}
+		if ($monthYear) {
+			$new = preg_replace_callback('/"(MMMM?) YYYY"/',
+				// \u0020 in the fallback so a second run finds nothing to wrap again
+				fn ($m) => '(globalThis.document?.documentElement.lang==="ko"?"YYYY년 ' . $m[1] . '":"' . $m[1] . '\\u0020YYYY")', $new);
 		}
 	} elseif (str_ends_with($name, '.php') && strpos($rel, '/l10n/') === false) {
 		$kind = 'php';
