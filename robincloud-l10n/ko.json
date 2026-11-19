@@ -303,6 +303,14 @@
     "Move down": "아래로 이동"
   },
   "theming": {
+    "A dark theme to ease your eyes by reducing the overall luminosity and brightness.": "화면을 어둡게 해서 눈이 덜 피로해요.",
+    "A high contrast mode to ease your navigation. Visual quality will be reduced but clarity will be increased.": "대비를 높여 더 또렷하게 보여요. 대신 색은 덜 고와요.",
+    "Similar to the high contrast mode, but with dark colours.": "고대비 모드와 같지만 어두운 색을 써요.",
+    "The default light appearance.": "기본 밝은 테마",
+    "Navigation bar settings": "머리줄 앱 순서",
+    "You can configure the app order used for the navigation bar. The first entry will be the default app, opened after login or when clicking on the logo.": "머리줄에 보이는 앱 순서를 바꿀 수 있어요. 맨 앞 앱이 기본 앱이라 로그인한 뒤나 로고를 누르면 열려요.",
+    "The default app can not be changed because it was configured by the administrator.": "관리자가 정해 둬서 기본 앱은 바꿀 수 없어요.",
+    "In some cases keyboard shortcuts can interfere with accessibility tools. In order to allow focusing on your tool correctly you can disable all keyboard shortcuts here. This will also disable all available shortcuts in apps.": "키보드 단축키가 접근성 도구와 부딪칠 때가 있어요. 여기서 끄면 앱 안의 단축키까지 모두 꺼져요.",
     "Misc accessibility options": "기타 접근성 옵션",
     "Primary color": "기본 색상",
     "Background and color": "배경과 색상",
@@ -680,8 +688,9 @@
     "Search starts once you start typing and results may be reached with the arrow keys": "입력하면 바로 검색이 시작되고, 방향키로 결과로 이동할 수 있어요.",
     "Searching …": "검색 중…",
     "Searching …": "검색 중…",
-    "Search apps, files, tags, messages …": "앱, 파일, 태그, 메시지 검색…",
-    "Search apps, files, tags, messages": "앱, 파일, 태그, 메시지 검색",
+    "Search apps, files, tags, messages …": "앱, 파일, 태그 검색…",
+    "Search apps, files, tags, messages": "앱, 파일, 태그 검색",
+    "No contacts found": "연락처가 없어요",
     "Email length is at max (255)": "이메일은 최대 255자예요",
     "This browser is not supported": "지원하지 않는 브라우저예요",
     "Your browser is not supported. Please upgrade to a newer version or a supported one.": "지원하지 않는 브라우저예요. 최신 버전이나 지원하는 브라우저로 바꿔 주세요.",
@@ -819,7 +828,8 @@
     "Files and folders you mark as favorite will show up here": "즐겨찾기에 추가한 파일과 폴더가 여기에 나타나요",
     "Files that are not shared will show up here.": "공유하지 않은 파일이 여기에 나타나요.",
     "Files and folders you recently modified will show up here.": "최근에 수정한 파일과 폴더가 여기에 나타나요.",
-    "Upload some content or sync with your devices!": "파일을 업로드하거나 기기와 동기화해 보세요!",
+    "Upload some content or sync with your devices!": "파일을 업로드하거나 기기와 동기화해 보세요.",
+    "No files in here": "아직 파일이 없어요",
     "Drag and drop files here to upload": "여기에 파일을 끌어다 놓으면 업로드돼요",
     "Column headers with buttons are sortable.": "버튼이 있는 열 머리글은 정렬할 수 있어요.",
     "This list is not fully rendered for performance reasons. The files will be rendered as you navigate through the list.": "성능 때문에 목록을 한 번에 다 표시하지 않아요. 목록을 넘기면 파일이 더 표시돼요.",
@@ -1348,9 +1358,14 @@
     "{index} of {total}": "{total}개 중 {index}번째"
   },
   "notifications": {
+    "Requesting browser permissions to show notifications": "브라우저에 알림 권한을 묻고 있어요",
+    "Send email reminders about unhandled notifications after:": "확인하지 않은 알림을 메일로 다시 알려 줄 때:",
+    "Play sound when a new notification arrives": "새 알림이 오면 소리 내기",
+    "Play sound when a call started (requires RobinCloud Talk)": "통화가 시작되면 소리 내기(통화 앱이 있어야 해요)",
+    "You need to set up your email address before you can receive notification emails.": "알림 메일을 받으려면 먼저 이메일 주소를 넣어 주세요.",
     "Configure the default notification settings": "기본 알림 설정",
     "Web push settings": "웹 푸시 설정",
-    "Web push is a push notification system that lets web applications send notifications to users´ mobile apps or browser, even when the app is not open in a tab.": "웹 푸시는 앱이 탭에 열려 있지 않아도 사용자의 모바일 앱이나 브라우저로 알림을 보내는 기능입니다.",
+    "Web push is a push notification system that lets web applications send notifications to users´ mobile apps or browser, even when the app is not open in a tab.": "웹 푸시는 앱이 탭에 열려 있지 않아도 사용자의 모바일 앱이나 브라우저로 알림을 보내는 기능이에요.",
     "Web push notifications are encrypted but routed through services provided by Mozilla, Microsoft, Apple, Google or user-choosen ones in case of mobile apps. While the content is protected, metadata such as timing and frequency of notifications may be exposed to these providers.": "웹 푸시 알림은 암호화되지만 Mozilla, Microsoft, Apple, Google(모바일 앱은 사용자가 고른 서비스)을 거쳐 전달됩니다. 내용은 보호되어도 알림 시각과 빈도 같은 정보는 이 업체들에 드러날 수 있습니다.",
     "Allow web push to be used": "웹 푸시 사용 허용",
     "Allow web push for browsers": "브라우저 웹 푸시 허용",
@@ -1642,6 +1657,12 @@
     "Loading actions": "메뉴 불러오는 중",
     "Local time: {time}": "현지 시간: {time}",
     "Widget height": "위젯 높이"
+  },
+  "activity": {
+    "You need to set up your email address before you can receive notification emails.": "알림 메일을 받으려면 먼저 이메일 주소를 넣어 주세요.",
+    "Choose for which activities you want to get an email or push notification.": "메일이나 푸시 알림으로 받을 활동을 골라 주세요.",
+    "Send daily activity summary in the morning": "매일 아침 활동 요약을 메일로 받기",
+    "Send push notification": "푸시 알림 보내기"
   },
   "serverinfo": {
     "Password": "비밀번호"
