@@ -2456,3 +2456,6 @@ body .checkbox-radio-switch-switch.checkbox-radio-switch--checked .checkbox-cont
 body .checkbox-radio-switch-switch:hover .checkbox-content__icon,
 body .checkbox-radio-switch-switch:focus-within .checkbox-content__icon { box-shadow: 0 0 0 1px rgba(var(--rc-accent-rgb), 0.22); }
 body .checkbox-radio-switch-switch.checkbox-radio-switch--disabled .checkbox-content__icon { opacity: 0.45; }
+
+/* Personal info: someone in no group got "소속 그룹:" with nothing after it (B-464) */
+.details__groups:has(.details__groups-list:empty) { display: none; }

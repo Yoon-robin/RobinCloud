@@ -12,9 +12,8 @@
 				<Account :size="20" />
 				<div class="details__groups-info">
 					<p>{{ t('settings', 'You are a member of the following groups:') }}</p>
-					<p class="details__groups-list">
-						{{ [...groups, ...teams].join(', ') }}
-					</p>
+					<!-- no spaces around the names: an empty list is :empty, and robincloud.css hides the row (B-464) -->
+					<p class="details__groups-list">{{ [...groups, ...teams].join(', ') }}</p>
 				</div>
 			</div>
 			<div class="details__quota">

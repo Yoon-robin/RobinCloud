@@ -15,7 +15,11 @@
 		<meta charset="utf-8">
 		<title>
 			<?php
-				p(!empty($_['pageTitle']) ? $_['pageTitle'] . ' – ' : '');
+				// RobinCloud: the registration app passes no title, so its pages were
+				// just "RobinCloud" while the login page says "로그인 – RobinCloud" (B-464)
+				$rcTitle = !empty($_['pageTitle']) ? $_['pageTitle']
+					: (str_starts_with(\OCP\Server::get(\OCP\IRequest::class)->getPathInfo() ?: '', '/apps/registration') ? '회원가입' : '');
+				p($rcTitle !== '' ? $rcTitle . ' – ' : '');
 p($theme->getTitle());
 ?>
 		</title>
