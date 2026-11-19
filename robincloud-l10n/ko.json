@@ -1373,7 +1373,6 @@
     "Selection of the speaker device is currently not supported by Safari": "Safari에서는 아직 스피커를 고를 수 없어요",
     "An unexpected error occurred, ask your administration to check the logs.": "예상하지 못한 오류가 났어요. 관리자에게 로그 확인을 요청하세요.",
     "Push notifications might be unreliable": "푸시 알림이 제대로 오지 않을 수 있어요",
-    "Play sound when a call started (requires RobinCloud Talk)": "새 통화가 시작될 때 소리 재생하기 (RobinCloud 토크 필요)",
     "Failed to perform action": "동작을 실행하지 못했어요",
     "Failed to dismiss notification": "알림을 해제하지 못했어요",
     "Failed to dismiss all notifications": "알림을 모두 해제하지 못했어요"
