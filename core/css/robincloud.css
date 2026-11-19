@@ -405,8 +405,8 @@ body { font-family: var(--rc-font); font-weight: 600; }
 	--font-weight-heading: 750 !important;
 }
 body :is(input, textarea, select) { font-weight: var(--font-weight-default); }
-/* AppMenu.vue writes 500 for the current app's name in the header (B-456) */
-.app-menu__current-app-name { font-weight: var(--font-weight-element); }
+/* AppMenu.vue writes 500 for the current app's name in the header, scoped (B-456) */
+#header .app-menu__current-app-name { font-weight: var(--font-weight-element); }
 
 code, kbd, pre, samp, tt { font-family: var(--rc-font-term); }
 
