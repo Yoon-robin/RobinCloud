@@ -33,7 +33,7 @@ abstract class Avatar implements IAvatar {
 	private string $svgTemplate = '<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 		<svg width="{size}" height="{size}" version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
 			<rect width="100%" height="100%" fill="#{fill}"></rect>
-			<text x="50%" y="350" style="font-weight:normal;font-size:280px;font-family:\'Noto Sans\';text-anchor:middle;fill:#{fgFill}">{letter}</text>
+			<text x="50%" y="350" style="font-weight:normal;font-size:{fontSize}px;font-family:\'Noto Sans\';text-anchor:middle;fill:#{fgFill}">{letter}</text>
 		</svg>';
 
 	public function __construct(
@@ -93,8 +93,8 @@ abstract class Avatar implements IAvatar {
 		$fill = sprintf('%02x%02x%02x', $bgRGB->red(), $bgRGB->green(), $bgRGB->blue());
 		$fgFill = sprintf('%02x%02x%02x', $fgRGB->red(), $fgRGB->green(), $fgRGB->blue());
 		$text = $this->getAvatarText();
-		$toReplace = ['{size}', '{fill}', '{fgFill}', '{letter}'];
-		return str_replace($toReplace, [$size, $fill, $fgFill, $text], $this->svgTemplate);
+		$toReplace = ['{size}', '{fill}', '{fgFill}', '{letter}', '{fontSize}'];
+		return str_replace($toReplace, [$size, $fill, $fgFill, $text, (string)round(280 * $this->textScale($text))], $this->svgTemplate);
 	}
 
 	/**
@@ -185,7 +185,7 @@ abstract class Avatar implements IAvatar {
 
 		$font = $this->getFont($text);
 
-		$fontSize = $size * 0.4;
+		$fontSize = $size * 0.4 * $this->textScale($text);
 		[$x, $y] = $this->imageTTFCenter(
 			$im, $text, $font, (int)$fontSize
 		);
@@ -198,6 +198,21 @@ abstract class Avatar implements IAvatar {
 		ob_end_clean();
 
 		return $data;
+	}
+
+	/**
+	 * Two Hangul/CJK initials ("테사") are about 1.8em wide against 1.2em for
+	 * two Latin capitals, so at the Latin size they ran past the circle and
+	 * both edges were cut off. Shrink wide text to the width two Latin
+	 * capitals take; Latin and single letters keep the stock size.
+	 */
+	private function textScale(string $text): float {
+		$wide = preg_match_all('/[\x{1100}-\x{11FF}\x{2E80}-\x{9FFF}\x{AC00}-\x{D7AF}\x{F900}-\x{FAFF}\x{FF00}-\x{FFEF}]/u', $text);
+		if (!$wide) {
+			return 1.0;
+		}
+		$em = $wide * 0.92 + (mb_strlen($text, 'UTF-8') - $wide) * 0.62;
+		return min(1.0, 1.24 / $em);
 	}
 
 	/**
