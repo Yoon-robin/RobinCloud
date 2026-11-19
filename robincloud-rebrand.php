@@ -152,7 +152,7 @@ foreach ($it as $file) {
 		$poTables = $bundleKo && strpos($old, 'Language:"ko"') !== false;
 		// Photos writes month headings with a fixed "MMMM YYYY", which in Korean
 		// came out as "11월 2026"; Korean puts the year first
-		$monthYear = str_contains($rel, 'apps/photos/') && preg_match('/"MMMM? YYYY"/', $old);
+		$monthYear = str_contains($rel, 'apps/photos/') && preg_match('/"MMMM? YYYY"|dateMonth\(/', $old);
 		if (strpos($old, 'Nextcloud') === false && !$koTables && !$poTables && !$monthYear) {
 			continue;
 		}
@@ -169,6 +169,12 @@ foreach ($it as $file) {
 			$new = preg_replace_callback('/"(MMMM?) YYYY"/',
 				// \u0020 in the fallback so a second run finds nothing to wrap again
 				fn ($m) => '(globalThis.document?.documentElement.lang==="ko"?"YYYY년 ' . $m[1] . '":"' . $m[1] . '\\u0020YYYY")', $new);
+			// the timeline heading is <b>{{ dateMonth }}</b> {{ dateYear }}: in
+			// Korean the two filters swap, so it reads "<b>2026년</b> 11월"
+			$new = preg_replace(
+				'/dateMonth\((\w+)\)\{return (\w+)\(\1,"YYYYMM"\)\.format\("MMMM"\)\},dateYear\((\w+)\)\{return (\w+)\(\3,"YYYYMM"\)\.format\("YYYY"\)\}/',
+				'dateMonth($1){return $2($1,"YYYYMM").format(globalThis.document?.documentElement.lang==="ko"?"YYYY년":"MMMM")},dateYear($3){return $4($3,"YYYYMM").format(globalThis.document?.documentElement.lang==="ko"?"MMMM":"YYYY")}',
+				$new);
 		}
 	} elseif (str_ends_with($name, '.php') && strpos($rel, '/l10n/') === false) {
 		$kind = 'php';
