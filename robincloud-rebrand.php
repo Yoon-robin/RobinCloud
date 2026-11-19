@@ -102,6 +102,32 @@ function bundleKo(string $js, array $strings): string {
 	return $out . substr($js, $pos);
 }
 
+/*
+ * The second table shape: gettext-parser output, which @nextcloud/upload (the
+ * "새로 만들기" menu, upload progress) bakes in as {headers:{…,Language:"ko",…},
+ * translations:{"":{"msgid":{msgid:"msgid",msgstr:["번역"]},…}}}. Only inside
+ * the stretch from Language:"ko" to the next table's Language:"…", and only
+ * singular entries (an entry with msgid_plural has another shape).
+ */
+function bundleKoPo(string $js, array $strings): string {
+	$flags = JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES;
+	$out = '';
+	$pos = 0;
+	while (($start = strpos($js, 'Language:"ko"', $pos)) !== false) {
+		$end = strpos($js, 'Language:"', $start + 1);
+		$end = $end === false ? strlen($js) : $end;
+		$table = substr($js, $start, $end - $start);
+		foreach ($strings as $msgid => $ko) {
+			$id = json_encode((string)$msgid, $flags);
+			$table = preg_replace_callback('/\{msgid:' . preg_quote($id, '/') . ',msgstr:\["(?:[^"\\\\]|\\\\.)*"\]\}/',
+				fn () => '{msgid:' . $id . ',msgstr:[' . json_encode($ko, $flags) . ']}', $table);
+		}
+		$out .= substr($js, $pos, $start - $pos) . $table;
+		$pos = $end;
+	}
+	return $out . substr($js, $pos);
+}
+
 $stats = ['l10n' => 0, 'js' => 0, 'php' => 0, 'info' => 0];
 
 $it = new RecursiveIteratorIterator(
@@ -123,7 +149,8 @@ foreach ($it as $file) {
 		$kind = 'js';
 		$old = file_get_contents($path);
 		$koTables = $bundleKo && strpos($old, '{l:"ko",t:{') !== false;
-		if (strpos($old, 'Nextcloud') === false && !$koTables) {
+		$poTables = $bundleKo && strpos($old, 'Language:"ko"') !== false;
+		if (strpos($old, 'Nextcloud') === false && !$koTables && !$poTables) {
 			continue;
 		}
 		// minified bundles keep their licence notices on the same line as the
@@ -131,6 +158,9 @@ foreach ($it as $file) {
 		$new = rebrand($old);
 		if ($koTables) {
 			$new = bundleKo($new, $bundleKo);
+		}
+		if ($poTables) {
+			$new = bundleKoPo($new, $bundleKo);
 		}
 	} elseif (str_ends_with($name, '.php') && strpos($rel, '/l10n/') === false) {
 		$kind = 'php';

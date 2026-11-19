@@ -371,6 +371,43 @@
     "Remote share password": "원격 공유 비밀번호"
   },
   "dav": {
+    "{actor} created calendar {calendar}": "{actor} 님이 달력 {calendar} 생성함",
+    "You created calendar {calendar}": "달력 {calendar} 생성함",
+    "{actor} deleted calendar {calendar}": "{actor} 님이 달력 {calendar} 삭제함",
+    "You deleted calendar {calendar}": "달력 {calendar} 삭제함",
+    "{actor} updated calendar {calendar}": "{actor} 님이 달력 {calendar} 업데이트함",
+    "You updated calendar {calendar}": "달력 {calendar} 업데이트함",
+    "{actor} restored calendar {calendar}": "{actor}님이 달력 {calendar} 복구함",
+    "You restored calendar {calendar}": "달력 {calendar} 복구함",
+    "You shared calendar {calendar} as public link": "달력 {calendar} 공개 링크로 공유함",
+    "{actor} shared calendar {calendar} with you": "{actor} 님이 내게 달력 {calendar} 공유함",
+    "You shared calendar {calendar} with {user}": "{user} 님과 달력 {calendar} 공유함",
+    "{actor} shared calendar {calendar} with {user}": "{actor} 님이 {user} 님과 달력 {calendar} 공유함",
+    "{actor} updated event {event} in calendar {calendar}": "{actor} 님이 달력 {calendar}의 행사 {event} 업데이트함",
+    "You updated event {event} in calendar {calendar}": "달력 {calendar}의 행사 {event} 업데이트함",
+    "{actor} created to-do {todo} in list {calendar}": "{actor}님이 목록 {calendar}에 할 일 {todo} 생성함",
+    "You created to-do {todo} in list {calendar}": "목록 {calendar}에 할 일 {todo} 생성함",
+    "{actor} deleted to-do {todo} from list {calendar}": "{actor}님이 목록 {calendar}에서 할 일 {todo} 삭제함",
+    "You deleted to-do {todo} from list {calendar}": "목록 {calendar}에서 할 일 {todo} 삭제함",
+    "{actor} updated to-do {todo} in list {calendar}": "{actor}님이 목록 {calendar}의 할 일 {todo} 업데이트함",
+    "You updated to-do {todo} in list {calendar}": "목록 {calendar}의 할 일 {todo} 업데이트함",
+    "{actor} solved to-do {todo} in list {calendar}": "{actor}님이 목록 {calendar}의 할 일 {todo} 끝냄",
+    "You solved to-do {todo} in list {calendar}": "목록 {calendar}의 할 일 {todo} 끝냄",
+    "{actor} reopened to-do {todo} in list {calendar}": "{actor}님이 목록 {calendar}의 할 일 {todo} 다시 엶",
+    "You reopened to-do {todo} in list {calendar}": "목록 {calendar}의 할 일 {todo} 다시 엶",
+    "{actor} created address book {addressbook}": "{actor}님이 주소록 {addressbook} 생성함",
+    "You created address book {addressbook}": "주소록 {addressbook} 생성함",
+    "{actor} deleted address book {addressbook}": "{actor}님이 주소록 {addressbook} 제거함",
+    "You deleted address book {addressbook}": "주소록 {addressbook} 제거함",
+    "{actor} updated address book {addressbook}": "{actor}님이 주소록 {addressbook} 갱신함",
+    "You updated address book {addressbook}": "주소록 {addressbook} 갱신함",
+    "{actor} shared address book {addressbook} with you": "{actor}님이 나와 주소록 {addressbook} 공유함",
+    "You shared address book {addressbook} with {user}": "{user}님과 주소록 {addressbook} 공유함",
+    "{actor} shared address book {addressbook} with {user}": "{actor}님이 {user}님과 주소록 {addressbook} 공유함",
+    "You shared address book {addressbook} with group {group}": "그룹 {group}과(와) 주소록 {addressbook} 공유함",
+    "{actor} shared address book {addressbook} with group {group}": "{actor}님이 그룹 {group}과(와) 주소록 {addressbook} 공유함",
+    "{actor} updated contact {card} in address book {addressbook}": "{actor}님이 주소록 {addressbook}의 연락처 {card} 갱신함",
+    "You updated contact {card} in address book {addressbook}": "주소록 {addressbook}의 연락처 {card} 갱신함",
     "Out of office replacement (optional)": "부재 중 대리인(선택)",
     "Example content serves to showcase the features of RobinCloud. Default content is shipped with RobinCloud, and can be replaced by custom content.": "예시 콘텐츠는 RobinCloud 기능을 보여 주는 용도입니다. 기본 콘텐츠가 들어 있고, 직접 만든 콘텐츠로 바꿀 수 있습니다.",
     "Add example contact to user's address book when they first log in": "처음 로그인할 때 사용자 주소록에 예시 연락처 추가",
@@ -407,6 +444,18 @@
     "File upload failed.": "파일을 업로드하지 못했어요."
   },
   "systemtags": {
+    "No tags found": "아직 태그가 없어요",
+    "Tags you have created will show up here.": "만든 태그가 여기에 나타나요.",
+    "Added system tag {systemtag}": "시스템 태그 {systemtag} 추가함",
+    "{actor} added system tag {systemtag}": "{actor} 님이 시스템 태그 {systemtag} 추가함",
+    "Removed system tag {systemtag}": "시스템 태그 {systemtag} 삭제함",
+    "{actor} removed system tag {systemtag}": "{actor} 님이 시스템 태그 {systemtag} 삭제함",
+    "You created system tag {systemtag}": "시스템 태그 {systemtag} 생성함",
+    "{actor} created system tag {systemtag}": "{actor} 님이 시스템 태그 {systemtag} 생성함",
+    "You deleted system tag {systemtag}": "시스템 태그 {systemtag} 삭제함",
+    "{actor} deleted system tag {systemtag}": "{actor} 님이 시스템 태그 {systemtag} 삭제함",
+    "System tag {systemtag} was added to {file} by the system": "시스템에서 {file}에 시스템 태그 {systemtag} 추가함",
+    "System tag {systemtag} was removed from {file} by the system": "시스템에서 {file}에서 시스템 태그 {systemtag} 삭제함",
     "If enabled, only administrators can create and edit tags. Accounts can still assign and remove them from files.": "켜면 관리자만 태그를 만들고 고칠 수 있습니다. 사용자는 기존 태그를 파일에 붙이고 떼는 것만 할 수 있습니다.",
     "Restrict tag creation and editing to administrators": "태그 생성과 편집을 관리자만 하도록 제한",
     "Collaborative tags …": "공동 태그…",
@@ -552,6 +601,7 @@
     ]
   },
   "core": {
+    "No tags found": "태그가 없어요",
     "Get your own free account": "RobinCloud 계정 만들기",
     "Log in with a device": "패스키로 로그인",
     "Forgot password?": "비밀번호를 잊었나요?",
@@ -798,11 +848,26 @@
     "Approval required": "승인이 필요해요"
   },
   "profile": {
+    "Back to %s": "%s로 돌아가기",
     "Profile picker": "프로필 선택기",
     "The profile does not exist or is unavailable.": "프로필이 없거나 볼 수 없어요.",
     "Profile not found": "프로필을 찾을 수 없어요"
   },
   "files": {
+    "No favorites yet": "즐겨찾기한 항목이 없어요",
+    "No favorites": "즐겨찾기한 항목이 없어요",
+    "Transfer ownership of a file or folder": "파일·폴더 소유권 넘기기",
+    "Transfer": "넘기기",
+    "You added {file} to your favorites": "내가 {file} 즐겨찾기에 추가함",
+    "You removed {file} from your favorites": "내가 {file} 즐겨찾기에서 삭제함",
+    "You created {file}": "{file} 만듦",
+    "{user} created {file}": "{user} 님이 {file} 만듦",
+    "You changed {file}": "{file} 변경함",
+    "{user} changed {file}": "{user} 님이 {file} 변경함",
+    "You deleted {file}": "{file} 삭제함",
+    "{user} deleted {file}": "{user} 님이 {file} 삭제함",
+    "You restored {file}": "내가 {file} 복원함",
+    "{user} restored {file}": "{user} 님이 {file} 복원함",
     "Folder name must not be empty.": "폴더 이름을 비워 둘 수 없어요.",
     "\"{char}\" is not allowed inside a folder name.": "폴더 이름에는 \"{char}\" 문자를 쓸 수 없어요.",
     "\"{segment}\" is a reserved name and not allowed for folder names.": "폴더 이름으로 쓸 수 없는 예약어예요: \"{segment}\"",
@@ -952,6 +1017,18 @@
     "Unable to change the favorite state of the file": "즐겨찾기를 바꾸지 못했어요"
   },
   "files_sharing": {
+    "No shares": "공유한 항목이 없어요",
+    "No deleted shares": "삭제된 공유가 없어요",
+    "No pending shares": "기다리는 공유가 없어요",
+    "Back to %s": "%s로 돌아가기",
+    "Create a file request": "파일 요청 만들기",
+    "Create file request": "파일 요청 만들기",
+    "Cancel the file request creation": "파일 요청 만들기 취소",
+    "{email} downloaded {file}": "{email} 님이 {file} 다운로드함",
+    "You shared {file} as public link": "{file} 공개 링크로 공유함",
+    "{actor} shared {file} as public link": "{actor} 님이 {file} 공개 링크로 공유함",
+    "You received a new remote share {file} from {user}": "{user} 님으로부터 원격 공유된 {file} 받음",
+    "{actor} shared {file} with you": "{actor} 님이 {file} 나와 공유함",
     "You are not allowed to share \"%s\".": "\"%s\" 항목을 공유할 권한이 없어요.",
     "You cannot share your home folder.": "홈 폴더는 공유할 수 없어요.",
     "File cannot be shared with delete permission.": "파일에는 삭제 권한을 줄 수 없어요.",
@@ -1084,7 +1161,6 @@
     "{actor} shared {file} with group {group}": "{actor} 님이 {file}을(를) {group} 그룹과 공유함",
     "Share for {user} expired": "{user} 님과의 공유가 만료됨",
     "Share for file {file} with {user} expired": "{user} 님과의 {file} 파일 공유가 만료됨",
-    "{actor} shared {file} with you": "{actor} 님이 {file}을(를) 나와 공유함",
     "{actor} removed you from the share named {file}": "{actor} 님이 {file} 공유에서 나를 제외함",
     "Wrong share ID, share does not exist": "공유 ID가 잘못됐어요. 없는 공유예요.",
     "Please specify a file or folder path": "파일이나 폴더 경로를 지정해 주세요",
@@ -1358,10 +1434,11 @@
     "{index} of {total}": "{total}개 중 {index}번째"
   },
   "notifications": {
+    "No notifications": "알림이 없어요",
+    "Play sound when a call started (requires RobinCloud Talk)": "통화가 시작되면 소리 내기(통화 앱 필요)",
     "Requesting browser permissions to show notifications": "브라우저에 알림 권한을 묻고 있어요",
     "Send email reminders about unhandled notifications after:": "확인하지 않은 알림을 메일로 다시 알려 줄 때:",
     "Play sound when a new notification arrives": "새 알림이 오면 소리 내기",
-    "Play sound when a call started (requires RobinCloud Talk)": "통화가 시작되면 소리 내기(통화 앱이 있어야 해요)",
     "You need to set up your email address before you can receive notification emails.": "알림 메일을 받으려면 먼저 이메일 주소를 넣어 주세요.",
     "Configure the default notification settings": "기본 알림 설정",
     "Web push settings": "웹 푸시 설정",
@@ -1378,6 +1455,7 @@
     "Failed to dismiss all notifications": "알림을 모두 해제하지 못했어요"
   },
   "text": {
+    "Shift": "Shift",
     "Offline since {time}.": "{time}부터 오프라인이에요.",
     "Not connected to the cloud.": "클라우드에 연결되지 않았어요.",
     "Insert Table": "표 넣기",
@@ -1658,10 +1736,15 @@
     "Widget height": "위젯 높이"
   },
   "activity": {
+    "No more activities.": "활동이 더 없어요.",
     "You need to set up your email address before you can receive notification emails.": "알림 메일을 받으려면 먼저 이메일 주소를 넣어 주세요.",
     "Choose for which activities you want to get an email or push notification.": "메일이나 푸시 알림으로 받을 활동을 골라 주세요.",
     "Send daily activity summary in the morning": "매일 아침 활동 요약을 메일로 받기",
     "Send push notification": "푸시 알림 보내기"
+  },
+  "files_trashbin": {
+    "No deleted files": "삭제된 파일이 없어요",
+    "Files and folders you have deleted will show up here": "지운 파일과 폴더가 여기에 나타나요"
   },
   "serverinfo": {
     "Password": "비밀번호"
