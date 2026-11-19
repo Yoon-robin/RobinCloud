@@ -104,8 +104,10 @@ abstract class Avatar implements IAvatar {
 		// Hangul and kana are not \p{Han}: a Korean or Japanese name fell
 		// through to NotoSans-Regular, which has neither, and the avatar came
 		// out as a blank disc (RobinCloud, 2026-10-27).
+		// RobinCloud: Hangul initials in Pretendard Bold like the rest of the
+		// screens (Noto Sans KR Regular looked thin beside them, D-067).
 		if (preg_match('/\p{Hangul}/u', $userDisplayName) === 1) {
-			return __DIR__ . '/../../../core/fonts/NotoSansKR-Regular.ttf';
+			return __DIR__ . '/../../../core/fonts/Pretendard-Bold.ttf';
 		}
 		if (preg_match('/[\p{Hiragana}\p{Katakana}]/u', $userDisplayName) === 1) {
 			return __DIR__ . '/../../../core/fonts/NotoSansJP-Regular.ttf';
@@ -123,6 +125,11 @@ abstract class Avatar implements IAvatar {
 				default:
 					return __DIR__ . '/../../../core/fonts/NotoSansSC-Regular.ttf';
 			}
+		}
+		// Latin initials too, when the name is plain Latin (Pretendard has no
+		// Cyrillic, Greek or Devanagari: those stay with Noto Sans)
+		if (preg_match('/^[\x20-\x7e\x{00a0}-\x{024f}]+$/u', $userDisplayName) === 1) {
+			return __DIR__ . '/../../../core/fonts/Pretendard-Bold.ttf';
 		}
 		return __DIR__ . '/../../../core/fonts/NotoSans-Regular.ttf';
 	}

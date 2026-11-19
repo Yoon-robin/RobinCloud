@@ -64,7 +64,7 @@ class TXT extends ProviderV2 {
 		// NotoSans has no Hangul: Korean text came out as empty boxes in the thumbnail
 		$fontFile = __DIR__;
 		$fontFile .= '/../../../core';
-		$fontFile .= '/fonts/NotoSansKR-Regular.ttf';
+		$fontFile .= '/fonts/Pretendard-SemiBold.ttf';
 
 		$canUseTTF = function_exists('imagettftext');
 
