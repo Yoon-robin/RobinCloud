@@ -1193,8 +1193,11 @@
   "twofactor_totp": {
     "Could not confirm TOTP": "인증 앱 코드를 확인하지 못했어요",
     "Could not enable TOTP": "인증 앱을 켜지 못했어요",
-    "TOTP (Authenticator app)": "인증 앱(TOTP)",
-    "Enable TOTP": "인증 앱 사용"
+    "TOTP (Authenticator app)": "인증 앱",
+    "Enable TOTP": "인증 앱 사용",
+    "Get the authentication code from the two-factor authentication app on your device.": "인증 앱에 뜬 6자리 코드를 넣어 주세요.",
+    "Authentication code": "인증 코드",
+    "Submit": "로그인"
   },
   "appstore": {
     "App store": "앱 스토어",
@@ -1546,7 +1549,18 @@
   "twofactor_backupcodes": {
     "Unable to open a new tab for printing": "인쇄할 새 탭을 열 수 없어요",
     "List of backup codes": "백업 코드 목록",
-    "Generate backup codes": "백업 코드 만들기"
+    "Generate backup codes": "백업 코드 만들기",
+    "Use one of the backup codes you saved when setting up two-factor authentication.": "2단계 인증을 켤 때 저장해 둔 백업 코드 하나를 넣어 주세요.",
+    "Submit": "로그인",
+    "Backup code": "백업 코드",
+    "Use backup code": "백업 코드 쓰기",
+    "You created two-factor backup codes for your account": "2단계 인증 백업 코드를 만들었어요",
+    "You enabled two-factor authentication but did not generate backup codes yet. They are needed to restore access to your account in case you lose your second factor.": "2단계 인증은 켰지만 백업 코드는 아직 안 만들었어요. 인증 앱을 잃어버렸을 때 계정에 다시 들어가려면 백업 코드가 필요해요.",
+    "An error occurred while generating your backup codes": "백업 코드를 만들지 못했어요",
+    "Backup codes have been generated. {used} of {total} codes have been used.": "백업 코드를 만들었어요. {total}개 중 {used}개를 썼어요.",
+    "These are your backup codes. Please save and/or print them as you will not be able to read the codes again later.": "백업 코드예요. 나중에 다시 볼 수 없으니 저장하거나 인쇄해 두세요.",
+    "Regenerate backup codes": "백업 코드 다시 만들기",
+    "If you regenerate backup codes, you automatically invalidate old codes.": "다시 만들면 예전 코드는 더 못 써요."
   },
   "lib": {
     "This is an automatically sent email, please do not reply.": "자동으로 보낸 메일이에요. 이 메일에는 답장할 수 없어요.",

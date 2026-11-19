@@ -1352,7 +1352,8 @@ a[href^="https://help.nextcloud.com"] { display: none !important; }
 #body-login .guest-box > ul { margin: 12px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; }
 
 #body-login .guest-box :is(a.button.primary, input[type='submit'].primary),
-#body-login .body-login-container.update .two-factor-primary {
+#body-login .body-login-container.update .two-factor-primary,
+#body-login .two-factor .two-factor-submit {
 	display: flex !important;
 	align-items: center;
 	justify-content: center;
@@ -1373,7 +1374,8 @@ a[href^="https://help.nextcloud.com"] { display: none !important; }
 }
 
 #body-login .guest-box :is(a.button.primary, input[type='submit'].primary):hover,
-#body-login .body-login-container.update .two-factor-primary:hover {
+#body-login .body-login-container.update .two-factor-primary:hover,
+#body-login .two-factor .two-factor-submit:hover {
 	background: var(--rc-primary-hover) !important;
 }
 
@@ -1386,6 +1388,7 @@ a[href^="https://help.nextcloud.com"] { display: none !important; }
 
 #body-login .two-factor .two-factor-header {
 	margin: 0 0 6px !important;
+	text-align: start;
 	font-size: 20px !important;
 	font-weight: 700 !important;
 	letter-spacing: -0.01em;
@@ -1400,6 +1403,29 @@ a[href^="https://help.nextcloud.com"] { display: none !important; }
 }
 
 #body-login .two-factor ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+
+/* the code challenge (TOTP, backup codes): the app's big white phone/dots
+   picture goes, the title says what it is; the code box and a full-width
+   primary under it like every other guest form; the error in red. */
+#body-login .two-factor .two-factor-icon { display: none !important; }
+#body-login .two-factor form { display: grid; gap: 0; margin: 0; }
+#body-login .two-factor form .two-factor-submit { margin: 12px 0 0 !important; }
+#body-login .two-factor > p:has(> strong) {
+	margin: 0 0 12px !important;
+	font-size: 13px;
+	color: var(--rc-red-text) !important;
+}
+#body-login .two-factor > p:has(> strong) strong { font-weight: 500; }
+
+/* the two links (backup code, cancel) share one line under the form */
+#body-login .two-factor > p:has(> a.two-factor-secondary) {
+	display: inline-block;
+	margin: 8px 20px 0 0 !important;
+}
+#body-login .two-factor > p:has(> a.two-factor-secondary) a.two-factor-secondary {
+	margin-top: 0;
+	padding-inline: 0 !important;
+}
 
 #body-login .two-factor a.two-factor-provider {
 	display: flex !important;
@@ -1459,6 +1485,13 @@ a[href^="https://help.nextcloud.com"] { display: none !important; }
 	font-size: 18px;
 	letter-spacing: 0.3em;
 	text-align: center;
+}
+
+/* the hint inside the empty box reads as words, not a spaced-out code */
+#body-login .two-factor input::placeholder {
+	font-family: var(--rc-font);
+	font-size: 14px;
+	letter-spacing: normal;
 }
 
 #body-login .two-factor input:focus-visible {
