@@ -23,13 +23,13 @@
    surfaces as the Neverlose menu looks, the lines, blue and corners off its
    official picture; V3.2 (late 2026-11-19): surfaces are the official glass
    layers set over a dark scene (docs/design/neverlose-reference/replica/).
-   The canvas and the navigation #070a11 (--side, nearly the content's black),
-   the app window #0b0d13 (--page) in a faint #21212a line, cards and dialogs
-   #111219 (--card, a step lighter), controls #191925 in a #25262e line, a row
-   pointed at #17181f, pressed and chosen #272830; text
-   #fff / #d6d6db / #a3a3a8 / #8b8fa5. Menus are solid #14141d in a
+   The canvas and the navigation #12151e (--side, nearly the content's black),
+   the app window #0d0f16 (--page) in a faint #2b303c line, cards and dialogs
+   #11131b (--card, a step lighter), controls #181b25 in a #25262e line, a row
+   pointed at #1b1e28, pressed and chosen #272b36; text
+   #fff / #d9dbe2 / #9296a2 / #7f8797. Menus are solid #141821 in a
    rgb(57 61 76 / 80%) line, rows blue 12% under the pointer. One blue:
-   #4f7dff for switches, focus, links and the chosen icon, #3566e8 as a fill
+   #4e83ff for switches, focus, links and the chosen icon, #3566e8 as a fill
    under white text (#2f5cd6 under the pointer). Light turns the steps over
    as the official light menu does: the window #f3f3f3, canvas and
    navigation #f3f3f3, cards a step darker #e3e3e3 in a #d9d9d9 line, grey
@@ -101,31 +101,31 @@
 
 @media (prefers-color-scheme: dark) {
 	:root {
-		--rc-page: #070a11;
-		--rc-background: #0b0d13;
-		--rc-background-rgb: 11, 13, 19;
-		--rc-card: #111219;
-		--rc-card-rgb: 17, 18, 25;
-		--rc-raise: #191925;
-		--rc-sunk: #05080f;
-		--rc-hover: #17181f;
-		--rc-muted: #272830;
+		--rc-page: #12151e;
+		--rc-background: #0d0f16;
+		--rc-background-rgb: 13, 15, 22;
+		--rc-card: #11131b;
+		--rc-card-rgb: 17, 19, 27;
+		--rc-raise: #181b25;
+		--rc-sunk: #0f131c;
+		--rc-hover: #1b1e28;
+		--rc-muted: #272b36;
 		--rc-muted-strong: #2f3038;
-		--rc-foreground: #d6d6db;
-		--rc-foreground-rgb: 214, 214, 219;
+		--rc-foreground: #d9dbe2;
+		--rc-foreground-rgb: 217, 219, 226;
 		--rc-strong: #ffffff;
-		--rc-muted-foreground: #a3a3a8;
-		--rc-muted-foreground-rgb: 163, 163, 168;
-		--rc-faint: #8b8fa5;
-		--rc-border: #1a1b21;
-		--rc-border-window: #21212a;
+		--rc-muted-foreground: #9296a2;
+		--rc-muted-foreground-rgb: 146, 150, 162;
+		--rc-faint: #7f8797;
+		--rc-border: #20232e;
+		--rc-border-window: #2b303c;
 		--rc-input: #25262e;
-		--rc-input-hover: rgb(79 125 255 / 55%);
-		--rc-accent: #4f7dff;
-		--rc-accent-rgb: 79, 125, 255;
-		--rc-accent-text: #4f7dff;
-		--rc-accent-soft: rgb(79 125 255 / 16%);
-		--rc-ring: #4f7dff;
+		--rc-input-hover: rgb(78 131 255 / 55%);
+		--rc-accent: #4e83ff;
+		--rc-accent-rgb: 78, 131, 255;
+		--rc-accent-text: #4e83ff;
+		--rc-accent-soft: rgb(78 131 255 / 16%);
+		--rc-ring: #4e83ff;
 		--rc-primary: #3566e8;
 		--rc-primary-foreground: #ffffff;
 		--rc-primary-hover: #2f5cd6;
@@ -140,10 +140,10 @@
 		--rc-red-surface: #30222a;
 		--rc-red-surface-hover: #3d272f;
 		--rc-pop-shadow: 0 10px 30px rgb(0 0 0 / 45%), 0 2px 6px rgb(0 0 0 / 30%);
-		--rc-pop: #14141d;
-		--rc-pop-rgb: 20, 20, 29;
+		--rc-pop: #141821;
+		--rc-pop-rgb: 20, 24, 33;
 		--rc-pop-line: rgb(57 61 76 / 80%);
-		--rc-pop-hover: rgb(79 125 255 / 12%);
+		--rc-pop-hover: rgb(78 131 255 / 12%);
 		--rc-pop-edge: inset 0 1px 0 rgb(255 255 255 / 8%);
 		--rc-menu-shadow: 0 8px 24px rgb(0 0 0 / 40%);
 	}
@@ -204,31 +204,31 @@ body[data-theme-light-highcontrast] {
 
 body[data-theme-dark],
 body[data-theme-dark-highcontrast] {
-	--rc-page: #070a11;
-	--rc-background: #0b0d13;
-	--rc-background-rgb: 11, 13, 19;
-	--rc-card: #111219;
-	--rc-card-rgb: 17, 18, 25;
-	--rc-raise: #191925;
-	--rc-sunk: #05080f;
-	--rc-hover: #17181f;
-	--rc-muted: #272830;
+	--rc-page: #12151e;
+	--rc-background: #0d0f16;
+	--rc-background-rgb: 13, 15, 22;
+	--rc-card: #11131b;
+	--rc-card-rgb: 17, 19, 27;
+	--rc-raise: #181b25;
+	--rc-sunk: #0f131c;
+	--rc-hover: #1b1e28;
+	--rc-muted: #272b36;
 	--rc-muted-strong: #2f3038;
-	--rc-foreground: #d6d6db;
-	--rc-foreground-rgb: 214, 214, 219;
+	--rc-foreground: #d9dbe2;
+	--rc-foreground-rgb: 217, 219, 226;
 	--rc-strong: #ffffff;
-	--rc-muted-foreground: #a3a3a8;
-	--rc-muted-foreground-rgb: 163, 163, 168;
-	--rc-faint: #8b8fa5;
-	--rc-border: #1a1b21;
-	--rc-border-window: #21212a;
+	--rc-muted-foreground: #9296a2;
+	--rc-muted-foreground-rgb: 146, 150, 162;
+	--rc-faint: #7f8797;
+	--rc-border: #20232e;
+	--rc-border-window: #2b303c;
 	--rc-input: #25262e;
-	--rc-input-hover: rgb(79 125 255 / 55%);
-	--rc-accent: #4f7dff;
-	--rc-accent-rgb: 79, 125, 255;
-	--rc-accent-text: #4f7dff;
-	--rc-accent-soft: rgb(79 125 255 / 16%);
-	--rc-ring: #4f7dff;
+	--rc-input-hover: rgb(78 131 255 / 55%);
+	--rc-accent: #4e83ff;
+	--rc-accent-rgb: 78, 131, 255;
+	--rc-accent-text: #4e83ff;
+	--rc-accent-soft: rgb(78 131 255 / 16%);
+	--rc-ring: #4e83ff;
 	--rc-primary: #3566e8;
 	--rc-primary-foreground: #ffffff;
 	--rc-primary-hover: #2f5cd6;
@@ -243,10 +243,10 @@ body[data-theme-dark-highcontrast] {
 	--rc-red-surface: #30222a;
 	--rc-red-surface-hover: #3d272f;
 	--rc-pop-shadow: 0 10px 30px rgb(0 0 0 / 45%), 0 2px 6px rgb(0 0 0 / 30%);
-	--rc-pop: #14141d;
-	--rc-pop-rgb: 20, 20, 29;
+	--rc-pop: #141821;
+	--rc-pop-rgb: 20, 24, 33;
 	--rc-pop-line: rgb(57 61 76 / 80%);
-	--rc-pop-hover: rgb(79 125 255 / 12%);
+	--rc-pop-hover: rgb(78 131 255 / 12%);
 	--rc-pop-edge: inset 0 1px 0 rgb(255 255 255 / 8%);
 	--rc-menu-shadow: 0 8px 24px rgb(0 0 0 / 40%);
 }
@@ -373,7 +373,7 @@ body {
 	--border-width-input: 1px !important;
 	--border-width-input-focused: 1px !important;
 	--font-face: var(--rc-font) !important;
-	--font-weight-heading: 650 !important;
+	--font-weight-heading: 500 !important;
 }
 
 /* ------------------------------------------------------------------ canvas
@@ -386,7 +386,7 @@ html { background-color: var(--rc-page) !important; }
 html:has(> body[data-theme-light]),
 html:has(> body[data-theme-light-highcontrast]) { background-color: #f3f3f3 !important; }
 html:has(> body[data-theme-dark]),
-html:has(> body[data-theme-dark-highcontrast]) { background-color: #070a11 !important; }
+html:has(> body[data-theme-dark-highcontrast]) { background-color: #12151e !important; }
 /* the login page sits on the window colour, so its edges do too */
 html:has(> body#body-login) { background-color: var(--rc-background) !important; }
 
@@ -395,14 +395,14 @@ html:has(> body#body-login) { background-color: var(--rc-background) !important;
    what a machine reads (code, the verification code). Numbers that change
    (sizes, counters, time left) keep even digits instead. */
 
-body { font-family: var(--rc-font); font-weight: 600; }
+body { font-family: var(--rc-font); font-weight: 500; }
 
 /* B-456 (robin 2026-11-20 "Pretendard bold"): Pretendard one notch heavier.
    Nextcloud reads its weights from these three; the theme sets them on body. */
 :root, body {
-	--font-weight-default: 600 !important;
-	--font-weight-element: 650 !important;
-	--font-weight-heading: 750 !important;
+	--font-weight-default: 500 !important;
+	--font-weight-element: 500 !important;
+	--font-weight-heading: 700 !important;
 }
 body :is(input, textarea, select) { font-weight: var(--font-weight-default); }
 /* AppMenu.vue writes 500 for the current app's name in the header, scoped (B-456) */
@@ -416,7 +416,7 @@ code, kbd, pre, samp, tt { font-family: var(--rc-font-term); }
 .modal-container h2,
 .dialog__name,
 .app-sidebar-header__mainname {
-	font-weight: 800 !important;
+	font-weight: 700 !important;
 	letter-spacing: -0.01em;
 }
 
@@ -424,7 +424,7 @@ code, kbd, pre, samp, tt { font-family: var(--rc-font-term); }
    spaced; Latin ones in capitals, Korean as it is */
 .app-navigation-caption__name {
 	font-size: 11px !important;
-	font-weight: 700 !important;
+	font-weight: 600 !important;
 	letter-spacing: 0.06em;
 	text-transform: uppercase;
 	color: var(--rc-muted-foreground) !important;
@@ -480,7 +480,7 @@ body .input-field .input-field__input:is(:focus, :focus-within, :active, :hover)
 	box-shadow: none !important;
 }
 
-.input-field__label { font-weight: 600; }
+.input-field__label { font-weight: 500; }
 
 /* Nextcloud derives paddings from the corner radius (a field's text inset,
    its label, a button's sides), so a change of corner moves the text. Set
@@ -513,7 +513,7 @@ body .input-field .input-field__input:is(:focus, :focus-within, :active, :hover)
    white text, a step darker (#2f5cd6) under the pointer. No glow. */
 .button-vue {
 	border-radius: var(--rc-radius) !important;
-	font-weight: 650 !important;
+	font-weight: 500 !important;
 	letter-spacing: -0.01em;
 	box-shadow: none !important;
 	transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, box-shadow 0.2s ease;
@@ -599,7 +599,7 @@ a.button-vue:focus-visible {
 	line-height: 1.5;
 }
 
-.notecard__heading { font-weight: 700 !important; margin-bottom: 2px; }
+.notecard__heading { font-weight: 600 !important; margin-bottom: 2px; }
 .notecard--success .notecard__icon { color: var(--rc-foreground) !important; }
 .notecard--info .notecard__icon { color: var(--rc-muted-foreground) !important; }
 .notecard--warning { border-color: color-mix(in srgb, var(--rc-amber) 45%, var(--rc-border)) !important; }
@@ -613,7 +613,7 @@ a.button-vue:focus-visible {
 }
 
 /* Dialogs float: the card colour, the strong line, 14px and the soft
-   shadow. Menus and popovers are solid #14141d (white on light) in their
+   shadow. Menus and popovers are solid #141821 (white on light) in their
    own line, 16px, a row under the pointer blue 12%. Inside them Nextcloud
    paints with --color-main-background, so that is their colour there too
    (the search dialog's sticky header used to leave a box of window
@@ -665,7 +665,7 @@ div[class^='_toast_'],
 	border-radius: var(--rc-radius-card) !important;
 	box-shadow: var(--rc-pop-shadow) !important;
 	font-family: var(--rc-font);
-	font-weight: 650;
+	font-weight: 500;
 }
 
 div[class^='_toast_'] [class^='_toastMessage_'] { color: inherit !important; }
@@ -752,7 +752,7 @@ div[class^='_toast_'][class*='_toast_warning_'],
 
 #body-login #header .logo::after {
 	content: 'RobinCloud';
-	font: 800 14px/1 var(--rc-font);
+	font: 700 14px/1 var(--rc-font);
 	letter-spacing: -0.01em;
 	color: var(--rc-strong);
 }
@@ -790,7 +790,7 @@ div[class^='_toast_'][class*='_toast_warning_'],
 #body-login .login-form h2,
 #body-login .login-box h2 {
 	font-size: 18px;
-	font-weight: 800;
+	font-weight: 700;
 	letter-spacing: -0.01em;
 	color: var(--rc-strong);
 	text-align: start;
@@ -818,7 +818,7 @@ div[class^='_toast_'][class*='_toast_warning_'],
 #body-login footer.guest-box .info a,
 #body-login footer.guest-box .entity-name {
 	color: var(--rc-muted-foreground) !important;
-	font-weight: 650;
+	font-weight: 500;
 }
 
 /* installer: drop the autoconfig notice and the Nextcloud docs box */
@@ -838,7 +838,7 @@ div[class^='_toast_'][class*='_toast_warning_'],
 
 #body-login .setup-form summary {
 	padding: 10px 0;
-	font-weight: 650;
+	font-weight: 500;
 	color: var(--rc-muted-foreground);
 	text-align: start;
 	cursor: pointer;
@@ -890,7 +890,7 @@ div[class^='_toast_'][class*='_toast_warning_'],
 #body-login .body-login-container.update h2 {
 	margin: 0 0 6px !important;
 	font-size: 20px !important;
-	font-weight: 800 !important;
+	font-weight: 700 !important;
 	letter-spacing: -0.01em;
 	word-break: keep-all;
 }
@@ -918,14 +918,14 @@ div[class^='_toast_'][class*='_toast_warning_'],
 	box-sizing: border-box;
 	border-radius: var(--rc-radius) !important;
 	font-size: 14px !important;
-	font-weight: 650 !important;
+	font-weight: 500 !important;
 	box-shadow: none;
 }
 
 /* ------------------------------------------------------- logged-in pages:
-   no background picture, the canvas (#070a11, light #f3f3f3) around the
+   no background picture, the canvas (#12151e, light #f3f3f3) around the
    app, which sits in one window (Nextcloud's body container): the
-   navigation on the canvas colour, the content #0b0d13 (light #f3f3f3). */
+   navigation on the canvas colour, the content #0d0f16 (light #f3f3f3). */
 
 body:not(#body-login) {
 	--image-background: none !important;
@@ -1066,7 +1066,7 @@ body[data-theme-dark-highcontrast]:not(#body-login) {
 /* installer, "Storage & database": quiet sub-headings, database type as tabs */
 #body-login .setup-form details legend {
 	font-size: 13px !important;
-	font-weight: 650 !important;
+	font-weight: 500 !important;
 	color: var(--rc-muted-foreground) !important;
 	margin: 6px 0 4px !important;
 	letter-spacing: 0;
@@ -1106,7 +1106,7 @@ body[data-theme-dark-highcontrast]:not(#body-login) {
 	border-radius: var(--rc-radius-sm) !important;
 	background: transparent !important;
 	color: var(--rc-muted-foreground) !important;
-	font-weight: 650;
+	font-weight: 500;
 	font-size: 12.5px;
 	white-space: nowrap;
 }
@@ -1345,7 +1345,7 @@ a[href^="https://help.nextcloud.com"] { display: none !important; }
 #body-login .guest-box h2 {
 	margin: 0 0 6px !important;
 	font-size: 18px !important;
-	font-weight: 800 !important;
+	font-weight: 700 !important;
 	letter-spacing: -0.01em;
 	word-break: keep-all;
 }
@@ -1379,7 +1379,7 @@ a[href^="https://help.nextcloud.com"] { display: none !important; }
 	background: var(--rc-primary) !important;
 	color: var(--rc-primary-foreground) !important;
 	font-size: 14px !important;
-	font-weight: 650 !important;
+	font-weight: 500 !important;
 	box-shadow: none !important;
 	cursor: pointer;
 }
@@ -1401,7 +1401,7 @@ a[href^="https://help.nextcloud.com"] { display: none !important; }
 	margin: 0 0 6px !important;
 	text-align: start;
 	font-size: 20px !important;
-	font-weight: 800 !important;
+	font-weight: 700 !important;
 	letter-spacing: -0.01em;
 }
 
@@ -1426,7 +1426,7 @@ a[href^="https://help.nextcloud.com"] { display: none !important; }
 	font-size: 13px;
 	color: var(--rc-red-text) !important;
 }
-#body-login .two-factor > p:has(> strong) strong { font-weight: 650; }
+#body-login .two-factor > p:has(> strong) strong { font-weight: 500; }
 
 /* the two links (backup code, cancel) share one line under the form */
 #body-login .two-factor > p:has(> a.two-factor-secondary) {
@@ -1561,7 +1561,7 @@ a[href^="https://help.nextcloud.com"] { display: none !important; }
 	margin-bottom: 4px;
 	font-family: var(--rc-font);
 	font-size: 18px;
-	font-weight: 800;
+	font-weight: 700;
 	letter-spacing: -0.01em;
 	color: var(--rc-strong);
 	animation: rc-row 0.3s var(--rc-ease) 0.1s both;
@@ -1657,7 +1657,7 @@ html[lang^='ko'] #registration_user .input-field:has(input[name='password'])::af
 #body-login #guest-content-vue h2 {
 	margin: 0 0 2px !important;
 	font-size: 18px !important;
-	font-weight: 800 !important;
+	font-weight: 700 !important;
 	letter-spacing: -0.01em;
 	text-align: start !important;
 	word-break: keep-all;
@@ -1843,7 +1843,7 @@ body:not(#body-login) .empty-content__icon > * {
 body:not(#body-login) .empty-content__name {
 	margin-bottom: 4px !important;
 	font-size: 16px !important;
-	font-weight: 800 !important;
+	font-weight: 700 !important;
 	letter-spacing: -0.01em;
 }
 
@@ -1918,7 +1918,7 @@ body:not(#body-login) .files-list .checkbox-content__icon svg {
 body:not(#body-login) .files-list__thead .files-list__column,
 body:not(#body-login) .files-list__thead .files-list__column-sort-button {
 	color: var(--rc-muted-foreground) !important;
-	font-weight: 650 !important;
+	font-weight: 500 !important;
 }
 
 /* A row under the pointer or open in the details panel: a 6px box, flat. Its own separator goes clear so the line does not
@@ -2030,7 +2030,7 @@ body:not(#body-login) .app-sidebar-tabs__tab .checkbox-content {
 	min-height: 0 !important;
 	padding: 0 10px !important;
 	font-size: 13px;
-	font-weight: 650;
+	font-weight: 500;
 }
 
 body:not(#body-login) .app-sidebar-tabs__tab .checkbox-content__icon,
@@ -2144,7 +2144,7 @@ body:not(#body-login) .upload-picker__progress p {
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
-	font: 650 11px/13px var(--rc-font);
+	font: 500 11px/13px var(--rc-font);
 	font-variant-numeric: tabular-nums;
 	color: var(--rc-muted-foreground);
 }
@@ -2217,7 +2217,7 @@ body:not(#body-login) .files-list__drag-drop-notice-wrapper > .material-design-i
 body:not(#body-login) .files-list-drag-drop-notice__title {
 	margin: 0 !important;
 	font-size: 15px !important;
-	font-weight: 700 !important;
+	font-weight: 600 !important;
 	letter-spacing: -0.01em;
 	color: var(--rc-strong) !important;
 }
@@ -2422,7 +2422,7 @@ main.app-content > .hidden-visually[role='none'] {
 
 /* ----------------------------------------------------------------- switches
    The Neverlose switch (V3.1, docs/brand.md): 32x20, a 16px knob 2px in that
-   moves 12px; off is the deep #05080f track with a grey knob, on is the one
+   moves 12px; off is the deep #0f131c track with a grey knob, on is the one
    blue with a white knob. Drawn on Nextcloud's switch box in place of its
    toggle icon. */
 body .checkbox-radio-switch-switch .checkbox-content__icon {
@@ -2447,7 +2447,7 @@ body .checkbox-radio-switch-switch .checkbox-content__icon::after {
 	width: 16px;
 	height: 16px;
 	border-radius: 50%;
-	background: #7d8791;
+	background: #84909c;
 	transition: transform 0.15s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.15s ease;
 }
 
