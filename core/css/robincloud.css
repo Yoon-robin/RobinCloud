@@ -31,42 +31,42 @@
    rgb(57 61 76 / 80%) line, rows blue 12% under the pointer. One blue:
    #4f7dff for switches, focus, links and the chosen icon, #3566e8 as a fill
    under white text (#2f5cd6 under the pointer). Light turns the steps over
-   as the official light menu does: the window #f3f3f3, canvas and
-   navigation #f3f3f3, cards a step darker #e3e3e3 in a #d9d9d9 line, grey
-   text, blue #2d58d1 (#3566e8 as a fill). Amber and red only tell a state,
+   as the official light menu does: the window #ffffff, canvas and
+   navigation #ffffff, cards a step darker #f8f8f9 in a #e8e8ec line, grey
+   text, blue #3d6af0 (#3566e8 as a fill). Amber and red only tell a state,
    a few steps darker on light so they read there.
    No glow and no glass: floating things (menus, dialogs, toasts, the login
    card) get one soft shadow, everything else a 1px line. */
 
 :root {
-	--rc-page: #f3f3f3;
-	--rc-background: #f3f3f3;
+	--rc-page: #ffffff;
+	--rc-background: #ffffff;
 	--rc-background-rgb: 243, 243, 243;
-	--rc-card: #e3e3e3;
+	--rc-card: #f8f8f9;
 	--rc-card-rgb: 227, 227, 227;
-	--rc-raise: #d4d4d4;
+	--rc-raise: #f1f1f2;
 	--rc-sunk: #c4c4c4;
-	--rc-switch-off: #d9d9d9;
+	--rc-switch-off: #e8e8ec;
 	--rc-switch-knob: #ffffff;
-	--rc-switch-on: #03a8f5; /* the official light menu's sky blue, fills only */
-	--rc-hover: #d9d9d9;
-	--rc-muted: #b9b9b9;
+	--rc-switch-on: #3d6af0; /* the official light menu's sky blue, fills only */
+	--rc-hover: #e8e8ec;
+	--rc-muted: #e7e7e9;
 	--rc-muted-strong: #adadad;
-	--rc-foreground: #1f1f1f;
+	--rc-foreground: #1a1a1a;
 	--rc-foreground-rgb: 31, 31, 31;
 	--rc-strong: #000000;
-	--rc-muted-foreground: #4a4a4a;
+	--rc-muted-foreground: #616161;
 	--rc-muted-foreground-rgb: 74, 74, 74;
-	--rc-faint: #5f5f5f;
-	--rc-border: #d9d9d9;
-	--rc-border-window: #cbcbcb;
+	--rc-faint: #727272;
+	--rc-border: #e8e8ec;
+	--rc-border-window: #dedee3;
 	--rc-input: #c4c4cb;
 	--rc-input-hover: rgb(53 102 232 / 55%);
-	--rc-accent: #2d58d1;
+	--rc-accent: #3d6af0;
 	--rc-accent-rgb: 45, 88, 209;
-	--rc-accent-text: #2d58d1;
+	--rc-accent-text: #3d6af0;
 	--rc-accent-soft: rgb(53 102 232 / 14%);
-	--rc-ring: #2d58d1;
+	--rc-ring: #3d6af0;
 	--rc-primary: #3566e8;
 	--rc-primary-foreground: #ffffff;
 	--rc-primary-hover: #2f5cd6;
@@ -83,7 +83,7 @@
 	--rc-pop-shadow: 0 10px 30px rgb(21 22 31 / 10%), 0 2px 6px rgb(21 22 31 / 6%);
 	--rc-pop: #fafafa;
 	--rc-pop-rgb: 251, 251, 252;
-	--rc-pop-line: #d4d4d4;
+	--rc-pop-line: #f1f1f2;
 	--rc-pop-hover: rgb(53 102 232 / 10%);
 	--rc-pop-edge: 0 0 0 transparent;
 	--rc-menu-shadow: 0 8px 24px rgb(21 22 31 / 12%);
@@ -170,34 +170,34 @@
    (below). */
 body[data-theme-light],
 body[data-theme-light-highcontrast] {
-	--rc-page: #f3f3f3;
-	--rc-background: #f3f3f3;
+	--rc-page: #ffffff;
+	--rc-background: #ffffff;
 	--rc-background-rgb: 243, 243, 243;
-	--rc-card: #e3e3e3;
+	--rc-card: #f8f8f9;
 	--rc-card-rgb: 227, 227, 227;
-	--rc-raise: #d4d4d4;
+	--rc-raise: #f1f1f2;
 	--rc-sunk: #c4c4c4;
-	--rc-switch-off: #d9d9d9;
+	--rc-switch-off: #e8e8ec;
 	--rc-switch-knob: #ffffff;
-	--rc-switch-on: #03a8f5; /* the official light menu's sky blue, fills only */
-	--rc-hover: #d9d9d9;
-	--rc-muted: #b9b9b9;
+	--rc-switch-on: #3d6af0; /* the official light menu's sky blue, fills only */
+	--rc-hover: #e8e8ec;
+	--rc-muted: #e7e7e9;
 	--rc-muted-strong: #adadad;
-	--rc-foreground: #1f1f1f;
+	--rc-foreground: #1a1a1a;
 	--rc-foreground-rgb: 31, 31, 31;
 	--rc-strong: #000000;
-	--rc-muted-foreground: #4a4a4a;
+	--rc-muted-foreground: #616161;
 	--rc-muted-foreground-rgb: 74, 74, 74;
-	--rc-faint: #5f5f5f;
-	--rc-border: #d9d9d9;
-	--rc-border-window: #cbcbcb;
+	--rc-faint: #727272;
+	--rc-border: #e8e8ec;
+	--rc-border-window: #dedee3;
 	--rc-input: #c4c4cb;
 	--rc-input-hover: rgb(53 102 232 / 55%);
-	--rc-accent: #2d58d1;
+	--rc-accent: #3d6af0;
 	--rc-accent-rgb: 45, 88, 209;
-	--rc-accent-text: #2d58d1;
+	--rc-accent-text: #3d6af0;
 	--rc-accent-soft: rgb(53 102 232 / 14%);
-	--rc-ring: #2d58d1;
+	--rc-ring: #3d6af0;
 	--rc-primary: #3566e8;
 	--rc-primary-foreground: #ffffff;
 	--rc-primary-hover: #2f5cd6;
@@ -214,7 +214,7 @@ body[data-theme-light-highcontrast] {
 	--rc-pop-shadow: 0 10px 30px rgb(21 22 31 / 10%), 0 2px 6px rgb(21 22 31 / 6%);
 	--rc-pop: #fafafa;
 	--rc-pop-rgb: 251, 251, 252;
-	--rc-pop-line: #d4d4d4;
+	--rc-pop-line: #f1f1f2;
 	--rc-pop-hover: rgb(53 102 232 / 10%);
 	--rc-pop-edge: 0 0 0 transparent;
 	--rc-menu-shadow: 0 8px 24px rgb(21 22 31 / 12%);
@@ -405,7 +405,7 @@ body {
 
 html { background-color: var(--rc-page) !important; }
 html:has(> body[data-theme-light]),
-html:has(> body[data-theme-light-highcontrast]) { background-color: #f3f3f3 !important; }
+html:has(> body[data-theme-light-highcontrast]) { background-color: #ffffff !important; }
 html:has(> body[data-theme-dark]),
 html:has(> body[data-theme-dark-highcontrast]) { background-color: #12151e !important; }
 /* the login page sits on the window colour, so its edges do too */
@@ -944,9 +944,9 @@ div[class^='_toast_'][class*='_toast_warning_'],
 }
 
 /* ------------------------------------------------------- logged-in pages:
-   no background picture, the canvas (#12151e, light #f3f3f3) around the
+   no background picture, the canvas (#12151e, light #ffffff) around the
    app, which sits in one window (Nextcloud's body container): the
-   navigation on the canvas colour, the content #0d0f16 (light #f3f3f3). */
+   navigation on the canvas colour, the content #0d0f16 (light #ffffff). */
 
 body:not(#body-login) {
 	--image-background: none !important;
