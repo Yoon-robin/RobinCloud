@@ -29,7 +29,7 @@
    pointed at #1b1e28, pressed and chosen #272b36; text
    #fff / #d9dbe2 / #9296a2 / #7f8797. Menus are solid #141821 in a
    rgb(57 61 76 / 80%) line, rows blue 12% under the pointer. One blue:
-   #4e83ff for switches, focus, links and the chosen icon, #3566e8 as a fill
+   #4f7dff for switches, focus, links and the chosen icon, #3566e8 as a fill
    under white text (#2f5cd6 under the pointer). Light turns the steps over
    as the official light menu does: the window #f3f3f3, canvas and
    navigation #f3f3f3, cards a step darker #e3e3e3 in a #d9d9d9 line, grey
@@ -113,7 +113,7 @@
 		--rc-sunk: #0f131c;
 		--rc-switch-off: #0f131c;
 		--rc-switch-knob: #84909c;
-		--rc-switch-on: #4e83ff;
+		--rc-switch-on: #4f7dff;
 		--rc-hover: #1b1e28;
 		--rc-muted: #272b36;
 		--rc-muted-strong: #2f3038;
@@ -126,12 +126,12 @@
 		--rc-border: #20232e;
 		--rc-border-window: #2b303c;
 		--rc-input: #25262e;
-		--rc-input-hover: rgb(78 131 255 / 55%);
-		--rc-accent: #4e83ff;
-		--rc-accent-rgb: 78, 131, 255;
-		--rc-accent-text: #4e83ff;
-		--rc-accent-soft: rgb(78 131 255 / 16%);
-		--rc-ring: #4e83ff;
+		--rc-input-hover: rgb(79 125 255 / 55%);
+		--rc-accent: #4f7dff;
+		--rc-accent-rgb: 79, 125, 255;
+		--rc-accent-text: #4f7dff;
+		--rc-accent-soft: rgb(79 125 255 / 16%);
+		--rc-ring: #4f7dff;
 		--rc-primary: #3566e8;
 		--rc-primary-foreground: #ffffff;
 		--rc-primary-hover: #2f5cd6;
@@ -149,7 +149,7 @@
 		--rc-pop: #141821;
 		--rc-pop-rgb: 20, 24, 33;
 		--rc-pop-line: rgb(57 61 76 / 80%);
-		--rc-pop-hover: rgb(78 131 255 / 12%);
+		--rc-pop-hover: rgb(79 125 255 / 12%);
 		--rc-pop-edge: inset 0 1px 0 rgb(255 255 255 / 8%);
 		--rc-menu-shadow: 0 8px 24px rgb(0 0 0 / 40%);
 	}
@@ -222,7 +222,7 @@ body[data-theme-dark-highcontrast] {
 	--rc-sunk: #0f131c;
 	--rc-switch-off: #0f131c;
 	--rc-switch-knob: #84909c;
-	--rc-switch-on: #4e83ff;
+	--rc-switch-on: #4f7dff;
 	--rc-hover: #1b1e28;
 	--rc-muted: #272b36;
 	--rc-muted-strong: #2f3038;
@@ -235,12 +235,12 @@ body[data-theme-dark-highcontrast] {
 	--rc-border: #20232e;
 	--rc-border-window: #2b303c;
 	--rc-input: #25262e;
-	--rc-input-hover: rgb(78 131 255 / 55%);
-	--rc-accent: #4e83ff;
-	--rc-accent-rgb: 78, 131, 255;
-	--rc-accent-text: #4e83ff;
-	--rc-accent-soft: rgb(78 131 255 / 16%);
-	--rc-ring: #4e83ff;
+	--rc-input-hover: rgb(79 125 255 / 55%);
+	--rc-accent: #4f7dff;
+	--rc-accent-rgb: 79, 125, 255;
+	--rc-accent-text: #4f7dff;
+	--rc-accent-soft: rgb(79 125 255 / 16%);
+	--rc-ring: #4f7dff;
 	--rc-primary: #3566e8;
 	--rc-primary-foreground: #ffffff;
 	--rc-primary-hover: #2f5cd6;
@@ -258,7 +258,7 @@ body[data-theme-dark-highcontrast] {
 	--rc-pop: #141821;
 	--rc-pop-rgb: 20, 24, 33;
 	--rc-pop-line: rgb(57 61 76 / 80%);
-	--rc-pop-hover: rgb(78 131 255 / 12%);
+	--rc-pop-hover: rgb(79 125 255 / 12%);
 	--rc-pop-edge: inset 0 1px 0 rgb(255 255 255 / 8%);
 	--rc-menu-shadow: 0 8px 24px rgb(0 0 0 / 40%);
 }
