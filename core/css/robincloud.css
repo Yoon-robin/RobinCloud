@@ -2471,3 +2471,44 @@ body .checkbox-radio-switch-switch.checkbox-radio-switch--disabled .checkbox-con
 
 /* Personal info: someone in no group got "소속 그룹:" with nothing after it (B-464) */
 .details__groups:has(.details__groups-list:empty) { display: none; }
+
+/* ── V3.4 (docs/brand.md "부품 더", 2026-11-20): the shapes of the official menu's dialogs and
+   menus, from the documentation site's screenshots. ─────────────────────────────────────── */
+/* Menus: 12 round, 6 inside; rows 32 high and 8 round (44 stays for fingers) */
+.v-popper__inner { border-radius: 12px !important; }
+.v-popper--theme-dropdown .v-popper__inner ul,
+.v-popper--theme-nc-popover-9 .v-popper__inner ul { padding: 6px !important; }
+@media (pointer: fine) {
+	.v-popper__inner li.action > :is(.action-button, .action-link, .action-router, .action-radio__label, .action-checkbox__label) {
+		min-height: 32px !important;
+		border-radius: 8px !important;
+	}
+	.v-popper__inner li.action :is(.action-button__icon, .action-link__icon, .action-router__icon) {
+		min-height: 32px !important;
+		height: 32px !important;
+		width: 34px !important;
+	}
+}
+/* a row that deletes is red (Nextcloud has no class for it: the trash icon tells) */
+.v-popper__inner li.action:has([class*='trash-can'], [class*='delete-icon'], .icon-delete, [class*='close-circle']) :is(.action-button, .action-link, .action-router) {
+	color: var(--rc-red-text) !important;
+}
+.v-popper__inner li.action:has([class*='trash-can'], [class*='delete-icon'], .icon-delete, [class*='close-circle']) :is(.action-button, .action-link, .action-router):is(:hover, :focus-visible) {
+	background: color-mix(in srgb, var(--rc-red) 12%, transparent) !important;
+}
+/* Dialogs: 14 round; behind them the page goes dark and soft (the one place blur is used); the
+   buttons sit at the right, 8 apart, the plain one as text */
+.modal-mask .modal-container,
+.dialog__modal .modal-container { border-radius: 14px !important; }
+.modal-mask { background: rgb(0 0 0 / 55%) !important; backdrop-filter: blur(6px); }
+.dialog__actions { gap: 8px !important; justify-content: flex-end !important; }
+.dialog__actions .button-vue:is(.button-vue--tertiary, .button-vue--vue-tertiary, .button-vue--secondary, .button-vue--vue-secondary) {
+	background: transparent !important;
+	border-color: transparent !important;
+	box-shadow: none !important;
+}
+.dialog__actions .button-vue:is(.button-vue--tertiary, .button-vue--vue-tertiary, .button-vue--secondary, .button-vue--vue-secondary):is(:hover, :focus-visible):not(:disabled) {
+	background: var(--rc-hover) !important;
+}
+/* Sidebar: a folder inside a folder sits 11 further in, same height and corners */
+.app-navigation-entry__children { padding-inline-start: 11px !important; }
