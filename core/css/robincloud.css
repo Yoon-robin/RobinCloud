@@ -98,6 +98,15 @@
 	--rc-radius-pop: 16px;
 	--rc-radius-win: 16px;
 	--rc-ease: cubic-bezier(0.22, 1, 0.36, 1);
+	/* neverlose.cc motion tokens (brand V3.5) */
+	--rc-ease-quart: cubic-bezier(0.25, 1, 0.5, 1);
+	--rc-ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+	--rc-t-hover: 130ms;
+	--rc-t-press: 160ms;
+	--rc-t-open: 180ms;
+	--rc-t-move: 220ms;
+	--rc-t-slow: 240ms;
+	--rc-t-reveal: 400ms;
 	--rc-font: 'Pretendard Variable', Pretendard, -apple-system, 'Segoe UI', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
 	--rc-font-term: 'Robin Term', 'Cascadia Code', 'Cascadia Mono', Consolas, 'D2Coding', 'Pretendard Variable', Pretendard, monospace;
 }
@@ -1730,10 +1739,11 @@ html[lang^='ko'] #body-login #guest-content-vue form[class*='publicShareAuth']::
 @keyframes rc-pop { from { opacity: 0; transform: scale(0.96); } }
 /* B-457 (the Neverlose site): a menu fades in 6px from the side it opens
    on, its size unchanged; a dialog 6px up and 0.98 to 1 */
-@keyframes rc-menu-down { from { opacity: 0; } }
-@keyframes rc-menu-up { from { opacity: 0; } }
-@keyframes rc-menu-left { from { opacity: 0; } }
-@keyframes rc-menu-right { from { opacity: 0; } }
+/* a menu comes in from 6px on the side it opens from, out of a blur (brand V3.5, neverlose.cc) */
+@keyframes rc-menu-down { from { opacity: 0; translate: 0 -6px; filter: blur(6px); } }
+@keyframes rc-menu-up { from { opacity: 0; translate: 0 6px; filter: blur(6px); } }
+@keyframes rc-menu-left { from { opacity: 0; translate: 6px 0; filter: blur(6px); } }
+@keyframes rc-menu-right { from { opacity: 0; translate: -6px 0; filter: blur(6px); } }
 @keyframes rc-dialog { from { opacity: 0; transform: translateY(6px) scale(0.98); } }
 @keyframes rc-fade { from { opacity: 0; } }
 
@@ -1791,7 +1801,7 @@ body:not(#body-login) .app-navigation-entry:not(.active):not(.app-navigation-ent
    side they open on, 0.22s. The wrapper moves, not the popper, which
    floating-ui positions with its own transform. */
 .v-popper__popper--shown .v-popper__wrapper {
-	animation: rc-menu-down 0.13s cubic-bezier(0, 0, 0.58, 1);
+	animation: rc-menu-down var(--rc-t-move) var(--rc-ease-quart);
 	transform-origin: top center;
 }
 .v-popper__popper--shown[data-popper-placement^='top'] .v-popper__wrapper { animation-name: rc-menu-up; }
@@ -2512,3 +2522,10 @@ body .checkbox-radio-switch-switch.checkbox-radio-switch--disabled .checkbox-con
 }
 /* Sidebar: a folder inside a folder sits 11 further in, same height and corners */
 .app-navigation-entry__children { padding-inline-start: 11px !important; }
+
+@media (prefers-reduced-motion: reduce) {
+	@keyframes rc-menu-down { from { opacity: 0; } }
+	@keyframes rc-menu-up { from { opacity: 0; } }
+	@keyframes rc-menu-left { from { opacity: 0; } }
+	@keyframes rc-menu-right { from { opacity: 0; } }
+}
