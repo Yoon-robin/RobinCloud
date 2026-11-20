@@ -46,6 +46,9 @@
 	--rc-card-rgb: 227, 227, 227;
 	--rc-raise: #d4d4d4;
 	--rc-sunk: #c4c4c4;
+	--rc-switch-off: #d9d9d9;
+	--rc-switch-knob: #ffffff;
+	--rc-switch-on: #03a8f5; /* the official light menu's sky blue, fills only */
 	--rc-hover: #d9d9d9;
 	--rc-muted: #b9b9b9;
 	--rc-muted-strong: #adadad;
@@ -108,6 +111,9 @@
 		--rc-card-rgb: 17, 19, 27;
 		--rc-raise: #181b25;
 		--rc-sunk: #0f131c;
+		--rc-switch-off: #0f131c;
+		--rc-switch-knob: #84909c;
+		--rc-switch-on: #4e83ff;
 		--rc-hover: #1b1e28;
 		--rc-muted: #272b36;
 		--rc-muted-strong: #2f3038;
@@ -162,6 +168,9 @@ body[data-theme-light-highcontrast] {
 	--rc-card-rgb: 227, 227, 227;
 	--rc-raise: #d4d4d4;
 	--rc-sunk: #c4c4c4;
+	--rc-switch-off: #d9d9d9;
+	--rc-switch-knob: #ffffff;
+	--rc-switch-on: #03a8f5; /* the official light menu's sky blue, fills only */
 	--rc-hover: #d9d9d9;
 	--rc-muted: #b9b9b9;
 	--rc-muted-strong: #adadad;
@@ -211,6 +220,9 @@ body[data-theme-dark-highcontrast] {
 	--rc-card-rgb: 17, 19, 27;
 	--rc-raise: #181b25;
 	--rc-sunk: #0f131c;
+	--rc-switch-off: #0f131c;
+	--rc-switch-knob: #84909c;
+	--rc-switch-on: #4e83ff;
 	--rc-hover: #1b1e28;
 	--rc-muted: #272b36;
 	--rc-muted-strong: #2f3038;
@@ -1718,10 +1730,10 @@ html[lang^='ko'] #body-login #guest-content-vue form[class*='publicShareAuth']::
 @keyframes rc-pop { from { opacity: 0; transform: scale(0.96); } }
 /* B-457 (the Neverlose site): a menu fades in 6px from the side it opens
    on, its size unchanged; a dialog 6px up and 0.98 to 1 */
-@keyframes rc-menu-down { from { opacity: 0; transform: translateY(-6px); } }
-@keyframes rc-menu-up { from { opacity: 0; transform: translateY(6px); } }
-@keyframes rc-menu-left { from { opacity: 0; transform: translateX(6px); } }
-@keyframes rc-menu-right { from { opacity: 0; transform: translateX(-6px); } }
+@keyframes rc-menu-down { from { opacity: 0; } }
+@keyframes rc-menu-up { from { opacity: 0; } }
+@keyframes rc-menu-left { from { opacity: 0; } }
+@keyframes rc-menu-right { from { opacity: 0; } }
 @keyframes rc-dialog { from { opacity: 0; transform: translateY(6px) scale(0.98); } }
 @keyframes rc-fade { from { opacity: 0; } }
 
@@ -1779,7 +1791,7 @@ body:not(#body-login) .app-navigation-entry:not(.active):not(.app-navigation-ent
    side they open on, 0.22s. The wrapper moves, not the popper, which
    floating-ui positions with its own transform. */
 .v-popper__popper--shown .v-popper__wrapper {
-	animation: rc-menu-down 0.22s var(--rc-ease, cubic-bezier(0.22, 1, 0.36, 1));
+	animation: rc-menu-down 0.13s cubic-bezier(0, 0, 0.58, 1);
 	transform-origin: top center;
 }
 .v-popper__popper--shown[data-popper-placement^='top'] .v-popper__wrapper { animation-name: rc-menu-up; }
@@ -2432,8 +2444,8 @@ body .checkbox-radio-switch-switch .checkbox-content__icon {
 	min-width: 32px;
 	margin-inline-end: 8px;
 	border-radius: 10px;
-	background: var(--rc-sunk);
-	transition: background-color 0.15s ease, box-shadow 0.15s ease;
+	background: var(--rc-switch-off);
+	transition: background-color 0.165s cubic-bezier(0, 0, 0.58, 1), box-shadow 0.165s cubic-bezier(0, 0, 0.58, 1);
 }
 
 /* Nextcloud's toggle drawing (an icon-vue or material icon) goes; the box draws the switch */
@@ -2447,11 +2459,11 @@ body .checkbox-radio-switch-switch .checkbox-content__icon::after {
 	width: 16px;
 	height: 16px;
 	border-radius: 50%;
-	background: #84909c;
-	transition: transform 0.15s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.15s ease;
+	background: var(--rc-switch-knob);
+	transition: transform 0.165s cubic-bezier(0, 0, 0.58, 1), background-color 0.165s cubic-bezier(0, 0, 0.58, 1);
 }
 
-body .checkbox-radio-switch-switch.checkbox-radio-switch--checked .checkbox-content__icon { background: var(--rc-accent); }
+body .checkbox-radio-switch-switch.checkbox-radio-switch--checked .checkbox-content__icon { background: var(--rc-switch-on); }
 body .checkbox-radio-switch-switch.checkbox-radio-switch--checked .checkbox-content__icon::after { background: #fff; transform: translateX(12px); }
 body .checkbox-radio-switch-switch:hover .checkbox-content__icon,
 body .checkbox-radio-switch-switch:focus-within .checkbox-content__icon { box-shadow: 0 0 0 1px rgba(var(--rc-accent-rgb), 0.22); }
