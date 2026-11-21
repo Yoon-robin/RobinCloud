@@ -19,17 +19,23 @@
 }
 
 /* ------------------------------------------------------------------ tokens
+   V4 (docs/brand.md "V4로 가는 중", 2026-11-21): the dark values are
+   neverlose.cc's own, worked out as solid colours on its ground #0b0b0d
+   (white 6% is #1a1a1b, white 10% #232325, a control's glass #171719, a
+   card #070708, text #dadadb); the blue is #4e7dff, lighter when pointed at;
+   buttons are pills and the corners 8 / 10 / 16 / 18. The V3 note below
+   describes the frame, which stays.
    Dark is the V3.1 kit (2026-11-19, docs/brand/robinx-v3-tokens.css): the
    surfaces as the Neverlose menu looks, the lines, blue and corners off its
    official picture; V3.2 (late 2026-11-19): surfaces are the official glass
    layers set over a dark scene (docs/design/neverlose-reference/replica/).
-   The canvas and the navigation #12151e (--side, nearly the content's black),
-   the app window #0d0f16 (--page) in a faint #2b303c line, cards and dialogs
-   #11131b (--card, a step lighter), controls #181b25 in a #25262e line, a row
-   pointed at #1b1e28, pressed and chosen #272b36; text
-   #fff / #d9dbe2 / #9296a2 / #7f8797. Menus are solid #141821 in a
-   rgb(57 61 76 / 80%) line, rows blue 12% under the pointer. One blue:
-   #4f7dff for switches, focus, links and the chosen icon, #3566e8 as a fill
+   The canvas and the navigation #0b0b0d (--side, nearly the content's black),
+   the app window #0b0b0d (--page) in a faint #232325 line, cards and dialogs
+   #070708 (--card, a step lighter), controls #171719 in a #232325 line, a row
+   pointed at #161618, pressed and chosen #232325; text
+   #fff / #dadadb / #8b8b8c / #858586. Menus are solid #0e0e11 in a
+   rgb(255 255 255 / 6.7%) line, rows blue 12% under the pointer. One blue:
+   #4e7dff for switches, focus, links and the chosen icon, #3566e8 as a fill
    under white text (#2f5cd6 under the pointer). Light turns the steps over
    as the official light menu does: the window #ffffff, canvas and
    navigation #ffffff, cards a step darker #f8f8f9 in a #e8e8ec line, grey
@@ -91,12 +97,12 @@
 	   buttons 6px, navigation rows 7px, cards and toasts 15px, menus,
 	   dialogs, the app window and the login card 16px. Only switches and
 	   status dots are round. */
-	--rc-radius: 6px;
-	--rc-radius-sm: 6px;
-	--rc-radius-row: 7px;
-	--rc-radius-card: 15px;
+	--rc-radius: 10px;
+	--rc-radius-sm: 8px;
+	--rc-radius-row: 10px;
+	--rc-radius-card: 16px;
 	--rc-radius-pop: 16px;
-	--rc-radius-win: 16px;
+	--rc-radius-win: 18px;
 	--rc-ease: cubic-bezier(0.22, 1, 0.36, 1);
 	/* neverlose.cc motion tokens (brand V3.5) */
 	--rc-ease-quart: cubic-bezier(0.25, 1, 0.5, 1);
@@ -113,54 +119,54 @@
 
 @media (prefers-color-scheme: dark) {
 	:root {
-		--rc-page: #12151e;
-		--rc-background: #0d0f16;
-		--rc-background-rgb: 13, 15, 22;
-		--rc-card: #11131b;
-		--rc-card-rgb: 17, 19, 27;
-		--rc-raise: #181b25;
-		--rc-sunk: #0f131c;
-		--rc-switch-off: #0f131c;
+		--rc-page: #0b0b0d;
+		--rc-background: #0b0b0d;
+		--rc-background-rgb: 11, 11, 13;
+		--rc-card: #070708;
+		--rc-card-rgb: 7, 7, 8;
+		--rc-raise: #171719;
+		--rc-sunk: #28282a;
+		--rc-switch-off: #28282a;
 		--rc-switch-knob: #84909c;
-		--rc-switch-on: #4f7dff;
-		--rc-hover: #1b1e28;
-		--rc-muted: #272b36;
-		--rc-muted-strong: #2f3038;
-		--rc-foreground: #d9dbe2;
-		--rc-foreground-rgb: 217, 219, 226;
+		--rc-switch-on: #4e7dff;
+		--rc-hover: #161618;
+		--rc-muted: #232325;
+		--rc-muted-strong: #2e2e30;
+		--rc-foreground: #dadadb;
+		--rc-foreground-rgb: 218, 218, 219;
 		--rc-strong: #ffffff;
-		--rc-muted-foreground: #9296a2;
-		--rc-muted-foreground-rgb: 146, 150, 162;
-		--rc-faint: #7f8797;
-		--rc-border: #20232e;
-		--rc-border-window: #2b303c;
-		--rc-input: #25262e;
-		--rc-input-hover: rgb(79 125 255 / 55%);
-		--rc-accent: #4f7dff;
-		--rc-accent-rgb: 79, 125, 255;
-		--rc-accent-text: #4f7dff;
-		--rc-accent-soft: rgb(79 125 255 / 16%);
-		--rc-ring: #4f7dff;
-		--rc-primary: #3566e8;
+		--rc-muted-foreground: #8b8b8c;
+		--rc-muted-foreground-rgb: 139, 139, 140;
+		--rc-faint: #858586;
+		--rc-border: #1a1a1b;
+		--rc-border-window: #232325;
+		--rc-input: #232325;
+		--rc-input-hover: rgb(255 255 255 / 20%);
+		--rc-accent: #4e7dff;
+		--rc-accent-rgb: 78, 125, 255;
+		--rc-accent-text: #4e7dff;
+		--rc-accent-soft: rgb(78 125 255 / 14%);
+		--rc-ring: #4e7dff;
+		--rc-primary: #4e7dff;
 		--rc-primary-foreground: #ffffff;
-		--rc-primary-hover: #2f5cd6;
-		--rc-amber: #f5b942;
-		--rc-amber-rgb: 245, 185, 66;
-		--rc-amber-text: #f5b942;
+		--rc-primary-hover: #6b92ff;
+		--rc-amber: #fbbf24;
+		--rc-amber-rgb: 251, 191, 36;
+		--rc-amber-text: #fbbf24;
 		--rc-amber-surface: #302b25;
 		--rc-amber-surface-hover: #3d3527;
-		--rc-red: #f26b6e;
-		--rc-red-rgb: 242, 107, 110;
-		--rc-red-text: #f26b6e;
+		--rc-red: #fca5a5;
+		--rc-red-rgb: 252, 165, 165;
+		--rc-red-text: #fca5a5;
 		--rc-red-surface: #30222a;
 		--rc-red-surface-hover: #3d272f;
-		--rc-pop-shadow: 0 10px 30px rgb(0 0 0 / 45%), 0 2px 6px rgb(0 0 0 / 30%);
-		--rc-pop: #141821;
-		--rc-pop-rgb: 20, 24, 33;
-		--rc-pop-line: rgb(57 61 76 / 80%);
-		--rc-pop-hover: rgb(79 125 255 / 12%);
-		--rc-pop-edge: inset 0 1px 0 rgb(255 255 255 / 8%);
-		--rc-menu-shadow: 0 8px 24px rgb(0 0 0 / 40%);
+		--rc-pop-shadow: 0 8px 40px rgb(10 10 10 / 40%);
+		--rc-pop: #0e0e11;
+		--rc-pop-rgb: 14, 14, 17;
+		--rc-pop-line: rgb(255 255 255 / 6.7%);
+		--rc-pop-hover: rgb(255 255 255 / 10%);
+		--rc-pop-edge: inset 0 0 0 0 transparent;
+		--rc-menu-shadow: 0 8px 40px rgb(10 10 10 / 40%);
 	}
 }
 
@@ -222,54 +228,54 @@ body[data-theme-light-highcontrast] {
 
 body[data-theme-dark],
 body[data-theme-dark-highcontrast] {
-	--rc-page: #12151e;
-	--rc-background: #0d0f16;
-	--rc-background-rgb: 13, 15, 22;
-	--rc-card: #11131b;
-	--rc-card-rgb: 17, 19, 27;
-	--rc-raise: #181b25;
-	--rc-sunk: #0f131c;
-	--rc-switch-off: #0f131c;
+	--rc-page: #0b0b0d;
+	--rc-background: #0b0b0d;
+	--rc-background-rgb: 11, 11, 13;
+	--rc-card: #070708;
+	--rc-card-rgb: 7, 7, 8;
+	--rc-raise: #171719;
+	--rc-sunk: #28282a;
+	--rc-switch-off: #28282a;
 	--rc-switch-knob: #84909c;
-	--rc-switch-on: #4f7dff;
-	--rc-hover: #1b1e28;
-	--rc-muted: #272b36;
-	--rc-muted-strong: #2f3038;
-	--rc-foreground: #d9dbe2;
-	--rc-foreground-rgb: 217, 219, 226;
+	--rc-switch-on: #4e7dff;
+	--rc-hover: #161618;
+	--rc-muted: #232325;
+	--rc-muted-strong: #2e2e30;
+	--rc-foreground: #dadadb;
+	--rc-foreground-rgb: 218, 218, 219;
 	--rc-strong: #ffffff;
-	--rc-muted-foreground: #9296a2;
-	--rc-muted-foreground-rgb: 146, 150, 162;
-	--rc-faint: #7f8797;
-	--rc-border: #20232e;
-	--rc-border-window: #2b303c;
-	--rc-input: #25262e;
-	--rc-input-hover: rgb(79 125 255 / 55%);
-	--rc-accent: #4f7dff;
-	--rc-accent-rgb: 79, 125, 255;
-	--rc-accent-text: #4f7dff;
-	--rc-accent-soft: rgb(79 125 255 / 16%);
-	--rc-ring: #4f7dff;
-	--rc-primary: #3566e8;
+	--rc-muted-foreground: #8b8b8c;
+	--rc-muted-foreground-rgb: 139, 139, 140;
+	--rc-faint: #858586;
+	--rc-border: #1a1a1b;
+	--rc-border-window: #232325;
+	--rc-input: #232325;
+	--rc-input-hover: rgb(255 255 255 / 20%);
+	--rc-accent: #4e7dff;
+	--rc-accent-rgb: 78, 125, 255;
+	--rc-accent-text: #4e7dff;
+	--rc-accent-soft: rgb(78 125 255 / 14%);
+	--rc-ring: #4e7dff;
+	--rc-primary: #4e7dff;
 	--rc-primary-foreground: #ffffff;
-	--rc-primary-hover: #2f5cd6;
-	--rc-amber: #f5b942;
-	--rc-amber-rgb: 245, 185, 66;
-	--rc-amber-text: #f5b942;
+	--rc-primary-hover: #6b92ff;
+	--rc-amber: #fbbf24;
+	--rc-amber-rgb: 251, 191, 36;
+	--rc-amber-text: #fbbf24;
 	--rc-amber-surface: #302b25;
 	--rc-amber-surface-hover: #3d3527;
-	--rc-red: #f26b6e;
-	--rc-red-rgb: 242, 107, 110;
-	--rc-red-text: #f26b6e;
+	--rc-red: #fca5a5;
+	--rc-red-rgb: 252, 165, 165;
+	--rc-red-text: #fca5a5;
 	--rc-red-surface: #30222a;
 	--rc-red-surface-hover: #3d272f;
-	--rc-pop-shadow: 0 10px 30px rgb(0 0 0 / 45%), 0 2px 6px rgb(0 0 0 / 30%);
-	--rc-pop: #141821;
-	--rc-pop-rgb: 20, 24, 33;
-	--rc-pop-line: rgb(57 61 76 / 80%);
-	--rc-pop-hover: rgb(79 125 255 / 12%);
-	--rc-pop-edge: inset 0 1px 0 rgb(255 255 255 / 8%);
-	--rc-menu-shadow: 0 8px 24px rgb(0 0 0 / 40%);
+	--rc-pop-shadow: 0 8px 40px rgb(10 10 10 / 40%);
+	--rc-pop: #0e0e11;
+	--rc-pop-rgb: 14, 14, 17;
+	--rc-pop-line: rgb(255 255 255 / 6.7%);
+	--rc-pop-hover: rgb(255 255 255 / 10%);
+	--rc-pop-edge: inset 0 0 0 0 transparent;
+	--rc-menu-shadow: 0 8px 40px rgb(10 10 10 / 40%);
 }
 
 body[data-theme-light-highcontrast] {
@@ -286,11 +292,11 @@ body[data-theme-light-highcontrast] {
 body[data-theme-dark-highcontrast] {
 	--rc-foreground: #ffffff;
 	--rc-strong: #ffffff;
-	--rc-muted-foreground: #d9dbe2;
+	--rc-muted-foreground: #dadadb;
 	--rc-border: #5b5f78;
 	--rc-border-window: #868aa0;
 	--rc-input: #868aa0;
-	--rc-input-hover: #d9dbe2;
+	--rc-input-hover: #dadadb;
 	--rc-accent-text: #a6c1ff;
 }
 
@@ -407,7 +413,7 @@ html { background-color: var(--rc-page) !important; }
 html:has(> body[data-theme-light]),
 html:has(> body[data-theme-light-highcontrast]) { background-color: #ffffff !important; }
 html:has(> body[data-theme-dark]),
-html:has(> body[data-theme-dark-highcontrast]) { background-color: #12151e !important; }
+html:has(> body[data-theme-dark-highcontrast]) { background-color: #0b0b0d !important; }
 /* the login page sits on the window colour, so its edges do too */
 html:has(> body#body-login) { background-color: var(--rc-background) !important; }
 
@@ -634,7 +640,7 @@ a.button-vue:focus-visible {
 }
 
 /* Dialogs float: the card colour, the strong line, 14px and the soft
-   shadow. Menus and popovers are solid #141821 (white on light) in their
+   shadow. Menus and popovers are solid #0e0e11 (white on light) in their
    own line, 16px, a row under the pointer blue 12%. Inside them Nextcloud
    paints with --color-main-background, so that is their colour there too
    (the search dialog's sticky header used to leave a box of window
@@ -944,9 +950,9 @@ div[class^='_toast_'][class*='_toast_warning_'],
 }
 
 /* ------------------------------------------------------- logged-in pages:
-   no background picture, the canvas (#12151e, light #ffffff) around the
+   no background picture, the canvas (#0b0b0d, light #ffffff) around the
    app, which sits in one window (Nextcloud's body container): the
-   navigation on the canvas colour, the content #0d0f16 (light #ffffff). */
+   navigation on the canvas colour, the content #0b0b0d (light #ffffff). */
 
 body:not(#body-login) {
 	--image-background: none !important;
@@ -2444,7 +2450,7 @@ main.app-content > .hidden-visually[role='none'] {
 
 /* ----------------------------------------------------------------- switches
    The Neverlose switch (V3.1, docs/brand.md): 32x20, a 16px knob 2px in that
-   moves 12px; off is the deep #0f131c track with a grey knob, on is the one
+   moves 12px; off is the deep #28282a track with a grey knob, on is the one
    blue with a white knob. Drawn on Nextcloud's switch box in place of its
    toggle icon. */
 body .checkbox-radio-switch-switch .checkbox-content__icon {
@@ -2528,4 +2534,10 @@ body .checkbox-radio-switch-switch.checkbox-radio-switch--disabled .checkbox-con
 	@keyframes rc-menu-up { from { opacity: 0; } }
 	@keyframes rc-menu-left { from { opacity: 0; } }
 	@keyframes rc-menu-right { from { opacity: 0; } }
+}
+
+/* V4 (docs/brand.md, 2026-11-21): buttons are pills, as on neverlose.cc */
+.button-vue,
+#body-login :is(.button-vue, a.button, input[type='submit']) {
+	border-radius: 9999px !important;
 }
