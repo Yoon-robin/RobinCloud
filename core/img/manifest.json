@@ -1,8 +1,8 @@
 {
 	"name": "RobinCloud",
 	"short_name": "RobinCloud",
-	"theme_color": "#18181b",
-	"background_color": "#18181b",
+	"theme_color": "#0b0b0d",
+	"background_color": "#0b0b0d",
 	"start_url": "../../",
 	"icons": [{
 		"src": "favicon-touch.png",

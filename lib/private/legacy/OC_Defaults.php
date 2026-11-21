@@ -47,7 +47,7 @@ class OC_Defaults {
 		$this->defaultDocBaseUrl = 'https://docs.nextcloud.com';
 		$this->defaultDocVersion = $serverVersion->getMajorVersion(); // used to generate doc links
 		$this->defaultColorBackground = '#00679e';
-		$this->defaultColorPrimary = '#18181b';
+		$this->defaultColorPrimary = '#0b0b0d';
 		$this->defaultTextColorPrimary = '#ffffff';
 		$this->defaultProductName = 'RobinCloud';
 

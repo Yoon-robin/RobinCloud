@@ -81,9 +81,9 @@ class DarkTheme extends DefaultTheme implements ITheme {
 				'--color-main-background-rgb' => $colorMainBackgroundRGB,
 				'--color-main-background-blur' => 'rgba(var(--color-main-background-rgb), .85)',
 
-				'--color-background-hover' => '#18181b', // zinc-900
-				'--color-background-dark' => '#18181b',
-				'--color-background-darker' => '#27272a', // zinc-800
+				'--color-background-hover' => '#161618', // white 4.5% on the V4 ground
+				'--color-background-dark' => '#161618',
+				'--color-background-darker' => '#232325', // white 10% on the V4 ground
 
 				'--color-placeholder-light' => $this->util->lighten($colorMainBackground, 10),
 				'--color-placeholder-dark' => $this->util->lighten($colorMainBackground, 20),

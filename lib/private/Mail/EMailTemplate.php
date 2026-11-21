@@ -63,7 +63,7 @@ class EMailTemplate implements IEMailTemplate {
 
 	protected string $head = <<<EOF
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" style="-webkit-font-smoothing:antialiased;background:#f4f4f5">
+<html xmlns="http://www.w3.org/1999/xhtml" style="-webkit-font-smoothing:antialiased;background:#f8f8f9">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -72,12 +72,12 @@ class EMailTemplate implements IEMailTemplate {
 	<title></title>
 	<style type="text/css">@media only screen and (max-width:520px){.rc-outer{padding:16px 8px!important}.rc-pad{padding-left:22px!important;padding-right:22px!important}.rc-code{font-size:22px!important;letter-spacing:3px!important}}</style>
 </head>
-<body style="margin:0;padding:0;background:#f4f4f5;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%">
+<body style="margin:0;padding:0;background:#f8f8f9;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%">
 	<div style="display:none!important;font-size:1px;line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden;mso-hide:all">%%PREHEADER%%&#8199;&#65279;&#847;&#8199;&#65279;&#847;&#8199;&#65279;&#847;&#8199;&#65279;&#847;&#8199;&#65279;&#847;</div>
-	<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#f4f4f5;border-collapse:collapse">
+	<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#f8f8f9;border-collapse:collapse">
 		<tr>
 			<td class="rc-outer" align="center" style="padding:40px 16px">
-				<table role="presentation" width="480" cellpadding="0" cellspacing="0" border="0" style="width:100%;max-width:480px;border-collapse:separate;background:#ffffff;border:1px solid #e4e4e7;border-radius:12px">
+				<table role="presentation" width="480" cellpadding="0" cellspacing="0" border="0" style="width:100%;max-width:480px;border-collapse:separate;background:#ffffff;border:1px solid #e8e8ec;border-radius:12px">
 				<tbody>
 
 EOF;
@@ -109,7 +109,7 @@ EOF;
 
 	protected string $heading = <<<EOF
 					<tr>
-						<td class="rc-pad" style="padding:30px 32px 6px;font-family:%1\$s;font-size:20px;line-height:1.35;font-weight:600;letter-spacing:-0.3px;color:#09090b;word-break:keep-all">%2\$s</td>
+						<td class="rc-pad" style="padding:30px 32px 6px;font-family:%1\$s;font-size:20px;line-height:1.35;font-weight:600;letter-spacing:-0.3px;color:#1a1a1a;word-break:keep-all">%2\$s</td>
 					</tr>
 
 EOF;
@@ -118,7 +118,7 @@ EOF;
 
 	protected string $bodyText = <<<EOF
 					<tr>
-						<td class="rc-pad" style="padding:6px 32px;font-family:%1\$s;font-size:14px;line-height:1.7;color:#52525b;word-break:keep-all">%2\$s</td>
+						<td class="rc-pad" style="padding:6px 32px;font-family:%1\$s;font-size:14px;line-height:1.7;color:#616161;word-break:keep-all">%2\$s</td>
 					</tr>
 
 EOF;
@@ -129,9 +129,9 @@ EOF;
 						<td class="rc-pad" style="padding:18px 32px 6px">
 							<table role="presentation" width="100%%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:separate">
 								<tr>
-									<td align="center" style="background:#f4f4f5;border:1px solid #e4e4e7;border-radius:10px;padding:18px 12px 20px">
-										<div style="font-family:%1\$s;font-size:12px;line-height:1.4;color:#71717a;padding-bottom:8px">%2\$s</div>
-										<div class="rc-code" style="font-family:%3\$s;font-size:26px;line-height:1.2;font-weight:700;letter-spacing:4px;color:#09090b;-webkit-user-select:all;user-select:all">%4\$s</div>
+									<td align="center" style="background:#f8f8f9;border:1px solid #e8e8ec;border-radius:16px;padding:18px 12px 20px">
+										<div style="font-family:%1\$s;font-size:12px;line-height:1.4;color:#727272;padding-bottom:8px">%2\$s</div>
+										<div class="rc-code" style="font-family:%3\$s;font-size:26px;line-height:1.2;font-weight:700;letter-spacing:4px;color:#1a1a1a;-webkit-user-select:all;user-select:all">%4\$s</div>
 									</td>
 								</tr>
 							</table>
@@ -150,8 +150,8 @@ EOF;
 	/** %1\$s font, %2\$s icon, %3\$s text */
 	protected string $listItem = <<<EOF
 								<tr>
-									<td width="28" valign="top" style="padding:7px 0;font-family:%1\$s;font-size:14px;line-height:1.6;color:#a1a1aa">%2\$s</td>
-									<td valign="top" style="padding:7px 0;font-family:%1\$s;font-size:14px;line-height:1.6;color:#3f3f46;word-break:keep-all">%3\$s</td>
+									<td width="28" valign="top" style="padding:7px 0;font-family:%1\$s;font-size:14px;line-height:1.6;color:#9b9b9d">%2\$s</td>
+									<td valign="top" style="padding:7px 0;font-family:%1\$s;font-size:14px;line-height:1.6;color:#3a3a3c;word-break:keep-all">%3\$s</td>
 								</tr>
 
 EOF;
@@ -169,8 +169,8 @@ EOF;
 						<td class="rc-pad" style="padding:20px 32px 6px">
 							<table role="presentation" width="100%%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:separate">
 								<tr>
-									<td align="center" bgcolor="%1\$s" style="background:%1\$s;border-radius:8px">
-										<a href="%2\$s" target="_blank" style="display:block;padding:12px 18px;font-family:%3\$s;font-size:14px;line-height:1.4;font-weight:600;color:%4\$s;text-decoration:none;border-radius:8px">%5\$s</a>
+									<td align="center" bgcolor="#3d6af0" style="background:#3d6af0;border-radius:9999px">
+										<a href="%2\$s" target="_blank" style="display:block;padding:12px 18px;font-family:%3\$s;font-size:14px;line-height:1.4;font-weight:600;color:%4\$s;text-decoration:none;border-radius:9999px">%5\$s</a>
 									</td>
 								</tr>
 							</table>
@@ -191,8 +191,8 @@ EOF;
 									<td width="50%%" valign="top" style="padding-right:5px">
 										<table role="presentation" width="100%%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:separate">
 											<tr>
-												<td align="center" bgcolor="%1\$s" style="background:%1\$s;border:1px solid %1\$s;border-radius:8px">
-													<a href="%2\$s" target="_blank" style="display:block;padding:11px 14px;font-family:%3\$s;font-size:14px;line-height:1.4;font-weight:600;color:%4\$s;text-decoration:none;border-radius:8px">%5\$s</a>
+												<td align="center" bgcolor="#3d6af0" style="background:#3d6af0;border:1px solid #3d6af0;border-radius:9999px">
+													<a href="%2\$s" target="_blank" style="display:block;padding:11px 14px;font-family:%3\$s;font-size:14px;line-height:1.4;font-weight:600;color:%4\$s;text-decoration:none;border-radius:9999px">%5\$s</a>
 												</td>
 											</tr>
 										</table>
@@ -200,8 +200,8 @@ EOF;
 									<td width="50%%" valign="top" style="padding-left:5px">
 										<table role="presentation" width="100%%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:separate">
 											<tr>
-												<td align="center" style="background:#ffffff;border:1px solid #e4e4e7;border-radius:8px">
-													<a href="%6\$s" target="_blank" style="display:block;padding:11px 14px;font-family:%3\$s;font-size:14px;line-height:1.4;font-weight:600;color:#18181b;text-decoration:none;border-radius:8px">%7\$s</a>
+												<td align="center" style="background:#ffffff;border:1px solid #e8e8ec;border-radius:9999px">
+													<a href="%6\$s" target="_blank" style="display:block;padding:11px 14px;font-family:%3\$s;font-size:14px;line-height:1.4;font-weight:600;color:#1a1a1a;text-decoration:none;border-radius:9999px">%7\$s</a>
 												</td>
 											</tr>
 										</table>
@@ -216,7 +216,7 @@ EOF;
 	/** fine print under the button (sign-up mail) */
 	protected string $note = <<<EOF
 					<tr>
-						<td class="rc-pad" style="padding:14px 32px 0;font-family:%1\$s;font-size:12.5px;line-height:1.65;color:#a1a1aa;word-break:keep-all">%2\$s</td>
+						<td class="rc-pad" style="padding:14px 32px 0;font-family:%1\$s;font-size:12.5px;line-height:1.65;color:#9b9b9d;word-break:keep-all">%2\$s</td>
 					</tr>
 
 EOF;
@@ -229,7 +229,7 @@ EOF;
 	protected string $footer = <<<EOF
 				<table role="presentation" width="480" cellpadding="0" cellspacing="0" border="0" style="width:100%%;max-width:480px;border-collapse:collapse">
 					<tr>
-						<td align="center" style="padding:18px 16px 0;font-family:%1\$s;font-size:12px;line-height:1.7;color:#a1a1aa;word-break:keep-all">%2\$s</td>
+						<td align="center" style="padding:18px 16px 0;font-family:%1\$s;font-size:12px;line-height:1.7;color:#9b9b9d;word-break:keep-all">%2\$s</td>
 					</tr>
 				</table>
 
@@ -285,7 +285,7 @@ EOF;
 		} else {
 			$logoSrc = $this->urlGenerator->getAbsoluteURL($this->themingDefaults->getLogo(false));
 		}
-		$this->htmlBody .= vsprintf($this->header, ['#09090b', $logoSrc, htmlspecialchars($this->themingDefaults->getName()), $logoSizeDimensions]);
+		$this->htmlBody .= vsprintf($this->header, ['#1a1a1a', $logoSrc, htmlspecialchars($this->themingDefaults->getName()), $logoSizeDimensions]);
 	}
 
 	/**
@@ -448,7 +448,7 @@ EOF;
 
 		$htmlText = $text;
 		if ($metaInfo) {
-			$htmlText = '<span style="color:#71717a;font-size:12.5px">' . $metaInfo . '</span><br>' . $htmlText;
+			$htmlText = '<span style="color:#727272;font-size:12.5px">' . $metaInfo . '</span><br>' . $htmlText;
 		}
 		if ($icon !== '') {
 			$icon = '<img src="' . htmlspecialchars($icon) . '" alt="&bull;" width="16" height="16" style="display:block;border:0;margin-top:3px">';
