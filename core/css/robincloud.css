@@ -771,7 +771,7 @@ div[class^='_toast_'][class*='_toast_warning_'],
 	padding-left: 46px;
 	margin-bottom: 14px;
 	box-sizing: border-box;
-	background: url('../img/favicon.svg?v=icon-20261119') left center / 35px 35px no-repeat !important;
+	background: url('../img/favicon.svg?v=icon-20261122') left center / 35px 35px no-repeat !important;
 	filter: none !important;
 	text-indent: 0 !important;
 	overflow: visible !important;
@@ -969,23 +969,23 @@ body:not(#body-login) #header {
 
 body:not(#body-login) #header .logo,
 body:not(#body-login) #nextcloud .logo {
-	background-image: url('../img/logo/logo-dark.svg?v=icon-20261119') !important;
+	background-image: url('../img/logo/logo-dark.svg?v=icon-20261122') !important;
 	filter: none !important;
 }
 
 @media (prefers-color-scheme: dark) {
 	body:not(#body-login) #header .logo,
-	body:not(#body-login) #nextcloud .logo { background-image: url('../img/logo/logo.svg?v=icon-20261119') !important; }
+	body:not(#body-login) #nextcloud .logo { background-image: url('../img/logo/logo.svg?v=icon-20261122') !important; }
 }
 
 body[data-theme-dark]:not(#body-login) #header .logo,
 body[data-theme-dark]:not(#body-login) #nextcloud .logo,
 body[data-theme-dark-highcontrast]:not(#body-login) #header .logo,
-body[data-theme-dark-highcontrast]:not(#body-login) #nextcloud .logo { background-image: url('../img/logo/logo.svg?v=icon-20261119') !important; }
+body[data-theme-dark-highcontrast]:not(#body-login) #nextcloud .logo { background-image: url('../img/logo/logo.svg?v=icon-20261122') !important; }
 body[data-theme-light]:not(#body-login) #header .logo,
 body[data-theme-light]:not(#body-login) #nextcloud .logo,
 body[data-theme-light-highcontrast]:not(#body-login) #header .logo,
-body[data-theme-light-highcontrast]:not(#body-login) #nextcloud .logo { background-image: url('../img/logo/logo-dark.svg?v=icon-20261119') !important; }
+body[data-theme-light-highcontrast]:not(#body-login) #nextcloud .logo { background-image: url('../img/logo/logo-dark.svg?v=icon-20261122') !important; }
 
 /* the app in one window: the strong line, 14px, no shadow (it is full of lists) */
 body:not(#body-login) #content,
@@ -1044,7 +1044,7 @@ body:not(#body-login) #header .unified-search-input__label { color: inherit !imp
 /* header wordmark at a readable size */
 body:not(#body-login) #header .logo,
 body:not(#body-login) #nextcloud .logo {
-	width: 112px !important;
+	width: 118px !important;   /* 112 before the name moved 12 off the tile (255:243) */
 	background-size: contain !important;
 	background-position: center !important;
 }
@@ -1053,8 +1053,9 @@ body:not(#body-login) #nextcloud .logo {
    overflow: hidden) */
 body:not(#body-login) #header #nextcloud {
 	width: auto !important;
-	min-width: 124px;
+	min-width: 130px;
 	padding-inline: 6px;
+	margin-inline-end: 6px;   /* the app grid's icon sat against the name */
 	overflow: visible !important;
 }
 
