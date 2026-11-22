@@ -46,7 +46,7 @@
    card) get one soft shadow, everything else a 1px line. */
 
 :root {
-	--rc-page: #ffffff;
+	--rc-page: #ffffff; --rc-side: #f4f5f7;
 	--rc-background: #ffffff;
 	--rc-background-rgb: 243, 243, 243;
 	--rc-card: #f8f8f9;
@@ -56,8 +56,8 @@
 	--rc-switch-off: #e8e8ec;
 	--rc-switch-knob: #ffffff;
 	--rc-switch-on: #3d6af0; /* the official light menu's sky blue, fills only */
-	--rc-hover: #e8e8ec;
-	--rc-muted: #e7e7e9;
+	--rc-hover: #e9ecf0;
+	--rc-muted: #dfe3e9;
 	--rc-muted-strong: #adadad;
 	--rc-foreground: #1a1a1a;
 	--rc-foreground-rgb: 31, 31, 31;
@@ -77,17 +77,17 @@
 	--rc-primary: #3566e8;
 	--rc-primary-foreground: #ffffff;
 	--rc-primary-hover: #2f5cd6;
-	--rc-amber: #b45309;
+	--rc-amber: #a4523f;
 	--rc-green: var(--rc-accent-text);
-	--rc-amber-rgb: 180, 83, 9;
-	--rc-amber-text: #92400e;
-	--rc-amber-surface: #fbf1e6;
-	--rc-amber-surface-hover: #f8e6d2;
-	--rc-red: #dc2626;
-	--rc-red-rgb: 220, 38, 38;
-	--rc-red-text: #b91c1c;
-	--rc-red-surface: #fbe9e9;
-	--rc-red-surface-hover: #f8dcdc;
+	--rc-amber-rgb: 164, 82, 63;
+	--rc-amber-text: #8a4333;
+	--rc-amber-surface: #f8ece9;
+	--rc-amber-surface-hover: #f3ded9;
+	--rc-red: #c0263a;
+	--rc-red-rgb: 192, 38, 58;
+	--rc-red-text: #a81f31;
+	--rc-red-surface: #fbe9ec;
+	--rc-red-surface-hover: #f6d9de;
 	--rc-pop-shadow: 0 10px 30px rgb(21 22 31 / 10%), 0 2px 6px rgb(21 22 31 / 6%);
 	--rc-pop: #fafafa;
 	--rc-pop-rgb: 251, 251, 252;
@@ -179,7 +179,7 @@
    (below). */
 body[data-theme-light],
 body[data-theme-light-highcontrast] {
-	--rc-page: #ffffff;
+	--rc-page: #ffffff; --rc-side: #f4f5f7;
 	--rc-background: #ffffff;
 	--rc-background-rgb: 243, 243, 243;
 	--rc-card: #f8f8f9;
@@ -189,8 +189,8 @@ body[data-theme-light-highcontrast] {
 	--rc-switch-off: #e8e8ec;
 	--rc-switch-knob: #ffffff;
 	--rc-switch-on: #3d6af0; /* the official light menu's sky blue, fills only */
-	--rc-hover: #e8e8ec;
-	--rc-muted: #e7e7e9;
+	--rc-hover: #e9ecf0;
+	--rc-muted: #dfe3e9;
 	--rc-muted-strong: #adadad;
 	--rc-foreground: #1a1a1a;
 	--rc-foreground-rgb: 31, 31, 31;
@@ -210,17 +210,17 @@ body[data-theme-light-highcontrast] {
 	--rc-primary: #3566e8;
 	--rc-primary-foreground: #ffffff;
 	--rc-primary-hover: #2f5cd6;
-	--rc-amber: #b45309;
+	--rc-amber: #a4523f;
 	--rc-green: var(--rc-accent-text);
-	--rc-amber-rgb: 180, 83, 9;
-	--rc-amber-text: #92400e;
-	--rc-amber-surface: #fbf1e6;
-	--rc-amber-surface-hover: #f8e6d2;
-	--rc-red: #dc2626;
-	--rc-red-rgb: 220, 38, 38;
-	--rc-red-text: #b91c1c;
-	--rc-red-surface: #fbe9e9;
-	--rc-red-surface-hover: #f8dcdc;
+	--rc-amber-rgb: 164, 82, 63;
+	--rc-amber-text: #8a4333;
+	--rc-amber-surface: #f8ece9;
+	--rc-amber-surface-hover: #f3ded9;
+	--rc-red: #c0263a;
+	--rc-red-rgb: 192, 38, 58;
+	--rc-red-text: #a81f31;
+	--rc-red-surface: #fbe9ec;
+	--rc-red-surface-hover: #f6d9de;
 	--rc-pop-shadow: 0 10px 30px rgb(21 22 31 / 10%), 0 2px 6px rgb(21 22 31 / 6%);
 	--rc-pop: #fafafa;
 	--rc-pop-rgb: 251, 251, 252;
