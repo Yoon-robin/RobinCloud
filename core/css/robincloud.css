@@ -2542,3 +2542,12 @@ body .checkbox-radio-switch-switch.checkbox-radio-switch--disabled .checkbox-con
 #body-login :is(.button-vue, a.button, input[type='submit']) {
 	border-radius: 9999px !important;
 }
+
+/* 2026-11-22 review against neverlose.cc (site_gaps_4.md): an unticked box is a grey outline wherever it
+   sits (the notification table drew them in the accent, a column of blue squares with nothing chosen),
+   and the selection is the accent at 25% under the letters as they are. */
+body:not(#body-login) .checkbox-radio-switch:not(.checkbox-radio-switch--checked, .checkbox-radio-switch-switch) :is(.checkbox-radio-switch__icon, .checkbox-content__icon),
+body:not(#body-login) .checkbox-radio-switch:not(.checkbox-radio-switch--checked, .checkbox-radio-switch-switch) :is(.checkbox-radio-switch__icon, .checkbox-content__icon) :is(.material-design-icon, svg) {
+	color: var(--rc-muted-foreground) !important;
+}
+::selection { color: inherit; background: rgba(var(--rc-accent-rgb), .25); }
