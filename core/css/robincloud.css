@@ -78,7 +78,7 @@
 	--rc-primary-foreground: #ffffff;
 	--rc-primary-hover: #2f5cd6;
 	--rc-amber: #b45309;
-	--rc-green: #047857;
+	--rc-green: var(--rc-accent-text);
 	--rc-amber-rgb: 180, 83, 9;
 	--rc-amber-text: #92400e;
 	--rc-amber-surface: #fbf1e6;
@@ -99,12 +99,12 @@
 	   buttons 6px, navigation rows 7px, cards and toasts 15px, menus,
 	   dialogs, the app window and the login card 16px. Only switches and
 	   status dots are round. */
-	--rc-radius: 10px;
-	--rc-radius-sm: 8px;
-	--rc-radius-row: 10px;
-	--rc-radius-card: 16px;
-	--rc-radius-pop: 16px;
-	--rc-radius-win: 18px;
+	--rc-radius: 7px;
+	--rc-radius-sm: 6px;
+	--rc-radius-row: 7px;
+	--rc-radius-card: 12px;
+	--rc-radius-pop: 12px;
+	--rc-radius-win: 14px;
 	--rc-ease: cubic-bezier(0.22, 1, 0.36, 1);
 	/* neverlose.cc motion tokens (brand V3.5) */
 	--rc-ease-quart: cubic-bezier(0.25, 1, 0.5, 1);
@@ -121,55 +121,55 @@
 
 @media (prefers-color-scheme: dark) {
 	:root {
-		--rc-page: #0b0b0d;
-		--rc-background: #0b0b0d;
-		--rc-background-rgb: 11, 11, 13;
-		--rc-card: #070708;
-		--rc-card-rgb: 7, 7, 8;
-		--rc-raise: #171719;
-		--rc-sunk: #28282a;
-		--rc-switch-off: #28282a;
-		--rc-switch-knob: #84909c;
-		--rc-switch-on: #4e7dff;
-		--rc-hover: #161618;
-		--rc-muted: #232325;
-		--rc-muted-strong: #2e2e30;
-		--rc-foreground: #dadadb;
-		--rc-foreground-rgb: 218, 218, 219;
+		--rc-page: #0e1012; --rc-side: #0a0e11;
+		--rc-background: #0e1012;
+		--rc-background-rgb: 14, 16, 18;
+		--rc-card: #0f1115;
+		--rc-card-rgb: 15, 17, 21;
+		--rc-raise: #14151c;
+		--rc-sunk: #1c1e24;
+		--rc-switch-off: #030913;
+		--rc-switch-knob: #798895;
+		--rc-switch-on: #4b7dfe;
+		--rc-hover: #15181b;
+		--rc-muted: #222629;
+		--rc-muted-strong: #2a2e32;
+		--rc-foreground: #e6e7e9;
+		--rc-foreground-rgb: 230, 231, 233;
 		--rc-strong: #ffffff;
-		--rc-muted-foreground: #8b8b8c;
-		--rc-muted-foreground-rgb: 139, 139, 140;
-		--rc-faint: #858586;
-		--rc-border: #1a1a1b;
-		--rc-border-window: #232325;
-		--rc-input: #232325;
-		--rc-input-hover: rgb(255 255 255 / 20%);
-		--rc-accent: #4e7dff;
-		--rc-accent-rgb: 78, 125, 255;
-		--rc-accent-text: #4e7dff;
-		--rc-accent-soft: rgb(78 125 255 / 14%);
-		--rc-ring: #4e7dff;
+		--rc-muted-foreground: #8a8e94;
+		--rc-muted-foreground-rgb: 138, 142, 148;
+		--rc-faint: #7d8187;
+		--rc-border: #181a1d;
+		--rc-border-window: #26272d;
+		--rc-input: #26272d;
+		--rc-input-hover: #32343b;
+		--rc-accent: #4b7dfe;
+		--rc-accent-rgb: 75, 125, 254;
+		--rc-accent-text: #4b7dfe;
+		--rc-accent-soft: rgb(75 125 254 / 14%);
+		--rc-ring: #4b7dfe;
 		--rc-primary: #3d6af0;
 		--rc-primary-foreground: #ffffff;
-		--rc-primary-hover: #4e7dff;
-		--rc-amber: #fbbf24;
-		--rc-green: #6ee7b7;
-		--rc-amber-rgb: 251, 191, 36;
-		--rc-amber-text: #fbbf24;
-		--rc-amber-surface: #302b25;
-		--rc-amber-surface-hover: #3d3527;
-		--rc-red: #fca5a5;
-		--rc-red-rgb: 252, 165, 165;
-		--rc-red-text: #fca5a5;
-		--rc-red-surface: #30222a;
-		--rc-red-surface-hover: #3d272f;
-		--rc-pop-shadow: 0 8px 40px rgb(10 10 10 / 40%);
-		--rc-pop: #0e0e11;
-		--rc-pop-rgb: 14, 14, 17;
-		--rc-pop-line: rgb(255 255 255 / 6.7%);
-		--rc-pop-hover: rgb(255 255 255 / 10%);
+		--rc-primary-hover: #4b7dfe;
+		--rc-amber: #c27463;
+		--rc-green: #4b7dfe;
+		--rc-amber-rgb: 194, 116, 99;
+		--rc-amber-text: #c27463;
+		--rc-amber-surface: #241a18;
+		--rc-amber-surface-hover: #2e211e;
+		--rc-red: #e5475a;
+		--rc-red-rgb: 229, 71, 90;
+		--rc-red-text: #e5475a;
+		--rc-red-surface: #2a1218;
+		--rc-red-surface-hover: #35161e;
+		--rc-pop-shadow: 0 0 14px rgb(0 0 0 / 60%);
+		--rc-pop: #08090b;
+		--rc-pop-rgb: 8, 9, 11;
+		--rc-pop-line: #1c1e22;
+		--rc-pop-hover: #16181c;
 		--rc-pop-edge: inset 0 0 0 0 transparent;
-		--rc-menu-shadow: 0 8px 40px rgb(10 10 10 / 40%);
+		--rc-menu-shadow: 0 0 14px rgb(0 0 0 / 60%);
 	}
 }
 
@@ -211,7 +211,7 @@ body[data-theme-light-highcontrast] {
 	--rc-primary-foreground: #ffffff;
 	--rc-primary-hover: #2f5cd6;
 	--rc-amber: #b45309;
-	--rc-green: #047857;
+	--rc-green: var(--rc-accent-text);
 	--rc-amber-rgb: 180, 83, 9;
 	--rc-amber-text: #92400e;
 	--rc-amber-surface: #fbf1e6;
@@ -232,55 +232,55 @@ body[data-theme-light-highcontrast] {
 
 body[data-theme-dark],
 body[data-theme-dark-highcontrast] {
-	--rc-page: #0b0b0d;
-	--rc-background: #0b0b0d;
-	--rc-background-rgb: 11, 11, 13;
-	--rc-card: #070708;
-	--rc-card-rgb: 7, 7, 8;
-	--rc-raise: #171719;
-	--rc-sunk: #28282a;
-	--rc-switch-off: #28282a;
-	--rc-switch-knob: #84909c;
-	--rc-switch-on: #4e7dff;
-	--rc-hover: #161618;
-	--rc-muted: #232325;
-	--rc-muted-strong: #2e2e30;
-	--rc-foreground: #dadadb;
-	--rc-foreground-rgb: 218, 218, 219;
+	--rc-page: #0e1012; --rc-side: #0a0e11;
+	--rc-background: #0e1012;
+	--rc-background-rgb: 14, 16, 18;
+	--rc-card: #0f1115;
+	--rc-card-rgb: 15, 17, 21;
+	--rc-raise: #14151c;
+	--rc-sunk: #1c1e24;
+	--rc-switch-off: #030913;
+	--rc-switch-knob: #798895;
+	--rc-switch-on: #4b7dfe;
+	--rc-hover: #15181b;
+	--rc-muted: #222629;
+	--rc-muted-strong: #2a2e32;
+	--rc-foreground: #e6e7e9;
+	--rc-foreground-rgb: 230, 231, 233;
 	--rc-strong: #ffffff;
-	--rc-muted-foreground: #8b8b8c;
-	--rc-muted-foreground-rgb: 139, 139, 140;
-	--rc-faint: #858586;
-	--rc-border: #1a1a1b;
-	--rc-border-window: #232325;
-	--rc-input: #232325;
-	--rc-input-hover: rgb(255 255 255 / 20%);
-	--rc-accent: #4e7dff;
-	--rc-accent-rgb: 78, 125, 255;
-	--rc-accent-text: #4e7dff;
-	--rc-accent-soft: rgb(78 125 255 / 14%);
-	--rc-ring: #4e7dff;
+	--rc-muted-foreground: #8a8e94;
+	--rc-muted-foreground-rgb: 138, 142, 148;
+	--rc-faint: #7d8187;
+	--rc-border: #181a1d;
+	--rc-border-window: #26272d;
+	--rc-input: #26272d;
+	--rc-input-hover: #32343b;
+	--rc-accent: #4b7dfe;
+	--rc-accent-rgb: 75, 125, 254;
+	--rc-accent-text: #4b7dfe;
+	--rc-accent-soft: rgb(75 125 254 / 14%);
+	--rc-ring: #4b7dfe;
 	--rc-primary: #3d6af0;
 	--rc-primary-foreground: #ffffff;
-	--rc-primary-hover: #4e7dff;
-	--rc-amber: #fbbf24;
-	--rc-green: #6ee7b7;
-	--rc-amber-rgb: 251, 191, 36;
-	--rc-amber-text: #fbbf24;
-	--rc-amber-surface: #302b25;
-	--rc-amber-surface-hover: #3d3527;
-	--rc-red: #fca5a5;
-	--rc-red-rgb: 252, 165, 165;
-	--rc-red-text: #fca5a5;
-	--rc-red-surface: #30222a;
-	--rc-red-surface-hover: #3d272f;
-	--rc-pop-shadow: 0 8px 40px rgb(10 10 10 / 40%);
-	--rc-pop: #0e0e11;
-	--rc-pop-rgb: 14, 14, 17;
-	--rc-pop-line: rgb(255 255 255 / 6.7%);
-	--rc-pop-hover: rgb(255 255 255 / 10%);
+	--rc-primary-hover: #4b7dfe;
+	--rc-amber: #c27463;
+	--rc-green: #4b7dfe;
+	--rc-amber-rgb: 194, 116, 99;
+	--rc-amber-text: #c27463;
+	--rc-amber-surface: #241a18;
+	--rc-amber-surface-hover: #2e211e;
+	--rc-red: #e5475a;
+	--rc-red-rgb: 229, 71, 90;
+	--rc-red-text: #e5475a;
+	--rc-red-surface: #2a1218;
+	--rc-red-surface-hover: #35161e;
+	--rc-pop-shadow: 0 0 14px rgb(0 0 0 / 60%);
+	--rc-pop: #08090b;
+	--rc-pop-rgb: 8, 9, 11;
+	--rc-pop-line: #1c1e22;
+	--rc-pop-hover: #16181c;
 	--rc-pop-edge: inset 0 0 0 0 transparent;
-	--rc-menu-shadow: 0 8px 40px rgb(10 10 10 / 40%);
+	--rc-menu-shadow: 0 0 14px rgb(0 0 0 / 60%);
 }
 
 body[data-theme-light-highcontrast] {
@@ -333,10 +333,10 @@ body {
 	--color-border-maxcontrast: var(--rc-input) !important;
 	--color-border-error: var(--rc-red) !important;
 	--color-border-success: var(--rc-green) !important;
-	/* states: red and amber when something went wrong or needs a look, and a
-	   thing done is the site's green (its mark and edge only; neverlose.cc
-	   says a good state in green). Info is a plain text colour: the blue
-	   means "on, chosen, current", never "info" */
+	/* V5 (Recurrence, 2026-11-23): the dark faces are that menu's three
+	   blue-blacks parted by 1px lines, controls have 7px corners, and there is
+	   no green and no amber: a thing done is the blue, "look" is salmon,
+	   "wrong" is red. Info is a plain text colour. */
 	--color-element-error: var(--rc-red) !important;
 	--color-element-warning: var(--rc-amber) !important;
 	--color-element-success: var(--rc-green) !important;
@@ -419,7 +419,7 @@ html { background-color: var(--rc-page) !important; }
 html:has(> body[data-theme-light]),
 html:has(> body[data-theme-light-highcontrast]) { background-color: #ffffff !important; }
 html:has(> body[data-theme-dark]),
-html:has(> body[data-theme-dark-highcontrast]) { background-color: #0b0b0d !important; }
+html:has(> body[data-theme-dark-highcontrast]) { background-color: #0e1012 !important; }
 /* the login page sits on the window colour, so its edges do too */
 html:has(> body#body-login) { background-color: var(--rc-background) !important; }
 
@@ -1003,7 +1003,7 @@ body:not(#body-login) #content-vue {
 }
 
 body:not(#body-login) .app-navigation {
-	background: var(--rc-page) !important;
+	background: var(--rc-side, var(--rc-page)) !important;
 	backdrop-filter: none !important;
 	-webkit-backdrop-filter: none !important;
 	/* no line on the navigation side: its own colour is the edge */
@@ -2545,10 +2545,10 @@ body .checkbox-radio-switch-switch.checkbox-radio-switch--disabled .checkbox-con
 	@keyframes rc-menu-right { from { opacity: 0; } }
 }
 
-/* V4 (docs/brand.md, 2026-11-21): buttons are pills, as on neverlose.cc */
+/* V5 (Recurrence, 2026-11-23): buttons have 7px corners, as that menu's controls do */
 .button-vue,
 #body-login :is(.button-vue, a.button, input[type='submit']) {
-	border-radius: 9999px !important;
+	border-radius: 7px !important;
 }
 
 /* 2026-11-22 review against neverlose.cc (site_gaps_4.md): an unticked box is a grey outline wherever it
