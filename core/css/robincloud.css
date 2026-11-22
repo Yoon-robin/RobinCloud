@@ -22,7 +22,8 @@
    V4 (docs/brand.md "V4로 가는 중", 2026-11-21): the dark values are
    neverlose.cc's own, worked out as solid colours on its ground #0b0b0d
    (white 6% is #1a1a1b, white 10% #232325, a control's glass #171719, a
-   card #070708, text #dadadb); the blue is #4e7dff, lighter when pointed at;
+   card #070708, text #dadadb); the blue is #4e7dff, and under white words
+   a step deeper, #3d6af0 (4.65:1), #4e7dff when pointed at;
    buttons are pills and the corners 8 / 10 / 16 / 18. The V3 note below
    describes the frame, which stays.
    Dark is the V3.1 kit (2026-11-19, docs/brand/robinx-v3-tokens.css): the
@@ -147,9 +148,9 @@
 		--rc-accent-text: #4e7dff;
 		--rc-accent-soft: rgb(78 125 255 / 14%);
 		--rc-ring: #4e7dff;
-		--rc-primary: #4e7dff;
+		--rc-primary: #3d6af0;
 		--rc-primary-foreground: #ffffff;
-		--rc-primary-hover: #6b92ff;
+		--rc-primary-hover: #4e7dff;
 		--rc-amber: #fbbf24;
 		--rc-amber-rgb: 251, 191, 36;
 		--rc-amber-text: #fbbf24;
@@ -256,9 +257,9 @@ body[data-theme-dark-highcontrast] {
 	--rc-accent-text: #4e7dff;
 	--rc-accent-soft: rgb(78 125 255 / 14%);
 	--rc-ring: #4e7dff;
-	--rc-primary: #4e7dff;
+	--rc-primary: #3d6af0;
 	--rc-primary-foreground: #ffffff;
-	--rc-primary-hover: #6b92ff;
+	--rc-primary-hover: #4e7dff;
 	--rc-amber: #fbbf24;
 	--rc-amber-rgb: 251, 191, 36;
 	--rc-amber-text: #fbbf24;
