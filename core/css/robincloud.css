@@ -78,6 +78,7 @@
 	--rc-primary-foreground: #ffffff;
 	--rc-primary-hover: #2f5cd6;
 	--rc-amber: #b45309;
+	--rc-green: #047857;
 	--rc-amber-rgb: 180, 83, 9;
 	--rc-amber-text: #92400e;
 	--rc-amber-surface: #fbf1e6;
@@ -152,6 +153,7 @@
 		--rc-primary-foreground: #ffffff;
 		--rc-primary-hover: #4e7dff;
 		--rc-amber: #fbbf24;
+		--rc-green: #6ee7b7;
 		--rc-amber-rgb: 251, 191, 36;
 		--rc-amber-text: #fbbf24;
 		--rc-amber-surface: #302b25;
@@ -209,6 +211,7 @@ body[data-theme-light-highcontrast] {
 	--rc-primary-foreground: #ffffff;
 	--rc-primary-hover: #2f5cd6;
 	--rc-amber: #b45309;
+	--rc-green: #047857;
 	--rc-amber-rgb: 180, 83, 9;
 	--rc-amber-text: #92400e;
 	--rc-amber-surface: #fbf1e6;
@@ -261,6 +264,7 @@ body[data-theme-dark-highcontrast] {
 	--rc-primary-foreground: #ffffff;
 	--rc-primary-hover: #4e7dff;
 	--rc-amber: #fbbf24;
+	--rc-green: #6ee7b7;
 	--rc-amber-rgb: 251, 191, 36;
 	--rc-amber-text: #fbbf24;
 	--rc-amber-surface: #302b25;
@@ -328,13 +332,14 @@ body {
 	--color-border-dark: var(--rc-border-window) !important;
 	--color-border-maxcontrast: var(--rc-input) !important;
 	--color-border-error: var(--rc-red) !important;
-	--color-border-success: var(--rc-foreground) !important;
-	/* states: red and amber only when something went wrong or needs a look;
-	   success and info are plain text colours: no green, and the blue means
-	   "on, chosen, current", never "info" */
+	--color-border-success: var(--rc-green) !important;
+	/* states: red and amber when something went wrong or needs a look, and a
+	   thing done is the site's green (its mark and edge only; neverlose.cc
+	   says a good state in green). Info is a plain text colour: the blue
+	   means "on, chosen, current", never "info" */
 	--color-element-error: var(--rc-red) !important;
 	--color-element-warning: var(--rc-amber) !important;
-	--color-element-success: var(--rc-foreground) !important;
+	--color-element-success: var(--rc-green) !important;
 	--color-element-info: var(--rc-muted-foreground) !important;
 	--color-error: var(--rc-red-surface) !important;
 	--color-error-hover: var(--rc-red-surface-hover) !important;
@@ -699,6 +704,8 @@ div[class^='_toast_'],
 div[class^='_toast_'] [class^='_toastMessage_'] { color: inherit !important; }
 div[class^='_toast_'][class*='_toast_error_'],
 .toastify.dialogs.toast-error { border-color: color-mix(in srgb, var(--rc-red) 55%, var(--rc-border-window)) !important; }
+div[class^='_toast_'][class*='_toast_success_'],
+.toastify.dialogs.toast-success { border-color: color-mix(in srgb, var(--rc-green) 45%, var(--rc-border-window)) !important; }
 div[class^='_toast_'][class*='_toast_warning_'],
 .toastify.dialogs.toast-warning { border-color: color-mix(in srgb, var(--rc-amber) 55%, var(--rc-border-window)) !important; }
 :is(div[class^='_toast_'], .toastify.dialogs) :is(a, button, .button-vue, .toast-undo-button) { color: var(--rc-accent-text) !important; filter: none !important; }
