@@ -460,7 +460,90 @@
     "The app will be downloaded from the App Store": "이 앱이 앱 스토어에서 다운로드돼요.",
     "The app has been enabled but needs to be updated.": "앱이 활성화 되었으나 업데이트가 필요해요.",
     "Error: This app cannot be enabled because it makes the server unstable": "오류: 이 앱은 서버를 불안정하게 만들 수 있어서 활성화할 수 없어요.",
-    "The app has been enabled but needs to be updated. You will be redirected to the update page in 5 seconds.": "앱이 활성화되었지만, 앱을 업데이트해야 해요. 5초 후 앱 업데이트 페이지로 넘어가요."
+    "The app has been enabled but needs to be updated. You will be redirected to the update page in 5 seconds.": "앱이 활성화되었지만, 앱을 업데이트해야 해요. 5초 후 앱 업데이트 페이지로 넘어가요.",
+    "Bluesky": "Bluesky",
+    "Not available as publishing account specific data to the lookup server is not allowed, contact your system administration if you have any questions": "계정 정보를 찾아보기 서버에 올리지 못하게 되어 있어서 쓸 수 없어요. 궁금한 점은 관리자에게 물어보세요.",
+    "Error while updating device token scope": "기기 토큰의 범위를 바꾸지 못했어요",
+    "Revoke and cancel pending wipe?": "연결을 끊고 예약된 지우기를 취소할까요?",
+    "Only continue if you no longer need the device to be wiped.": "기기를 지울 필요가 없을 때만 계속하세요.",
+    "Revoke and cancel wipe": "연결 끊고 지우기 취소",
+    "Revoke app password?": "앱 비밀번호를 없앨까요?",
+    "The app or device will lose access on its next sync. This cannot be undone.": "앱이나 기기가 다음 동기화부터 접속하지 못해요. 되돌릴 수 없어요.",
+    "{client} - {version} ({system})": "{client} - {version} ({system})",
+    "{client} - {version}": "{client} - {version}",
+    "Set account as admin for …": "관리자로 지정할 그룹 …",
+    "The PHP function \"disk_free_space\" is disabled, which prevents the check for enough space in the temporary directories.": "PHP 함수 \"disk_free_space\"가 꺼져 있어서 임시 폴더에 빈 공간이 충분한지 확인하지 못해요.",
+    "Task Processing success rate": "작업 처리 성공률",
+    "_No scheduled tasks in the last %n day._::_No scheduled tasks in the last %n days._": [
+      "지난 %n일 동안 예약된 작업이 없어요."
+    ],
+    "_Most tasks were successful in the last %n day._::_Most tasks were successful in the last %n days._": [
+      "지난 %n일 동안 작업이 대부분 성공했어요."
+    ],
+    "_A lot of tasks failed in the last day. Consider checking the nextcloud log for errors and investigating whether the AI provider apps have been set up correctly._::_A lot of tasks failed in the last %n days. Consider checking the nextcloud log for errors and investigating whether the AI provider apps have been set up correctly._": [
+      "지난 %n일 동안 실패한 작업이 많아요. 로그에 오류가 있는지, AI 제공자 앱이 제대로 설정됐는지 확인해 보세요."
+    ],
+    "Configuration server ID": "설정의 서버 ID",
+    "Server identifier isn’t configured. It is recommended if your RobinCloud instance is running on several PHP servers. Add a server ID in your configuration.": "서버 ID가 설정되어 있지 않아요. RobinCloud를 PHP 서버 여러 대로 돌린다면 설정에 서버 ID를 넣는 게 좋아요.",
+    "\"%d\" is not a valid server identifier. It must be between 0 and 511.": "\"%d\"은(는) 서버 ID로 쓸 수 없어요. 0에서 511 사이여야 해요.",
+    "Server identifier is configured and valid.": "서버 ID가 올바르게 설정되어 있어요.",
+    "You are currently running PHP %1$s. PHP %2$s is deprecated since RobinCloud %3$s. RobinCloud %4$s may require at least PHP %5$s. Please upgrade to one of the officially supported PHP versions provided by the PHP Group as soon as possible.": "지금 PHP %1$s을(를) 쓰고 있어요. PHP %2$s은(는) RobinCloud %3$s부터 지원이 끝나 가고, RobinCloud %4$s에는 PHP %5$s 이상이 필요할 수 있어요. PHP Group이 공식 지원하는 버전으로 되도록 빨리 올리세요.",
+    "Architecture": "아키텍처",
+    "It seems like you are running a 32-bit PHP version. RobinCloud needs 64-bit to run well. Please upgrade your OS and PHP to 64-bit! We will no longer block improvements to performance, security and scalability that are incompatible with 32bit support going forward and we expect that RobinCloud Hub 27 Winter (RobinCloud 36) will no longer work on 32bit systems.": "32비트 PHP를 쓰고 있는 것 같아요. RobinCloud는 64비트에서 잘 돌아요. 운영 체제와 PHP를 64비트로 올리세요. 앞으로는 32비트와 맞지 않는 성능·보안 개선도 넣을 예정이라, RobinCloud 36부터는 32비트에서 돌지 않을 수 있어요.",
+    "The PHP memory limit is below the recommended value of %s. Some features or apps - including the Updater - may not function properly.": "PHP 메모리 한도가 권장값 %s보다 낮아요. 업데이트 도구를 비롯한 일부 기능과 앱이 제대로 돌지 않을 수 있어요.",
+    "\"%s\" in table \"%s\"": "\"%s\" (표 \"%s\")",
+    "Checking from CLI, OPcache checks have been skipped.": "명령줄에서 확인하는 중이라 OPcache 확인은 건너뛰었어요.",
+    ".well-known URLs": ".well-known 주소",
+    "`check_for_working_wellknown_setup` is set to false in your configuration, so this check was skipped.": "설정에서 `check_for_working_wellknown_setup`이 false라서 이 확인은 건너뛰었어요.",
+    "Could not check that your web server serves `.well-known` correctly. Please check manually.": "웹 서버가 `.well-known`을 제대로 내보내는지 확인하지 못했어요. 직접 확인해 보세요.",
+    "Your web server is not properly set up to resolve `.well-known` URLs, failed on:\n`%s`": "웹 서버가 `.well-known` 주소를 제대로 처리하지 못해요. 실패한 주소:\n`%s`",
+    "Your server is correctly configured to serve `.well-known` URLs.": "서버가 `.well-known` 주소를 올바르게 내보내고 있어요.",
+    "required for SFTP storage and recommended for WebAuthn performance": "SFTP 저장소에 필요하고, WebAuthn 속도에도 좋아요",
+    "MariaDB version 10.3 detected, this version is end-of-life and only supported as part of Ubuntu 20.04. MariaDB >=%1$s and <=%2$s is suggested for best performance, stability and functionality with this version of RobinCloud.": "MariaDB 10.3을 쓰고 있어요. 지원이 끝난 버전이고 Ubuntu 20.04에서만 지원돼요. 이 버전의 RobinCloud에는 MariaDB %1$s 이상 %2$s 이하가 성능·안정성·기능 면에서 가장 좋아요.",
+    "MariaDB version \"%1$s\" detected. MariaDB >=%2$s and <=%3$s is suggested for best performance, stability and functionality with this version of RobinCloud.": "MariaDB \"%1$s\"을(를) 쓰고 있어요. 이 버전의 RobinCloud에는 MariaDB %2$s 이상 %3$s 이하가 성능·안정성·기능 면에서 가장 좋아요.",
+    "MySQL version \"%1$s\" detected. MySQL >=%2$s and <=%3$s is suggested for best performance, stability and functionality with this version of RobinCloud.": "MySQL \"%1$s\"을(를) 쓰고 있어요. 이 버전의 RobinCloud에는 MySQL %2$s 이상 %3$s 이하가 성능·안정성·기능 면에서 가장 좋아요.",
+    "PostgreSQL version \"%1$s\" detected. PostgreSQL >=%2$s and <=%3$s is suggested for best performance, stability and functionality with this version of RobinCloud.": "PostgreSQL \"%1$s\"을(를) 쓰고 있어요. 이 버전의 RobinCloud에는 PostgreSQL %2$s 이상 %3$s 이하가 성능·안정성·기능 면에서 가장 좋아요.",
+    "RobinCloud %d does not support your current version, so be sure to update the database before updating your RobinCloud Server.": "RobinCloud %d은(는) 지금 버전을 지원하지 않아요. RobinCloud 서버를 올리기 전에 데이터베이스부터 올리세요.",
+    "Oracle version \"%1$s\" detected. Oracle >=%2$s and <=%3$s is suggested for best performance, stability and functionality with this version of RobinCloud.": "Oracle \"%1$s\"을(를) 쓰고 있어요. 이 버전의 RobinCloud에는 Oracle %2$s 이상 %3$s 이하가 성능·안정성·기능 면에서 가장 좋아요.",
+    "The PHP max_input_time is too low. A time of at least %1$s is recommended. Current value: %2$s.": "PHP max_input_time이 너무 낮아요. %1$s 이상을 권장해요. 지금 값: %2$s.",
+    "The PHP max_execution_time is too low. A time of at least %1$s is recommended. Current value: %2$s.": "PHP max_execution_time이 너무 낮아요. %1$s 이상을 권장해요. 지금 값: %2$s.",
+    "Task Processing worker status": "작업 처리 워커 상태",
+    "_No scheduled tasks in the last day._::_No scheduled tasks in the last %n days._": [
+      "지난 %n일 동안 예약된 작업이 없어요."
+    ],
+    "_The Task Processing worker has run in the last %n minute._::_The Task Processing worker has run in the last %n minutes._": [
+      "작업 처리 워커가 지난 %n분 안에 돌았어요."
+    ],
+    "The Task Processing worker does not seem to be running. The last run was at %s.": "작업 처리 워커가 돌고 있지 않은 것 같아요. 마지막으로 돈 때: %s.",
+    "The Task Processing worker does not seem to be running. It seems it has never run so far.": "작업 처리 워커가 돌고 있지 않은 것 같아요. 아직 한 번도 돌지 않았어요.",
+    "HTTP headers": "HTTP 헤더",
+    "- The `%1$s` HTTP header is not set to `%2$s`. Some features might not work correctly, as it is recommended to adjust this setting accordingly.": "- HTTP 헤더 `%1$s`이(가) `%2$s`(으)로 되어 있지 않아요. 일부 기능이 제대로 돌지 않을 수 있으니 맞춰 주세요.",
+    "- The `%1$s` HTTP header is not set to `%2$s`. This is a potential security or privacy risk, as it is recommended to adjust this setting accordingly.": "- HTTP 헤더 `%1$s`이(가) `%2$s`(으)로 되어 있지 않아요. 보안이나 개인정보에 위험할 수 있으니 맞춰 주세요.",
+    "- The `%1$s` HTTP header is not set to `%2$s`, `%3$s`, `%4$s`, `%5$s` or `%6$s`. This can leak referer information. See the {w3c-recommendation}.": "- HTTP 헤더 `%1$s`이(가) `%2$s`, `%3$s`, `%4$s`, `%5$s`, `%6$s` 가운데 하나로 되어 있지 않아요. 어디서 왔는지(리퍼러)가 새어 나갈 수 있어요. {w3c-recommendation}을(를) 보세요.",
+    "- The `Strict-Transport-Security` HTTP header is not set to at least `%d` seconds (current value: `%d`). For enhanced security, it is recommended to use a long HSTS policy.": "- HTTP 헤더 `Strict-Transport-Security`가 `%d`초 이상이 아니에요(지금 값: `%d`). 보안을 위해 HSTS 기간을 길게 두는 게 좋아요.",
+    "- The `Strict-Transport-Security` HTTP header is malformed: `%s`. For enhanced security, it is recommended to enable HSTS.": "- HTTP 헤더 `Strict-Transport-Security`의 형식이 잘못됐어요: `%s`. 보안을 위해 HSTS를 켜는 게 좋아요.",
+    "- The `Strict-Transport-Security` HTTP header is not set (should be at least `%d` seconds). For enhanced security, it is recommended to enable HSTS.": "- HTTP 헤더 `Strict-Transport-Security`가 없어요(`%d`초 이상이어야 해요). 보안을 위해 HSTS를 켜는 게 좋아요.",
+    "Some headers are not set correctly on your instance": "올바르게 설정되지 않은 헤더가 있어요",
+    "Could not check that your web server serves security headers correctly. Please check manually.": "웹 서버가 보안 헤더를 제대로 내보내는지 확인하지 못했어요. 직접 확인해 보세요.",
+    "Could not check that your web server serves security headers correctly, unable to query `%s`": "웹 서버가 보안 헤더를 제대로 내보내는지 확인하지 못했어요. `%s`에 물어볼 수 없어요",
+    "Your server is correctly configured to send security headers.": "서버가 보안 헤더를 올바르게 내보내고 있어요.",
+    "Font file loading": "글꼴 파일 불러오기",
+    "Could not check for {extension} loading support. Please check manually if your webserver serves `.{extension}` files.": "{extension} 파일을 불러올 수 있는지 확인하지 못했어요. 웹 서버가 `.{extension}` 파일을 내보내는지 직접 확인해 보세요.",
+    "Your web server is not properly set up to deliver .{extension} files. This is typically an issue with the Nginx configuration. For RobinCloud 15 it needs an adjustment to also deliver .{extension} files. Compare your Nginx configuration to the recommended configuration in our documentation.": "웹 서버가 .{extension} 파일을 내보내도록 설정되어 있지 않아요. 대개 Nginx 설정 문제예요. .{extension} 파일도 내보내도록 고쳐야 하니, 문서의 권장 설정과 내 Nginx 설정을 견주어 보세요.",
+    "Scheduling objects table size": "일정 개체 표 크기",
+    "You have more than %s rows in the scheduling objects table. Please run the expensive repair jobs via occ maintenance:repair --include-expensive.": "일정 개체 표에 %s줄이 넘게 있어요. occ maintenance:repair --include-expensive 로 오래 걸리는 복구 작업을 돌리세요.",
+    "Scheduling objects table size is within acceptable range.": "일정 개체 표 크기가 알맞아요.",
+    "Task Processing pickup speed": "작업을 가져가는 속도",
+    "_The task pickup speed has been ok in the last day._::_The task pickup speed has been ok in the last %n days._": [
+      "지난 %n일 동안 작업을 가져가는 속도가 괜찮았어요."
+    ],
+    "_The task pickup speed has been slow in the last day. Many tasks took longer than 4 minutes to be picked up. Consider setting up a worker to process tasks in the background._::_The task pickup speed has been slow in the last %n days. Many tasks took longer than 4 minutes to be picked up. Consider setting up a worker to process tasks in the background._": [
+      "지난 %n일 동안 작업을 가져가는 속도가 느렸어요. 가져가기까지 4분 넘게 걸린 작업이 많아요. 뒤에서 작업을 처리할 워커를 두는 게 좋아요."
+    ],
+    "Sanitize and merge duplicate system tags available": "겹치는 시스템 태그를 정리하고 합칠 수 있어요",
+    "One or more system tags need to be sanitized or merged. This can take a long time on larger instances so this is not done automatically during upgrades. Use the command `occ maintenance:repair --include-expensive` to perform the migrations.": "정리하거나 합쳐야 할 시스템 태그가 있어요. 큰 서버에서는 오래 걸릴 수 있어서 업그레이드할 때 자동으로 하지 않아요. `occ maintenance:repair --include-expensive` 명령으로 옮기세요.",
+    "Free push service": "무료 푸시 서비스",
+    "Follow us on Bluesky": "Bluesky에서 팔로우하기"
   },
   "theming": {
     "A dark theme to ease your eyes by reducing the overall luminosity and brightness.": "화면을 어둡게 해서 눈이 덜 피로해요.",
@@ -637,7 +720,178 @@
     "There was an error updating your attendance status.": "참석 상태를 업데이트하는 중 오류가 발생했어요.",
     "Please contact the organizer directly.": "주최자에게 직접 연락하세요.",
     "Are you accepting the invitation?": "초대를 수락할까요?",
-    "Your attendance was updated successfully.": "참석 정보를 업데이트했어요."
+    "Your attendance was updated successfully.": "참석 정보를 업데이트했어요.",
+    "Contact reset successfully": "연락처를 처음으로 되돌렸어요",
+    "Error while resetting contact": "연락처를 되돌리지 못했어요",
+    "Contact imported successfully": "연락처를 가져왔어요",
+    "Error while importing contact": "연락처를 가져오지 못했어요",
+    "Failed to save example event creation setting": "예시 일정 만들기 설정을 저장하지 못했어요",
+    "Failed to upload the example event": "예시 일정을 올리지 못했어요",
+    "Custom example event was saved successfully": "직접 만든 예시 일정을 저장했어요",
+    "Failed to delete the custom example event": "직접 만든 예시 일정을 지우지 못했어요",
+    "Custom example event was deleted successfully": "직접 만든 예시 일정을 지웠어요",
+    "Example content": "예시 내용",
+    "Weekdays": "평일",
+    "Delegate:": "대리인:",
+    "%1$s created \"%2$s\" on your behalf": "%1$s 님이 나 대신 \"%2$s\"을(를) 만들었어요",
+    "%1$s created \"%2$s\" on your calendar \"%3$s\"": "%1$s 님이 내 캘린더 \"%3$s\"에 \"%2$s\"을(를) 만들었어요",
+    "%1$s updated \"%2$s\" on your behalf": "%1$s 님이 나 대신 \"%2$s\"을(를) 고쳤어요",
+    "%1$s updated \"%2$s\" on your calendar \"%3$s\"": "%1$s 님이 내 캘린더 \"%3$s\"의 \"%2$s\"을(를) 고쳤어요",
+    "%1$s deleted \"%2$s\" on your behalf": "%1$s 님이 나 대신 \"%2$s\"을(를) 지웠어요",
+    "%1$s permanently deleted \"%2$s\" from your calendar \"%3$s\"": "%1$s 님이 내 캘린더 \"%3$s\"에서 \"%2$s\"을(를) 완전히 지웠어요",
+    "%1$s moved \"%2$s\" to the trash on your behalf": "%1$s 님이 나 대신 \"%2$s\"을(를) 휴지통으로 옮겼어요",
+    "%1$s moved \"%2$s\" to the trash on your calendar \"%3$s\"": "%1$s 님이 내 캘린더 \"%3$s\"의 \"%2$s\"을(를) 휴지통으로 옮겼어요",
+    "%1$s restored \"%2$s\" on your behalf": "%1$s 님이 나 대신 \"%2$s\"을(를) 되살렸어요",
+    "%1$s restored \"%2$s\" on your calendar \"%3$s\"": "%1$s 님이 내 캘린더 \"%3$s\"의 \"%2$s\"을(를) 되살렸어요",
+    "The system contacts address book has been automatically disabled during upgrade. This means that the address book will no longer be available to users in the contacts app or other clients. The system contacts address book was disabled because the amount of contacts in the address book exceeded the maximum recommended number of contacts. This limit is set to prevent performance issues. You can re-enable the system address book with the following command {command}": "업그레이드하면서 시스템 주소록이 자동으로 꺼졌어요. 연락처 앱이나 다른 프로그램에서 이 주소록이 더는 보이지 않아요.",
+    "Calendar federation": "캘린더 연합",
+    "{user} has shared the calendar {calendar} with you": "{user} 님이 캘린더 {calendar}을(를) 공유했어요",
+    "In the past on %1$s for the entire day": "지난 %1$s, 하루 종일",
+    "_In %n minute on %1$s for the entire day_::_In %n minutes on %1$s for the entire day_": [
+      "%n분 뒤 %1$s, 하루 종일"
+    ],
+    "_In %n hour on %1$s for the entire day_::_In %n hours on %1$s for the entire day_": [
+      "%n시간 뒤 %1$s, 하루 종일"
+    ],
+    "_In %n day on %1$s for the entire day_::_In %n days on %1$s for the entire day_": [
+      "%n일 뒤 %1$s, 하루 종일"
+    ],
+    "_In %n week on %1$s for the entire day_::_In %n weeks on %1$s for the entire day_": [
+      "%n주 뒤 %1$s, 하루 종일"
+    ],
+    "_In %n month on %1$s for the entire day_::_In %n months on %1$s for the entire day_": [
+      "%n개월 뒤 %1$s, 하루 종일"
+    ],
+    "_In %n year on %1$s for the entire day_::_In %n years on %1$s for the entire day_": [
+      "%n년 뒤 %1$s, 하루 종일"
+    ],
+    "In the past on %1$s between %2$s - %3$s": "지난 %1$s, %2$s - %3$s",
+    "_In %n minute on %1$s between %2$s - %3$s_::_In %n minutes on %1$s between %2$s - %3$s_": [
+      "%n분 뒤 %1$s, %2$s - %3$s"
+    ],
+    "_In %n hour on %1$s between %2$s - %3$s_::_In %n hours on %1$s between %2$s - %3$s_": [
+      "%n시간 뒤 %1$s, %2$s - %3$s"
+    ],
+    "_In %n day on %1$s between %2$s - %3$s_::_In %n days on %1$s between %2$s - %3$s_": [
+      "%n일 뒤 %1$s, %2$s - %3$s"
+    ],
+    "_In %n week on %1$s between %2$s - %3$s_::_In %n weeks on %1$s between %2$s - %3$s_": [
+      "%n주 뒤 %1$s, %2$s - %3$s"
+    ],
+    "_In %n month on %1$s between %2$s - %3$s_::_In %n months on %1$s between %2$s - %3$s_": [
+      "%n개월 뒤 %1$s, %2$s - %3$s"
+    ],
+    "_In %n year on %1$s between %2$s - %3$s_::_In %n years on %1$s between %2$s - %3$s_": [
+      "%n년 뒤 %1$s, %2$s - %3$s"
+    ],
+    "Could not generate when statement": "때를 나타내는 문장을 만들지 못했어요",
+    "Every Day for the entire day": "매일, 하루 종일",
+    "Every Day for the entire day until %1$s": "매일, 하루 종일, %1$s까지",
+    "Every Day between %1$s - %2$s": "매일 %1$s - %2$s",
+    "Every Day between %1$s - %2$s until %3$s": "매일 %1$s - %2$s, %3$s까지",
+    "Every %1$d Days for the entire day": "%1$d일마다, 하루 종일",
+    "Every %1$d Days for the entire day until %2$s": "%1$d일마다, 하루 종일, %2$s까지",
+    "Every %1$d Days between %2$s - %3$s": "%1$d일마다 %2$s - %3$s",
+    "Every %1$d Days between %2$s - %3$s until %4$s": "%1$d일마다 %2$s - %3$s, %4$s까지",
+    "Could not generate event recurrence statement": "반복을 나타내는 문장을 만들지 못했어요",
+    "Every Week on %1$s for the entire day": "매주 %1$s, 하루 종일",
+    "Every Week on %1$s for the entire day until %2$s": "매주 %1$s, 하루 종일, %2$s까지",
+    "Every Week on %1$s between %2$s - %3$s": "매주 %1$s %2$s - %3$s",
+    "Every Week on %1$s between %2$s - %3$s until %4$s": "매주 %1$s %2$s - %3$s, %4$s까지",
+    "Every %1$d Weeks on %2$s for the entire day": "%1$d주마다 %2$s, 하루 종일",
+    "Every %1$d Weeks on %2$s for the entire day until %3$s": "%1$d주마다 %2$s, 하루 종일, %3$s까지",
+    "Every %1$d Weeks on %2$s between %3$s - %4$s": "%1$d주마다 %2$s %3$s - %4$s",
+    "Every %1$d Weeks on %2$s between %3$s - %4$s until %5$s": "%1$d주마다 %2$s %3$s - %4$s, %5$s까지",
+    "Every Month on the %1$s for the entire day": "매월 %1$s, 하루 종일",
+    "Every Month on the %1$s for the entire day until %2$s": "매월 %1$s, 하루 종일, %2$s까지",
+    "Every Month on the %1$s between %2$s - %3$s": "매월 %1$s %2$s - %3$s",
+    "Every Month on the %1$s between %2$s - %3$s until %4$s": "매월 %1$s %2$s - %3$s, %4$s까지",
+    "Every %1$d Months on the %2$s for the entire day": "%1$d개월마다 %2$s, 하루 종일",
+    "Every %1$d Months on the %2$s for the entire day until %3$s": "%1$d개월마다 %2$s, 하루 종일, %3$s까지",
+    "Every %1$d Months on the %2$s between %3$s - %4$s": "%1$d개월마다 %2$s %3$s - %4$s",
+    "Every %1$d Months on the %2$s between %3$s - %4$s until %5$s": "%1$d개월마다 %2$s %3$s - %4$s, %5$s까지",
+    "Every Year in %1$s on the %2$s for the entire day": "매년 %1$s %2$s, 하루 종일",
+    "Every Year in %1$s on the %2$s for the entire day until %3$s": "매년 %1$s %2$s, 하루 종일, %3$s까지",
+    "Every Year in %1$s on the %2$s between %3$s - %4$s": "매년 %1$s %2$s %3$s - %4$s",
+    "Every Year in %1$s on the %2$s between %3$s - %4$s until %5$s": "매년 %1$s %2$s %3$s - %4$s, %5$s까지",
+    "Every %1$d Years in %2$s on the %3$s for the entire day": "%1$d년마다 %2$s %3$s, 하루 종일",
+    "Every %1$d Years in %2$s on the %3$s for the entire day until %4$s": "%1$d년마다 %2$s %3$s, 하루 종일, %4$s까지",
+    "Every %1$d Years in %2$s on the %3$s between %4$s - %5$s": "%1$d년마다 %2$s %3$s %4$s - %5$s",
+    "Every %1$d Years in %2$s on the %3$s between %4$s - %5$s until %6$s": "%1$d년마다 %2$s %3$s %4$s - %5$s, %6$s까지",
+    "On specific dates for the entire day until %1$s": "정해진 날짜에, 하루 종일, %1$s까지",
+    "On specific dates between %1$s - %2$s until %3$s": "정해진 날짜에 %1$s - %2$s, %3$s까지",
+    "In the past on %1$s": "지난 %1$s",
+    "_In %n minute on %1$s_::_In %n minutes on %1$s_": [
+      "%n분 뒤 %1$s"
+    ],
+    "_In %n hour on %1$s_::_In %n hours on %1$s_": [
+      "%n시간 뒤 %1$s"
+    ],
+    "_In %n day on %1$s_::_In %n days on %1$s_": [
+      "%n일 뒤 %1$s"
+    ],
+    "_In %n week on %1$s_::_In %n weeks on %1$s_": [
+      "%n주 뒤 %1$s"
+    ],
+    "_In %n month on %1$s_::_In %n months on %1$s_": [
+      "%n개월 뒤 %1$s"
+    ],
+    "_In %n year on %1$s_::_In %n years on %1$s_": [
+      "%n년 뒤 %1$s"
+    ],
+    "In the past on %1$s then on %2$s": "지난 %1$s, 그다음 %2$s",
+    "_In %n minute on %1$s then on %2$s_::_In %n minutes on %1$s then on %2$s_": [
+      "%n분 뒤 %1$s, 그다음 %2$s"
+    ],
+    "_In %n hour on %1$s then on %2$s_::_In %n hours on %1$s then on %2$s_": [
+      "%n시간 뒤 %1$s, 그다음 %2$s"
+    ],
+    "_In %n day on %1$s then on %2$s_::_In %n days on %1$s then on %2$s_": [
+      "%n일 뒤 %1$s, 그다음 %2$s"
+    ],
+    "_In %n week on %1$s then on %2$s_::_In %n weeks on %1$s then on %2$s_": [
+      "%n주 뒤 %1$s, 그다음 %2$s"
+    ],
+    "_In %n month on %1$s then on %2$s_::_In %n months on %1$s then on %2$s_": [
+      "%n개월 뒤 %1$s, 그다음 %2$s"
+    ],
+    "_In %n year on %1$s then on %2$s_::_In %n years on %1$s then on %2$s_": [
+      "%n년 뒤 %1$s, 그다음 %2$s"
+    ],
+    "In the past on %1$s then on %2$s and %3$s": "지난 %1$s, 그다음 %2$s, %3$s",
+    "_In %n minute on %1$s then on %2$s and %3$s_::_In %n minutes on %1$s then on %2$s and %3$s_": [
+      "%n분 뒤 %1$s, 그다음 %2$s, %3$s"
+    ],
+    "_In %n hour on %1$s then on %2$s and %3$s_::_In %n hours on %1$s then on %2$s and %3$s_": [
+      "%n시간 뒤 %1$s, 그다음 %2$s, %3$s"
+    ],
+    "_In %n day on %1$s then on %2$s and %3$s_::_In %n days on %1$s then on %2$s and %3$s_": [
+      "%n일 뒤 %1$s, 그다음 %2$s, %3$s"
+    ],
+    "_In %n week on %1$s then on %2$s and %3$s_::_In %n weeks on %1$s then on %2$s and %3$s_": [
+      "%n주 뒤 %1$s, 그다음 %2$s, %3$s"
+    ],
+    "_In %n month on %1$s then on %2$s and %3$s_::_In %n months on %1$s then on %2$s and %3$s_": [
+      "%n개월 뒤 %1$s, 그다음 %2$s, %3$s"
+    ],
+    "_In %n year on %1$s then on %2$s and %3$s_::_In %n years on %1$s then on %2$s and %3$s_": [
+      "%n년 뒤 %1$s, 그다음 %2$s, %3$s"
+    ],
+    "Could not generate next recurrence statement": "다음 차례를 나타내는 문장을 만들지 못했어요",
+    "Occurring:": "일정:",
+    "First": "첫째",
+    "Second": "둘째",
+    "Third": "셋째",
+    "Fourth": "넷째",
+    "Fifth": "다섯째",
+    "Last": "마지막",
+    "Second Last": "끝에서 둘째",
+    "Third Last": "끝에서 셋째",
+    "Fourth Last": "끝에서 넷째",
+    "Fifth Last": "끝에서 다섯째",
+    "Example event - open me!": "예시 일정 - 열어 보세요!",
+    "This is an example contact": "예시 연락처예요",
+    "System Address Book": "시스템 주소록"
   },
   "files_pdfviewer": {
     "Configure PDF viewer settings": "PDF 뷰어 설정",
@@ -1039,7 +1293,13 @@
       "업데이트가 성공했어요. %n초 후 {productName}(으)로 이동해요."
     ],
     "%1$s will be updated to version %2$s": "%1$s을(를) 버전 %2$s(으)로 업데이트해요.",
-    "The theme %s has been disabled.": "%s 테마가 비활성화되었어요."
+    "The theme %s has been disabled.": "%s 테마가 비활성화되었어요.",
+    "_%n file does not match the signed release. It may have been modified or added without authorization._::_%n files do not match the signed release. They may have been modified or added without authorization._": [
+      "파일 %n개가 서명된 릴리스와 달라요. 허락 없이 바뀌었거나 더해졌을 수 있어요."
+    ],
+    "_The signature of %s is missing or invalid, so it could not be verified._::_The signatures of %s are missing or invalid, so they could not be verified._": [
+      "%s의 서명이 없거나 올바르지 않아서 확인하지 못했어요."
+    ]
   },
   "registration": {
     "Register": "회원가입",
@@ -1287,7 +1547,8 @@
     "Allow to restrict filenames to ensure files can be synced with all clients. By default all filenames valid on POSIX (e.g. Linux or macOS) are allowed.": "모든 클라이언트와 동기화 될 수 있게 제한된 파일이름을 허용하세요. 기본적으로 POSIX (예를 들어 Linux 혹은 macOS) 에서 유효한 모든 파일이름은 허용돼요.",
     "After enabling the Windows compatible filenames, existing files cannot be modified anymore but can be renamed to valid new names by their owner.": "Windows 호환 파일 이름 기능을 활성화하면 기존 파일은 더 이상 수정할 수 없지만, 파일 소유자는 유효한 새 이름으로 파일 이름을 변경할 수 있어요.",
     "This will block filenames not valid on Windows systems, like using reserved names or special characters. But this will not enforce compatibility of case sensitivity.": "예약어나 특수 문자 사용 등 Windows 시스템에서 유효하지 않은 파일 이름이 차단돼요. 그러나 대소문자 구분의 호환성을 강제하지는 않아요.",
-    "All files have been santized for Windows filename support.": "Windows 파일 이름 지원을 위해 모든 파일을 검증했어요."
+    "All files have been santized for Windows filename support.": "Windows 파일 이름 지원을 위해 모든 파일을 검증했어요.",
+    "{displayName} (unavailable)": "{displayName} (쓸 수 없음)"
   },
   "files_sharing": {
     "No shares": "공유한 항목이 없어요",
