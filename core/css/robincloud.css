@@ -2565,3 +2565,9 @@ body:not(#body-login) .checkbox-radio-switch:not(.checkbox-radio-switch--checked
    shows only when there is something to clear (it stood there on an empty box). */
 body .checkbox-radio-switch-switch:not(.checkbox-radio-switch--checked) .checkbox-content__icon { box-shadow: inset 0 0 0 1px color-mix(in srgb, currentColor 22%, transparent); }
 body .app-navigation-search .input-field__input:placeholder-shown ~ .input-field__trailing-button { display: none !important; }
+
+/* 2026-11-23: the share icon at the end of every file row was blue (four blue marks on four
+   files nobody shares). Blue says "on" or "chosen"; a row action is grey until pointed at.
+   What is shared shows by its icon (a link, people). */
+body .files-list__row-action-sharing-status .files-list__row-action-icon { color: var(--color-text-maxcontrast) !important; }
+body .files-list__row-action-sharing-status:is(:hover, :focus-visible) .files-list__row-action-icon { color: var(--color-main-text) !important; }
