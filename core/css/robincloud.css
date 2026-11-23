@@ -2571,3 +2571,45 @@ body .app-navigation-search .input-field__input:placeholder-shown ~ .input-field
    What is shared shows by its icon (a link, people). */
 body .files-list__row-action-sharing-status .files-list__row-action-icon { color: var(--color-text-maxcontrast) !important; }
 body .files-list__row-action-sharing-status:is(:hover, :focus-visible) .files-list__row-action-icon { color: var(--color-main-text) !important; }
+
+/* Admin pages on a phone: the page itself scrolled sideways on two of them (B-046).
+   The password policy form is a fixed 446px, the brute-force comment box a fixed 508px,
+   and the server info table never wraps. The user and log tables scroll inside their
+   own box and stay as they are. */
+@media (max-width: 600px) {
+	[class*='_policyWrapper_'] form,
+	.settings-section [class*='_container_'] {
+		width: 100% !important;
+		min-width: 0 !important;
+		max-width: 100% !important;
+	}
+	#bruteforcesettings .whitelist-form {
+		flex-wrap: wrap;
+	}
+	#bruteforcesettings .whitelist__comment,
+	#bruteforcesettings .whitelist-form__ip-mask {
+		width: 100% !important;
+		max-width: 100%;
+	}
+	#bruteforcesettings .whitelist-form__ip-mask > * {
+		min-width: 0;
+		flex: 1 1 0;
+		width: auto !important;
+	}
+	#bruteforcesettings .whitelist-form__ip-mask > .whitelist__mask {
+		flex: 0 0 96px;
+	}
+	.server-info-table table {
+		width: 100%;
+		table-layout: fixed;
+		white-space: normal;
+	}
+	.server-info-table td {
+		white-space: normal;
+		overflow-wrap: anywhere;
+		vertical-align: top;
+	}
+	.server-info-table td:first-child {
+		width: 38%;
+	}
+}
