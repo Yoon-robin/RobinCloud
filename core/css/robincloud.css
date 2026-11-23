@@ -2559,3 +2559,9 @@ body:not(#body-login) .checkbox-radio-switch:not(.checkbox-radio-switch--checked
 	color: var(--rc-muted-foreground) !important;
 }
 ::selection { color: inherit; background: rgba(var(--rc-accent-rgb), .25); }
+
+/* 2026-11-23: an off switch on the page was only its knob (the well #030913 on #0e1012):
+   a 1px line gives it its shape, as the controls have. The clear button of "여기서 검색…"
+   shows only when there is something to clear (it stood there on an empty box). */
+body .checkbox-radio-switch-switch:not(.checkbox-radio-switch--checked) .checkbox-content__icon { box-shadow: inset 0 0 0 1px color-mix(in srgb, currentColor 22%, transparent); }
+body .app-navigation-search .input-field__input:placeholder-shown ~ .input-field__trailing-button { display: none !important; }
