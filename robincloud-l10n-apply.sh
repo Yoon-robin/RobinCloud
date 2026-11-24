@@ -24,3 +24,7 @@ occ config:app:set theming cachebuster --value=$(( ${cb:-0} + 1 )) >/dev/null
 code=$(curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:8080/login)
 [ "$code" = 200 ] || { echo "RobinCloud l10n apply: /login answered $code" >&2; exit 1; }
 echo "RobinCloud ko overlay applied (cachebuster $(( ${cb:-0} + 1 )))"
+
+# .mjs pieces the rebrand rewrote under the same name: out of Cloudflare's cache
+# (a host tool with a token of its own, outside this repository; D-068)
+if command -v robin-cloud-purge >/dev/null 2>&1; then robin-cloud-purge || echo "robin-cloud-purge failed" >&2; fi

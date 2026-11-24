@@ -283,3 +283,7 @@ fi
 login_check
 write_state
 echo "RobinCloud deployed: $(git -C "$SRC" log -1 --format='%h %s')"
+
+# .mjs pieces the rebrand rewrote under the same name: out of Cloudflare's cache
+# (a host tool with a token of its own, outside this repository; D-068)
+if command -v robin-cloud-purge >/dev/null 2>&1; then robin-cloud-purge || echo "robin-cloud-purge failed" >&2; fi
