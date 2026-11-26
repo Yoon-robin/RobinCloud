@@ -55,7 +55,7 @@
 	--rc-sunk: #c4c4c4;
 	--rc-switch-off: #e8e8ec;
 	--rc-switch-knob: #727d89;
-	--rc-switch-on: #3d6af0; /* the official light menu's sky blue, fills only */
+	--rc-switch-on: #3d6af0; /* the official light menu's sky blue, fills only */ --rc-glow: rgb(61 106 240 / 24%); --rc-glow-icon: rgb(61 106 240 / 35%);
 	--rc-hover: #e9ecf0;
 	--rc-muted: #dfe3e9;
 	--rc-muted-strong: #adadad;
@@ -130,7 +130,7 @@
 		--rc-sunk: #1c1e24;
 		--rc-switch-off: #030913;
 		--rc-switch-knob: #798895;
-		--rc-switch-on: #4b7dfe;
+		--rc-switch-on: #4b7dfe; --rc-glow: rgb(75 125 254 / 45%); --rc-glow-icon: rgb(75 125 254 / 80%);
 		--rc-hover: #15181b;
 		--rc-muted: #222629;
 		--rc-muted-strong: #2a2e32;
@@ -188,7 +188,7 @@ body[data-theme-light-highcontrast] {
 	--rc-sunk: #c4c4c4;
 	--rc-switch-off: #e8e8ec;
 	--rc-switch-knob: #727d89;
-	--rc-switch-on: #3d6af0; /* the official light menu's sky blue, fills only */
+	--rc-switch-on: #3d6af0; /* the official light menu's sky blue, fills only */ --rc-glow: rgb(61 106 240 / 24%); --rc-glow-icon: rgb(61 106 240 / 35%);
 	--rc-hover: #e9ecf0;
 	--rc-muted: #dfe3e9;
 	--rc-muted-strong: #adadad;
@@ -241,7 +241,7 @@ body[data-theme-dark-highcontrast] {
 	--rc-sunk: #1c1e24;
 	--rc-switch-off: #030913;
 	--rc-switch-knob: #798895;
-	--rc-switch-on: #4b7dfe;
+	--rc-switch-on: #4b7dfe; --rc-glow: rgb(75 125 254 / 45%); --rc-glow-icon: rgb(75 125 254 / 80%);
 	--rc-hover: #15181b;
 	--rc-muted: #222629;
 	--rc-muted-strong: #2a2e32;
@@ -2493,6 +2493,12 @@ body .checkbox-radio-switch-switch.checkbox-radio-switch--checked .checkbox-cont
 body .checkbox-radio-switch-switch:hover .checkbox-content__icon,
 body .checkbox-radio-switch-switch:focus-within .checkbox-content__icon { box-shadow: 0 0 0 1px rgba(var(--rc-accent-rgb), 0.22); }
 body .checkbox-radio-switch-switch.checkbox-radio-switch--disabled .checkbox-content__icon { opacity: 0.45; }
+/* what is on glows a little in its own colour, and only that (yoonrobin docs/brand.md V5.1,
+   robin 11-26 glow "B"): an on switch (with the pointing ring when pointed at), the chosen
+   navigation row's icon */
+body .checkbox-radio-switch-switch.checkbox-radio-switch--checked:not(.checkbox-radio-switch--disabled) .checkbox-content__icon { box-shadow: 0 0 12px var(--rc-glow); }
+body .checkbox-radio-switch-switch.checkbox-radio-switch--checked:not(.checkbox-radio-switch--disabled):is(:hover, :focus-within) .checkbox-content__icon { box-shadow: 0 0 0 1px rgba(var(--rc-accent-rgb), 0.22), 0 0 12px var(--rc-glow); }
+body:not(#body-login) :is(.app-navigation-entry.active, .app-navigation-entry--active) .app-navigation-entry-icon { filter: drop-shadow(0 0 5px var(--rc-glow-icon)); }
 
 /* Personal info: someone in no group got "소속 그룹:" with nothing after it (B-464) */
 .details__groups:has(.details__groups-list:empty) { display: none; }
