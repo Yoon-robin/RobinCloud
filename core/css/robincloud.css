@@ -54,7 +54,7 @@
 	--rc-raise: #f1f1f2;
 	--rc-sunk: #c4c4c4;
 	--rc-switch-off: #e8e8ec;
-	--rc-switch-knob: #ffffff;
+	--rc-switch-knob: #727d89;
 	--rc-switch-on: #3d6af0; /* the official light menu's sky blue, fills only */
 	--rc-hover: #e9ecf0;
 	--rc-muted: #dfe3e9;
@@ -64,7 +64,7 @@
 	--rc-strong: #000000;
 	--rc-muted-foreground: #616161;
 	--rc-muted-foreground-rgb: 74, 74, 74;
-	--rc-faint: #727272;
+	--rc-faint: #6b6b6b;
 	--rc-border: #e8e8ec;
 	--rc-border-window: #dedee3;
 	--rc-input: #c4c4cb;
@@ -187,7 +187,7 @@ body[data-theme-light-highcontrast] {
 	--rc-raise: #f1f1f2;
 	--rc-sunk: #c4c4c4;
 	--rc-switch-off: #e8e8ec;
-	--rc-switch-knob: #ffffff;
+	--rc-switch-knob: #727d89;
 	--rc-switch-on: #3d6af0; /* the official light menu's sky blue, fills only */
 	--rc-hover: #e9ecf0;
 	--rc-muted: #dfe3e9;
@@ -197,7 +197,7 @@ body[data-theme-light-highcontrast] {
 	--rc-strong: #000000;
 	--rc-muted-foreground: #616161;
 	--rc-muted-foreground-rgb: 74, 74, 74;
-	--rc-faint: #727272;
+	--rc-faint: #6b6b6b;
 	--rc-border: #e8e8ec;
 	--rc-border-window: #dedee3;
 	--rc-input: #c4c4cb;
