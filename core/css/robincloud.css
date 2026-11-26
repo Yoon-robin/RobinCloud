@@ -1330,7 +1330,7 @@ a[href^="https://help.nextcloud.com"] { display: none !important; }
 	transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.12s ease !important;
 }
 
-#body-login :is(.button-vue, a.button, input[type='submit']):active:not(:disabled) { transform: scale(0.98); }
+#body-login :is(.button-vue, a.button, input[type='submit']):active:not(:disabled) { transform: scale(0.97); }
 
 /* A primary button that is not ready yet reads as "not yet", not as a dead
    slab: same shape, the pressed colour in the strong line, grey text. */
@@ -1754,12 +1754,12 @@ html[lang^='ko'] #body-login #guest-content-vue form[class*='publicShareAuth']::
 @keyframes rc-pop { from { opacity: 0; transform: scale(0.96); } }
 /* B-457 (the Neverlose site): a menu fades in 6px from the side it opens
    on, its size unchanged; a dialog 6px up and 0.98 to 1 */
-/* a menu comes in from 6px on the side it opens from, out of a blur (brand V3.5, neverlose.cc) */
-@keyframes rc-menu-down { from { opacity: 0; translate: 0 -6px; filter: blur(6px); } }
-@keyframes rc-menu-up { from { opacity: 0; translate: 0 6px; filter: blur(6px); } }
-@keyframes rc-menu-left { from { opacity: 0; translate: 6px 0; filter: blur(6px); } }
-@keyframes rc-menu-right { from { opacity: 0; translate: -6px 0; filter: blur(6px); } }
-@keyframes rc-dialog { from { opacity: 0; transform: translateY(6px) scale(0.98); } }
+/* V5.1 (2026-11-26): a menu grows toward you from the side it opens on, 0.97 to 1, no blur */
+@keyframes rc-menu-down { from { opacity: 0; translate: 0 -2px; scale: 0.97; } }
+@keyframes rc-menu-up { from { opacity: 0; translate: 0 2px; scale: 0.97; } }
+@keyframes rc-menu-left { from { opacity: 0; translate: 2px 0; scale: 0.97; } }
+@keyframes rc-menu-right { from { opacity: 0; translate: -2px 0; scale: 0.97; } }
+@keyframes rc-dialog { from { opacity: 0; transform: scale(0.97); } } /* V5.1 (2026-11-26): from its middle */
 @keyframes rc-fade { from { opacity: 0; } }
 
 /* The page: content rises once as it loads. No fill: an animation that
