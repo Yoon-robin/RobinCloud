@@ -101,9 +101,12 @@ try {
 	$context = ['app' => 'public', 'exception' => $ex];
 	if ($status === 404) {
 		$logger->debug($ex->getMessage(), $context);
-	} else {
-		$logger->error($ex->getMessage(), $context);
+		// and the page says so, instead of "internal server error, tell the admin"
+		$l = Util::getL10N('core');
+		Server::get(ITemplateManager::class)->printErrorPage($l->t('Page not found'),
+			$l->t('The page could not be found on the server or you may not be allowed to view it.'), 404);
 	}
+	$logger->error($ex->getMessage(), $context);
 	Server::get(ITemplateManager::class)->printExceptionErrorPage($ex, $status);
 } catch (Error $ex) {
 	//show the user a detailed error page
