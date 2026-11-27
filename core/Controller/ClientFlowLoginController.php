@@ -116,12 +116,13 @@ class ClientFlowLoginController extends Controller {
 					'errors'
 					=> [
 						[
-							'error' => 'Access Forbidden',
-							'hint' => 'Invalid request',
+							'error' => $this->l10n->t('Access forbidden'),
+							'hint' => $this->l10n->t('Invalid request'),
 						],
 					],
 				],
-				'guest'
+				'guest',
+				Http::STATUS_FORBIDDEN
 			);
 		}
 

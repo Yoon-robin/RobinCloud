@@ -1057,6 +1057,10 @@
     "Failed to get an iterator for log entries: %s": "로그 항목을 읽지 못했어요: %s",
     "_%n warning in the logs since %s_::_%n warnings in the logs since %s_": [
       "%s 이후 로그에 경고 %n개"
+    ],
+    "No errors in the logs since %s": "%s 이후 로그에 오류 없음",
+    "_%n error in the logs since %s_::_%n errors in the logs since %s_": [
+      "%s 이후 로그에 오류 %n개"
     ]
   },
   "core": {
@@ -1299,7 +1303,8 @@
     ],
     "_The signature of %s is missing or invalid, so it could not be verified._::_The signatures of %s are missing or invalid, so they could not be verified._": [
       "%s의 서명이 없거나 올바르지 않아서 확인하지 못했어요."
-    ]
+    ],
+    "Invalid request": "잘못된 요청이에요"
   },
   "registration": {
     "Register": "회원가입",
@@ -2151,7 +2156,28 @@
     ],
     "_Remove photo from person_::_Remove photos from person_": [
       "인물에서 사진 빼기"
-    ]
+    ],
+    "Failed to add {fileBaseName} to collection {collectionFileName}": "{fileBaseName}을(를) {collectionFileName} 모음에 넣지 못했어요",
+    "Failed to delete {fileBaseName}": "{fileBaseName}을(를) 지우지 못했어요",
+    "Failed to create {collectionFileName}": "{collectionFileName}을(를) 만들지 못했어요",
+    "Failed to rename {currentCollectionFileName} to {newCollectionFileName}": "{currentCollectionFileName}의 이름을 {newCollectionFileName}(으)로 바꾸지 못했어요",
+    "Failed to update properties of {collectionFileName} with {properties}": "{collectionFileName}의 속성을 바꾸지 못했어요({properties})",
+    "Failed to delete {collectionFileName}": "{collectionFileName}을(를) 지우지 못했어요",
+    "Failed to move {fileBaseName} to person {faceName}": "{fileBaseName}을(를) {faceName} 인물로 옮기지 못했어요",
+    "Failed to remove {fileBaseName}": "{fileBaseName}을(를) 빼지 못했어요",
+    "Failed to rename {oldName} to {faceName}": "{oldName}의 이름을 {faceName}(으)로 바꾸지 못했어요",
+    "Failed to delete {faceName}": "{faceName}을(를) 지우지 못했어요",
+    "Failed to delete {fileId}": "{fileId}을(를) 지우지 못했어요",
+    "Failed to set favorite state for {fileId}": "{fileId}의 즐겨찾기를 바꾸지 못했어요",
+    "Failed to fetch collaborators list.": "공동 작업자 목록을 불러오지 못했어요.",
+    "Failed to update album.": "앨범을 바꾸지 못했어요.",
+    "Album {title}": "앨범 {title}",
+    "Shared Albums": "공유받은 앨범",
+    "Shared album {title}": "공유받은 앨범 {title}",
+    "Public album {title}": "공개 앨범 {title}",
+    "Tagged photos": "태그한 사진",
+    "Tagged photo {title}": "태그 {title}",
+    "{title}'s face": "{title} 인물"
   },
   "workflowengine": {
     "Select a comparator": "비교 방식 고르기",

@@ -278,7 +278,10 @@ if (is_file($overlayFile)) {
 			$json = is_file("$dir/ko.json") ? json_decode(file_get_contents("$dir/ko.json"), true) : null;
 			$json = is_array($json) ? $json : ['translations' => [], 'pluralForm' => 'nplurals=1; plural=0;'];
 			$before = $json['translations'];
-			$json['translations'] = array_merge($json['translations'], $strings);
+			// the overlay's Korean goes through the same word rule as the shipped
+			// strings (it was written against upstream text: "Nextcloud 설정 파일…")
+			$json['translations'] = array_merge($json['translations'], array_map(
+				fn ($v) => is_array($v) ? array_map('rebrand', $v) : rebrand((string)$v), $strings));
 			$flags = JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT;
 			$js = "OC.L10N.register(\n    " . json_encode($app) . ",\n    "
 				. json_encode((object)$json['translations'], $flags) . ",\n" . json_encode($json['pluralForm']) . ");\n";
@@ -297,4 +300,17 @@ if (is_file($overlayFile)) {
 		}
 	}
 	echo "ko overlay merged into $merged app(s)\n";
+}
+
+// Times the server writes (activity mails, share expiry, "last seen") come
+// from punic's CLDR data, whose Korean short and narrow day periods are "AM"
+// and "PM"; the wide ones, and every date the browser formats, say 오전/오후.
+$punicKo = "$root/3rdparty/punic/punic/src/data/ko/calendar.php";
+if (is_file($punicKo)) {
+	$src = file_get_contents($punicKo);
+	$out = str_replace(["'am'=>'AM'", "'pm'=>'PM'"], ["'am'=>'오전'", "'pm'=>'오후'"], $src);
+	if ($out !== $src) {
+		file_put_contents($punicKo, $out);
+		echo "punic ko day periods: AM/PM -> 오전/오후\n";
+	}
 }

@@ -93,6 +93,10 @@ class PublicAuth extends AbstractBasic {
 				),
 			);
 			throw $e;
+		} catch (NotFound $e) {
+			// a share token that does not exist is a 404 (already counted by the throttler
+			// in checkToken()), not a 503 with an error-level log line anyone can cause
+			throw $e;
 		} catch (\Exception $e) {
 			$class = get_class($e);
 			$msg = $e->getMessage();
